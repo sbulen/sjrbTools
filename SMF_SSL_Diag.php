@@ -79,10 +79,10 @@ function doEnvChecks() {
 	$settings[] = array('$_SERVER["HTTPS"]', isset($_SERVER["HTTPS"]) ? $_SERVER["HTTPS"] : '<strong>NOT SET</strong>');
 	
 	// Is cert installed?
-	$settings[] = array('Certificate detected? ', is_cert_there() ? 'Yes' : '<strong>No</strong>');
+	$settings[] = array('Certificate detected? ', ssl_cert_found() ? 'Yes' : '<strong>No</strong>');
 
-	// Is redirect operative?
-	$settings[] = array('Redirect detected? ', is_redirect_there() ? 'Yes' : '<strong>No</strong>');
+	// Is redirect active?
+	$settings[] = array('Redirect detected? ', https_redirect_active() ? 'Yes' : '<strong>No</strong>');
 
 	// Use file_get_contents to test reading the site via http & https.  This can be very slow...
 
@@ -182,11 +182,10 @@ function stripQuotes($string) {
 	return $string;
 }
 
-
 //*** Check if current domain has a cert
 // Adapted from: https://stackoverflow.com/questions/27689147/how-to-check-if-domain-has-ssl-certificate-or-not
 // 
-function is_cert_there() {
+function ssl_cert_found() {
 
 	$url = 'https://' . $_SERVER["SERVER_NAME"];
 
@@ -197,14 +196,46 @@ function is_cert_there() {
 		$cont = stream_context_get_params($read);
 		$result = isset($cont["options"]["ssl"]["peer_certificate"]) ? true : false;
 	}
-
     return $result;
 }
 
-//*** Check if current domain has a redirect to https://
+//*** Check if current domain has a redirect to https:// by querying header
+// 
+function https_redirect_active() {
+
+	// Ask for the headers for this server via http...
+	$url = 'http://' . $_SERVER["SERVER_NAME"];
+	$headers = get_headers($url);
+	if ($headers === false)
+		return false;
+
+	// Dump the headers
+	$settings = array();
+	$settings[0] = array('Response Header for: ' . $url);
+	$settings[] = array(implode('<br>', $headers));
+	dumpTable($settings);
+	
+	// Now to see if it came back https...   
+	// First check for a redirect status code in first row (301, 302, 307)
+	if (strstr($headers[0], '301') === false && strstr($headers[0], '302') === false && strstr($headers[0], '307') === false)
+		return false;
+	
+	// Search for the location entry to confirm https & that the server matches
+	// Two separate queries, in case it added something else in there, e.g., www. or a subfolder
+	$result = false;
+	foreach ($headers as $header) {
+		if (stristr($header, 'Location: https://') !== false && stristr($header, $_SERVER["SERVER_NAME"]) !== false) {
+			$result = true;
+			break;
+		}
+	}
+	return $result;		
+}
+
+//*** Check if current domain has a redirect to https:// using cURL
 // Adapted from: https://stackoverflow.com/questions/2964834/php-check-if-url-redirects
 // 
-function is_redirect_there() {
+function https_redirect_active_curl() {
 
 	$url = 'http://' . $_SERVER["SERVER_NAME"];
 
