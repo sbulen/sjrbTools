@@ -42,7 +42,7 @@ function doStartup() {
 //*** Settings File 
 function doSettingsFile() {
 
-	global $db_type, $db_connection, $db_prefix, $db_name, $smcFunc;
+	global $db_type, $db_connection, $db_prefix, $db_name, $smcFunc, $boardurl;
 	$smcFunc = array();
 
 	$dumpvars = array('mbname', 'db_server', 'db_name', 'boardurl', 'image_proxy_enabled', 'image_proxy_secret', 'image_proxy_maxsize');
@@ -199,12 +199,15 @@ function ssl_cert_found() {
     return $result;
 }
 
-//*** Check if current domain has a redirect to https:// by querying header
+//*** Check if $boardurl has a redirect to https:// by querying headers
 // 
 function https_redirect_active() {
 
-	// Ask for the headers for this server via http...
-	$url = 'http://' . $_SERVER["SERVER_NAME"];
+	global $boardurl;
+
+	// Ask for the headers for the current $boardurl, but via http...
+	// Need to add the trailing slash, or it puts it there & thinks there's a redirect when there isn't...
+	$url = str_ireplace('https://', 'http://', $boardurl) . '/';
 	$headers = get_headers($url);
 	if ($headers === false)
 		return false;
@@ -220,11 +223,10 @@ function https_redirect_active() {
 	if (strstr($headers[0], '301') === false && strstr($headers[0], '302') === false && strstr($headers[0], '307') === false)
 		return false;
 	
-	// Search for the location entry to confirm https & that the server matches
-	// Two separate queries, in case it added something else in there, e.g., www. or a subfolder
+	// Search for the location entry to confirm https
 	$result = false;
 	foreach ($headers as $header) {
-		if (stristr($header, 'Location: https://') !== false && stristr($header, $_SERVER["SERVER_NAME"]) !== false) {
+		if (stristr($header, 'Location: https://') !== false) {
 			$result = true;
 			break;
 		}
