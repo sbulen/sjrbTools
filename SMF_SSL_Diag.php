@@ -208,7 +208,7 @@ function https_redirect_active() {
 	// Ask for the headers for the current $boardurl, but via http...
 	// Need to add the trailing slash, or it puts it there & thinks there's a redirect when there isn't...
 	$url = str_ireplace('https://', 'http://', $boardurl) . '/';
-	$headers = get_headers($url);
+	$headers = @get_headers($url);
 	if ($headers === false)
 		return false;
 
