@@ -71,7 +71,7 @@ function doSettingsFile() {
 //*** Some environment checks
 function doEnvChecks() {
 
-	global $smcFunc, $db_type, $db_connection, $db_prefix, $db_name;
+	global $smcFunc, $db_type, $db_connection, $db_prefix, $db_name, $boardurl;
 
 	$settings = array();
 	$settings[0] = array('Environment Check','Result');
@@ -79,10 +79,10 @@ function doEnvChecks() {
 	$settings[] = array('$_SERVER["HTTPS"]', isset($_SERVER["HTTPS"]) ? $_SERVER["HTTPS"] : '<strong>NOT SET</strong>');
 	
 	// Is cert installed?
-	$settings[] = array('Certificate detected? ', ssl_cert_found() ? 'Yes' : '<strong>No</strong>');
+	$settings[] = array('Certificate detected? ', ssl_cert_found($boardurl) ? 'Yes' : '<strong>No</strong>');
 
 	// Is redirect active?
-	$settings[] = array('Redirect detected? ', https_redirect_active() ? 'Yes' : '<strong>No</strong>');
+	$settings[] = array('Redirect detected? ', https_redirect_active($boardurl) ? 'Yes' : '<strong>No</strong>');
 
 	// Use file_get_contents to test reading the site via http & https.  This can be very slow...
 
@@ -182,12 +182,15 @@ function stripQuotes($string) {
 	return $string;
 }
 
+/*
 //*** Check if current domain has a cert
 // Adapted from: https://stackoverflow.com/questions/27689147/how-to-check-if-domain-has-ssl-certificate-or-not
-// 
-function ssl_cert_found() {
+// * @param string $url to check, in $boardurl format (no trailing slash).
+*/ 
+function ssl_cert_found($url) {
 
-	$url = 'https://' . $_SERVER["SERVER_NAME"];
+	// Ask for the headers for the passed url, but via https...
+	$url = str_ireplace('http://', 'https://', $url) . '/';
 
 	$result = false;
 	$stream = stream_context_create (array("ssl" => array("capture_peer_cert" => true)));
@@ -199,15 +202,15 @@ function ssl_cert_found() {
     return $result;
 }
 
+/* 
 //*** Check if $boardurl has a redirect to https:// by querying headers
-// 
-function https_redirect_active() {
+// * @param string $url to check, in $boardurl format (no trailing slash).
+*/ 
+function https_redirect_active($url) {
 
-	global $boardurl;
-
-	// Ask for the headers for the current $boardurl, but via http...
+	// Ask for the headers for the passed url, but via http...
 	// Need to add the trailing slash, or it puts it there & thinks there's a redirect when there isn't...
-	$url = str_ireplace('https://', 'http://', $boardurl) . '/';
+	$url = str_ireplace('https://', 'http://', $url) . '/';
 	$headers = @get_headers($url);
 	if ($headers === false)
 		return false;
@@ -237,9 +240,9 @@ function https_redirect_active() {
 //*** Check if current domain has a redirect to https:// using cURL
 // Adapted from: https://stackoverflow.com/questions/2964834/php-check-if-url-redirects
 // 
-function https_redirect_active_curl() {
+function https_redirect_active_curl($url) {
 
-	$url = 'http://' . $_SERVER["SERVER_NAME"];
+	$url = str_ireplace('https://', 'http://', $url) . '/';
 
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $url);
