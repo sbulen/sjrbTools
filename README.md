@@ -7,7 +7,7 @@ This is a collection of utilities I use to perform maintenance on & testing of m
 
 These tools are inquiry only & are used to perform diagnostics.
 
-* ***SMF_Settings_Diag.php*** - This tool dumps key settings.php entries and dumps the entire SMF settings table.  It works for SMF2.0 & 2.1.  ***NOTE -*** Some mods place password information in the SMF settings table.  You do not want to share the output of this diagnostic publicly.  
+* ***SMF_Settings_Diag.php*** - This tool dumps key settings.php entries and dumps the entire SMF settings table.  It works for SMF2.0 & 2.1.  ***NOTE -*** Some mods place sensitive information like passwords & hashes in the SMF settings table.  You may not want to share the output of this diagnostic publicly.  
 * ***SMF_SSL_Diag.php*** - This tool dumps some helpful information on your SSL configuration.  It works for SMF2.0 & 2.1.
 * ***SMF_Theme_Diag.php*** - This tool dumps a bunch of helpful information on your Themes.  It works for SMF2.0 & 2.1.
 * ***SMF_UTF8_Diag.php*** - This tool dumps a bunch of helpful information on the state of the character set & collation of your SMF database.  It works for SMF2.0 & 2.1.
