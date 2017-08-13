@@ -1,7 +1,7 @@
 <?php 
 //
 // A utility to change all URL and directory settings in settings & themes tables.
-// Does message bodies and member signatures as well.  
+// Does message bodies, personal messages, and member signatures as well.  
 // 
 // I use this utility to rapidly setup test environments, but with care, it can help with prod issues.
 // It may even help with https: conversions.  
@@ -46,6 +46,7 @@ loadSettingsFile();
 doSettings();
 doThemes();
 doMessages();
+doPMs();
 doSignatures();
 doWrapUp();
 return;
@@ -203,7 +204,6 @@ function doThemes() {
 	return;
 }
 
-
 //*** Do messages
 function doMessages() {
 
@@ -213,18 +213,24 @@ function doMessages() {
 	$result = $smcFunc['db_query']('', $sql);
 
 	while($row = $smcFunc['db_fetch_assoc']($result)) {
-		if (stristr($row['body'], $oldURL)){
+		if (stristr($row['body'], $oldURL) || stristr($row['subject'], $oldURL)){
 			$settings = array();
 			$settings[] = array('Message: ', $row['id_msg']);
-			$settings[] = array('Subject: ', $row['subject']);
+
+			$settings[] = array('Old subject: ', shortString($row['subject'], $oldURL));
+			$newsubject = str_ireplace($oldURL, $newURL, $row['subject']);
+			$settings[] = array('New subject: ', shortString($newsubject, $newURL));
+
 			$settings[] = array('Old body: ', shortString($row['body'], $oldURL));
-			$newval = str_ireplace($oldURL, $newURL, $row['body']);
-			$settings[] = array('New body: ', shortString($newval, $newURL));
+			$newbody = str_ireplace($oldURL, $newURL, $row['body']);
+			$settings[] = array('New body: ', shortString($newbody, $newURL));
 			dumpTable($settings);
 
 			if ($doit == 'Yes') {			
-				$newval = addslashes($newval);
-				$sql = "UPDATE " . $db_prefix . "messages SET body = '" . $newval
+				$newsubject = addslashes($newsubject);
+				$newbody = addslashes($newbody);
+				$sql = "UPDATE " . $db_prefix . "messages SET subject = '" . $newsubject
+				    . ", body = '" . $newbody
 					. "' WHERE id_msg = '" . $row['id_msg'] . "';";
 				$smcFunc['db_query']('', $sql);
 			}
@@ -233,6 +239,40 @@ function doMessages() {
 	return;
 }
 
+//*** Do personal messages
+function doPMs() {
+
+	global $smcFunc, $db_type, $db_connection, $db_prefix, $db_name, $oldURL, $newURL, $oldDir, $newDir, $doit;
+
+	$sql = "SELECT id_pm, subject, body FROM " . $db_prefix . "personal_messages;";
+	$result = $smcFunc['db_query']('', $sql);
+
+	while($row = $smcFunc['db_fetch_assoc']($result)) {
+		if (stristr($row['body'], $oldURL) || stristr($row['subject'], $oldURL)){
+			$settings = array();
+			$settings[] = array('PM: ', $row['id_pm']);
+
+			$settings[] = array('Old subject: ', shortString($row['subject'], $oldURL));
+			$newsubject = str_ireplace($oldURL, $newURL, $row['subject']);
+			$settings[] = array('New subject: ', shortString($newsubject, $newURL));
+
+			$settings[] = array('Old body: ', shortString($row['body'], $oldURL));
+			$newbody = str_ireplace($oldURL, $newURL, $row['body']);
+			$settings[] = array('New body: ', shortString($newbody, $newURL));
+			dumpTable($settings);
+
+			if ($doit == 'Yes') {			
+				$newsubject = addslashes($newsubject);
+				$newbody = addslashes($newbody);
+				$sql = "UPDATE " . $db_prefix . "personal_messages SET subject = '" . $newsubject
+				    . "', body = '" . $newbody
+					. "' WHERE id_pm = '" . $row['id_pm'] . "';";
+				$smcFunc['db_query']('', $sql);
+			}
+		}
+	}
+	return;
+}
 
 //*** Do signatures
 function doSignatures() {
