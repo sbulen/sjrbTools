@@ -195,7 +195,7 @@ function ssl_cert_found($url) {
 	// Next, check the ssl stream context for certificate info 
 	$result = false;
 	$context = stream_context_create (array("ssl" => array("capture_peer_cert" => true, "verify_peer" => true, "allow_self_signed" => true)));
-	$stream = stream_socket_client($url, $errno, $errstr, 30, STREAM_CLIENT_CONNECT, $context);
+	$stream = @stream_socket_client($url, $errno, $errstr, 30, STREAM_CLIENT_CONNECT, $context);
 	if ($stream !== false)
 	{
 		$params = stream_context_get_params($stream);
