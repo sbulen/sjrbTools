@@ -6,7 +6,7 @@
 // I use this utility to rapidly setup test environments, but with care, it can help with prod issues.
 // It may even help with https: conversions.  
 // 
-// This utility does not update the Settings.php table, in fact it uses its contents to 
+// This utility does not update the Settings.php file, in fact it uses its contents to 
 // connect to the DB.  I.e., run this *after* repair_settings.php to update all the other items
 // (mod settings, links in posts) that repair_settings.php does not update.  
 // 
