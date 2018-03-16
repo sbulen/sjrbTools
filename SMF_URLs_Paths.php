@@ -32,10 +32,9 @@
 // Config section...
 // Do not include a slash at end of Dirs or URLs
 // No need to escape (add slashes) - this utility will do that later.
-// 
 $oldURL = 'http://your/old/url';
-$newURL = 'http://your/new/url';
 $oldDir = '/your/old/dir';
+$newURL = 'http://your/new/url';
 $newDir = 'C:\Program Files (x86)\your\new\dir';
 $doit = 'No';	
 // End config section
@@ -119,12 +118,12 @@ function doSettings() {
 	$result = $smcFunc['db_query']('', $sql);
 
 	while($row = $smcFunc['db_fetch_assoc']($result)) {
-		if (stristr($row['value'], $oldURL)){
+		if ($stringPos = stripos($row['value'], $oldURL)){
 			$settings = array();
 			$settings[] = array('Variable: ', $row['variable']);
-			$settings[] = array('Old Value: ', shortString($row['value'], $oldURL));
+			$settings[] = array('Old Value: ', shortString($row['value'], $stringPos));
 			$newval = str_ireplace($oldURL, $newURL, $row['value']);
-			$settings[] = array('New Value: ', shortString($newval, $newURL));
+			$settings[] = array('New Value: ', shortString($newval, $stringPos));
 			dumpTable($settings);
 
 			if ($doit == 'Yes') {			
@@ -134,12 +133,12 @@ function doSettings() {
 				$smcFunc['db_query']('', $sql);
 			}
 		}
-		if (stristr($row['value'], $oldDir)){
+		if ($stringPos = stripos($row['value'], $oldDir)){
 			$settings = array();
 			$settings[] = array('Variable: ', $row['variable']);
-			$settings[] = array('Old Value: ', shortString($row['value'], $oldDir));
+			$settings[] = array('Old Value: ', shortString($row['value'], $stringPos));
 			$newval = str_ireplace($oldDir, $newDir, $row['value']);
-			$settings[] = array('New Value: ', shortString($newval, $newDir));
+			$settings[] = array('New Value: ', shortString($newval, $stringPos));
 			dumpTable($settings);
 
 			if ($doit == 'Yes') {			
@@ -162,14 +161,14 @@ function doThemes() {
 	$result = $smcFunc['db_query']('', $sql);
 
 	while($row = $smcFunc['db_fetch_assoc']($result)) {
-		if (stristr($row['value'], $oldURL)){
+		if ($stringPos = stripos($row['value'], $oldURL)){
 			$settings = array();
 			$settings[] = array('Member: ', $row['id_member']);
 			$settings[] = array('Theme: ', $row['id_theme']);
 			$settings[] = array('Variable: ', $row['variable']);
-			$settings[] = array('Old Value: ', shortString($row['value'], $oldURL));
+			$settings[] = array('Old Value: ', shortString($row['value'], $stringPos));
 			$newval = str_ireplace($oldURL, $newURL, $row['value']);
-			$settings[] = array('New Value: ', shortString($newval, $newURL));
+			$settings[] = array('New Value: ', shortString($newval, $stringPos));
 			dumpTable($settings);
 
 			if ($doit == 'Yes') {			
@@ -181,14 +180,14 @@ function doThemes() {
 				$smcFunc['db_query']('', $sql);
 			}
 		}
-		if (stristr($row['value'], $oldDir)){
+		if ($stringPos = stripos($row['value'], $oldDir)){
 			$settings = array();
 			$settings[] = array('Member: ', $row['id_member']);
 			$settings[] = array('Theme: ', $row['id_theme']);
 			$settings[] = array('Variable: ', $row['variable']);
-			$settings[] = array('Old Value: ', shortString($row['value'], $oldDir));
+			$settings[] = array('Old Value: ', shortString($row['value'], $stringPos));
 			$newval = str_ireplace($oldDir, $newDir, $row['value']);
-			$settings[] = array('New Value: ', shortString($newval, $newDir));
+			$settings[] = array('New Value: ', shortString($newval, $stringPos));
 			dumpTable($settings);
 
 			if ($doit == 'Yes') {			
@@ -213,24 +212,34 @@ function doMessages() {
 	$result = $smcFunc['db_query']('', $sql);
 
 	while($row = $smcFunc['db_fetch_assoc']($result)) {
-		if (stristr($row['body'], $oldURL) || stristr($row['subject'], $oldURL)){
+		if ($stringPos = stripos($row['body'], $oldURL)){
 			$settings = array();
 			$settings[] = array('Message: ', $row['id_msg']);
 
-			$settings[] = array('Old subject: ', shortString($row['subject'], $oldURL));
-			$newsubject = str_ireplace($oldURL, $newURL, $row['subject']);
-			$settings[] = array('New subject: ', shortString($newsubject, $newURL));
-
-			$settings[] = array('Old body: ', shortString($row['body'], $oldURL));
+			$settings[] = array('Old body: ', shortString($row['body'], $stringPos));
 			$newbody = str_ireplace($oldURL, $newURL, $row['body']);
-			$settings[] = array('New body: ', shortString($newbody, $newURL));
+			$settings[] = array('New body: ', shortString($newbody, $stringPos));
+			dumpTable($settings);
+
+			if ($doit == 'Yes') {			
+				$newbody = addslashes($newbody);
+				$sql = "UPDATE " . $db_prefix . "messages SET body = '" . $newbody
+					. "' WHERE id_msg = '" . $row['id_msg'] . "';";
+				$smcFunc['db_query']('', $sql);
+			}
+		}
+		if ($stringPos = stripos($row['subject'], $oldURL)){
+			$settings = array();
+			$settings[] = array('Message: ', $row['id_msg']);
+
+			$settings[] = array('Old subject: ', shortString($row['subject'], $stringPos));
+			$newsubject = str_ireplace($oldURL, $newURL, $row['subject']);
+			$settings[] = array('New subject: ', shortString($newsubject, $stringPos));
 			dumpTable($settings);
 
 			if ($doit == 'Yes') {			
 				$newsubject = addslashes($newsubject);
-				$newbody = addslashes($newbody);
 				$sql = "UPDATE " . $db_prefix . "messages SET subject = '" . $newsubject
-				    . ", body = '" . $newbody
 					. "' WHERE id_msg = '" . $row['id_msg'] . "';";
 				$smcFunc['db_query']('', $sql);
 			}
@@ -248,24 +257,34 @@ function doPMs() {
 	$result = $smcFunc['db_query']('', $sql);
 
 	while($row = $smcFunc['db_fetch_assoc']($result)) {
-		if (stristr($row['body'], $oldURL) || stristr($row['subject'], $oldURL)){
+		if ($stringPos = stripos($row['body'], $oldURL)){
 			$settings = array();
 			$settings[] = array('PM: ', $row['id_pm']);
 
-			$settings[] = array('Old subject: ', shortString($row['subject'], $oldURL));
-			$newsubject = str_ireplace($oldURL, $newURL, $row['subject']);
-			$settings[] = array('New subject: ', shortString($newsubject, $newURL));
-
-			$settings[] = array('Old body: ', shortString($row['body'], $oldURL));
+			$settings[] = array('Old body: ', shortString($row['body'], $stringPos));
 			$newbody = str_ireplace($oldURL, $newURL, $row['body']);
-			$settings[] = array('New body: ', shortString($newbody, $newURL));
+			$settings[] = array('New body: ', shortString($newbody, $stringPos));
+			dumpTable($settings);
+
+			if ($doit == 'Yes') {			
+				$newbody = addslashes($newbody);
+				$sql = "UPDATE " . $db_prefix . "personal_messages SET body = '" . $newbody
+					. "' WHERE id_pm = '" . $row['id_pm'] . "';";
+				$smcFunc['db_query']('', $sql);
+			}
+		}
+		if ($stringPos = stripos($row['subject'], $oldURL)){
+			$settings = array();
+			$settings[] = array('PM: ', $row['id_pm']);
+
+			$settings[] = array('Old subject: ', shortString($row['subject'], $stringPos));
+			$newsubject = str_ireplace($oldURL, $newURL, $row['subject']);
+			$settings[] = array('New subject: ', shortString($newsubject, $stringPos));
 			dumpTable($settings);
 
 			if ($doit == 'Yes') {			
 				$newsubject = addslashes($newsubject);
-				$newbody = addslashes($newbody);
 				$sql = "UPDATE " . $db_prefix . "personal_messages SET subject = '" . $newsubject
-				    . "', body = '" . $newbody
 					. "' WHERE id_pm = '" . $row['id_pm'] . "';";
 				$smcFunc['db_query']('', $sql);
 			}
@@ -283,13 +302,13 @@ function doSignatures() {
 	$result = $smcFunc['db_query']('', $sql);
 
 	while($row = $smcFunc['db_fetch_assoc']($result)) {
-		if (stristr($row['signature'], $oldURL)){
+		if ($stringPos = stripos($row['signature'], $oldURL)){
 			$settings = array();
 			$settings[] = array('Member: ', $row['id_member']);
 			$settings[] = array('Name: ', $row['member_name']);
-			$settings[] = array('Old Signature: ', shortString($row['signature'], $oldURL));
+			$settings[] = array('Old Signature: ', shortString($row['signature'], $stringPos));
 			$newval = str_ireplace($oldURL, $newURL, $row['signature']);
-			$settings[] = array('New Signature: ', shortString($newval, $newURL));
+			$settings[] = array('New Signature: ', shortString($newval, $stringPos));
 			dumpTable($settings);
 
 			if ($doit == 'Yes') {			
@@ -316,18 +335,26 @@ function doWrapUp() {
 }
 
 //*** For display purposes, return only relevant portion of a string (first chars near 1st instance of search string)
-function shortString($targetStr, $searchStr) {
-	$maxlen = 160;
-	$buffer = 20;
-	if (strlen($targetStr) > $maxlen) {
-		$strstart = stripos($targetStr, $searchStr);
-		if ($strstart !== false && $strstart > $buffer) {
-			$strstart = $strstart - $buffer;
+function shortString($targetStr, $stringPos) {
+	$maxlen = 100;
+	$buffer = 10;
+	$length = strlen($targetStr);
+	if ($length > $maxlen) {
+		if ($stringPos > $buffer) {
+			$stringPos = $stringPos - $buffer;
+			$beforetext = '... ';
 		}
 		else {
-			$strstart = 0;
+			$stringPos = 0;
+			$beforetext = '';
 		}
-		$targetStr = '... ' . substr($targetStr, $strstart, $maxlen - 8) . ' ...';
+		if ($length - $stringPos > $maxlen) {
+			$aftertext = ' ...';		
+		}
+		else {
+			$aftertext = '';					
+		}
+		$targetStr = $beforetext . substr($targetStr, $stringPos, $maxlen) . $aftertext;
 	}
 	return $targetStr;
 }
