@@ -24,4 +24,5 @@ These tools are inquiry only & are used to perform diagnostics.
 **WARNING:** These tools update your forum database.  Use at your own risk.  ALWAYS back up your database before use.  ALWAYS run them in your test environment first to learn how they work & to confirm desired outcomes.
 
 * ***SMF_InnoDB_Converter.php*** - This tool converts your SMF forum's MySQL database engine to InnoDB.  SMF 2.0 & 2.1.  
+* ***SMF_Topic_Link_Fixer.php*** - This tool repairs (2.0 format) quote links that point to an incorrect topic due to splits/merges/deletions.  It works for SMF2.0 & 2.1.
 * ***SMF_URLs_Paths.php*** - This tool converts all URLs and Paths throughout your SMF forum's database from one value to another.  SMF 2.0 & 2.1.  This tool updates all URLs and Paths found throughout the settings table, the themes table, the messages table, personal messages and members' signatures.  I use this to quickly clone working test environments, so they do not link to each other and I do not find myself working within the wrong environment after clicking on a link...  (Its original name was really_really_really_repair_settings.php, but I felt that was too long...)
