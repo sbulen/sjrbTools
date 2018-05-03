@@ -106,6 +106,10 @@ function loadSettingsFile() {
 	require_once($sourcedir . '/Subs-Db-' . $db_type . '.php');
 	$db_connection = smf_db_initiate($db_server, $db_name, $db_user, $db_passwd, $db_prefix);
 
+	// Set the charset
+	if ($db_type == 'mysql' && !empty($db_character_set))
+		mysqli_set_charset($db_connection, $db_character_set);
+
 	return;
 }
 
