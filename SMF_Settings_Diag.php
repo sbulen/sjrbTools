@@ -48,7 +48,7 @@ function doSettingsFile() {
 	global $db_type, $db_connection, $db_prefix, $db_name, $smcFunc, $sourcedir;
 	$smcFunc = array();
 
-	$dumpvars = array('mbname', 'db_server', 'db_name', 'db_prefix', 'db_type', 'db_character_set', 'language', 
+	$dumpvars = array('mbname', 'db_server', 'db_name', 'db_prefix', 'db_type', 'db_character_set', 'db_mb4', 'language',
 		'boardurl', 'boarddir', 'sourcedir', 'packagesdir', 'tasksdir', 'cachedir', 
 		'maintenance', 'mtitle', 'mmessage',
 		'cookiename', 'db_persist', 'db_error_send',

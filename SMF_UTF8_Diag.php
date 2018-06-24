@@ -47,7 +47,7 @@ function doSettingsFile() {
 	global $db_type, $db_connection, $db_prefix, $db_name, $smcFunc, $sourcedir;
 	$smcFunc = array();
 
-	$dumpvars = array('mbname', 'boardurl', 'db_server', 'db_name', 'db_prefix', 'language', 'db_type', 'db_character_set');
+	$dumpvars = array('mbname', 'boardurl', 'db_server', 'db_name', 'db_prefix', 'language', 'db_type', 'db_character_set', 'db_mb4');
 
 	// Load the settings...
 	require_once(dirname(__FILE__) . '/Settings.php');
