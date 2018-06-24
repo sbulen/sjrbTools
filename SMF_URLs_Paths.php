@@ -110,6 +110,15 @@ function loadSettingsFile() {
 	if ($db_type == 'mysql' && !empty($db_character_set))
 		mysqli_set_charset($db_connection, $db_character_set);
 
+	// Most database systems have not set UTF-8 as their default input charset.
+	if (!empty($db_character_set))
+		$smcFunc['db_query']('', '
+			SET NAMES {string:db_character_set}',
+			array(
+				'db_character_set' => $db_character_set,
+			)
+		);
+
 	return;
 }
 
