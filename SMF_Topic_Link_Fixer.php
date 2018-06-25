@@ -131,6 +131,7 @@ function checkMessage($message) {
 			)
 		);
 		$referenced = $smcFunc['db_fetch_assoc']($result);
+		$smcFunc['db_free_result']($result);
 
 		// If you found the message...
 		$newlink = '';
@@ -146,7 +147,6 @@ function checkMessage($message) {
 			$newlink = '[quote author= ' . $matches[1][$ix] . ']';
 			$updates[] = array($message['id_msg'], $matches[0][$ix], 'Message deleted', $newlink);
 		}
-		$smcFunc['db_free_result']($result);
 
 		// Update the message body...
 		if (!empty($newlink)) {
