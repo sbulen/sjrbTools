@@ -14,7 +14,6 @@ These tools are inquiry only & are used to perform diagnostics.
 * ***SMF_Topic_Link_Diag.php*** - This tool dumps any quote link that appears to have issues, such as a missing originating message or an incorrect topic caused by splits/merges.  It works for SMF2.0 & 2.1.
 * ***SMF_UTF8_Diag.php*** - This tool dumps a bunch of helpful information on the state of the character set & collation of your SMF database.  It works for SMF2.0 & 2.1.
 
-
 ## SMF Cron Jobs
 
 * ***proxy-maint-cron.php*** - This is a very simple cron to prune back your image proxy cache every night.  SMF 2.0 & 2.1.  
@@ -25,3 +24,7 @@ These tools are inquiry only & are used to perform diagnostics.
 
 * ***SMF_InnoDB_Converter.php*** - This tool converts your SMF forum's MySQL database engine to InnoDB.  SMF 2.0 & 2.1.  
 * ***SMF_URLs_Paths.php*** - This tool converts all URLs and Paths throughout your SMF forum's database from one value to another.  SMF 2.0 & 2.1.  This tool updates all URLs and Paths found throughout the settings table, the themes table, the messages table, personal messages and members' signatures.  I use this to quickly clone working test environments, so they do not link to each other and I do not find myself working within the wrong environment after clicking on a link...  (Its original name was really_really_really_repair_settings.php, but I felt that was too long...)
+
+## Github utility
+
+* ***github-dump.php*** - Dumps Issue & PR info for a specified repository into a comma-delimited file. 
