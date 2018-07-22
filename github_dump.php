@@ -178,10 +178,12 @@ function mapIssues() {
 						else
 							$githubAll[$ix][8] .= ', ' . $rowtemp[1];
 						// add milestone info
-						if (empty($githubAll[$ix][9]))
-							$githubAll[$ix][9] = $rowtemp[6];
-						else
-							$githubAll[$ix][9] .= ', ' . $rowtemp[6];
+						if (!empty($rowtemp[6])) {
+							if (empty($githubAll[$ix][9]))
+								$githubAll[$ix][9] = $rowtemp[6];
+							else
+								$githubAll[$ix][9] .= ', ' . $rowtemp[6];
+						}
 					}
 				}
 			}
