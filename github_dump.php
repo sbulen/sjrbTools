@@ -28,11 +28,16 @@ return;
 //*** Startup 
 function doStartup() {
 
+	global $owner, $repo;
+
 	// Without this header, flushes don't work...
 	header( 'Content-type: text/html; charset=utf-8' );
 	echo("<br>***********************************<br>");
 	echo("******** Github export utility **********<br>");
-	echo("***********************************<br>");
+	echo("***********************************<br><br>");
+
+	echo("Owner: " . $owner . "<br>");
+	echo("Repository: " . $repo . "<br><br>");
 
 	// Yes, both flushes necessary
 	@ob_flush();
@@ -84,14 +89,14 @@ function getInfo() {
 				},
 	));
 
-	// Loop thru all the pages - 30 rows at a time
+	// Loop thru all the pages - 100 rows at a time
 	$githubAll = array();
 	$more = true;
 	$page = 0;
 	while ($more) {
 		$more = false;
 		$page++;
-		curl_setopt($ch, CURLOPT_URL, 'https://api.github.com/repos/' . $owner . '/' . $repo . '/issues?page=' . $page);
+		curl_setopt($ch, CURLOPT_URL, 'https://api.github.com/repos/' . $owner . '/' . $repo . '/issues?per_page=100&page=' . $page);
 		$githubAll_json = curl_exec($ch);
 		curlErr($ch);
 		// If successful response, dump it into an array
@@ -155,7 +160,7 @@ function col2csv($labels, $col) {
 function mapIssues() {
 
 	global $githubAll;
-	$pattern = '/((\/|#)\d{4})/i';
+	$pattern = '/(\/|#)(\d{1,8})/';
 
 	// check whole table
 	foreach($githubAll as $ix => $row) {	
@@ -163,10 +168,10 @@ function mapIssues() {
 		if ($row[0] == 'PR') {
 			// allow for multiple matches of #9999 or /9999 (when folks use links) in body of issue (10th field)
 			preg_match_all($pattern, $row[10], $matches);
-			foreach ($matches[1] AS $match) {
+			foreach ($matches[2] AS $match) {
 				// finally look for active issue entries
 				foreach($githubAll as $rowtemp) {
-					if (substr($match, -4) == $rowtemp[1] && $rowtemp[0] == 'Issue') {
+					if ($match == $rowtemp[1] && $rowtemp[0] == 'Issue') {
 						// add issue number
 						if (empty($githubAll[$ix][8]))
 							$githubAll[$ix][8] = $rowtemp[1];
