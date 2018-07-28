@@ -164,7 +164,7 @@ function cleanUnusedColumns() {
 function col2csv($labels, $col) {
 
 	$values = array_column($labels, $col);
-	$lstring = implode(',', $values);
+	$lstring = implode(', ', $values);
 	return $lstring;
 }
 
