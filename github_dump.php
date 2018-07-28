@@ -103,8 +103,11 @@ function getInfo() {
 		$githubAll_json = curl_exec($ch);
 		curlErr($ch);
 		// Display rate limit info
-		if (!empty($gha_header['X-RateLimit-Remaining']))
-			echo 'X-RateLimit-Remaining' . ': ' . $gha_header['X-RateLimit-Remaining'] . '<br>';
+		if (isset($gha_header['X-RateLimit-Remaining'])) {
+			echo 'X-RateLimit-Remaining: ' . $gha_header['X-RateLimit-Remaining'] . '<br>';
+			if ($gha_header['X-RateLimit-Remaining'] == 0)
+				echo 'X-RateLimit-Reset: ' . $gha_header['X-RateLimit-Reset'] . '<br>';
+		}
 		// Check status accessing repos
 		if ($gha_header['Status'] != '200 OK')
 			die('<br>Error accessing Github repository: ' . $gha_header['Status'] . '<br>');
