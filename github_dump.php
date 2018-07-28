@@ -51,6 +51,7 @@ function getInfo() {
 
 	global $githubAll, $user, $pwd, $owner, $repo;
 
+	// startup curl
 	$ch = curl_init();
 	curl_setopt_array($ch, array(
 		CURLOPT_RETURNTRANSFER => true,
@@ -61,30 +62,30 @@ function getInfo() {
 		CURLOPT_USERAGENT => $user,
 		CURLOPT_USERPWD => $pwd,
 		CURLOPT_HEADERFUNCTION =>
-			function($curl, $header) use (&$more)
+			function($curl, $header) use (&$gha_header)
 				{
 					$len = strlen($header);
+					// Split header into field & val
 					$pos = strpos($header, ':');
 					if ($pos === false) {
-						$field = $header;
+						$field = trim($header);
 						$val =  '';
 					}
 					else {
-						$field = substr($header, 0, $pos);
+						$field = trim(substr($header, 0, $pos));
 						$val =  trim(substr($header, $pos + 1));
 					}
-
-					// if next page link exists, there is more data to get...
-					if ($field == 'Link' && strpos($val, 'rel="next"'))
-						$more = true;
-					// Display rate limit info
-					if ($field == 'X-RateLimit-Remaining')
-						echo $header . '<br>';
+					// Discard that empty row...
+					if (empty($field))
+						return $len;
+					// Make this one readable, translate from unix timestamp...
 					if ($field == 'X-RateLimit-Reset')
-						echo $field . ': ' . gmdate('M d Y H:i:s', $val) . ' GMT<br>';
-					// Check status accessing repos
-					if ($field == 'Status' && $val != '200 OK')
-						die('<br>Error accessing Github repository: ' . $header . '<br>');
+						$val = gmdate('M d Y H:i:s', $val) . ' GMT';
+					// Populate gha_header.  Allow for multiples, e.g., happens with Vary
+					if (!array_key_exists($field, $gha_header))
+						$gha_header[$field] = $val;
+					else
+						$gha_header[$field] .= ', ' . $val;
 					return $len;
 				},
 	));
@@ -96,9 +97,20 @@ function getInfo() {
 	while ($more) {
 		$more = false;
 		$page++;
+		// Init github API Header prior to each call
+		$gha_header = array();
 		curl_setopt($ch, CURLOPT_URL, 'https://api.github.com/repos/' . $owner . '/' . $repo . '/issues?per_page=100&page=' . $page);
 		$githubAll_json = curl_exec($ch);
 		curlErr($ch);
+		// Display rate limit info
+		if (!empty($gha_header['X-RateLimit-Remaining']))
+			echo 'X-RateLimit-Remaining' . ': ' . $gha_header['X-RateLimit-Remaining'] . '<br>';
+		// Check status accessing repos
+		if ($gha_header['Status'] != '200 OK')
+			die('<br>Error accessing Github repository: ' . $gha_header['Status'] . '<br>');
+		// if next page link exists, there is more data to get...
+		if (!empty($gha_header['Link']) && strpos($gha_header['Link'], 'rel="next"'))
+			$more = true;
 		// If successful response, dump it into an array
 		if ($githubAll_json !== false)
 			$githubAll = array_merge($githubAll, json_decode($githubAll_json, true));
