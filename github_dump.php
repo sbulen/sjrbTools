@@ -144,7 +144,7 @@ function cleanUnusedColumns() {
 	);
 
 	foreach($githubAll as $row) {
-		$githubTemp[] = array(
+		$githubTemp[$row['number']] = array(
 			empty($row['pull_request']) ? 'Issue' : 'PR',
 			$row['number'],
 			$row['title'],
@@ -185,20 +185,18 @@ function mapIssues() {
 			preg_match_all($pattern, $row[10], $matches);
 			foreach ($matches[2] AS $match) {
 				// finally look for active issue entries
-				foreach($githubAll as $rowtemp) {
-					if ($match == $rowtemp[1] && $rowtemp[0] == 'Issue') {
-						// add issue number
-						if (empty($githubAll[$ix][8]))
-							$githubAll[$ix][8] = $rowtemp[1];
+				if (array_key_exists($match, $githubAll) && $githubAll[$match][0] == 'Issue') {
+					// add issue number
+					if (empty($githubAll[$ix][8]))
+						$githubAll[$ix][8] = $githubAll[$match][1];
+					else
+						$githubAll[$ix][8] .= ', ' . $githubAll[$match][1];
+					// add milestone info
+					if (!empty($githubAll[$match][6])) {
+						if (empty($githubAll[$ix][9]))
+							$githubAll[$ix][9] = $githubAll[$match][6];
 						else
-							$githubAll[$ix][8] .= ', ' . $rowtemp[1];
-						// add milestone info
-						if (!empty($rowtemp[6])) {
-							if (empty($githubAll[$ix][9]))
-								$githubAll[$ix][9] = $rowtemp[6];
-							else
-								$githubAll[$ix][9] .= ', ' . $rowtemp[6];
-						}
+							$githubAll[$ix][9] .= ', ' . $githubAll[$match][6];
 					}
 				}
 			}
