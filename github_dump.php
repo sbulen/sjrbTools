@@ -218,10 +218,13 @@ function exportInfo() {
 	dumpTable($githubAll);
 
 	$fp = fopen('github_dump.csv', 'w');
+	if ($fp === false)
+		die ("Cannot open github_dump.csv");
+
 	foreach($githubAll AS $row)
 		fputcsv($fp, $row);
 	fclose($fp);
-	
+
 	return;
 }
 
