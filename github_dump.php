@@ -37,7 +37,7 @@ function doStartup() {
 	echo("***********************************<br><br>");
 
 	echo("Owner: " . $owner . "<br>");
-	echo("Repository: " . $repo . "<br><br>");
+	echo("Repository: " . $repo . "<br>");
 
 	// Yes, both flushes necessary
 	@ob_flush();
@@ -49,7 +49,7 @@ function doStartup() {
 //*** Get the full set of info from Github 
 function getInfo() {
 
-	global $githubAll, $user, $pwd, $owner, $repo;
+	global $githubAll, $user, $pwd, $owner, $repo, $gh_calls_remaining, $gh_calls_reset;
 
 	// startup curl
 	$ch = curl_init();
@@ -97,23 +97,32 @@ function getInfo() {
 	while ($more) {
 		$more = false;
 		$page++;
+
 		// Init github API Header prior to each call
 		$gha_header = array();
 		curl_setopt($ch, CURLOPT_URL, 'https://api.github.com/repos/' . $owner . '/' . $repo . '/issues?per_page=100&page=' . $page);
 		$githubAll_json = curl_exec($ch);
 		curlErr($ch);
-		// Display rate limit info
-		if (isset($gha_header['X-RateLimit-Remaining'])) {
-			echo 'X-RateLimit-Remaining: ' . $gha_header['X-RateLimit-Remaining'] . '<br>';
-			if ($gha_header['X-RateLimit-Remaining'] == 0)
-				echo 'X-RateLimit-Reset: ' . $gha_header['X-RateLimit-Reset'] . '<br>';
-		}
+
+		// Save rate limit info
+		if (isset($gha_header['X-RateLimit-Remaining']))
+			$gh_calls_remaining = $gha_header['X-RateLimit-Remaining'];
+		if (isset($gha_header['X-RateLimit-Reset']))
+			$gh_calls_reset = $gha_header['X-RateLimit-Reset'];
+
 		// Check status accessing repos
-		if ($gha_header['Status'] != '200 OK')
+		if ($gha_header['Status'] != '200 OK') {
+			if (isset($gh_calls_remaining))
+				echo '<br>X-RateLimit-Remaining: ' . $gh_calls_remaining . '<br>';
+			if (isset($gh_calls_reset))
+				echo 'X-RateLimit-Reset: ' . $gh_calls_reset . '<br>';
 			die('<br>Error accessing Github repository: ' . $gha_header['Status'] . '<br>');
-		// if next page link exists, there is more data to get...
-		if (!empty($gha_header['Link']) && strpos($gha_header['Link'], 'rel="next"'))
+		}
+
+		// if next page link exists, there is more data to get & you have calls available to do so...
+		if (!empty($gha_header['Link']) && strpos($gha_header['Link'], 'rel="next"') && !empty($gh_calls_reset))
 			$more = true;
+
 		// If successful response, dump it into an array
 		if ($githubAll_json !== false)
 			$githubAll = array_merge($githubAll, json_decode($githubAll_json, true));
@@ -242,8 +251,14 @@ function curlErr($ch) {
 //*** Wrap Up 
 function doWrapUp() {
 
+	global $gh_calls_remaining, $gh_calls_reset;
+	
 	echo "<br>Completed!<br><br>";
-
+	if (isset($gh_calls_remaining))
+		echo 'X-RateLimit-Remaining: ' . $gh_calls_remaining . '<br>';
+	if (isset($gh_calls_reset))
+		echo 'X-RateLimit-Reset: ' . $gh_calls_reset . '<br><br>';
+	
 	// Yes, both flushes necessary
 	@ob_flush();
 	@flush();	
