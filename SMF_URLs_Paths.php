@@ -21,7 +21,7 @@
 // (1) Use at your own risk.
 // (2) ALWAYS run in your test environment first.
 // (3) ALWAYS backup your system first - expect the unexpected.
-// (4) Edit the Config section as appropriate.
+// (4) Edit the Config section as appropriate.  Specify all 5 parameters.  
 // (5) Copy this file to your base SMF directory - (the one with Settings.php in it).
 // (6) Run in test mode - with $doit = 'no'.
 // (7) Execute it from your browser.
@@ -32,6 +32,7 @@
 // Config section...
 // Do not include a slash at end of Dirs or URLs
 // No need to escape (add slashes) - this utility will do that later.
+// *** All of of these parameters must be specified! ***
 $oldURL = 'http://your/old/url';
 $oldDir = '/your/old/dir';
 $newURL = 'http://your/new/url';
@@ -131,7 +132,8 @@ function doSettings() {
 	$result = $smcFunc['db_query']('', $sql);
 
 	while($row = $smcFunc['db_fetch_assoc']($result)) {
-		if ($stringPos = stripos($row['value'], $oldURL)){
+		$stringPos = stripos($row['value'], $oldURL);
+		if ($stringPos !== false){
 			$settings = array();
 			$settings[] = array('Variable: ', $row['variable']);
 			$settings[] = array('Old Value: ', shortString($row['value'], $stringPos));
@@ -146,7 +148,8 @@ function doSettings() {
 				$smcFunc['db_query']('', $sql);
 			}
 		}
-		if ($stringPos = stripos($row['value'], $oldDir)){
+		$stringPos = stripos($row['value'], $oldDir);
+		if ($stringPos !== false){
 			$settings = array();
 			$settings[] = array('Variable: ', $row['variable']);
 			$settings[] = array('Old Value: ', shortString($row['value'], $stringPos));
@@ -174,7 +177,8 @@ function doThemes() {
 	$result = $smcFunc['db_query']('', $sql);
 
 	while($row = $smcFunc['db_fetch_assoc']($result)) {
-		if ($stringPos = stripos($row['value'], $oldURL)){
+		$stringPos = stripos($row['value'], $oldURL);
+		if ($stringPos !== false){
 			$settings = array();
 			$settings[] = array('Member: ', $row['id_member']);
 			$settings[] = array('Theme: ', $row['id_theme']);
@@ -193,7 +197,8 @@ function doThemes() {
 				$smcFunc['db_query']('', $sql);
 			}
 		}
-		if ($stringPos = stripos($row['value'], $oldDir)){
+		$stringPos = stripos($row['value'], $oldDir);
+		if ($stringPos !== false){
 			$settings = array();
 			$settings[] = array('Member: ', $row['id_member']);
 			$settings[] = array('Theme: ', $row['id_theme']);
@@ -225,7 +230,8 @@ function doMessages() {
 	$result = $smcFunc['db_query']('', $sql);
 
 	while($row = $smcFunc['db_fetch_assoc']($result)) {
-		if ($stringPos = stripos($row['body'], $oldURL)){
+		$stringPos = stripos($row['body'], $oldURL);
+		if ($stringPos !== false){
 			$settings = array();
 			$settings[] = array('Message: ', $row['id_msg']);
 
@@ -241,7 +247,8 @@ function doMessages() {
 				$smcFunc['db_query']('', $sql);
 			}
 		}
-		if ($stringPos = stripos($row['subject'], $oldURL)){
+		$stringPos = stripos($row['subject'], $oldURL);
+		if ($stringPos !== false){
 			$settings = array();
 			$settings[] = array('Message: ', $row['id_msg']);
 
@@ -270,7 +277,8 @@ function doPMs() {
 	$result = $smcFunc['db_query']('', $sql);
 
 	while($row = $smcFunc['db_fetch_assoc']($result)) {
-		if ($stringPos = stripos($row['body'], $oldURL)){
+		$stringPos = stripos($row['body'], $oldURL);
+		if ($stringPos !== false){
 			$settings = array();
 			$settings[] = array('PM: ', $row['id_pm']);
 
@@ -286,7 +294,8 @@ function doPMs() {
 				$smcFunc['db_query']('', $sql);
 			}
 		}
-		if ($stringPos = stripos($row['subject'], $oldURL)){
+		$stringPos = stripos($row['subject'], $oldURL);
+		if ($stringPos !== false){
 			$settings = array();
 			$settings[] = array('PM: ', $row['id_pm']);
 
@@ -315,7 +324,8 @@ function doSignatures() {
 	$result = $smcFunc['db_query']('', $sql);
 
 	while($row = $smcFunc['db_fetch_assoc']($result)) {
-		if ($stringPos = stripos($row['signature'], $oldURL)){
+		$stringPos = stripos($row['signature'], $oldURL);
+		if ($stringPos !== false){
 			$settings = array();
 			$settings[] = array('Member: ', $row['id_member']);
 			$settings[] = array('Name: ', $row['member_name']);
