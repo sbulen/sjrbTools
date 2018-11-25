@@ -14,7 +14,7 @@
 
 // Config section...
 // Put a link to an http image here to test... 
-	$image = 'http://www.lapassiondubois.com/images/stories/enfance/p1030429.jpg';
+	$image = 'http://www.ovationgallery.com/Gallery%20Storm/OG-storm-to-nutv-01.jpg';
 // End config section
 
 //*** Main program
@@ -22,10 +22,10 @@ doStartup();
 doSettingsFile();
 doEnvChecks();
 doHost();
-if ($hostexists) {
-	doCurl();
-	doSockets();
-}
+
+doCurl();
+doSockets();
+
 doWrapUp();
 return;
 
@@ -100,7 +100,7 @@ function doEnvChecks() {
 //*** Does host exist 
 function doHost() {
 
-	global $image, $hostexists;
+	global $image;
 
 	$parsed = parse_url($image);
 	$settings = array();
@@ -108,18 +108,15 @@ function doHost() {
 	$settings[] = array('Host: ', $parsed['host']);
 
 	$hostheaders = @get_headers($parsed['scheme'] . '://' . $parsed['host']);
-	if ($hostheaders === false)
-		$hostexists = false;
-	else
-		$hostexists = true;
-	$settings[] = array('Host exists: ', $hostheaders === false ? 'false' : 'true');
+	$settings[] = array('Host headers returned: ', $hostheaders === false ? 'false' : 'true');
 
-	if ($hostexists) {
-		$imgheaders = @get_headers($image);
+	if ($hostheaders !== false)
 		$settings[] = array('Host headers: ', implode("<br>", $hostheaders));
+
+	$imgheaders = @get_headers($image);
+	if ($imgheaders !== false)
 		$settings[] = array('Image Headers: ', implode("<br>", $imgheaders));
-	}
-		
+
 	dumpTable($settings);
 
 	return;
@@ -144,12 +141,15 @@ function doCurl() {
 		$response = $request->result();
 		$settings[] = array('Response url:', $response['url']);
 		$settings[] = array('Return code:', $response['code']);
+		$settings[] = array('Error:', $response['error']);
 		$settings[] = array('Response size:', $response['size']);
 
-		$respstr = '';
-		foreach ($response['headers'] AS $ix=>$header)
-			$respstr .= $ix . ': ' . $header . '<br>';
-		
+   		$respstr = '';
+        if (!empty($response['headers'])) {
+    		foreach ($response['headers'] AS $ix=>$header)
+    			$respstr .= $ix . ': ' . $header . '<br>';
+        }
+
 		$settings[] = array('Headers:', $respstr);
 	}
 
@@ -173,6 +173,11 @@ function doSockets() {
 	$settings[] = array('Connect Result:', (string) $fp);
 	$settings[] = array('Connect Error:', $errno);
 	$settings[] = array('Connect Error String:', $errstr);	
+
+    if ($fp === false) {
+    	dumpTable($settings);
+        return;
+    }
 
 	fwrite($fp, 'GET ' . $parsed['path'] . ' HTTP/1.0' . "\r\n");
 	fwrite($fp, 'Host: ' . $parsed['host'] . "\r\n");
