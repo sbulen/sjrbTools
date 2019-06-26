@@ -63,6 +63,12 @@ function doStartup() {
 		$markReadCutoff = $cleanupBeyond;
 	}
 
+	// Some sanity checks...
+	if ($markReadCutoff > 18000)
+		$markReadCutoff = 18000;
+	if ($cleanupBeyond > 18000)
+		$cleanupBeyond = 18000;
+
 	echo("Max members: " . $maxMembers . "<br>");
 	echo("Mark Read cutoff: " . $markReadCutoff . "<br>");
 	echo("Purge records cutoff: " . $cleanupBeyond . "<br><br>");
