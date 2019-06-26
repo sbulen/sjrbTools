@@ -341,13 +341,18 @@ function timer(&$timer) {
 	$temp = (int) $diff;  // get seconds (fraction is msec)
 	$msec = (int) (($diff - $temp) * 1000000);
 
-	$H = intdiv($temp, 3600);
+	$H = intdiv_alt($temp, 3600);
 	$temp = $temp % 3600;
-	$M = intdiv($temp, 60);
+	$M = intdiv_alt($temp, 60);
 	$S = $temp % 60;
 
 	// Reset timer for next call...
 	$timer = microtime(TRUE);
 
 	return ($H . ":" . $M . ":" . $S . ":" . $msec);
+}
+
+// Crap, intdiv is only php 7+
+function intdiv_alt($a, $b){
+    return ($a - $a % $b) / $b;
 }
