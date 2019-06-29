@@ -23,7 +23,7 @@
 // (3) ALWAYS backup your system first - expect the unexpected.
 // (4) Edit the Config section as appropriate.  Specify all parameters.  
 // (5) Copy this file to your base SMF directory - (the one with Settings.php in it).
-// (6) Execute it from your browser.  Multiple may will be necessary.  
+// (6) Execute it from your browser.  Multiple executions may be necessary.  
 // (7) Delete it when you're done.
 //     by sbulen
 // 
@@ -306,7 +306,7 @@ function markStuffRead($id) {
 	$sql = substr($sql, 0, strlen($sql) - 2) . ";";
 	$smcFunc['db_query']('', $sql);
 
-	// Finally, delete this users' rows from log_topics
+	// Finally, delete this user's rows from log_topics
 	$sql = "DELETE FROM {db_prefix}log_topics
 		WHERE id_member = {int:member};";
 	$smcFunc['db_query']('', $sql,
