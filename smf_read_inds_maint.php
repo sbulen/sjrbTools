@@ -23,16 +23,16 @@
 // (3) ALWAYS backup your system first - expect the unexpected.
 // (4) Edit the Config section as appropriate.  Specify all parameters.  
 // (5) Copy this file to your base SMF directory - (the one with Settings.php in it).
-// (6) Execute it from your browser.  Multiple executions may be necessary.  
+// (6) Execute it from your browser.  Multiple executions will be necessary.
 // (7) Delete it when you're done.
 //     by sbulen
 // 
 // Config section...
 // *** All of of these parameters must be specified! ***
 // *** Note that $markReadCutoff must be <= $cleanupBeyond ***
-$maxMembers = 500;
 $markReadCutoff = 90;
 $cleanupBeyond = 365;
+$maxMembers = 500;
 // End config section
 
 
@@ -56,22 +56,15 @@ function doStartup() {
 	echo("*** Cleanup Read Indicators ***<br>");
 	echo("***************************<br><br>");
 
-	// $markReadCutoff must be <= $cleanupBeyond
-	if ($markReadCutoff > $cleanupBeyond)
-	{
-		echo ("***Mark Read cutoff must be greater than Purge records cutoff - changed from " . $markReadCutoff . " to " . $cleanupBeyond .  "***<br><br>");
-		$markReadCutoff = $cleanupBeyond;
-	}
-
 	// Some sanity checks...
 	if ($markReadCutoff > 18000)
 		$markReadCutoff = 18000;
 	if ($cleanupBeyond > 18000)
 		$cleanupBeyond = 18000;
 
-	echo("Max members: " . $maxMembers . "<br>");
 	echo("Mark Read cutoff: " . $markReadCutoff . "<br>");
 	echo("Purge records cutoff: " . $cleanupBeyond . "<br><br>");
+	echo("Max members: " . $maxMembers . "<br>");
 	
 	// Convert to timestamps for comparison
 	$markReadCutoff = time() - $markReadCutoff * 86400;
@@ -138,7 +131,7 @@ function idMembers() {
 			FROM {db_prefix}log_boards
 		) lb
 		ON lb.id_member = m.id_member
-		WHERE m.last_login < {int:cutoff}
+		WHERE m.last_login <= {int:cutoff}
 		ORDER BY m.last_login
 		LIMIT {int:limit};";
 	$result = $smcFunc['db_query']('', $sql,
@@ -161,7 +154,7 @@ function idMembers() {
 			FROM {db_prefix}log_mark_read
 		) lmr
 		ON lmr.id_member = m.id_member
-		WHERE m.last_login < {int:cutoff}
+		WHERE m.last_login <= {int:cutoff}
 		ORDER BY m.last_login
 		LIMIT {int:limit};";
 	$result = $smcFunc['db_query']('', $sql,
@@ -185,7 +178,7 @@ function idMembers() {
 			FROM {db_prefix}log_topics
 		) lt
 		ON lt.id_member = m.id_member
-		WHERE m.last_login < {int:cutoff}
+		WHERE m.last_login <= {int:cutoff}
 		ORDER BY m.last_login
 		LIMIT {int:limit};";
 	$result = $smcFunc['db_query']('', $sql,
@@ -216,12 +209,12 @@ function pruneTables() {
 
 	foreach($members as $id => $last_login)
 	{
-		if ($last_login < $cleanupBeyond)
+		if ($last_login <= $cleanupBeyond)
 		{
 			cleanLogs($id);
 			echo "Cleaned logs for: " . $id . " last login: " . date('Y-m-d H:i:s', $last_login) . "   elapsed: " . timer($stepTimer) . "<br>";
 		}
-		elseif ($last_login < $markReadCutoff)
+		elseif ($last_login <= $markReadCutoff)
 		{
 			markStuffRead($id);
 			echo "Marked boards read for: " . $id . " last login: " . date('Y-m-d H:i:s', $last_login) . "   elapsed: " . timer($stepTimer) . "<br>";
@@ -296,15 +289,14 @@ function markStuffRead($id) {
 		return;
 
 	// Create one SQL statement for this set of updates.
-	// Loop thru the boards, adding/updating the corresponding entry in log_mark_read
-	$sql = "REPLACE INTO {db_prefix}log_mark_read (id_member, id_board, id_msg)
-		VALUES ";
-	foreach ($boards AS $board)
-		$sql .= "(" . $board['id_member'] . ", " . $board['id_board'] . ", " . $board['id_last_message'] . "), ";
-
-	// Get rid of that pesky last comma & space & execute
-	$sql = substr($sql, 0, strlen($sql) - 2) . ";";
-	$smcFunc['db_query']('', $sql);
+	// Hey, we have a db_insert command!
+	// This will insert multiple rows of data, replacing existing rows if appropriate (e.g., where boards had been marked read previously).
+	$smcFunc['db_insert']('replace',
+		'{db_prefix}log_mark_read',
+		array('id_member' => 'int', 'id_board' => 'int', 'id_msg' => 'int'),
+		$boards,
+		array('id_member', 'id_board')
+	);
 
 	// Finally, delete this user's rows from log_topics
 	$sql = "DELETE FROM {db_prefix}log_topics
