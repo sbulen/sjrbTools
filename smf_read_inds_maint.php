@@ -39,7 +39,6 @@ $maxMembers = 500;
 //*** Main program
 doStartup();
 loadSettingsFile();
-idMembers();
 pruneTables();
 doWrapUp();
 return;
@@ -63,8 +62,8 @@ function doStartup() {
 		$cleanupBeyond = 18000;
 
 	echo("Mark Read cutoff: " . $markReadCutoff . "<br>");
-	echo("Purge records cutoff: " . $cleanupBeyond . "<br><br>");
-	echo("Max members: " . $maxMembers . "<br>");
+	echo("Purge records cutoff: " . $cleanupBeyond . "<br>");
+	echo("Max members: " . $maxMembers . "<br><br>");
 	
 	// Convert to timestamps for comparison
 	$markReadCutoff = time() - $markReadCutoff * 86400;
@@ -116,181 +115,135 @@ function loadSettingsFile() {
 }
 
 //*** Find the oldest members by last_login across all 3 tables...
-function idMembers() {
+function pruneTables() {
 
 	global $smcFunc, $maxMembers, $markReadCutoff, $cleanupBeyond, $members;
 
 	$members = array();
 
-	// Find the oldest $maxMembers in log_boards
-	$sql = "SELECT lb.id_member, m.last_login
-		FROM {db_prefix}members m
-		INNER JOIN
-		(
-			SELECT DISTINCT id_member
-			FROM {db_prefix}log_boards
-		) lb
-		ON lb.id_member = m.id_member
-		WHERE m.last_login <= {int:cutoff}
-		ORDER BY m.last_login
-		LIMIT {int:limit};";
+	// Find the oldest $maxMembers in log_boards, log_topics & log_mark_read
+	$sql = 'SELECT lb.id_member, m.last_login
+			FROM {db_prefix}members m
+			INNER JOIN
+			(
+				SELECT DISTINCT id_member
+				FROM {db_prefix}log_boards
+			) lb ON lb.id_member = m.id_member
+			WHERE m.last_login <= {int:dcutoff}
+		UNION
+		SELECT lmr.id_member, m.last_login
+			FROM {db_prefix}members m
+			INNER JOIN
+			(
+				SELECT DISTINCT id_member
+				FROM {db_prefix}log_mark_read
+			) lmr ON lmr.id_member = m.id_member
+			WHERE m.last_login <= {int:dcutoff}
+		UNION
+		SELECT lt.id_member, m.last_login
+			FROM {db_prefix}members m
+			INNER JOIN
+			(
+				SELECT DISTINCT id_member
+				FROM {db_prefix}log_topics
+			) lt ON lt.id_member = m.id_member
+			WHERE m.last_login <= {int:mrcutoff}
+		ORDER BY last_login
+		LIMIT {int:limit}';
 	$result = $smcFunc['db_query']('', $sql,
 		array(
 			'limit' => $maxMembers,
-			'cutoff' => $cleanupBeyond,
-	));
+			'dcutoff' => $cleanupBeyond,
+			'mrcutoff' => $markReadCutoff,
+		)
+	);
 
+	// Move to array...
 	while($row = $smcFunc['db_fetch_assoc']($result))
 		$members[$row['id_member']] = $row['last_login'];
 	$smcFunc['db_free_result']($result);
 
+	// Nothing to do?
+	if (empty($members))
+		return;
 
-	// Find the oldest $maxMembers in log_mark_read
-	$sql = "SELECT lmr.id_member, m.last_login
-		FROM {db_prefix}members m
-		INNER JOIN
-		(
-			SELECT DISTINCT id_member
-			FROM {db_prefix}log_mark_read
-		) lmr
-		ON lmr.id_member = m.id_member
-		WHERE m.last_login <= {int:cutoff}
-		ORDER BY m.last_login
-		LIMIT {int:limit};";
-	$result = $smcFunc['db_query']('', $sql,
-		array(
-			'limit' => $maxMembers,
-			'cutoff' => $cleanupBeyond,
-	));
-
-	// Using id_member as key basically eats dupes...
-	while($row = $smcFunc['db_fetch_assoc']($result))
-		$members[$row['id_member']] = $row['last_login'];
-	$smcFunc['db_free_result']($result);
-
-	// Find the oldest $maxMembers in log_topics
-	// Note the different cutoff, as we may need to mark these as read
-	$sql = "SELECT lt.id_member, m.last_login
-		FROM {db_prefix}members m
-		INNER JOIN
-		(
-			SELECT DISTINCT id_member
-			FROM {db_prefix}log_topics
-		) lt
-		ON lt.id_member = m.id_member
-		WHERE m.last_login <= {int:cutoff}
-		ORDER BY m.last_login
-		LIMIT {int:limit};";
-	$result = $smcFunc['db_query']('', $sql,
-		array(
-			'limit' => $maxMembers,
-			'cutoff' => $markReadCutoff,
-	));
-
-	// Using id_member as key basically eats dupes...
-	while($row = $smcFunc['db_fetch_assoc']($result))
-		$members[$row['id_member']] = $row['last_login'];
-	$smcFunc['db_free_result']($result);
-
-	// Sort by last_login & limit to $maxMembers entries
-	asort($members);
-	$members = array_slice($members, 0, $maxMembers, TRUE);
-
-	return;
-}
-
-//*** Prune them differently based on age...
-function pruneTables() {
-
-	global $maxMembers, $markReadCutoff, $cleanupBeyond, $members;
-
-	// Prime the pump...
-	$stepTimer = microtime(true);
-
+	// Determine action based on last_login...
+	$purgeMembers = array();
+	$markReadMembers = array();
+	
 	foreach($members as $id => $last_login)
 	{
 		if ($last_login <= $cleanupBeyond)
 		{
-			cleanLogs($id);
-			echo "Cleaned logs for: " . $id . " last login: " . date('Y-m-d H:i:s', $last_login) . "   elapsed: " . timer($stepTimer) . "<br>";
+			echo "Cleaning logs for: " . $id . " last login: " . date('Y-m-d H:i:s', $last_login) . "<br>";
+			$purgeMembers[] = $id;
 		}
 		elseif ($last_login <= $markReadCutoff)
 		{
-			markStuffRead($id);
-			echo "Marked boards read for: " . $id . " last login: " . date('Y-m-d H:i:s', $last_login) . "   elapsed: " . timer($stepTimer) . "<br>";
+			echo "Marking boards read for: " . $id . " last login: " . date('Y-m-d H:i:s', $last_login) . "<br>";
+			$markReadMembers[] = $id;
 		}
 	}
 
-	return;
-}
+	if (!empty($purgeMembers))
+	{
+		// Delete rows from log_boards
+		$sql = 'DELETE FROM {db_prefix}log_boards
+			WHERE id_member IN ({array_int:members})';
+		$smcFunc['db_query']('', $sql,
+			array(
+				'members' => $purgeMembers,
+			)
+		);
+		// Delete rows from log_mark_read
+		$sql = 'DELETE FROM {db_prefix}log_mark_read
+			WHERE id_member IN ({array_int:members})';
+		$smcFunc['db_query']('', $sql,
+			array(
+				'members' => $purgeMembers,
+			)
+		);
+		// Delete rows from log_topics
+		$sql = 'DELETE FROM {db_prefix}log_topics
+			WHERE id_member IN ({array_int:members})';
+		$smcFunc['db_query']('', $sql,
+			array(
+				'members' => $purgeMembers,
+			)
+		);
+	}
 
-//*** Purge 'em...
-function cleanLogs($member_id) {
-
-	global $smcFunc;
-
-	// Delete rows from log_boards
-	$sql = "DELETE FROM {db_prefix}log_boards
-		WHERE id_member = {int:member};";
-	$smcFunc['db_query']('', $sql,
-		array(
-			'member' => $member_id,
-	));
-
-	// Delete rows from log_mark_read
-	$sql = "DELETE FROM {db_prefix}log_mark_read
-		WHERE id_member = {int:member};";
-	$smcFunc['db_query']('', $sql,
-		array(
-			'member' => $member_id,
-	));
-
-	// Delete rows from log_topics
-	$sql = "DELETE FROM {db_prefix}log_topics
-		WHERE id_member = {int:member};";
-	$smcFunc['db_query']('', $sql,
-		array(
-			'member' => $member_id,
-	));
-
-	return;
-}
-
-//*** Mark boards read for the member in question
-function markStuffRead($id) {
-
-	global $smcFunc;
-
-	$boards = array();
-	
-	// Get board info for this member from log_topics.
-	// Note this user may have read many topics on that board, 
-	// but we just want one row each, & the ID of the last message read in each board.
-	$sql = "SELECT lt.id_member, t.id_board, MAX(lt.id_msg) AS id_last_message
-		FROM {db_prefix}topics t
-		INNER JOIN
-		(
-			SELECT id_member, id_topic, id_msg
-			FROM {db_prefix}log_topics
-			WHERE id_member =  {int:member}
-		) lt
-		ON lt.id_topic = t.id_topic
-		GROUP BY lt.id_member, t.id_board;";
-	$result = $smcFunc['db_query']('', $sql,
-		array(
-			'member' => $id,
-	));
-
-	while($row = $smcFunc['db_fetch_assoc']($result))
-		$boards[] = $row;
-	$smcFunc['db_free_result']($result);
-
-	if (empty($boards))
+	// Nothing left to do?
+	if (empty($markReadMembers))
 		return;
 
-	// Create one SQL statement for this set of updates.
-	// Hey, we have a db_insert command!
-	// This will insert multiple rows of data, replacing existing rows if appropriate (e.g., where boards had been marked read previously).
+	// Find board inserts to perform...
+	$boards = array();
+	foreach($markReadMembers as $id)
+	{
+		// Get board info for each member from log_topics.
+		// Note this user may have read many topics on that board, 
+		// but we just want one row each, & the ID of the last message read in each board.
+		$sql = 'SELECT lt.id_member, t.id_board, MAX(lt.id_msg) AS id_last_message
+			FROM {db_prefix}topics t
+			INNER JOIN
+			(
+				SELECT id_member, id_topic, id_msg
+				FROM {db_prefix}log_topics
+				WHERE id_member = {int:member}
+			) lt ON lt.id_topic = t.id_topic
+			GROUP BY lt.id_member, t.id_board';
+		$result = $smcFunc['db_query']('', $sql,
+			array(
+				'member' => $id,
+			)
+		);
+		while($row = $smcFunc['db_fetch_assoc']($result))
+			$boards[] = $row;
+		$smcFunc['db_free_result']($result);
+	}
+
+	// Create one SQL statement for this set of inserts
 	$smcFunc['db_insert']('replace',
 		'{db_prefix}log_mark_read',
 		array('id_member' => 'int', 'id_board' => 'int', 'id_msg' => 'int'),
@@ -298,13 +251,14 @@ function markStuffRead($id) {
 		array('id_member', 'id_board')
 	);
 
-	// Finally, delete this user's rows from log_topics
-	$sql = "DELETE FROM {db_prefix}log_topics
-		WHERE id_member = {int:member};";
+	// Finally, delete this set's rows from log_topics
+	$sql = 'DELETE FROM {db_prefix}log_topics
+		WHERE id_member IN ({array_int:members})';
 	$smcFunc['db_query']('', $sql,
 		array(
-			'member' => $id,
-	));
+			'members' => $markReadMembers,
+		)
+	);
 
 	return;
 }
