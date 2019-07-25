@@ -14,7 +14,7 @@
 // This two-tier approach avoids storing lots of data for folks who haven't been around.  
 // The next time they do logon everything will look unread, which is basically what it should look like...
 //
-// ***** SMF 2.0 & 2.1 *****
+// ***** SMF 2.1 *****
 // ***** MySQL & Postgresql *****
 // 
 // Usage guidelines:
@@ -68,6 +68,10 @@ function doStartup() {
 	// Convert to timestamps for comparison
 	$markReadCutoff = time() - $markReadCutoff * 86400;
 	$cleanupBeyond = time() - $cleanupBeyond * 86400;
+
+	// You're basically saying to just purge, so just purge
+	if ($markReadCutoff < $cleanupBeyond)
+		$markReadCutoff = $cleanupBeyond;
 
 	// Yes, both flushes necessary
 	@ob_flush();
@@ -146,6 +150,7 @@ function pruneTables() {
 			(
 				SELECT DISTINCT id_member
 				FROM {db_prefix}log_topics
+				WHERE unwatched = {int:unwatched}
 			) lt ON lt.id_member = m.id_member
 			WHERE m.last_login <= {int:mrcutoff}
 		ORDER BY last_login
@@ -155,6 +160,7 @@ function pruneTables() {
 			'limit' => $maxMembers,
 			'dcutoff' => $cleanupBeyond,
 			'mrcutoff' => $markReadCutoff,
+			'unwatched' => 0,
 		)
 	);
 
@@ -204,10 +210,12 @@ function pruneTables() {
 		);
 		// Delete rows from log_topics
 		$sql = 'DELETE FROM {db_prefix}log_topics
-			WHERE id_member IN ({array_int:members})';
+			WHERE id_member IN ({array_int:members})
+				AND unwatched = {int:unwatched}';
 		$smcFunc['db_query']('', $sql,
 			array(
 				'members' => $purgeMembers,
+				'unwatched' => 0,
 			)
 		);
 	}
@@ -251,10 +259,12 @@ function pruneTables() {
 
 	// Finally, delete this set's rows from log_topics
 	$sql = 'DELETE FROM {db_prefix}log_topics
-		WHERE id_member IN ({array_int:members})';
+		WHERE id_member IN ({array_int:members})
+			AND unwatched = {int:unwatched}';
 	$smcFunc['db_query']('', $sql,
 		array(
 			'members' => $markReadMembers,
+			'unwatched' => 0,
 		)
 	);
 
