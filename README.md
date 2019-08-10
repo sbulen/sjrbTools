@@ -27,6 +27,12 @@ These tools are inquiry only & are used to perform diagnostics.
 * ***smf_read_inds_maint_2-1.php*** - This tool marks all boards read in a way that doesn't add millions of rows to your logs...  SMF 2.1.
 * ***SMF_URLs_Paths.php*** - This tool converts all URLs and Paths throughout your SMF forum's database from one value to another.  SMF 2.0 & 2.1.  This tool updates all URLs and Paths found throughout the settings table, the themes table, the messages table, personal messages and members' signatures.  I use this to quickly clone working test environments, so they do not link to each other and I do not find myself working within the wrong environment after clicking on a link...  (Its original name was really_really_really_repair_settings.php, but I felt that was too long...)
 
+## SMF UTF8 Utilities
+
+**WARNING:** These tools update your forum database.  Use at your own risk.  ALWAYS back up your database before use.  ALWAYS run them in your test environment first to learn how they work & to confirm desired outcomes.
+
+* ***smf_fix_dbl_enc_deep.php*** - Addresses double-encoding issues in message bodies.  While addressing, checks for 4-byte UTF8 characters & converts them to htmlentities if needed.
+
 ## Github utility
 
 * ***github-dump.php*** - Dumps Issue & PR info for a specified repository into a comma-delimited file. 
