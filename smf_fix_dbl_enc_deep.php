@@ -1,6 +1,5 @@
 <?php 
-//
-// A utility to identify and correct double-encoding errors in message bodies in the SMF messages table.
+// A utility to identify and correct double-encoding errors in message bodies & subjects in the SMF messages table.
 // It is intended to be used when you may have a mix of good utf8 data and double-encoded utf8 data.
 //
 // This actually attempts a conversion, & will apply the updates only if it looks safe (no ????s).
@@ -110,6 +109,7 @@ function confirmReady() {
 
 	global $db_character_set, $db_type, $smcFunc;
 
+	// Check charset of body
 	$result = $smcFunc['db_query']('', '
 			SHOW FULL COLUMNS FROM {db_prefix}messages LIKE \'body\'',
 			array(
@@ -121,10 +121,24 @@ function confirmReady() {
 	$body_collation = $attrs['Collation'];
 	list($body_charset) = explode('_', $body_collation);
 
+	// Check charset of subject
+	$result = $smcFunc['db_query']('', '
+			SHOW FULL COLUMNS FROM {db_prefix}messages LIKE \'subject\'',
+			array(
+			)
+		);
+	$attrs = $smcFunc['db_fetch_assoc']($result);
+	$smcFunc['db_free_result']($result);
+
+	$subject_collation = $attrs['Collation'];
+	list($subject_charset) = explode('_', $subject_collation);
+
 	echo '$db_character_set: ' . $db_character_set . '<br>';
 	echo '$db_type: ' . $db_type . '<br>';
-	echo 'Collation for message body column: ' . $body_collation . '<br>';
-	echo 'Charset for message body column: ' . $body_charset . '<br>';
+	echo 'Collation for body: ' . $body_collation . '<br>';
+	echo 'Charset for body: ' . $body_charset . '<br>';
+	echo 'Collation for subject: ' . $subject_collation . '<br>';
+	echo 'Charset for subject: ' . $subject_charset . '<br>';
 
 	$goAhead = 'true';
 	if ($db_character_set != 'utf8')
@@ -137,7 +151,7 @@ function confirmReady() {
 		echo '*** Error!!!  $db_type not mysql!<br>';
 		$goAhead = false;
 	}
-	if ($body_charset != 'utf8')
+	if (($body_charset != 'utf8') || ($subject_charset != 'utf8'))
 	{
 		echo '*** Error!!!  Charset not utf8!<br>';
 		$goAhead = false;
@@ -155,10 +169,11 @@ function checkRecords() {
 
 	global $smcFunc, $atatime, $doit, $db_prefix, $db_connection;
 
-	// First things first, add the column body2.
+	// First things first, add the column body_1206.
 	// Note this is even needed for the analysis.  
 	$sql = 'ALTER TABLE {db_prefix}messages
-		ADD COLUMN body2 MEDIUMBLOB NOT NULL;';
+		ADD COLUMN body_1206 MEDIUMBLOB NOT NULL,
+		ADD COLUMN subject_1206 BLOB NOT NULL;';
 	$result = $smcFunc['db_query']('', $sql,
 		array(
 		)
@@ -195,7 +210,8 @@ function checkRecords() {
 
 	// Delete the column...
 	$sql = 'ALTER TABLE {db_prefix}messages
-		DROP COLUMN body2;';
+		DROP body_1206, 
+		DROP subject_1206;';
 	$result = $smcFunc['db_query']('', $sql,
 		array(
 		)
@@ -210,7 +226,7 @@ function findFixUTF8Issues($call) {
 	global $smcFunc, $doit, $atatime;
 
 	// Find messages & IDs...
-	$sql = 'SELECT id_msg, body
+	$sql = 'SELECT id_msg, body, subject
 			FROM {db_prefix}messages
 			LIMIT {int:offset}, {int:limit}';
 	$result = $smcFunc['db_query']('', $sql,
@@ -223,17 +239,22 @@ function findFixUTF8Issues($call) {
 	// Move to array...
 	$messages = array();
 	while($row = $smcFunc['db_fetch_assoc']($result))
-		$messages[$row['id_msg']] = $row['body'];
+		$messages[$row['id_msg']] = array('body' => $row['body'], 'subject' => $row['subject']);
 	$smcFunc['db_free_result']($result);
 
 	$ids = array_keys($messages);
 
-	// Use our technique to populate BODY2
+	// Use our technique to populate body_1206 & subject_1206
 	$sql = 'UPDATE {db_prefix}messages
-		SET body2 =
+		SET body_1206 =
 			CASE
 				WHEN CONVERT(CAST(CONVERT(body USING latin1) AS BINARY) USING utf8mb4) IS NULL THEN body
 				ELSE CONVERT(CAST(CONVERT(body USING latin1) AS BINARY) USING utf8mb4)
+			END,
+		subject_1206 =
+			CASE
+				WHEN CONVERT(CAST(CONVERT(subject USING latin1) AS BINARY) USING utf8mb4) IS NULL THEN subject
+				ELSE CONVERT(CAST(CONVERT(subject USING latin1) AS BINARY) USING utf8mb4)
 			END
 		WHERE id_msg IN ({array_int:ids})';
 	$result = $smcFunc['db_query']('', $sql,
@@ -243,7 +264,7 @@ function findFixUTF8Issues($call) {
 	);
 
 	// Get info from newly created data...
-	$sql = 'SELECT id_msg, body2
+	$sql = 'SELECT id_msg, body_1206, subject_1206
 			FROM {db_prefix}messages
 		WHERE id_msg IN ({array_int:ids})';
 	$result = $smcFunc['db_query']('', $sql,
@@ -255,7 +276,7 @@ function findFixUTF8Issues($call) {
 	// Move this one to an array...
 	$messages2 = array();
 	while($row = $smcFunc['db_fetch_assoc']($result))
-		$messages2[$row['id_msg']] = $row['body2'];
+		$messages2[$row['id_msg']] = array('body_1206' => $row['body_1206'], 'subject_1206' => $row['subject_1206']);
 	$smcFunc['db_free_result']($result);
 
 	// Look for 4-byte utf8 chars...
@@ -265,43 +286,76 @@ function findFixUTF8Issues($call) {
 	$fixthese = array();
 	foreach($messages AS $id => $message)
 	{
+		$fourbytes = false;
+
+		// Check for 4-byte chars in body
 		$matches = array();
-		$pma = preg_match_all($badboys, $messages2[$id], $matches);
+		$pma = preg_match_all($badboys, $messages2[$id]['body_1206'], $matches);
 
 		if ($pma > 0)
 		{
-			echo 'To fix (Msg id - ' . $id . ') **4 bytes**: ' . bin2hex($matches[0][0]) . ', Number of others found: ' . count($matches[0]) . '<br>';
+			echo 'To fix body (Msg id - ' . $id . ') **4 bytes**: ' . bin2hex($matches[0][0]) . ', Number of others found: ' . count($matches[0]) . '<br>';
 
 			// Html entity encoding for 4-byte; convert to codepoint
-			$messages2[$id] = preg_replace_callback($badboys, 
+			$messages2[$id]['body_1206'] = preg_replace_callback($badboys, 
 				function ($hex4) {
 					$codepoint = ((ord($hex4[0][0]) & 0x07) << 18) | ((ord($hex4[0][1]) & 0x3F) << 12) | ((ord($hex4[0][2]) & 0x3F) << 6) | ((ord($hex4[0][3]) & 0x3F));
 					return '&#' . $codepoint . ';';
 				},
-				$messages2[$id]
+				$messages2[$id]['body_1206']
 			);
-
-			$sql = 'UPDATE {db_prefix}messages
-				SET body2 = {string:newmsg}
-				WHERE id_msg = {int:id}';
-			$result = $smcFunc['db_query']('', $sql,
-				array(
-					'id' => $id,
-					'newmsg' => $messages2[$id],
-				)
-			);
+			$fourbytes = true;
 			@ob_flush();
 			@flush();
 		}
 
+		// Check for 4-byte chars in subject
+		$matches = array();
+		$pma = preg_match_all($badboys, $messages2[$id]['subject_1206'], $matches);
+
+		if ($pma > 0)
+		{
+			echo 'To fix subj (Msg id - ' . $id . ') **4 bytes**: ' . bin2hex($matches[0][0]) . ', Number of others found: ' . count($matches[0]) . '<br>';
+
+			// Html entity encoding for 4-byte; convert to codepoint
+			$messages2[$id]['subject_1206'] = preg_replace_callback($badboys, 
+				function ($hex4) {
+					$codepoint = ((ord($hex4[0][0]) & 0x07) << 18) | ((ord($hex4[0][1]) & 0x3F) << 12) | ((ord($hex4[0][2]) & 0x3F) << 6) | ((ord($hex4[0][3]) & 0x3F));
+					return '&#' . $codepoint . ';';
+				},
+				$messages2[$id]['subject_1206']
+			);
+			$fourbytes = true;
+			@ob_flush();
+			@flush();
+		}
+
+		// Update temp columns if 4-byte chars found
+		if ($fourbytes)
+		{
+			$sql = 'UPDATE {db_prefix}messages
+				SET body_1206 = {string:newmsg},
+					subject_1206 = {string:newsubj}
+				WHERE id_msg = {int:id}';
+			$result = $smcFunc['db_query']('', $sql,
+				array(
+					'id' => $id,
+					'newmsg' => $messages2[$id]['body_1206'],
+					'newsubj' => $messages2[$id]['subject_1206'],
+				)
+			);
+		}
+
 		// Look for '?'s...
-		$oldQs = substr_count($message, '?');
-		$newQs = substr_count($messages2[$id], '?');
+		$oldbodyQs = substr_count($message['body'], '?');
+		$newbodyQs = substr_count($messages2[$id]['body_1206'], '?');
+		$oldsubjQs = substr_count($message['subject'], '?');
+		$newsubjQs = substr_count($messages2[$id]['subject_1206'], '?');
 
 		// Only use the output if the messages have changed, & we haven't substitued a bunch of ?s...
-		if (($message != $messages2[$id]) && ($oldQs == $newQs))
+		if ((($message['body'] != $messages2[$id]['body_1206']) || ($message['subject'] != $messages2[$id]['subject_1206'])) && ($oldbodyQs == $newbodyQs) && ($oldsubjQs == $newsubjQs))
 		{
-			echo 'To fix (Msg id - ' . $id . '): ' . htmlentities(substr($message, 0, 40)) . '<br>';
+			echo 'To fix mesg (Msg id - ' . $id . '): ' . htmlentities(substr($message['subject'], 0, 40)) . '<br>';
 			$fixthese[] = $id;
 			@ob_flush();
 			@flush();
@@ -312,7 +366,8 @@ function findFixUTF8Issues($call) {
 	if (!empty($fixthese) && $doit == 'Yes')
 	{
 		$sql = 'UPDATE {db_prefix}messages
-			SET body = body2
+			SET body = body_1206,
+				subject = subject_1206
 			WHERE id_msg IN ({array_int:ids})';
 		$result = $smcFunc['db_query']('', $sql,
 			array(
