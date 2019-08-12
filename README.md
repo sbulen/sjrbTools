@@ -13,6 +13,7 @@ These tools are inquiry only & are used to perform diagnostics.
 * ***SMF_Theme_Diag.php*** - This tool dumps a bunch of helpful information on your Themes.  It works for SMF2.0 & 2.1.
 * ***SMF_Topic_Link_Diag.php*** - This tool dumps any quote link that appears to have issues, such as a missing originating message or an incorrect topic caused by splits/merges.  It works for SMF2.0 & 2.1.
 * ***SMF_UTF8_Diag.php*** - This tool dumps a bunch of helpful information on the state of the character set & collation of your SMF database.  It works for SMF2.0 & 2.1.
+* ***smf_hex_dump.php*** - This tool dumps occurances of a specific column in a specific record in hex.  Useful for debugging UTF8 data issues.  It is UTF8 safe - it will not chop a multi-byte character in half.  It works for SMF2.0 & 2.1. 
 
 ## SMF Cron Jobs
 
