@@ -173,7 +173,7 @@ function findFixUTF8Issues() {
 				WHEN (LENGTH(body) - LENGTH(REPLACE(body, \'?\', \'\'))) != (LENGTH(CONVERT(CAST(CONVERT(body USING latin1) AS BINARY) USING utf8)) - LENGTH(REPLACE(CONVERT(CAST(CONVERT(body USING latin1) AS BINARY) USING utf8), \'?\', \'\'))) THEN body
 				ELSE CONVERT(CAST(CONVERT(body USING latin1) AS BINARY) USING utf8)
 			END,
-		SET subject =
+		subject =
 			CASE
 				WHEN CONVERT(CAST(CONVERT(subject USING latin1) AS BINARY) USING utf8) IS NULL THEN subject
 				WHEN (LENGTH(subject) - LENGTH(REPLACE(subject, \'?\', \'\'))) != (LENGTH(CONVERT(CAST(CONVERT(subject USING latin1) AS BINARY) USING utf8)) - LENGTH(REPLACE(CONVERT(CAST(CONVERT(subject USING latin1) AS BINARY) USING utf8), \'?\', \'\'))) THEN subject
