@@ -249,7 +249,7 @@ function parseDiff($diff) {
 	foreach ($diff AS $line)
 	{
 		// Don't need these
-		if (in_array(substr($line, 0, 3), array('---', '+++', 'dif')))
+		if (in_array(substr($line, 0, 3), array('---', '+++', 'dif', 'ind')))
 			continue;
 
 		// If the file is new, don't need to look at the details
@@ -330,17 +330,20 @@ function cleanSnippets($snippets, $file, $gitfile) {
 //*** Clean Snippet - remove trailing common characters & make sure it gets a unique hit
 function cleanSnippet($snippet, &$filestr, &$filearr) {
 
-	// PART I - remove trailing common text
-	$searchLen = strlen($snippet['search']);
-	$replaceLen = strlen($snippet['replace']);
+	// PART I - remove trailing common text; ***whole lines only *** or uninstalls break, it becomes ambiguous
+	static $codeLine = '/(?<=\n)(.*\n)$/D';
 
-	$common = 1;
-	while (substr($snippet['search'], $searchLen - $common, 1) === substr($snippet['replace'], $replaceLen - $common, 1))
-		$common++;
-	$common--;
-
-	$snippet['search'] = substr($snippet['search'], 0, $searchLen - $common);
-	$snippet['replace'] = substr($snippet['replace'], 0, $replaceLen - $common);
+	$sLine = preg_match($codeLine, $snippet['search'], $sMatch);
+	$rLine = preg_match($codeLine, $snippet['replace'], $rMatch);
+	while ($sLine && $rLine && $sMatch[1] === $rMatch[1])
+	{
+		$searchLen = strlen($snippet['search']);
+		$replaceLen = strlen($snippet['replace']);
+		$snippet['search'] = substr($snippet['search'], 0, $searchLen - strlen($sMatch[1]));
+		$snippet['replace'] = substr($snippet['replace'], 0, $replaceLen - strlen($rMatch[1]));
+		$sLine = preg_match($codeLine, $snippet['search'], $sMatch);
+		$rLine = preg_match($codeLine, $snippet['replace'], $rMatch);
+	}
 
 	// PART II - deal with empty search strings.
 	// *** Do NOT use -U0...  Line #s are wonky here if you do so...
@@ -382,6 +385,8 @@ function cleanSnippet($snippet, &$filestr, &$filearr) {
 				if ($topSearch === $topReplace && substr(ltrim($topSearch), 0, 2) != '//')
 				{
 					$snippet['search'] = substr($snippet['search'], $eolSearch + 1);
+					if (empty($snippet['search']))
+						break;
 					$snippet['replace'] = substr($snippet['replace'], $eolReplace + 1);
 					$count = substr_count($filestr, $snippet['search']);
 					if ($count == 1)
@@ -393,7 +398,7 @@ function cleanSnippet($snippet, &$filestr, &$filearr) {
 			else
 				break;
 		}
-		// Use the last one that worked, not the last one putzed with...
+		// Use the last one that worked, not the last one tested...
 		$snippet = $working;
 	}
 
