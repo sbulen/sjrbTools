@@ -182,7 +182,7 @@ function processDiff($file, $diff) {
 	$newfilestr = `{$cmd}`;
 
 	// Split it up!
-	$snippets = parseDiff($diff, $oldfilearr);
+	$snippets = parseDiff($diff);
 
 	// If we've asked for context, strip it...
 	if (!empty($lines_of_context))
