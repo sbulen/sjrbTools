@@ -227,7 +227,7 @@ function determineAction($snippets, $oldfilearr) {
 			$atEnd = true;
 			foreach ($oldfilearr as $lineno => $line)
 			{
-				if ($lineno < $snippet['linestart'])
+				if ($lineno < $snippet['linestart'] - 1)
 					continue;
 				if (!empty(trim($line)) && trim($line) != '?>')
 				{
