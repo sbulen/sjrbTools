@@ -416,7 +416,7 @@ function unambiguate($snippets, &$oldfilestr, &$oldfilearr, &$newfilestr) {
 			}
 			$count = substr_count($oldfilestr, $snippet['removelines']);
 			if ($snippet['action'] == 'replace')
-				$repcount = substr_count($oldfilestr, $snippet['addlines']);
+				$repcount = substr_count($newfilestr, $snippet['addlines']);
 
 			// Cannot intrude upon updates from prior snippet...
 			$compareline = (isset($snippets[$ix - 1]['linestart']) ? $snippets[$ix - 1]['linestart'] : 0) + (isset($snippets[$ix - 1]['removes']) ? $snippets[$ix - 1]['removes'] : 0) - 2;
@@ -434,7 +434,7 @@ function unambiguate($snippets, &$oldfilestr, &$oldfilearr, &$newfilestr) {
 						$snippet['removes']++;
 					$count = substr_count($oldfilestr, $snippet['removelines']);
 					if ($snippet['action'] == 'replace')
-						$repcount = substr_count($oldfilestr, $snippet['addlines']);
+						$repcount = substr_count($newfilestr, $snippet['addlines']);
 				}
 				else
 				{
