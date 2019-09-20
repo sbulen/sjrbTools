@@ -22,7 +22,7 @@
 //    $lines_of_context = 3 produces a fully working diff that installs & uninstalls cleanly.
 //    $lines_of_context = 2 has a couple ambiguous searches, but seems to work anyway...
 //    $lines_of_context = 1 has a few ambiguous searches that must be resolved by hand.
-//    $lines_of_context = 0 doesn't work...
+//    $lines_of_context = 0 has even more ambiguous searches.
 //
 
 //*** Start user config
