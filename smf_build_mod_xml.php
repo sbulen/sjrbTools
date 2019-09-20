@@ -174,7 +174,6 @@ function processDiff($file, $diff) {
 	}
 
 	// Load up old & new versions of the file...
-
 	$cmd = "git show {$repo_prior_release_commit}:{$gitfile}";
 	$oldfilestr = `{$cmd}`;
 	$oldfilearr = explode("\n", $oldfilestr);
@@ -361,8 +360,13 @@ function parseDiff($diff) {
 			$matches = array();
 			preg_match('/@@ -(\d{1,10}),{0,1}(\d{0,10}) \+\d{1,10},{0,1}\d{0,10} @@/', $line, $matches);
 			$parsed[$chunk]['linestart'] = $matches[1];
-			if (isset($matches[2]))
-				$parsed[$chunk]['removes'] = $matches[2];
+			$parsed[$chunk]['removes'] = $matches[2];
+			// The x,0 means only adds, so the change would really start on the next line...
+			if ($parsed[$chunk]['removes'] == '0')
+				$parsed[$chunk]['linestart']++;
+			// Make sure you have a valid number in there...
+			elseif (empty($parsed[$chunk]['removes']))
+				$parsed[$chunk]['removes'] = '0';
 		}
 		elseif (substr($line, 0, 1) == ' ')
 		{
