@@ -361,12 +361,12 @@ function parseDiff($diff) {
 			preg_match('/@@ -(\d{1,10}),{0,1}(\d{0,10}) \+\d{1,10},{0,1}\d{0,10} @@/', $line, $matches);
 			$parsed[$chunk]['linestart'] = $matches[1];
 			$parsed[$chunk]['removes'] = $matches[2];
-			// The x,0 means only adds, so the change would really start on the next line...
+			// The x,0 means only adds, so the *change* would really start on the next line (weird git syntax...)
 			if ($parsed[$chunk]['removes'] == '0')
 				$parsed[$chunk]['linestart']++;
-			// Make sure you have a valid number in there...
+			// No value means 1 line removed (weird git syntax; 0=0, ''=1, 2=2...)
 			elseif (empty($parsed[$chunk]['removes']))
-				$parsed[$chunk]['removes'] = '0';
+				$parsed[$chunk]['removes'] = '1';
 		}
 		elseif (substr($line, 0, 1) == ' ')
 		{
@@ -415,8 +415,7 @@ function unambiguate($snippets, &$oldfilestr, &$oldfilearr, &$newfilestr) {
 				$line--;
 				// Keep status current...
 				$snippet['linestart']--;
-				if (isset($snippet['removes']))
-					$snippet['removes']++;
+				$snippet['removes']++;
 			}
 			$count = substr_count($oldfilestr, $snippet['removelines']);
 			if ($snippet['action'] == 'replace')
@@ -434,8 +433,8 @@ function unambiguate($snippets, &$oldfilestr, &$oldfilearr, &$newfilestr) {
 					$line--;
 					// Keep status current...
 					$snippet['linestart']--;
-					if (isset($snippet['removes']))
-						$snippet['removes']++;
+					$snippet['removes']++;
+
 					$count = substr_count($oldfilestr, $snippet['removelines']);
 					if ($snippet['action'] == 'replace')
 						$repcount = substr_count($newfilestr, $snippet['addlines']);
@@ -499,8 +498,7 @@ function removeTopLine($snippet) {
 
 				// Keep status current...
 				$snippet['linestart']++;
-				if (isset($snippet['removes']))
-					$snippet['removes']--;
+				$snippet['removes']--;
 			}
 		}
 	}
@@ -521,8 +519,7 @@ function removeBottomLine($snippet) {
 		$snippet['addlines'] = substr($snippet['addlines'], 0, strlen($snippet['addlines']) - strlen($rMatch[1]));
 
 		// Keep status current...
-		if (isset($snippet['removes']))
-			$snippet['removes']--;
+		$snippet['removes']--;
 	}
 
 	return $snippet;
