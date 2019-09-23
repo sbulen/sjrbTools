@@ -28,7 +28,7 @@
 //*** Start user config
 $repo_path = 'D:/EasyPHP/Git/SMF2.0';
 $repo_master_branch = 'master';
-$repo_prior_release_commit = 'v2.0.15';
+$repo_prior_release_commit = '0d792ea2436ece61dbfb51c9d73fe4d42eb20ebe';
 $repo_this_release_commit = 'HEAD';
 $new_version_txt = '2.0.16';
 $lines_of_context = '3';
@@ -221,20 +221,10 @@ function determineAction($snippets, $oldfilearr) {
 			$snippets[$ix]['action'] = 'replace';
 		}
 		// Adding lines - if at the bottom, do an 'end', otherwise, do a 'before'
+		// position="end" is very picky - old last 2 lines must match exactly LF & \?\> and must be the 2 lines being replaced with the new lines...
 		elseif (!empty($snippet['addlines']))
 		{
-			$atEnd = true;
-			foreach ($oldfilearr as $lineno => $line)
-			{
-				if ($lineno < $snippet['linestart'] - 1)
-					continue;
-				if (!empty(trim($line)) && trim($line) != '?>')
-				{
-					$atEnd = false;
-					break;
-				}
-			}
-			if ($atEnd)
+			if ((count($oldfilearr) == $snippet['linestart'] + 1) && (isset($oldfilearr[$snippet['linestart'] - 1]) && empty(trim($oldfilearr[$snippet['linestart'] - 1]))) && (isset($oldfilearr[$snippet['linestart']]) && trim($oldfilearr[$snippet['linestart']]) == '?>'))
 				$snippets[$ix]['action'] = 'end';
 			else
 				$snippets[$ix]['action'] = 'before';
@@ -490,16 +480,12 @@ function removeTopLine($snippet) {
 		$topReplace = substr($snippet['addlines'], 0, $eolReplace + 1);
 		if ($topSearch === $topReplace)
 		{
-			// Don't remove comment lines, folks like those
-			if (substr(ltrim($topSearch), 0, 2) != '//')
-			{
-				$snippet['removelines'] = substr($snippet['removelines'], $eolSearch + 1);
-				$snippet['addlines'] = substr($snippet['addlines'], $eolReplace + 1);
+			$snippet['removelines'] = substr($snippet['removelines'], $eolSearch + 1);
+			$snippet['addlines'] = substr($snippet['addlines'], $eolReplace + 1);
 
-				// Keep status current...
-				$snippet['linestart']++;
-				$snippet['removes']--;
-			}
+			// Keep status current...
+			$snippet['linestart']++;
+			$snippet['removes']--;
 		}
 	}
 
