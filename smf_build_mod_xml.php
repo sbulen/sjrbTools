@@ -6,23 +6,16 @@
 //
 // Usage guidelines:
 // (1) Your git/bin must be in your environment PATH
-// (2) Set the user config variables below.  All 6 variables must be provided. 
+// (2) Set the user config variables below.  All 7 variables must be provided. 
 // (3) Execute this file from your browser.
 // (4) Some info will be displayed in your browser, which files were updated, etc.
 // (5) Xml files will be in the directory where this was launched.  
 //       *** They will be overwritten with each execution!!! ***
 //     by sbulen
 // 
-// Notes on $lines_of_context:
-// A lower # means a higher # of tiny changes, is harder to read, and is more likely to run into
-// ambiguous search/replace functions.  BUT... is more mod-friendly, as the odds of code collisions are lower.
-// A higher # means you have a lower # of changes (they blend together...), captures more comments & is more readable, 
-// but is less mod-friendly.
-// As of now:
-//    $lines_of_context = 3 produces a fully working diff that installs & uninstalls cleanly.
-//    $lines_of_context = 2 has a couple ambiguous searches, but seems to work anyway...
-//    $lines_of_context = 1 has a few ambiguous searches that must be resolved by hand.
-//    $lines_of_context = 0 has even more ambiguous searches.
+// This version always attempts 0 lines of context & builds searches up from there.
+// This was based on comparison to successful patches, that were very granular in their searches/replaces
+// and had far fewer conflicts with mods.
 //
 
 //*** Start user config
@@ -31,7 +24,8 @@ $repo_master_branch = 'master';
 $repo_prior_release_commit = '0d792ea2436ece61dbfb51c9d73fe4d42eb20ebe';
 $repo_this_release_commit = 'HEAD';
 $new_version_txt = '2.0.16';
-$lines_of_context = '3';
+$only_display_changes = true;
+$audit = true;
 //*** End user config
 
 //*** Main program
@@ -84,6 +78,8 @@ function navFileSystem($dir) {
 
 	$files = scandir($dir);
 
+//checkFile('d:\easyphp\git\smf2.0\index.php');
+
 	foreach($files as $key => $value){
 		// Bypass all the "hidden" .git files, folders & also . & ..
 		// Also bypass the /other folder & the changelog.txt file
@@ -101,24 +97,23 @@ function navFileSystem($dir) {
 //*** Check individual file
 function checkFile($file) {
 
-	global $repo_path, $repo_prior_release_commit, $repo_this_release_commit, $lines_of_context;
+	global $repo_path, $repo_prior_release_commit, $repo_this_release_commit, $only_display_changes, $audit;
 
 	// Strip repo root path...
 	$file = substr($file, strlen($repo_path) + 1);
 
-	echo 'Checking ' . $file . '... ';
-
 	// -U# tells git how much context to provide.
 	// Don't want color affecting text anyhow (haven't seen it, but still concerns me...)
-	$cmd = "git diff -U{$lines_of_context} --no-color {$repo_prior_release_commit} {$repo_this_release_commit} {$file}";
+	$cmd = "git diff -U0 --no-color {$repo_prior_release_commit} {$repo_this_release_commit} {$file}";
 	$result = `{$cmd}`;
 	if (!empty($result))
 	{
 		processDiff($file, $result);
-		echo '<strong><em>DONE!!!</em></strong><br>';
+		echo $file . ' <strong><em>DONE!!!</em></strong><br>';
 	}
 	else
-		echo 'no change.<br>';
+		if (!$only_display_changes)
+			echo $file . ' - no change.<br>';
 
 	// Yes, both flushes necessary
 	@ob_flush();
@@ -129,7 +124,7 @@ function checkFile($file) {
 //*** Figure out what to do with each diff
 function processDiff($file, $diff) {
 
-	global $repo_prior_release_commit, $repo_this_release_commit, $lines_of_context;
+	global $repo_prior_release_commit, $repo_this_release_commit, $oldfilestr, $oldfilearr, $newfilestr;
 
 	// Git wants unix style, not win style...
 	$file = strtr($file, '\\', '/');
@@ -152,6 +147,11 @@ function processDiff($file, $diff) {
 	{
 		$dir = '$themedir';
 		$file = substr($file, 15);
+	}
+	elseif (!strncasecmp($file, 'Themes/', 7))
+	{
+		$dir = '$themes_dir';
+		$file = substr($file, 7);
 	}
 	elseif (!strncasecmp($file, 'Sources/', 8))
 	{
@@ -181,20 +181,17 @@ function processDiff($file, $diff) {
 	$newfilestr = `{$cmd}`;
 
 	// Split it up!
-	$snippets = parseDiff($diff);
-
-	// If we've asked for context, strip it...
-	if (!empty($lines_of_context))
-		$snippets = trimOuterContext($snippets, $oldfilearr);
+	$snippets = parseDiff($diff, $file);
 
 	// Determine appropriate action for each snippet
-	$snippets = determineAction($snippets, $oldfilearr);
+	$snippets = determineAction($snippets, $file);
 
 	// Make sure searches work & are unique
-	$snippets = unambiguate($snippets, $oldfilestr, $oldfilearr, $newfilestr);
+	// position=before/after may be updated here
+	$snippets = unambiguate($snippets, $file);
 
 	// New files have one row with an action of 'new file'
-	if (count($snippets) == 1 && $snippets[0]['action'] == 'new file')
+	if ($snippets[0]['action'] == 'new file')
 		addFile($dir, $file);
 	else
 		buildFileOps($dir, $file, $gitfile, $snippets);
@@ -203,7 +200,9 @@ function processDiff($file, $diff) {
 }
 
 //*** Figure out if we're going to do a position=replace, end, before, etc...
-function determineAction($snippets, $oldfilearr) {
+function determineAction($snippets, $file) {
+
+	global $oldfilearr;
 
 	foreach ($snippets AS $ix => $snippet)
 	{
@@ -220,18 +219,24 @@ function determineAction($snippets, $oldfilearr) {
 		{
 			$snippets[$ix]['action'] = 'replace';
 		}
-		// Adding lines - if at the bottom, do an 'end', otherwise, do a 'before'
-		// position="end" is very picky - old last 2 lines must match exactly LF & \?\> and must be the 2 lines being replaced with the new lines...
+		// SMF package oddity - it doesn't like just inserting line feeds, whitespace, etc...
+		// So force it to replace mode if only whitespace.
+		elseif (empty(trim($snippet['addlines'])))
+		{
+			$snippets[$ix]['action'] = 'replace';
+		}
+		// Adding lines - if at the bottom, do an 'end', otherwise, default as a 'before' for now
+		// Position="end" if change starts on the \?\>...
 		elseif (!empty($snippet['addlines']))
 		{
-			if ((count($oldfilearr) == $snippet['linestart'] + 1) && (isset($oldfilearr[$snippet['linestart'] - 1]) && empty(trim($oldfilearr[$snippet['linestart'] - 1]))) && (isset($oldfilearr[$snippet['linestart']]) && trim($oldfilearr[$snippet['linestart']]) == '?>'))
+			if (isset($oldfilearr[$snippet['linestart']]) && trim($oldfilearr[$snippet['linestart']]) == '?>')
 				$snippets[$ix]['action'] = 'end';
 			else
 				$snippets[$ix]['action'] = 'before';
 		}
 		else
 		{
-			echo '******************************* I\'m confused ****************************';
+			echo $file . ': ******************************* I\'m confused ****************************<br>';
 		}
 	}
 
@@ -277,7 +282,7 @@ function buildFileOps($dir, $file, $gitfile, $snippets) {
 			$snippet['addlines'] = htmlspecialchars($snippet['addlines']);
 			$before = '';
 			$after = '';
-			echo '***** CDATA NOT USED ***** ';
+			echo $file . ' ***** CDATA NOT USED *****<br>';
 		}
 		else
 		{
@@ -302,7 +307,7 @@ function buildFileOps($dir, $file, $gitfile, $snippets) {
 }
 
 //*** parseDiff
-function parseDiff($diff) {
+function parseDiff($diff, $file) {
 
 	$diff = explode("\n", $diff);
 	$chunk = -1;
@@ -357,6 +362,8 @@ function parseDiff($diff) {
 			// No value means 1 line removed (weird git syntax; 0=0, ''=1, 2=2...)
 			elseif (empty($parsed[$chunk]['removes']))
 				$parsed[$chunk]['removes'] = '1';
+			// Factor in that we will be comparing to arrays, so zero offest (subtract 1).
+			$parsed[$chunk]['linestart']--;
 		}
 		elseif (substr($line, 0, 1) == ' ')
 		{
@@ -374,7 +381,7 @@ function parseDiff($diff) {
 		// Alert if there is a line type we haven't seen...  
 		// Need to test for an empty line - don't know why there are sometimes empty lines in the output from git, but there are.
 		elseif (!empty($line))
-			echo '************************* Unknown diff line type: ' . $line . ' ****************************';
+			echo $file . ' ************************* Unknown diff line type: ' . $line . ' ****************************<br>';
 
 		// Save off for when it tells you 'no line feed' after the fact...
 		$prior = substr($line, 0, 1);
@@ -383,130 +390,191 @@ function parseDiff($diff) {
 	return $parsed;
 }
 
-//*** Make sure all searches are unambiguous (for replaces & befores, which will be empty upon entry here)
-function unambiguate($snippets, &$oldfilestr, &$oldfilearr, &$newfilestr) {
+//*** Make sure all searches are unambiguous for replaces & befores
+function unambiguate($snippets, $file) {
+
+	global $audit, $oldfilestr, $oldfilearr, $newfilestr;
 
 	foreach ($snippets AS $ix => $snippet)
 	{
-		// No search string for these
-		if (in_array($snippet['action'], array('end', 'new file')))
+		// No search string for new files
+		if ($snippet['action'] == 'new file')
 			continue;
+		// Ends are weird...  SMF parser wants a "dummy" \n at the beggining and will add its own \n at the end...
+		// Most of our code already has a \n at the end of each line...  So...  move it...
+		elseif ($snippet['action'] == 'end')
+		{
+			$snippet['addlines'] = substr("\n" . $snippet['addlines'], 0, strlen($snippet['addlines']));
+		}
 		else
 		{
-			// Keep adding lines until the search is unambiguous
-			// For 'replace', add to both remove & add; for before/after, etc., only to the search criterion
-			// If empty, add a line to prime the pump...
-			$line = $snippet['linestart'] - 2;
-			if (empty($snippet['removelines']) || ($snippet['action'] == 'replace' && empty($snippet['addlines'])))
+			// Check 1 - Will it work as-is?
+			$up = true;
+			$context = 0;
+			$count = 0;
+			$repcount = 0;
+			// Note counts are passed by reference & updated by testDir()
+			$snippet = testDir($file, $up, $ix, $snippet, $context, 0, 0, $count, $repcount);
+
+			// It's already unique, leave it alone!
+			if ($count == 1 && $repcount == 1)
 			{
-				$snippet['removelines'] = $oldfilearr[$line] . "\n" . $snippet['removelines'];
-				if ($snippet['action'] == 'replace')
-					$snippet['addlines'] = $oldfilearr[$line] . "\n" . $snippet['addlines'];
-				$line--;
-				// Keep status current...
-				$snippet['linestart']--;
-				$snippet['removes']++;
+				if ($audit == true)
+					echo $file . ' Snippet: '. $ix . ' No need to add context!<br>';
+				continue;
 			}
-			$count = substr_count($oldfilestr, $snippet['removelines']);
-			if ($snippet['action'] == 'replace')
-				$repcount = substr_count($newfilestr, $snippet['addlines']);
 
-			// Cannot intrude upon updates from prior snippet...
-			$compareline = (isset($snippets[$ix - 1]['linestart']) ? $snippets[$ix - 1]['linestart'] : 0) + (isset($snippets[$ix - 1]['removes']) ? $snippets[$ix - 1]['removes'] : 0) - 2;
-			while (($count > 1 || ($snippet['action'] == 'replace' && $repcount > 1)) && $line > 0)
+			// Calculate widest range of valid context, against $oldfilearr (zero offsets for array nav)
+			// Set minimum "safe" row to use.  Can not use rows involved in the prior snippet.
+			if (isset($snippets[$ix - 1]['linestart']))
+				$linemin = $snippets[$ix - 1]['linestart'] + $snippets[$ix - 1]['removes'];
+			else
+				$linemin = 0;
+			
+			// Set maximum "safe" row to use.  Line prior to the next snippet or EOF.
+			if (isset($snippets[$ix + 1]['linestart']))
+				$linemax = $snippets[$ix + 1]['linestart'] - 1;
+			else
+				$linemax = count($oldfilearr) - 1;
+
+			// Keep increasing until you get unique hits, testing above &/or below...
+			while ($count != 1 || $repcount != 1)
 			{
-				if ($line > $compareline)
+				$context++;
+				$up = chooseDir($snippet, $linemin, $linemax, $context);
+				// Note counts are passed by reference & updated by testDir()
+				$test = testDir($file, $up, $ix, $snippet, $context, $linemin, $linemax, $count, $repcount);
+				if ($count == 1 && $repcount == 1)
 				{
-					$snippet['removelines'] = $oldfilearr[$line] . "\n" . $snippet['removelines'];
-					if ($snippet['action'] == 'replace')
-						$snippet['addlines'] = $oldfilearr[$line] . "\n" . $snippet['addlines'];
-					$line--;
-					// Keep status current...
-					$snippet['linestart']--;
-					$snippet['removes']++;
-
-					$count = substr_count($oldfilestr, $snippet['removelines']);
-					if ($snippet['action'] == 'replace')
-						$repcount = substr_count($newfilestr, $snippet['addlines']);
+					$snippet = $test;
+					break;
 				}
 				else
 				{
-					// These must be resolved by hand at this point...
-					echo '************************* Cannot unambiguate snippet ' . ($ix + 1) . '! ****************************';
-					break;
+					$test = testDir($file, !$up, $ix, $snippet, $context, $linemin, $linemax, $count, $repcount);
+					if ($count == 1 && $repcount == 1)
+					{
+						$snippet = $test;
+						break;
+					}
 				}
-
 			}
-			$snippets[$ix] = $snippet;
 		}
+		$snippets[$ix] = $snippet;
 	}
 
 	return $snippets;
 }
 
-//*** If context was requested, trim it from start & end of snippets
-function trimOuterContext($snippets) {
+//*** Choose Direction - Up or Down (position = "before" or "after")
+function chooseDir($snippet, $linemin, $linemax, $context) {
 
-	global $lines_of_context;
+	global $oldfilearr;
 
-	$lines_of_context = (int) $lines_of_context;
+	$before = '';
+	$after = '';
 
-	foreach ($snippets AS $ix => $snippet)
+	for ($i = 1; $i <= $context; $i++)
 	{
-		// Leave it alone if action is pre-ordained (new files)
-		if (empty($snippet['action']))
+		$before_line = $snippet['linestart'] - $context + $i - 1;
+		if ($before_line >= $linemin)
+			$before .= $oldfilearr[$before_line] . "\n";
+
+		$after_line = $snippet['linestart'] + $snippet['removes'] + $i - 1;
+		if ($after_line <= $linemax)
+			$after .= $oldfilearr[$after_line]  . "\n";
+	}
+
+	// Comments get priority!  If no comments either way, use whatever context has more info...
+	if (substr($before, 0, 2) == '//')
+		$up = true;
+	elseif (substr($after, 0, 2) == '//')
+		$up = false;
+	elseif (strlen($before) >= strlen($after))
+		$up = true;
+	else
+		$up = false;
+
+	return $up;
+}
+
+//*** Test one possible Direction/# lines for uniqueness
+function testDir($file, $up, $ix, $snippet, $context, $linemin, $linemax, &$count, &$repcount) {
+
+	global $audit, $oldfilestr, $oldfilearr, $newfilestr;
+
+	// Force exit if we can't go any further...
+	if ($context != 0 && ($snippet['linestart'] - $context < $linemin) && ($snippet['linestart'] + $snippet['removes'] + $context > $linemax))
+	{
+		echo $file . ' ************************************************************************* CANNOT UMAMBIGUATE snippet: ' . $ix . '<br>';
+		$count = 1;
+		$repcount = 1;
+		return $snippet;
+	}
+
+	$before = '';
+	$after = '';
+
+	for ($i = 1; $i <= $context; $i++)
+	{
+		$before_line = $snippet['linestart'] - $context + $i - 1;
+		if ($before_line >= $linemin)
+			$before .= $oldfilearr[$before_line] . "\n";
+
+		$after_line = $snippet['linestart'] + $snippet['removes'] + $i - 1;
+		if ($after_line <= $linemax)
+			$after .= $oldfilearr[$after_line] . ($after_line == count($oldfilearr) - 1 ? '' : "\n");
+	}
+
+	// Actually add the lines of context here
+	if ($up)
+	{
+		if ($snippet['action'] == 'replace')
 		{
-			for ($i = 1; $i <= $lines_of_context; $i++)
-			{
-				$snippet = removeBottomLine($snippet);
-				$snippet = removeTopLine($snippet);
-			}
-			$snippets[$ix] = $snippet;
+			$snippet['removelines'] = $before . $snippet['removelines'];
+			$snippet['addlines'] = $before . $snippet['addlines'];
+		}
+		else
+		{
+			$snippet['removelines'] = $before . $snippet['removelines'];
+			$snippet['action'] = 'before';
+		}
+	}
+	else
+	{
+		if ($snippet['action'] == 'replace')
+		{
+			$snippet['removelines'] = $snippet['removelines'] . $after;
+			$snippet['addlines'] = $snippet['addlines'] . $after;
+		}
+		else
+		{
+			$snippet['removelines'] = $snippet['removelines'] . $after;
+			$snippet['action'] = 'after';
 		}
 	}
 
-	return $snippets;
-}
+	// How many occurances of the old text in the old file?
+	if (empty($snippet['removelines']))
+		$count = 99;
+	else
+		$count = substr_count($oldfilestr, $snippet['removelines']);
 
-//*** Remove Top Line - & make sure it's common
-function removeTopLine($snippet) {
+	// How many occurances of the new text in the new file?
+	if (empty($snippet['addlines']))
+		$repcount = 99;
+	else
+		if ($snippet['action'] == 'replace')
+			$repcount = substr_count($newfilestr, $snippet['addlines']);
+		else
+			// If testing REMOVALS of before/after, the search should include the full substitution made
+			if ($snippet['action'] == 'before')
+				$repcount = substr_count($newfilestr, $snippet['removelines'] . $snippet['addlines']);
+			else
+				$repcount = substr_count($newfilestr, $snippet['addlines'] . $snippet['removelines']);
 
-	// Get top lines from both...
-	$eolSearch = strpos($snippet['removelines'], "\n");
-	$eolReplace = strpos($snippet['addlines'], "\n");
-	if ($eolSearch !== false && $eolReplace !== false)
-	{
-		$topSearch = substr($snippet['removelines'], 0, $eolSearch + 1);
-		$topReplace = substr($snippet['addlines'], 0, $eolReplace + 1);
-		if ($topSearch === $topReplace)
-		{
-			$snippet['removelines'] = substr($snippet['removelines'], $eolSearch + 1);
-			$snippet['addlines'] = substr($snippet['addlines'], $eolReplace + 1);
-
-			// Keep status current...
-			$snippet['linestart']++;
-			$snippet['removes']--;
-		}
-	}
-
-	return $snippet;
-}
-
-//*** Remove Bottom Line - & make sure it's common
-function removeBottomLine($snippet) {
-
-	static $codeLine = '/(?<=\n|^)(.*\n?)$/D';
-
-	$sLine = preg_match($codeLine, $snippet['removelines'], $sMatch);
-	$rLine = preg_match($codeLine, $snippet['addlines'], $rMatch);
-	if ($sLine && $rLine && $sMatch[1] === $rMatch[1])
-	{
-		$snippet['removelines'] = substr($snippet['removelines'], 0, strlen($snippet['removelines']) - strlen($sMatch[1]));
-		$snippet['addlines'] = substr($snippet['addlines'], 0, strlen($snippet['addlines']) - strlen($rMatch[1]));
-
-		// Keep status current...
-		$snippet['removes']--;
-	}
+	if ($audit == true)
+		echo $file . ' Snippet: '. $ix . ($up ? ' Up ' : ' Down ') . 'context: ' . $context . ' count: ' . $count . ' repcount: ' . $repcount . '<br>';
 
 	return $snippet;
 }
