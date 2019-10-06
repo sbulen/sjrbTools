@@ -6,7 +6,7 @@
 //
 // Usage guidelines:
 // (1) Your git/bin must be in your environment PATH
-// (2) Set the user config variables below.  All 7 variables must be provided. 
+// (2) Set the user config variables below.
 // (3) Execute this file from your browser.
 // (4) Some info will be displayed in your browser, which files were updated, etc.
 // (5) Xml files will be in the directory where this was launched.  
@@ -18,14 +18,23 @@
 // and had far fewer conflicts with mods.
 //
 
-//*** Start user config
+//*** Start user config - these parameters are all required
 $repo_path = 'D:/EasyPHP/Git/SMF2.0';
 $repo_master_branch = 'master';
-$repo_prior_release_commit = '0d792ea2436ece61dbfb51c9d73fe4d42eb20ebe';
+$repo_prior_release_commit = 'v2.0.15';
 $repo_this_release_commit = 'HEAD';
 $new_version_txt = '2.0.16';
+// Only display changes; if false will also list all files looked at
 $only_display_changes = true;
+// Audit will display info on each variant of lines of context & direction (up/down) tested
 $audit = true;
+// $override is an optional parameter...
+// Override is intended to be used ONLY if you find there are conflicts
+// It is an array which associates files with a set of snippet/direction pairs
+// For direction, up is TRUE and down is FALSE
+// For example, to ONLY use UP for index.php, snippet 4:
+//     $override = array('index.php' => array(4 => TRUE));
+$override = array('index.php' => array(4 => TRUE));
 //*** End user config
 
 //*** Main program
@@ -77,8 +86,6 @@ function doStartup() {
 function navFileSystem($dir) {
 
 	$files = scandir($dir);
-
-//checkFile('d:\easyphp\git\smf2.0\index.php');
 
 	foreach($files as $key => $value){
 		// Bypass all the "hidden" .git files, folders & also . & ..
@@ -393,7 +400,7 @@ function parseDiff($diff, $file) {
 //*** Make sure all searches are unambiguous for replaces & befores
 function unambiguate($snippets, $file) {
 
-	global $audit, $oldfilestr, $oldfilearr, $newfilestr;
+	global $audit, $oldfilestr, $oldfilearr, $newfilestr, $override;
 
 	foreach ($snippets AS $ix => $snippet)
 	{
@@ -441,21 +448,37 @@ function unambiguate($snippets, $file) {
 			while ($count != 1 || $repcount != 1)
 			{
 				$context++;
-				$up = chooseDir($snippet, $linemin, $linemax, $context);
-				// Note counts are passed by reference & updated by testDir()
-				$test = testDir($file, $up, $ix, $snippet, $context, $linemin, $linemax, $count, $repcount);
-				if ($count == 1 && $repcount == 1)
+				// If an override is in effect, only look in that direction...
+				if (isset($override[$file][$ix]))
 				{
-					$snippet = $test;
-					break;
-				}
-				else
-				{
-					$test = testDir($file, !$up, $ix, $snippet, $context, $linemin, $linemax, $count, $repcount);
+					if ($audit == true)
+						echo $file . ' Snippet: '. $ix . ' Override in effect: ' . ($override[$file][$ix] ? ' Up ' : ' Down ') . '!<br>';
+					$test = testDir($file, $override[$file][$ix], $ix, $snippet, $context, $linemin, $linemax, $count, $repcount);
 					if ($count == 1 && $repcount == 1)
 					{
 						$snippet = $test;
 						break;
+					}
+				}
+				// ...otherwise, choose a primary direction & check both if necessary
+				else
+				{
+					$up = chooseDir($snippet, $linemin, $linemax, $context);
+					// Note counts are passed by reference & updated by testDir()
+					$test = testDir($file, $up, $ix, $snippet, $context, $linemin, $linemax, $count, $repcount);
+					if ($count == 1 && $repcount == 1)
+					{
+						$snippet = $test;
+						break;
+					}
+					else
+					{
+						$test = testDir($file, !$up, $ix, $snippet, $context, $linemin, $linemax, $count, $repcount);
+						if ($count == 1 && $repcount == 1)
+						{
+							$snippet = $test;
+							break;
+						}
 					}
 				}
 			}
