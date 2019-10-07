@@ -32,7 +32,7 @@ $audit = true;
 // Override is intended to be used ONLY if you find there are conflicts
 // It is an array which associates files with a set of snippet/direction pairs
 // For direction, up is TRUE and down is FALSE
-// For example, to ONLY use UP for index.php, snippet 4:
+// For example, to ONLY look UP for index.php, snippet 4:
 //     $override = array('index.php' => array(4 => TRUE));
 $override = array('index.php' => array(4 => TRUE));
 //*** End user config
@@ -483,6 +483,8 @@ function unambiguate($snippets, $file) {
 				}
 			}
 		}
+		// Apply the snippet to $oldfilestr, since it should affect future searches...
+		applySnippet($snippet);
 		$snippets[$ix] = $snippet;
 	}
 
@@ -600,6 +602,22 @@ function testDir($file, $up, $ix, $snippet, $context, $linemin, $linemax, &$coun
 		echo $file . ' Snippet: '. $ix . ($up ? ' Up ' : ' Down ') . 'context: ' . $context . ' count: ' . $count . ' repcount: ' . $repcount . '<br>';
 
 	return $snippet;
+}
+
+//*** Apply the snippet to $oldfilestr, since updates to the file will affect future searches...
+function applySnippet($snippet) {
+
+	global $oldfilestr;
+
+	// Don't worry about end...  It's the last one anyway...
+	if ($snippet['action'] == 'replace')
+		$oldfilestr = str_replace($snippet['removelines'], $snippet['addlines'], $oldfilestr);
+	elseif ($snippet['action'] == 'before')
+		$oldfilestr = str_replace($snippet['removelines'], $snippet['removelines'] . $snippet['addlines'], $oldfilestr);
+	elseif ($snippet['action'] == 'after')
+		$oldfilestr = str_replace($snippet['removelines'], $snippet['addlines'] . $snippet['removelines'], $oldfilestr);
+
+	return;
 }
 
 //*** Wrap Up 
