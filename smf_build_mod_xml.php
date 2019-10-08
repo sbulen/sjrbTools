@@ -428,6 +428,7 @@ function unambiguate($snippets, $file) {
 			{
 				if ($audit == true)
 					echo $file . ' Snippet: '. $ix . ' No need to add context!<br>';
+				applySnippet($snippet);
 				continue;
 			}
 
