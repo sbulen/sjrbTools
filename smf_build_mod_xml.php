@@ -132,7 +132,6 @@ function checkFile($file) {
 function processDiff($file, $diff) {
 
 	global $repo_prior_release_commit, $repo_this_release_commit, $oldfilestr, $oldfilearr, $newfilestr;
-	global $oldfilelen, $newfilelen, $oldfilestr, $newfilestr;
 
 	// Git wants unix style, not win style...
 	$file = strtr($file, '\\', '/');
@@ -185,12 +184,8 @@ function processDiff($file, $diff) {
 	$cmd = "git show {$repo_prior_release_commit}:{$gitfile}";
 	$oldfilestr = `{$cmd}`;
 	$oldfilearr = explode("\n", $oldfilestr);
-	$oldfilelen = count($oldfilearr);
-
 	$cmd = "git show {$repo_this_release_commit}:{$gitfile}";
 	$newfilestr = `{$cmd}`;
-	$newfilearr = explode("\n", $newfilestr);
-	$newfilelen = count($newfilearr);
 
 	// Split it up!
 	$snippets = parseDiff($diff, $file);
@@ -321,13 +316,8 @@ function buildFileOps($dir, $file, $gitfile, $snippets) {
 //*** parseDiff
 function parseDiff($diff, $file) {
 
-	global $oldfilelen, $newfilelen, $oldfilestr, $newfilestr;
-
 	$diff = explode("\n", $diff);
 	$chunk = -1;
-
-	$removes_no_eol_lf = false;
-	$adds_no_eol_lf = false;
 
 	foreach ($diff AS $line)
 	{
@@ -344,21 +334,21 @@ function parseDiff($diff, $file) {
 			break;
 		}
 
-		// If it's telling you that the prior text had no newline, record that...
+		// If it's telling you that the prior text had no newline, strip it...
 		if (substr($line, 0, 12) == '\ No newline')
 		{
 			if ($prior == ' ')
 			{
-				$removes_no_eol_lf = true;
-				$adds_no_eol_lf = true;
+				$parsed[$chunk]['removelines'] = substr($parsed[$chunk]['removelines'], 0, strlen($parsed[$chunk]['removelines']) - 1);
+				$parsed[$chunk]['addlines'] = substr($parsed[$chunk]['addlines'], 0, strlen($parsed[$chunk]['addlines']) - 1);
 			}
 			elseif ($prior == '-')
 			{
-				$removes_no_eol_lf = true;
+				$parsed[$chunk]['removelines'] = substr($parsed[$chunk]['removelines'], 0, strlen($parsed[$chunk]['removelines']) - 1);
 			}
 			elseif ($prior == '+')
 			{
-				$adds_no_eol_lf = true;
+				$parsed[$chunk]['addlines'] = substr($parsed[$chunk]['addlines'], 0, strlen($parsed[$chunk]['addlines']) - 1);
 			}
 			continue;
 		}
@@ -370,12 +360,9 @@ function parseDiff($diff, $file) {
 			$parsed[$chunk]['removelines'] = '';
 			$parsed[$chunk]['addlines'] = '';
 			$matches = array();
-			preg_match('/@@ -(\d{1,10}),{0,1}(\d{0,10}) \+(\d{1,10}),{0,1}(\d{0,10}) @@/', $line, $matches);
+			preg_match('/@@ -(\d{1,10}),{0,1}(\d{0,10}) \+\d{1,10},{0,1}\d{0,10} @@/', $line, $matches);
 			$parsed[$chunk]['linestart'] = $matches[1];
 			$parsed[$chunk]['removes'] = $matches[2];
-			$parsed[$chunk]['addstart'] = $matches[3];
-			$parsed[$chunk]['adds'] = $matches[4];
-
 			// The x,0 means only adds, so the *change* would really start on the next line (weird git syntax...)
 			if ($parsed[$chunk]['removes'] == '0')
 				$parsed[$chunk]['linestart']++;
@@ -384,51 +371,27 @@ function parseDiff($diff, $file) {
 				$parsed[$chunk]['removes'] = '1';
 			// Factor in that we will be comparing to arrays, so zero offest (subtract 1).
 			$parsed[$chunk]['linestart']--;
-
-			// The x,0 means only removes, so the *change* would really start on the next line (weird git syntax...)
-			if ($parsed[$chunk]['adds'] == '0')
-				$parsed[$chunk]['addstart']++;
-			// No value means 1 line added (weird git syntax; 0=0, ''=1, 2=2...)
-			elseif (empty($parsed[$chunk]['adds']))
-				$parsed[$chunk]['adds'] = '1';
-			// Factor in that we will be comparing to arrays, so zero offest (subtract 1).
-			$parsed[$chunk]['addstart']--;
-
 		}
 		elseif (substr($line, 0, 1) == ' ')
 		{
-			// No leading LF for first line...
-			$newline = ($parsed[$chunk]['linestart'] == 0 && empty($parsed[$chunk]['removelines']) && empty($parsed[$chunk]['addlines']) ? '' : "\n");
-			$parsed[$chunk]['removelines'] .= $newline . substr($line, 1);
-			$parsed[$chunk]['addlines'] .= $newline . substr($line, 1);
+			$parsed[$chunk]['removelines'] .= substr($line, 1) . "\n";
+			$parsed[$chunk]['addlines'] .= substr($line, 1) . "\n";
 		}
 		elseif (substr($line, 0, 1) == '-')
 		{
-			$newline = ($parsed[$chunk]['linestart'] == 0 && empty($parsed[$chunk]['removelines']) ? '' : "\n");
-			$parsed[$chunk]['removelines'] .= $newline . substr($line, 1);
+			$parsed[$chunk]['removelines'] .= substr($line, 1) . "\n";
 		}
 		elseif (substr($line, 0, 1) == '+')
 		{
-			$newline = ($parsed[$chunk]['linestart'] == 0 && empty($parsed[$chunk]['addlines']) ? '' : "\n");
-			$parsed[$chunk]['addlines'] .= $newline . substr($line, 1);
+			$parsed[$chunk]['addlines'] .= substr($line, 1) . "\n";
 		}
 		// Alert if there is a line type we haven't seen...  
+		// Need to test for an empty line - don't know why there are sometimes empty lines in the output from git, but there are.
 		elseif (!empty($line))
 			echo $file . ' ************************* Unknown diff line type: ' . $line . ' ****************************<br>';
 
 		// Save off for when it tells you 'no line feed' after the fact...
 		$prior = substr($line, 0, 1);
-	}
-
-	// If you were working on the last line, & you were NOT told there was no LF, add an LF.
-	// Don't bother for new files ('action' set).
-	// Don't add LF if there wasn't a line (removes or adds == 0).
-	if (!isset($parsed[0]['action']))
-	{
-		if (!$removes_no_eol_lf && $parsed[$chunk]['removes'] > 0 && $parsed[$chunk]['linestart'] + $parsed[$chunk]['removes'] == $oldfilelen - 1 && substr($oldfilestr, -1) == "\n")
-			$parsed[$chunk]['removelines'] .= "\n";
-		if (!$adds_no_eol_lf && $parsed[$chunk]['adds'] > 0 && $parsed[$chunk]['addstart'] + $parsed[$chunk]['adds'] == $newfilelen - 1 && substr($newfilestr, -1) == "\n")
-			$parsed[$chunk]['addlines'] .= "\n";
 	}
 
 	return $parsed;
@@ -444,9 +407,12 @@ function unambiguate($snippets, $file) {
 		// No search string for new files
 		if ($snippet['action'] == 'new file')
 			continue;
-		// No search string for ends
+		// Ends are weird...  SMF parser wants a "dummy" \n at the beggining and will add its own \n at the end...
+		// Most of our code already has a \n at the end of each line...  So...  move it...
 		elseif ($snippet['action'] == 'end')
-			continue;
+		{
+			$snippet['addlines'] = substr("\n" . $snippet['addlines'], 0, strlen($snippet['addlines']));
+		}
 		else
 		{
 			// Check 1 - Will it work as-is?
@@ -538,17 +504,17 @@ function chooseDir($snippet, $linemin, $linemax, $context) {
 	{
 		$before_line = $snippet['linestart'] - $context + $i - 1;
 		if ($before_line >= $linemin)
-			$before .= ($before_line == 0 ? '' : "\n") . $oldfilearr[$before_line];
+			$before .= $oldfilearr[$before_line] . "\n";
 
 		$after_line = $snippet['linestart'] + $snippet['removes'] + $i - 1;
 		if ($after_line <= $linemax)
-			$after .= "\n" . $oldfilearr[$after_line];
+			$after .= $oldfilearr[$after_line]  . "\n";
 	}
 
 	// Comments get priority!  If no comments either way, use whatever context has more info...
-	if (strpos($before, '//') !== false)
+	if (substr($before, 0, 2) == '//')
 		$up = true;
-	elseif (strpos($after, '//') !== false)
+	elseif (substr($after, 0, 2) == '//')
 		$up = false;
 	elseif (strlen($before) >= strlen($after))
 		$up = true;
@@ -579,11 +545,11 @@ function testDir($file, $up, $ix, $snippet, $context, $linemin, $linemax, &$coun
 	{
 		$before_line = $snippet['linestart'] - $context + $i - 1;
 		if ($before_line >= $linemin)
-			$before .= ($before_line == 0 ? '' : "\n") . $oldfilearr[$before_line];
+			$before .= $oldfilearr[$before_line] . "\n";
 
 		$after_line = $snippet['linestart'] + $snippet['removes'] + $i - 1;
 		if ($after_line <= $linemax)
-			$after .= "\n" . $oldfilearr[$after_line];
+			$after .= $oldfilearr[$after_line] . ($after_line == count($oldfilearr) - 1 ? '' : "\n");
 	}
 
 	// Actually add the lines of context here
