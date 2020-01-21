@@ -512,9 +512,9 @@ function chooseDir($snippet, $linemin, $linemax, $context) {
 	}
 
 	// Comments get priority!  If no comments either way, use whatever context has more info...
-	if (substr($before, 0, 2) == '//')
+	if (strpos($before, '//') !== false)
 		$up = true;
-	elseif (substr($after, 0, 2) == '//')
+	elseif (strpos($after, '//') !== false)
 		$up = false;
 	elseif (strlen($before) >= strlen($after))
 		$up = true;
