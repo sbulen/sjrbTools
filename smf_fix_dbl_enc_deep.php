@@ -56,6 +56,8 @@ function doStartup() {
 	echo('***********************************************<br><br>');
 
 	define('SMF', 1);
+	define('POSTGRE_TITLE', 'PostgreSQL');
+	define('MYSQL_TITLE', 'MySQL');
 
 	// Prime the pump...
 	$allTimer = microtime(true);
