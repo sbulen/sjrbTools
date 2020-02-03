@@ -68,6 +68,8 @@ function doStartup() {
 	@flush();
 
 	define('SMF', 1);
+	define('POSTGRE_TITLE', 'PostgreSQL');
+	define('MYSQL_TITLE', 'MySQL');
 	
 	return;
 }
