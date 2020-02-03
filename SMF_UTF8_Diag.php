@@ -33,7 +33,9 @@ function doStartup() {
 	echo("***********************************<br>");
 
 	define('SMF', 1);
-	
+	define('POSTGRE_TITLE', 'PostgreSQL');
+	define('MYSQL_TITLE', 'MySQL');
+
 	// Yes, both flushes necessary
 	@ob_flush();
 	@flush();
