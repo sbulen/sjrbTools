@@ -15,8 +15,8 @@
 $file = 'nonimportantsettings';
 $fields = 100;		// how many fields in your json
 $size = 100;		// how big is each field
-$sleeptime = 100;	// in milliseconds
-$writes = 1000; 	// don't go on forever...
+$sleeptime = 10;	// in milliseconds
+$writes = 2000; 	// don't go on forever...
 // End config section
 
 //*** Main program

@@ -14,7 +14,7 @@
 // Config section...
 $file = 'nonimportantsettings';
 $fields = 100;		// how many fields in your json
-$sleeptime = 100;	// in milliseconds, between GETs
+$sleeptime = 10;	// in milliseconds, between GETs
 $reads = 1000; 		// don't go on forever...
 // End config section
 
