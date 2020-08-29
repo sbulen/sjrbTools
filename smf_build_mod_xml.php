@@ -10,8 +10,8 @@
 // (3) Execute this file from your browser.
 // (4) Some info will be displayed in your browser, which files were updated, etc.
 // (5) Xml files will be in the directory where this was launched.  
-//       *** They will be overwritten with each execution!!! ***
-//     by sbulen
+//		*** They will be overwritten with each execution!!! ***
+//		by sbulen
 // 
 // This version always attempts 0 lines of context & builds searches up from there.
 // This was based on comparison to successful patches, that were very granular in their searches/replaces
@@ -21,20 +21,42 @@
 //*** Start user config - these parameters are all required
 $repo_path = 'D:/EasyPHP/Git/SMF2.0';
 $repo_master_branch = 'master';
-$repo_prior_release_commit = 'v2.0.15';
+$repo_prior_release_commit = 'v2.0.17';
 $repo_this_release_commit = 'HEAD';
-$new_version_txt = '2.0.16';
+$new_version_txt = '2.0.18';
 // Only display changes; if false will also list all files looked at
 $only_display_changes = true;
 // Audit will display info on each variant of lines of context & direction (up/down) tested
 $audit = true;
+// Will do a print_r of the freshly-parsed snippets before any operations
+$dump_snippets = false;
+
+// Controlling behavior:
+
+// $merge_with_prev is an optional parameter...
+// Sometimes you want to tell it to merge a snippet with the previous snippet.
+// For example, to merge snippets 2 with 3, and 4 with 5:
+//		$merge_with_prev = array('index.php' => array(3, 5));
+$merge_with_prev = array(
+		'RepairBoards.php' => array(2, 3, 11, 15, 16, 17, 19, 21, 23, 24, 25, 
+			26, 29, 30, 37, 39, 42, 43, 44, 46, 51, 53, 61, 63, 70, 72, 77, 78, 
+			80, 81, 83, 86, 91, 97, 102, 104, 112, 113, 114, 117, 119, 122, 124, 
+			126, 128, 130, 132, 134, 136, 138, 143, 145, 148, 151, 153, 163, 
+			173, 175, 178, 180, 183, 185, 188, 190, 193, 195, 198),
+		'Subs.php' => array(3, 4, 5, 10, 11, 12),
+		'Subs-Package.php' => array(4),
+		'Load.php' => array(14),
+		'ModerationCenter.php' => array(5, 9),
+	);
 // $override is an optional parameter...
-// Override is intended to be used ONLY if you find there are conflicts
+// Override is intended to be used if you find there are conflicts
+// due to the bug in package manager where it doesn't like using the same code as an 
+// anchor for both a before & an after...  Installs are OK, but uninstalls have issues.
 // It is an array which associates files with a set of snippet/direction pairs
-// For direction, up is TRUE and down is FALSE
+// For direction, up is TRUE and down is FALSE.
 // For example, to ONLY look UP for index.php, snippet 4:
-//     $override = array('index.php' => array(4 => TRUE));
-$override = array('index.php' => array(4 => TRUE));
+//		$override = array('index.php' => array(4 => TRUE));
+$override = array();
 //*** End user config
 
 //*** Main program
@@ -131,7 +153,7 @@ function checkFile($file) {
 //*** Figure out what to do with each diff
 function processDiff($file, $diff) {
 
-	global $repo_prior_release_commit, $repo_this_release_commit, $oldfilestr, $oldfilearr, $newfilestr;
+	global $repo_prior_release_commit, $repo_this_release_commit, $oldfilestr, $oldfilearr, $newfilestr, $newfilearr, $dump_snippets;
 
 	// Git wants unix style, not win style...
 	$file = strtr($file, '\\', '/');
@@ -186,9 +208,20 @@ function processDiff($file, $diff) {
 	$oldfilearr = explode("\n", $oldfilestr);
 	$cmd = "git show {$repo_this_release_commit}:{$gitfile}";
 	$newfilestr = `{$cmd}`;
+	$newfilearr = explode("\n", $newfilestr);
 
 	// Split it up!
 	$snippets = parseDiff($diff, $file);
+
+	if (!empty($dump_snippets))
+	{
+		echo '<br>' . $file . ' parsed:<br>';
+		echo htmlspecialchars(print_r($snippets, true));
+		echo '<br>';
+	}
+
+	// Merge, if specified to do so...
+	$snippets = mergeWithPrevious($snippets, $file);
 
 	// Determine appropriate action for each snippet
 	$snippets = determineAction($snippets, $file);
@@ -204,6 +237,36 @@ function processDiff($file, $diff) {
 		buildFileOps($dir, $file, $gitfile, $snippets);
 
 	return;
+}
+
+//*** Merge snippets where told to do so...
+function mergeWithPrevious($snippets, $file) {
+
+	global $oldfilearr, $newfilearr, $merge_with_prev;
+
+	if (isset($merge_with_prev[$file]))
+	{
+		// Work backwards, so you don't delete it before you merge it...
+		rsort($merge_with_prev[$file]);
+		foreach($merge_with_prev[$file] AS $ix)
+		{
+			$snippets[$ix - 1]['removes'] = $snippets[$ix]['linestart'] + $snippets[$ix]['removes'] - $snippets[$ix - 1]['linestart'];
+			$snippets[$ix - 1]['adds'] = $snippets[$ix]['addstart'] + $snippets[$ix]['adds'] - $snippets[$ix - 1]['addstart'];
+
+			$snippets[$ix - 1]['removelines'] = '';
+			for ($i = 0; $i <= $snippets[$ix - 1]['removes']; $i++)
+				$snippets[$ix - 1]['removelines'] .= $oldfilearr[$snippets[$ix - 1]['linestart'] + $i] . "\n";
+
+			$snippets[$ix - 1]['addlines'] = '';
+			for ($i = 0; $i <= $snippets[$ix - 1]['adds']; $i++)
+				$snippets[$ix - 1]['addlines'] .= $newfilearr[$snippets[$ix - 1]['addstart'] + $i] . "\n";
+
+			unset($snippets[$ix]);
+			echo $file . ' Snippet ' . $ix . ' successfully merged with ' . ($ix - 1) . '...<br>';
+		}
+	}
+
+	return $snippets;
 }
 
 //*** Figure out if we're going to do a position=replace, end, before, etc...
@@ -360,17 +423,22 @@ function parseDiff($diff, $file) {
 			$parsed[$chunk]['removelines'] = '';
 			$parsed[$chunk]['addlines'] = '';
 			$matches = array();
-			preg_match('/@@ -(\d{1,10}),{0,1}(\d{0,10}) \+\d{1,10},{0,1}\d{0,10} @@/', $line, $matches);
+			preg_match('/@@ -(\d{1,10}),{0,1}(\d{0,10}) \+(\d{1,10}),{0,1}(\d{0,10}) @@/', $line, $matches);
 			$parsed[$chunk]['linestart'] = $matches[1];
 			$parsed[$chunk]['removes'] = $matches[2];
+			$parsed[$chunk]['addstart'] = $matches[3];
+			$parsed[$chunk]['adds'] = $matches[4];
 			// The x,0 means only adds, so the *change* would really start on the next line (weird git syntax...)
 			if ($parsed[$chunk]['removes'] == '0')
 				$parsed[$chunk]['linestart']++;
 			// No value means 1 line removed (weird git syntax; 0=0, ''=1, 2=2...)
 			elseif (empty($parsed[$chunk]['removes']))
 				$parsed[$chunk]['removes'] = '1';
+			if (empty($parsed[$chunk]['adds']))
+				$parsed[$chunk]['adds'] = '1';
 			// Factor in that we will be comparing to arrays, so zero offest (subtract 1).
 			$parsed[$chunk]['linestart']--;
+			$parsed[$chunk]['addstart']--;
 		}
 		elseif (substr($line, 0, 1) == ' ')
 		{
