@@ -27,6 +27,7 @@ These tools are inquiry only & are used to perform diagnostics.
 * ***smf_read_inds_maint_2-0.php*** - This tool marks all boards read in a way that doesn't add millions of rows to your logs...  SMF 2.0.
 * ***smf_read_inds_maint_2-1.php*** - This tool marks all boards read in a way that doesn't add millions of rows to your logs...  SMF 2.1.
 * ***SMF_URLs_Paths.php*** - This tool converts all URLs and Paths throughout your SMF forum's database from one value to another.  SMF 2.0 & 2.1.  This tool updates all URLs and Paths found throughout the settings table, the themes table, the messages table, personal messages and members' signatures.  I use this to quickly clone working test environments, so they do not link to each other and I do not find myself working within the wrong environment after clicking on a link...  (Its original name was really_really_really_repair_settings.php, but I felt that was too long...)
+* ***smf_fix_log_actions.php*** - Checks & fixes all string lengths in log_actions. UTF8 conversions can break string lengths in serialized strings.  SMF2.0.
 
 ## SMF UTF8 Utilities
 
@@ -38,3 +39,11 @@ These tools are inquiry only & are used to perform diagnostics.
 ## Github utility
 
 * ***github-dump.php*** - Dumps Issue & PR info for a specified repository into a comma-delimited file. 
+
+## smfMerge and Related Utilities
+
+**WARNING:** These tools update your forum database.  Use at your own risk.  ALWAYS back up your database before use.  ALWAYS run them in your test environment first to learn how they work & to confirm desired outcomes.
+
+* ***mergeSMF.php*** - Merges two forums.  SMF2.0.
+* ***SMF_Topic_Link_Fixer_Merge.php*** - Post-merge quote link fixer. Fixes quote links for a specific range of posts, incrementing the message #s by a value you provide. Intended to fix the old secondary forum posts.  SMF2.0.
+* ***smf_mark_all_read_merge.php*** - Can be used to mark new forum boards read by the primary board users.  In my instance, the secondary forum was a predecessor to the current forum, and the content was dated.  SMF2.0.
