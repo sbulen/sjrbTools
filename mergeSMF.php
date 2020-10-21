@@ -189,7 +189,7 @@ $tables = array(
 		'rels' => array(
 			'log_actions' => array('id_action'),
 		),
-		'userfunc' => 'serial_strings',
+		'userfunc' => 'packed_strings',
 	),
 	'membergroups' => array (
 		'incby' => 'id_group',
@@ -263,6 +263,17 @@ $tables = array(
  * This is the main program
  ****************************/
 
+// Get the branch...
+$sql = "SELECT value FROM {$db_prefix}settings WHERE variable = 'smfVersion' LIMIT 1";
+$result = call_mysqli_query($sql, false);
+list ($version) = mysqli_fetch_row($result);
+mysqli_free_result($result);
+// Strip unnecessary stuff for us from the branch...
+$pattern = '/^(\d\.\d{1,3})/';
+$matches = array();
+preg_match($pattern, $version, $matches);
+$version = $matches[1];
+
 if(!isset($_REQUEST['step']))
 {
 	// Check this Secondary Prefix is different...
@@ -270,6 +281,12 @@ if(!isset($_REQUEST['step']))
 	{
 		head();
 		echo 'You are on the wrong installation,<br />Or the prefix you set in this file is wrong.<br /><br /><a href="'.$_SERVER['PHP_SELF'].'">Please remedy and start again.</a>';
+		foot();
+	}
+	elseif (($version != '2.0') && ($version != '2.1'))
+	{
+		head();
+		echo 'This script does not work on this version of SMF.<br /><br /><a href="'.$_SERVER['PHP_SELF'].'">Please remedy and start again.</a>';
 		foot();
 	}
 	else
@@ -337,19 +354,79 @@ function renameattachments()
 
 	echo 'Renaming & copying attachments and thumbs...<br>';
 
-	// Get the attachments directory...
+	// Get the secondary attachments directory...
 	echo 'Getting attachment upload dir';
 	$sql = "SELECT value FROM {$db_prefix}settings WHERE variable = 'attachmentUploadDir' LIMIT 1";
 	$result = call_mysqli_query($sql, false);
 	list ($attachmentUploadDir) = mysqli_fetch_row($result);
 	mysqli_free_result($result);
-	echo '...done<br>';
+	echo "...done ({$attachmentUploadDir})<br>";
 
-	// Make temporary attachments directory...
-	$attachmentTempDir = $attachmentUploadDir . '/to_move_to_primary/';
-	echo 'Creating to_move_to_primary attachments directory ' . $attachmentTempDir;
-	@mkdir($attachmentTempDir, 0755);
-	echo '...done<br>';
+	// Get the secondary attachments current directory #...
+	echo 'Getting secondary attachment upload dir #';
+	$sql = "SELECT value FROM {$db_prefix}settings WHERE variable = 'currentAttachmentUploadDir' LIMIT 1";
+	$result = call_mysqli_query($sql, false);
+	list ($currAttachmentUploadDir) = mysqli_fetch_row($result);
+	mysqli_free_result($result);
+	echo "...done ({$currAttachmentUploadDir})<br>";
+
+	// Unpacking of attachment folders needed?
+	$attachDirs = array();
+	if (empty($currAttachmentUploadDir))
+	{
+		$currAttachmentUploadDir = 1;
+		if (is_dir($attachmentUploadDir))
+			$attachDirs[1] = $attachmentUploadDir;
+		else
+			$attachDirs = unpack_string($attachmentUploadDir);
+	}
+	else
+		$attachDirs = unpack_string($attachmentUploadDir);
+
+	// Get the primary attachments current directory #...
+	echo 'Getting primary attachment upload dir #';
+	$sql = "SELECT value FROM " . PRIMARY_DB_PREFIX . "settings WHERE variable = 'currentAttachmentUploadDir' LIMIT 1";
+	$result = call_mysqli_query($sql, false);
+	list ($currPrimaryUploadDir) = mysqli_fetch_row($result);
+	mysqli_free_result($result);
+
+	// Empty means 1...
+	if (empty($currPrimaryUploadDir))
+		$currPrimaryUploadDir = 1;
+	echo "...done ({$currPrimaryUploadDir})<br>";
+
+	// If there is only one source attachment dir, move its contents to the current dir on the target.
+	if (count($attachDirs) == 1)
+	{
+		if ($currPrimaryUploadDir != 1)
+		{
+			echo 'Changing folder # on attachments to match primary current folder';
+			$sql = "UPDATE {$db_prefix}attachments SET id_folder = {$currPrimaryUploadDir}";
+			$query = call_mysqli_query($sql, false);
+			echo '...done<br>';
+		}
+		$maxTargetFolder = $currPrimaryUploadDir - 1;
+	}
+	else
+	{
+		// If there are multiple source attachment dirs, new corresponding dirs should be added to the end of the target attachment dir list.
+		// Find the highest folder # actually used in the PRIMARY, target DB. We want the new attachment dirs to go beyond that.
+		echo 'Determining number of attachment folders used in the primary system';
+		$sql = "SELECT MAX(id_folder) FROM " . PRIMARY_DB_PREFIX . "attachments";
+		$query = call_mysqli_query($sql, false);
+		list ($maxTargetFolder) = mysqli_fetch_row($query);
+		if (empty($maxTargetFolder))
+			$maxTargetFolder = 0;
+		mysqli_free_result($query);
+		echo "...done ({$maxTargetFolder})<br>";
+
+		echo 'Incrementing folder #s on attachment records';
+		$sql = "UPDATE {$db_prefix}attachments SET id_folder = id_folder + {$maxTargetFolder}";
+		$query = call_mysqli_query($sql, false);
+		echo '...done<br>';
+		// Leave it to the admin to create & name the new folders needed...
+		echo '<span style = "color:red"><strong>*** You must manually add new attachment folders in the target system corresponding to the folders in the source system.***</strong></span><br>';
+	}
 
 	// Get the max attach ID
 	echo 'Getting max attachment ID from primary';
@@ -359,24 +436,32 @@ function renameattachments()
 	mysqli_free_result($query);
 	echo '...done<br>';
 
-	echo 'Copying attachments';
-	$sql = "SELECT ID_ATTACH FROM {$db_prefix}attachments ORDER BY ID_ATTACH DESC";
-	$query = call_mysqli_query($sql, false);
-
-	while($attach = mysqli_fetch_row($query))
+	foreach($attachDirs AS $ix => $attachDir)
 	{
-		$prefix_old = '/^' . preg_quote($attachmentUploadDir .'/' . $attach[0] . '_', '/') . '/';
-		$prefix_new = $attachmentTempDir . ($attach[0] + $maxattach) . '_';
-		$filename = glob($attachmentUploadDir .'/'. $attach[0] . '_*', GLOB_NOESCAPE);
-		if (!empty($filename[0]) && is_file($filename[0]))
-		{
-			$filenew = preg_replace($prefix_old, $prefix_new, $filename[0]);
-			copy($filename[0], $filenew);
-		}
-	}
-	mysqli_free_result($query);
-	echo '...done<br><br>';
+		// Make temporary attachments directory...
+		$attachmentTempDir = $attachDir . '/to_move_to_primary/';
+		echo 'Creating to_move_to_primary attachments directory ' . $attachmentTempDir;
+		@mkdir($attachmentTempDir, 0755);
+		echo '...done<br>';
 
+		echo 'Copying attachments intended for folder ' . ($ix + $maxTargetFolder) . ' ';
+		$sql = "SELECT ID_ATTACH FROM {$db_prefix}attachments ORDER BY ID_ATTACH DESC";
+		$query = call_mysqli_query($sql, false);
+
+		while($attach = mysqli_fetch_row($query))
+		{
+			$prefix_old = '/^' . preg_quote($attachDir .'/' . $attach[0] . '_', '/') . '/';
+			$prefix_new = $attachmentTempDir . ($attach[0] + $maxattach) . '_';
+			$filename = glob($attachDir .'/'. $attach[0] . '_*', GLOB_NOESCAPE);
+			if (!empty($filename[0]) && is_file($filename[0]))
+			{
+				$filenew = preg_replace($prefix_old, $prefix_new, $filename[0]);
+				copy($filename[0], $filenew);
+			}
+		}
+		mysqli_free_result($query);
+		echo '...done<br>';
+	}
 	return;
 }
 
@@ -484,12 +569,12 @@ function dostep5()
 	foot();
 }
 
-// Update serialized strings' member and applicator values
-function serial_strings()
+// Update member and applicator values
+function packed_strings()
 {
 	global $db_prefix, $db_connection;
 
-	echo 'Updating log_actions - fixing serialized strings...<br>';
+	echo 'Updating log_actions - fixing extras...<br>';
 
 	// Get the max member ID
 	$sql = 'SELECT MAX(id_member) FROM ' . PRIMARY_DB_PREFIX . 'members';
@@ -507,9 +592,9 @@ function serial_strings()
 	echo 'Updating member-related extras';
 	while($action = mysqli_fetch_assoc($query))
 	{
-		$checkvals = @unserialize($action['extra']);
+		$checkvals = unpack_string($action['extra']);
 		if ($checkvals === false)
-			echo_error_text('Cannot unserialize action: ' . $action['id_action'] . ' extra: ' . $action['extra']);
+			echo_error_text('Cannot parse action: ' . $action['id_action'] . ' extra: ' . $action['extra']);
 		else
 		{
 			if (array_key_exists('member', $checkvals))
@@ -520,7 +605,7 @@ function serial_strings()
 				// Just in case the value just happened to be in a string...
 				continue;
 
-			$newstring = mysqli_real_escape_string($db_connection, serialize($checkvals));
+			$newstring = mysqli_real_escape_string($db_connection, pack_string($checkvals));
 			$sql = "UPDATE {$db_prefix}log_actions SET extra = '{$newstring}' WHERE id_action = {$action['id_action']}";
 			$query0 = call_mysqli_query($sql, false);
 		}
@@ -545,9 +630,9 @@ function serial_strings()
 	echo 'Updating board-related extras';
 	while($action = mysqli_fetch_assoc($query))
 	{
-		$checkvals = @unserialize($action['extra']);
+		$checkvals = unpack_string($action['extra']);
 		if ($checkvals === false)
-			echo_error_text('Cannot unserialize action: ' . $action['id_action'] . ' extra: ' . $action['extra']);
+			echo_error_text('Cannot parse action: ' . $action['id_action'] . ' extra: ' . $action['extra']);
 		else
 		{
 			if (array_key_exists('board_from', $checkvals))
@@ -556,7 +641,7 @@ function serial_strings()
 				// Just in case the value just happened to be in a string...
 				continue;
 
-			$newstring = mysqli_real_escape_string($db_connection, serialize($checkvals));
+			$newstring = mysqli_real_escape_string($db_connection, pack_string($checkvals));
 			$sql = "UPDATE {$db_prefix}log_actions SET extra = '{$newstring}' WHERE id_action = {$action['id_action']}";
 			$query0 = call_mysqli_query($sql, false);
 		}
@@ -635,7 +720,7 @@ function renamemembers()
 	echo '...done<br>';
 
 	// Look at buddy list on members...
-	echo '<br>Updating buddy lists on members...';
+	echo '<br>Updating buddy lists on members';
 	$sql = "SELECT id_member, buddy_list FROM {$db_prefix}members WHERE buddy_list <> ''";
 	$query = call_mysqli_query($sql, false);
 
@@ -676,7 +761,7 @@ function renamemembers()
 
 
 	//Themes & smiley sets may not line up, so set users who are about to move over to defaults
-	echo "Setting themes, smilies to defaults";
+	echo "Setting themes, smileys to defaults";
 	$sql = "UPDATE {$db_prefix}members SET id_theme = 0, smiley_set = ''";
 	$query9a = call_mysqli_query($sql, false);
 	echo "...done.<br>";
@@ -1188,4 +1273,32 @@ function echo_error_text($text)
 {
 	echo '<span style = "color:red"><strong> *****ERROR ' . $text . '</strong></span>';
 	
+}
+
+// Either unserialize or json_decode depending on version...
+function unpack_string($string)
+{
+	global $version;
+
+	if ($version == '2.0')
+		$unpacked = @unserialize($string);
+	else
+		$unpacked = @json_decode($string, TRUE);
+
+	return $unpacked;
+
+}
+
+// Either serialize or json_encode depending on version...
+function pack_string($string)
+{
+	global $version;
+
+	if ($version == '2.0')
+		$packed = @serialize($string);
+	else
+		$packed = @json_encode($string);
+
+	return $packed;
+
 }
