@@ -49,3 +49,10 @@ These tools are inquiry only & are used to perform diagnostics.
 * ***smf_mark_all_read_merge.php*** - Can be used to mark new forum boards read by the existing board users.  In my instance, the merged forum was a predecessor to the main forum, and the content was dated.  SMF2.0.
 
 For more information about the mergeSMF.php script, check the thread in the forum here: https://www.simplemachines.org/community/index.php?topic=575102.0
+
+## MySQL to Postgresql Utilities
+
+**WARNING:** These tools update your forum database.  Use at your own risk.  ALWAYS back up your database before use.  ALWAYS run them in your test environment first to learn how they work & to confirm desired outcomes.
+
+* ***PGConverter.php*** - Reads output from a mysqldump, then updates it to make it suitable for an import into postgresql.
+* ***PGConvertSeqs.php*** - To be run after conversion from mysql to postgresql.  Updates sequences to ensure they are in sync with the current data.
