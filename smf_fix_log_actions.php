@@ -42,6 +42,8 @@ function doStartup() {
 	echo("*** Check log_actions... ***<br>");
 	echo("************************<br>");
 
+	@ini_set('memory_limit', '512M');
+
 	// Yes, both flushes necessary
 	@ob_flush();
 	@flush();

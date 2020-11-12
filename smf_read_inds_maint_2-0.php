@@ -79,6 +79,8 @@ function doStartup() {
 
 	define('SMF', 1);
 
+	@ini_set('memory_limit', '512M');
+
 	// Prime the pump...
 	$allTimer = microtime(true);
 	

@@ -81,6 +81,8 @@ function doStartup() {
 	define('POSTGRE_TITLE', 'PostgreSQL');
 	define('MYSQL_TITLE', 'MySQL');
 
+	@ini_set('memory_limit', '512M');
+
 	// Prime the pump...
 	$allTimer = microtime(true);
 	

@@ -30,7 +30,9 @@ function doStartup() {
 	echo("********************************************<br>");
 
 	define('SMF', 1);
-	
+
+	@ini_set('memory_limit', '512M');
+
 	// Yes, both flushes necessary
 	@ob_flush();
 	@flush();

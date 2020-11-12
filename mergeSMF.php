@@ -40,6 +40,7 @@ if (!empty($db_character_set))
 
 // Might as well try...
 @set_time_limit(6000);
+@ini_set('memory_limit', '512M');
 
 function head()
 {
