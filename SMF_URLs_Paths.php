@@ -37,7 +37,7 @@ $oldURL = 'http://your/old/url';
 $oldDir = '/your/old/dir';
 $newURL = 'http://your/new/url';
 $newDir = 'C:\Program Files (x86)\your\new\dir';
-$doit = 'No';	
+$doit = 'No';
 // End config section
 
 //*** Main program
@@ -70,7 +70,9 @@ function doStartup() {
 	define('SMF', 1);
 	define('POSTGRE_TITLE', 'PostgreSQL');
 	define('MYSQL_TITLE', 'MySQL');
-	
+
+	@ini_set('memory_limit', '512M');
+
 	return;
 }
 
@@ -143,7 +145,7 @@ function doSettings() {
 			$settings[] = array('New Value: ', shortString($newval, $stringPos));
 			dumpTable($settings);
 
-			if ($doit == 'Yes') {			
+			if ($doit == 'Yes') {
 				$newval = addslashes($newval);
 				$sql = "UPDATE " . $db_prefix . "settings SET value = '" . $newval
 					. "' WHERE variable = '" . $row['variable'] . "';";
@@ -159,14 +161,15 @@ function doSettings() {
 			$settings[] = array('New Value: ', shortString($newval, $stringPos));
 			dumpTable($settings);
 
-			if ($doit == 'Yes') {			
+			if ($doit == 'Yes') {
 				$newval = addslashes($newval);
 				$sql = "UPDATE " . $db_prefix . "settings SET value = '" . $newval
 					. "' WHERE variable = '" . $row['variable'] . "';";
 				$smcFunc['db_query']('', $sql);
 			}
 		}
-	}	
+	}
+	$smcFunc['db_free_result']($result);
 	return;
 }
 
@@ -190,7 +193,7 @@ function doThemes() {
 			$settings[] = array('New Value: ', shortString($newval, $stringPos));
 			dumpTable($settings);
 
-			if ($doit == 'Yes') {			
+			if ($doit == 'Yes') {
 				$newval = addslashes($newval);
 				$sql = "UPDATE " . $db_prefix . "themes SET value = '" . $newval
 					. "' WHERE variable = '" . $row['variable']
@@ -210,16 +213,17 @@ function doThemes() {
 			$settings[] = array('New Value: ', shortString($newval, $stringPos));
 			dumpTable($settings);
 
-			if ($doit == 'Yes') {			
+			if ($doit == 'Yes') {
 				$newval = addslashes($newval);
 				$sql = "UPDATE " . $db_prefix . "themes SET value = '" . $newval
 					. "' WHERE variable = '" . $row['variable']
 					. "' AND id_member = '" . $row['id_member']
 					. "' AND id_theme = '" . $row['id_theme'] . "';";
 				$smcFunc['db_query']('', $sql);
-			}			
+			}
 		}
 	}
+	$smcFunc['db_free_result']($result);
 	return;
 }
 
@@ -242,7 +246,7 @@ function doMessages() {
 			$settings[] = array('New body: ', shortString($newbody, $stringPos));
 			dumpTable($settings);
 
-			if ($doit == 'Yes') {			
+			if ($doit == 'Yes') {
 				$newbody = addslashes($newbody);
 				$sql = "UPDATE " . $db_prefix . "messages SET body = '" . $newbody
 					. "' WHERE id_msg = '" . $row['id_msg'] . "';";
@@ -259,7 +263,7 @@ function doMessages() {
 			$settings[] = array('New subject: ', shortString($newsubject, $stringPos));
 			dumpTable($settings);
 
-			if ($doit == 'Yes') {			
+			if ($doit == 'Yes') {
 				$newsubject = addslashes($newsubject);
 				$sql = "UPDATE " . $db_prefix . "messages SET subject = '" . $newsubject
 					. "' WHERE id_msg = '" . $row['id_msg'] . "';";
@@ -267,6 +271,7 @@ function doMessages() {
 			}
 		}
 	}
+	$smcFunc['db_free_result']($result);
 	return;
 }
 
@@ -289,7 +294,7 @@ function doPMs() {
 			$settings[] = array('New body: ', shortString($newbody, $stringPos));
 			dumpTable($settings);
 
-			if ($doit == 'Yes') {			
+			if ($doit == 'Yes') {
 				$newbody = addslashes($newbody);
 				$sql = "UPDATE " . $db_prefix . "personal_messages SET body = '" . $newbody
 					. "' WHERE id_pm = '" . $row['id_pm'] . "';";
@@ -306,7 +311,7 @@ function doPMs() {
 			$settings[] = array('New subject: ', shortString($newsubject, $stringPos));
 			dumpTable($settings);
 
-			if ($doit == 'Yes') {			
+			if ($doit == 'Yes') {
 				$newsubject = addslashes($newsubject);
 				$sql = "UPDATE " . $db_prefix . "personal_messages SET subject = '" . $newsubject
 					. "' WHERE id_pm = '" . $row['id_pm'] . "';";
@@ -314,6 +319,7 @@ function doPMs() {
 			}
 		}
 	}
+	$smcFunc['db_free_result']($result);
 	return;
 }
 
@@ -336,14 +342,15 @@ function doSignatures() {
 			$settings[] = array('New Signature: ', shortString($newval, $stringPos));
 			dumpTable($settings);
 
-			if ($doit == 'Yes') {			
+			if ($doit == 'Yes') {
 				$newval = addslashes($newval);
 				$sql = "UPDATE " . $db_prefix . "members SET signature = '" . $newval
 					. "' WHERE id_member = '" . $row['id_member'] . "';";
 				$smcFunc['db_query']('', $sql);
 			}
 		}
-	}	
+	}
+	$smcFunc['db_free_result']($result);
 	return;
 }
 
@@ -354,7 +361,7 @@ function doWrapUp() {
 
 	// Yes, both flushes necessary
 	@ob_flush();
-	@flush();	
+	@flush();
 
 	return;
 }
@@ -374,10 +381,10 @@ function shortString($targetStr, $stringPos) {
 			$beforetext = '';
 		}
 		if ($length - $stringPos > $maxlen) {
-			$aftertext = ' ...';		
+			$aftertext = ' ...';
 		}
 		else {
-			$aftertext = '';					
+			$aftertext = '';
 		}
 		$targetStr = $beforetext . substr($targetStr, $stringPos, $maxlen) . $aftertext;
 	}
@@ -396,7 +403,7 @@ function dumpTable($passedArray) {
 	}
 	echo '</table><br>';
 	@ob_flush();
-	@flush();	
+	@flush();
 
 	return;
 }
