@@ -7,6 +7,7 @@ Many thanks for throwing it together and giving us something to work with.
 Modified version for SMF 1.1RC3 by Resourcez at resourcez dot biz (way back in 2006)
 Modified version for SMF 2.0.6 by bfeist (fall, 2013). Let's call this new version 2.0.
 Modified version for SMF 2.0.17 to add several new record types, use mysqli, enhance error reporting, address column conflicts.  shawnb61, Sept, 2020
+Modified version for SMF 2.0.17 to better duplicate member handling & logging of any member renames.  Thanks to GL700Wing, Dec, 2020
 
 Description:
 This script will merge two SMF forums. It will takes the boards, topics, members, messages, etc from a SECONDARY forum and merge them into a PRIMARY forum.
@@ -673,6 +674,11 @@ function renamemembers()
 {
 	global $db_prefix, $secondary_suffix;
 
+	// Clear log file for renames
+	$renameMembersLog = getcwd() . '/renameMembersLog';
+	@unlink($renameMembersLog);
+
+	// Get member names
 	echo 'Getting member names';
 	$sql = "SELECT ID_MEMBER, member_name, real_name, email_address FROM {$db_prefix}members ORDER BY ID_MEMBER DESC";
 	$query = call_mysqli_query($sql, false);
@@ -699,11 +705,27 @@ function renamemembers()
 		//You can use a tool like SMF Admin Toolbox to merge these members with the primary members of the same name after finished with this script.
 		if(($member_name_hits > 0) || ($real_name_hits > 0) || ($email_hits > 0))
 		{
-			echo "Member $mem[1] exists in primary. Renaming...<BR>";
-			$sql = "UPDATE {$db_prefix}members SET member_name = CONCAT(member_name, '{$secondary_suffix}'), real_name = CONCAT(real_name, '{$secondary_suffix}'), email_address = CONCAT(email_address, '{$secondary_suffix}') WHERE ID_MEMBER = '$mem[0]'";
+			$mn_suffix = ($member_name_hits > 0 ? $secondary_suffix : '');
+			$rn_suffix = ($real_name_hits > 0 ? $secondary_suffix : '');
+			$ea_suffix = ($email_hits > 0 ? $secondary_suffix : '');
+	
+			$matches = ($member_name_hits > 0 ? '&nbsp;\'member_name\'&nbsp;' : '');
+			$matches .= ($real_name_hits > 0 ? '&nbsp;\'real_name\'&nbsp;' : '');
+			$matches .= ($email_hits > 0 ? '&nbsp;\'email_address\'&nbsp;' : '');
+
+			$exists = "The same <strong>$matches</strong> for the username <strong>&nbsp;'$mem[1]'&nbsp;</strong> (member ID '$mem[0]') already exists in primary.";
+			$renaming = "Renaming <strong>$matches</strong> in secondary ...";
+			echo "$exists $renaming <br />";
+
+			$now = '[' . date("d-M-Y H:i:s e") . '] ';
+			$exists = str_replace(array('&nbsp;', '<strong>', '</strong>'), array(' ', '', ''), $exists);
+			$renaming = str_replace(array('&nbsp;', '<strong>', '</strong>'), array(' ', '', ''), $renaming);
+			error_log(print_r($now . $exists . "  " . $renaming . "\n\n", true), 3, $renameMembersLog);
+
+			$sql = "UPDATE {$db_prefix}members SET member_name = CONCAT(member_name, '{$mn_suffix}'), real_name = CONCAT(real_name, '{$rn_suffix}'), email_address = CONCAT(email_address, '{$ea_suffix}') WHERE ID_MEMBER = '$mem[0]'";
 			$query0 = call_mysqli_query($sql, false);
-		} 
-		else 
+		}
+		else
 		{
 			echo "Member $mem[1] does not exist in primary.<BR>";
 		}
