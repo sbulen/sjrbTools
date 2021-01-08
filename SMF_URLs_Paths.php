@@ -73,6 +73,9 @@ function doStartup() {
 
 	@ini_set('memory_limit', '512M');
 
+	// Just so we're clear...
+	mb_internal_encoding("UTF-8");
+
 	return;
 }
 
@@ -136,7 +139,7 @@ function doSettings() {
 	$result = $smcFunc['db_query']('', $sql);
 
 	while($row = $smcFunc['db_fetch_assoc']($result)) {
-		$stringPos = stripos($row['value'], $oldURL);
+		$stringPos = mb_stripos($row['value'], $oldURL);
 		if ($stringPos !== false){
 			$settings = array();
 			$settings[] = array('Variable: ', $row['variable']);
@@ -152,7 +155,7 @@ function doSettings() {
 				$smcFunc['db_query']('', $sql);
 			}
 		}
-		$stringPos = stripos($row['value'], $oldDir);
+		$stringPos = mb_stripos($row['value'], $oldDir);
 		if ($stringPos !== false){
 			$settings = array();
 			$settings[] = array('Variable: ', $row['variable']);
@@ -182,7 +185,7 @@ function doThemes() {
 	$result = $smcFunc['db_query']('', $sql);
 
 	while($row = $smcFunc['db_fetch_assoc']($result)) {
-		$stringPos = stripos($row['value'], $oldURL);
+		$stringPos = mb_stripos($row['value'], $oldURL);
 		if ($stringPos !== false){
 			$settings = array();
 			$settings[] = array('Member: ', $row['id_member']);
@@ -202,7 +205,7 @@ function doThemes() {
 				$smcFunc['db_query']('', $sql);
 			}
 		}
-		$stringPos = stripos($row['value'], $oldDir);
+		$stringPos = mb_stripos($row['value'], $oldDir);
 		if ($stringPos !== false){
 			$settings = array();
 			$settings[] = array('Member: ', $row['id_member']);
@@ -236,7 +239,7 @@ function doMessages() {
 	$result = $smcFunc['db_query']('', $sql);
 
 	while($row = $smcFunc['db_fetch_assoc']($result)) {
-		$stringPos = stripos($row['body'], $oldURL);
+		$stringPos = mb_stripos($row['body'], $oldURL);
 		if ($stringPos !== false){
 			$settings = array();
 			$settings[] = array('Message: ', $row['id_msg']);
@@ -253,7 +256,7 @@ function doMessages() {
 				$smcFunc['db_query']('', $sql);
 			}
 		}
-		$stringPos = stripos($row['subject'], $oldURL);
+		$stringPos = mb_stripos($row['subject'], $oldURL);
 		if ($stringPos !== false){
 			$settings = array();
 			$settings[] = array('Message: ', $row['id_msg']);
@@ -284,7 +287,7 @@ function doPMs() {
 	$result = $smcFunc['db_query']('', $sql);
 
 	while($row = $smcFunc['db_fetch_assoc']($result)) {
-		$stringPos = stripos($row['body'], $oldURL);
+		$stringPos = mb_stripos($row['body'], $oldURL);
 		if ($stringPos !== false){
 			$settings = array();
 			$settings[] = array('PM: ', $row['id_pm']);
@@ -301,7 +304,7 @@ function doPMs() {
 				$smcFunc['db_query']('', $sql);
 			}
 		}
-		$stringPos = stripos($row['subject'], $oldURL);
+		$stringPos = mb_stripos($row['subject'], $oldURL);
 		if ($stringPos !== false){
 			$settings = array();
 			$settings[] = array('PM: ', $row['id_pm']);
@@ -332,7 +335,7 @@ function doSignatures() {
 	$result = $smcFunc['db_query']('', $sql);
 
 	while($row = $smcFunc['db_fetch_assoc']($result)) {
-		$stringPos = stripos($row['signature'], $oldURL);
+		$stringPos = mb_stripos($row['signature'], $oldURL);
 		if ($stringPos !== false){
 			$settings = array();
 			$settings[] = array('Member: ', $row['id_member']);
@@ -370,7 +373,7 @@ function doWrapUp() {
 function shortString($targetStr, $stringPos) {
 	$maxlen = 100;
 	$buffer = 10;
-	$length = strlen($targetStr);
+	$length = mb_strlen($targetStr);
 	if ($length > $maxlen) {
 		if ($stringPos > $buffer) {
 			$stringPos = $stringPos - $buffer;
@@ -386,7 +389,7 @@ function shortString($targetStr, $stringPos) {
 		else {
 			$aftertext = '';
 		}
-		$targetStr = $beforetext . substr($targetStr, $stringPos, $maxlen) . $aftertext;
+		$targetStr = $beforetext . mb_substr($targetStr, $stringPos, $maxlen) . $aftertext;
 	}
 	return $targetStr;
 }
