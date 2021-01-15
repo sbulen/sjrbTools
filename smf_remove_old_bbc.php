@@ -133,8 +133,6 @@ function doMessages() {
 			$settings[] = array('Message: ', $row['id_msg']);
 			$newbody = $row['body'];
 			foreach ($matches[0] AS $ix => $match) {
-				$stringPos = mb_stripos($newbody, $match);
-
 				$newbody = str_ireplace($matches[0][$ix], $matches[1][$ix], $newbody);
 				$settings[] = array('Old text: ', $matches[0][$ix], 'New text: ', $matches[1][$ix]);
 
