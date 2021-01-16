@@ -73,9 +73,6 @@ function doStartup() {
 
 	@ini_set('memory_limit', '512M');
 
-	// Just so we're clear...
-	mb_internal_encoding("UTF-8");
-
 	return;
 }
 
@@ -85,13 +82,45 @@ function loadSettingsFile() {
 	global $db_type, $db_connection, $db_prefix, $db_name, $smcFunc, $oldURL, $newURL, $oldDir, $newDir, $doit;
 	$smcFunc = array();
 
-	$dumpvars = array('mbname', 'boardurl', 'db_server', 'db_name', 'db_prefix', 'language', 'db_type');
-
 	// Load the settings...
 	require_once(dirname(__FILE__) . '/Settings.php');
 
+	// Get the database going!
+	if (empty($db_type) || $db_type == 'mysqli')
+		$db_type = 'mysql';
+
+	// Make the connection...
+	require_once($sourcedir . '/Subs-Db-' . $db_type . '.php');
+	$db_connection = smf_db_initiate($db_server, $db_name, $db_user, $db_passwd, $db_prefix);
+
+	// Most database systems have not set UTF-8 as their default input charset.
+	if (!empty($db_character_set))
+		$smcFunc['db_query']('', '
+			SET NAMES {string:db_character_set}',
+			array(
+				'db_character_set' => $db_character_set,
+			)
+		);
+
+	// Get global_character_set
+	$result = $smcFunc['db_query']('', '
+		SELECT value FROM {db_prefix}settings WHERE variable = {string:global_character_set};',
+		array(
+			'global_character_set' => 'global_character_set',
+		)
+	);
+	list($global_character_set) = $smcFunc['db_fetch_row']($result);
+
+	if (!empty($global_character_set_))
+		mb_internal_encoding($global_character_set);
+	else
+		// Assume default of latin1, esp for 2.0
+		mb_internal_encoding("ISO-8859-1");
+
+	// Show all the settings
 	$settings[] = array();
 	$settings[0] = array('Settings.php Var','Value');
+	$dumpvars = array('mbname', 'boardurl', 'db_server', 'db_name', 'db_prefix', 'language', 'db_type', 'db_character_set', 'global_character_set');
 	foreach($dumpvars as $setting)
 		$settings[] = array('$' . $setting, (isset(${$setting}) ? ${$setting} : '<strong>NOT SET</strong>'));
 	
@@ -105,27 +134,6 @@ function loadSettingsFile() {
 	$settings[] = array('Do it:', $doit);
 
 	dumpTable($settings);
-
-	// Get the database going!
-	if (empty($db_type) || $db_type == 'mysqli')
-		$db_type = 'mysql';
-
-	// Make the connection...
-	require_once($sourcedir . '/Subs-Db-' . $db_type . '.php');
-	$db_connection = smf_db_initiate($db_server, $db_name, $db_user, $db_passwd, $db_prefix);
-
-	// Set the charset
-	if ($db_type == 'mysql' && !empty($db_character_set))
-		mysqli_set_charset($db_connection, $db_character_set);
-
-	// Most database systems have not set UTF-8 as their default input charset.
-	if (!empty($db_character_set))
-		$smcFunc['db_query']('', '
-			SET NAMES {string:db_character_set}',
-			array(
-				'db_character_set' => $db_character_set,
-			)
-		);
 
 	return;
 }
