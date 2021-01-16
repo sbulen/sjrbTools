@@ -12,7 +12,7 @@
 // (1) Use at your own risk.
 // (2) ALWAYS run in your test environment first.
 // (3) ALWAYS backup your system first - expect the unexpected.
-// (4) Edit the Config section as appropriate.  Specify all 5 parameters.  
+// (4) Edit the Config section as appropriate.  Specify both parameters.  
 // (5) Copy this file to your base SMF directory - (the one with Settings.php in it).
 // (6) Run in test mode - with $doit = 'no'.
 // (7) Execute it from your browser.
@@ -22,10 +22,10 @@
 // 
 // Config section...
 // *** All of of these parameters must be specified! ***
+$doit = 'No';
 // *** The FULL match will be replaced by the first captured group,
 // *** i.e., $matches[0] will be replaced with $matches[1]...
 $pattern = '~(?>\[member=\d{1,10}\]([^\[]*)\[/member\])~i';
-$doit = 'No';
 // End config section
 
 //*** Main program
@@ -136,12 +136,12 @@ function doMessages() {
 				$newbody = str_ireplace($matches[0][$ix], $matches[1][$ix], $newbody);
 				$settings[] = array('Old text: ', $matches[0][$ix], 'New text: ', $matches[1][$ix]);
 
-				if ($doit == 'Yes') {
-					$newbody = addslashes($newbody);
-					$sql = "UPDATE " . $db_prefix . "messages SET body = '" . $newbody
-						. "' WHERE id_msg = '" . $row['id_msg'] . "';";
-					$smcFunc['db_query']('', $sql);
-				}
+			}
+			if ($doit == 'Yes') {
+				$newbody = addslashes($newbody);
+				$sql = "UPDATE " . $db_prefix . "messages SET body = '" . $newbody
+					. "' WHERE id_msg = '" . $row['id_msg'] . "';";
+				$smcFunc['db_query']('', $sql);
 			}
 			dumpTable($settings);
 		}
