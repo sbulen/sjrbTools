@@ -111,7 +111,7 @@ function getInfo() {
 			$gh_calls_reset = $gha_header['X-RateLimit-Reset'];
 
 		// Check status accessing repos
-		if (!isset($gha_header['HTTP/2 200']) || (isset($gha_header['HTTP/2 200']) && !empty($gha_header['HTTP/2 200']))) {
+		if ((isset($gha_header['status']) && ($gha_header['status'] != '200 OK')) || (!isset($gha_header['status']) && !isset($gha_header['HTTP/2 200']) && !isset($gha_header['HTTP/1.1 200']))) {
 			if (isset($gh_calls_remaining))
 				echo '<br>X-RateLimit-Remaining: ' . $gh_calls_remaining . '<br>';
 			if (isset($gh_calls_reset))
