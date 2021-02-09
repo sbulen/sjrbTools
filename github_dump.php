@@ -111,7 +111,7 @@ function getInfo() {
 			$gh_calls_reset = $gha_header['X-RateLimit-Reset'];
 
 		// Check status accessing repos
-		if ($gha_header['Status'] != '200 OK') {
+		if (!isset($gha_header['HTTP/2 200']) || (isset($gha_header['HTTP/2 200']) && !empty($gha_header['HTTP/2 200']))) {
 			if (isset($gh_calls_remaining))
 				echo '<br>X-RateLimit-Remaining: ' . $gh_calls_remaining . '<br>';
 			if (isset($gh_calls_reset))
@@ -160,7 +160,7 @@ function cleanUnusedColumns() {
 			$row['user']['login'],
 			col2csv($row['labels'], 'name'),
 			col2csv($row['assignees'], 'login'),
-			$row['milestone']['title'],
+			isset($row['milestone']['title']) ? $row['milestone']['title'] : '',
 			$row['comments'],
 			'',		// populated later
 			'',		// populated later
