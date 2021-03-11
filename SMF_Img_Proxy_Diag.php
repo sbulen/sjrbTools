@@ -39,7 +39,9 @@ function doStartup() {
 	echo("*********************************<br>");
 
 	define('SMF', 1);
-	
+	define('SMF_VERSION', '2.1 RC3');
+	define('SMF_USER_AGENT', 'Mozilla/5.0 (' . php_uname('s') . ' ' . php_uname('m') . ') AppleWebKit/605.1.15 (KHTML, like Gecko)  SMF/' . strtr(SMF_VERSION, ' ', '.'));
+
 	// Yes, both flushes necessary
 	@ob_flush();
 	@flush();
