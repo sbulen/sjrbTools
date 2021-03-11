@@ -181,7 +181,7 @@ function doSockets() {
         return;
     }
 
-	fwrite($fp, 'GET ' . $parsed['path'] . ' HTTP/1.0' . "\r\n");
+	fwrite($fp, 'GET ' . $parsed['path'] . ' HTTP/1.1' . "\r\n");
 	fwrite($fp, 'Host: ' . $parsed['host'] . "\r\n");
 	fwrite($fp, 'User-Agent: PHP/SMF' . "\r\n");
 	fwrite($fp, 'Connection: close' . "\r\n\r\n");	
