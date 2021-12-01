@@ -112,7 +112,7 @@ function doSettingsTable() {
 		);
 		$row = $smcFunc['db_fetch_row']($result);
 		$smcFunc['db_free_result']($result);
-		$settings[] = array($setting, (!is_null($row[0]) ? $row[0] : '<strong>NOT SET</strong>'));
+		$settings[] = array($setting, (!empty($row[0]) ? $row[0] : '<strong>NOT SET</strong>'));
 	}
 
 	dumpTable($settings);
