@@ -3,13 +3,13 @@
  *
  * An SMF utility to dump web file retrieval info to help diagnose image proxy issues.
  *
- * ***** SMF 2.0 $ 2.1 *****
+ * ***** SMF 2.0 & 2.1 *****
  *
  * Usage guidelines:
- * (1) If you want to look at a different image, update the value in the config section below.
- * (2) Copy this file to your base SMF directory - (the one with Settings.php in it).
- * (3) Execute it from your browser.
- * (4) Delete it when you're done.
+ * (1) Copy this file to your base SMF directory - (the one with Settings.php in it).
+ * (2) Run this file from your browser.
+ * (3) Change image url when prompted.
+ * (4) Delete this file when you're done.
  *     by sbulen
  *
  */
@@ -54,6 +54,8 @@ $ui->addChunk('Settings', function() use ($ui)
 	$settings[0] = array('Directory checks...');
 	
 	// Check image proxy cache folder...
+
+	$imagedir = $cachedir . '/images';
 
 	$exists = is_dir($imagedir);
 	
@@ -186,6 +188,7 @@ $ui->addChunk('Sockets Feedback', function() use ($ui)
 });
 
 $ui->go();
+
 /**
  * SimpleUI
  *
@@ -279,7 +282,7 @@ class SimpleUI
 		define('SMF_USER_AGENT', 'Mozilla/5.0 (' . php_uname('s') . ' ' . php_uname('m') . ') AppleWebKit/605.1.15 (KHTML, like Gecko)  SMF/' . strtr(SMF_VERSION, ' ', '.'));
 
 		// These must remain globals when calling SMF funcs...
-		global $smcFunc, $db_connection, $db_prefix, $db_name, $db_type, $sourcedir;
+		global $smcFunc, $db_connection, $db_prefix, $db_name, $db_type, $sourcedir, $cachedir;
 		$smcFunc = array();
 		$this->settings_file = array();
 

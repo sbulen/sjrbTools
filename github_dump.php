@@ -4,9 +4,10 @@
  * A utility to dump github open issue & pr information.
  *
  * Usage guidelines:
- * (1) Update User Configuration section below with info on your repo & user credentials.
- * (2) Run it.
+ * (1) Run this file from your browser.
+ * (2) Change owner & repo when prompted.
  * (3) github_dump.csv will be in the directory where it was launched.
+ * (4) Delete this file when you're done.
  *     by sbulen
  *
  */
@@ -238,6 +239,7 @@ function col2csv($labels, $col) {
 	$lstring = implode(', ', $values);
 	return $lstring;
 }
+
 /**
  * SimpleUI
  *
@@ -331,7 +333,7 @@ class SimpleUI
 		define('SMF_USER_AGENT', 'Mozilla/5.0 (' . php_uname('s') . ' ' . php_uname('m') . ') AppleWebKit/605.1.15 (KHTML, like Gecko)  SMF/' . strtr(SMF_VERSION, ' ', '.'));
 
 		// These must remain globals when calling SMF funcs...
-		global $smcFunc, $db_connection, $db_prefix, $db_name, $db_type, $sourcedir;
+		global $smcFunc, $db_connection, $db_prefix, $db_name, $db_type, $sourcedir, $cachedir;
 		$smcFunc = array();
 		$this->settings_file = array();
 

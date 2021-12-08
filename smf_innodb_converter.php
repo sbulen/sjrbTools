@@ -1,7 +1,8 @@
 <?php
 /**
  *
- * A utility to convert all tables that match your smf db prefix to InnoDB
+ * A utility to convert all tables that match your smf db prefix to InnoDB.
+ *
  *   *** SMF 2.0 & 2.1 ***
  *   *** MySQL v5.5+ only ***
  *
@@ -11,7 +12,7 @@
  * (3) ALWAYS backup your system first - expect the unexpected.
  * (4) Copy this file to your base SMF directory - (the one with Settings.php in it).
  * (5) Execute it from your browser.
- * (6) Delete it when you're done.
+ * (6) Delete this file when you're done.
  *     by sbulen
  *
  */
@@ -108,6 +109,7 @@ $ui->addChunk('All Tables', function() use ($ui)
 });
 
 $ui->go();
+
 /**
  * SimpleUI
  *
@@ -201,7 +203,7 @@ class SimpleUI
 		define('SMF_USER_AGENT', 'Mozilla/5.0 (' . php_uname('s') . ' ' . php_uname('m') . ') AppleWebKit/605.1.15 (KHTML, like Gecko)  SMF/' . strtr(SMF_VERSION, ' ', '.'));
 
 		// These must remain globals when calling SMF funcs...
-		global $smcFunc, $db_connection, $db_prefix, $db_name, $db_type, $sourcedir;
+		global $smcFunc, $db_connection, $db_prefix, $db_name, $db_type, $sourcedir, $cachedir;
 		$smcFunc = array();
 		$this->settings_file = array();
 

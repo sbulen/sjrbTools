@@ -1,17 +1,15 @@
 <?php
 /**
  *
- * A utility to convert all tables that match your smf db prefix to InnoDB
- *   *** SMF 2.0 & 2.1 ***
- *   *** MySQL v5.5+ only ***
+ * A utility to dump all utf8 configuration and database information for an SMF forum.
+ *
+ * **** SMF 2.0 & 2.1 ***
+ * ***** MySQL only *****
  *
  * Usage guidelines:
- * (1) Use at your own risk.
- * (2) ALWAYS run in your test environment first.
- * (3) ALWAYS backup your system first - expect the unexpected.
- * (4) Copy this file to your base SMF directory - (the one with Settings.php in it).
- * (5) Execute it from your browser.
- * (6) Delete it when you're done.
+ * (1) Copy this file to your base SMF directory - (the one with Settings.php in it).
+ * (2) Execute it from your browser.
+ * (3) Delete this file when you're done.
  *     by sbulen
  *
  */
@@ -22,7 +20,7 @@ $ui = new simpleUI($site_title, $db_needed);
 
 $ui->addChunk('Settings', function() use ($ui)
 {
-	global $smcFunc, $db_connection;   // Must remain globals
+	global $smcFunc, $db_connection, $db_type, $sourcedir;   // Must remain globals
 
 	// First some settings file stuff...
 	$dumpvars = array('mbname', 'boardurl', 'db_server', 'db_name', 'db_prefix', 'language', 'db_type', 'db_character_set', 'db_mb4');
@@ -52,10 +50,10 @@ $ui->addChunk('Settings', function() use ($ui)
 	$ui->dumpTable($settings);
 
 	// Now some smcFunc stuff....
-	$db_type = empty($ui->getSettingsFile()['$db_type']) ? 'mysql' : $ui->getSettingsFile()['$db_type'];
+	$db_type = empty($db_type) ? 'mysql' : $db_type;
 
 	// Where the params at...
-	require_once($ui->getSettingsFile()['sourcedir'] . '/DbExtra-' . $db_type . '.php');
+	require_once($sourcedir . '/DbExtra-' . $db_type . '.php');
 	db_extra_init();
 
 	$settings = array();
@@ -206,6 +204,7 @@ $ui->addChunk('Column Info', function() use ($ui)
 });
 
 $ui->go();
+
 /**
  * SimpleUI
  *
@@ -299,7 +298,7 @@ class SimpleUI
 		define('SMF_USER_AGENT', 'Mozilla/5.0 (' . php_uname('s') . ' ' . php_uname('m') . ') AppleWebKit/605.1.15 (KHTML, like Gecko)  SMF/' . strtr(SMF_VERSION, ' ', '.'));
 
 		// These must remain globals when calling SMF funcs...
-		global $smcFunc, $db_connection, $db_prefix, $db_name, $db_type, $sourcedir;
+		global $smcFunc, $db_connection, $db_prefix, $db_name, $db_type, $sourcedir, $cachedir;
 		$smcFunc = array();
 		$this->settings_file = array();
 
