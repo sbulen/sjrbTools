@@ -15,7 +15,7 @@
 $site_title = 'GitHub Export Utility';
 $db_needed = false;
 $max_width = 1100;
-$ui = new simpleUI($site_title, $db_needed, $max_width);
+$ui = new SimpleSmfUI($site_title, $db_needed, $max_width);
 
 $ui->addChunk('Repo', function() use ($ui)
 {
@@ -241,7 +241,7 @@ function col2csv($labels, $col) {
 }
 
 /**
- * SimpleUI
+ * SimpleSmfUI
  *
  * A simple basic abstracted UI for utilities.
  *
@@ -249,22 +249,22 @@ function col2csv($labels, $col) {
  *
  * This file is part of the sjrbTools library.
  *
- * SimpleUI is free software: you can redistribute it and/or modify
+ * SimpleSmfUI is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * SimpleUI is distributed in the hope that it will be useful,
+ * SimpleSmfUI is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with SimpleUI.  If not, see <https://www.gnu.org/licenses/>.
+ * along with SimpleSmfUI.  If not, see <https://www.gnu.org/licenses/>.
  *
  */
 
-class SimpleUI
+class SimpleSmfUI
 {
 	/*
 	 * Properties
@@ -292,7 +292,7 @@ class SimpleUI
 	/**
 	 * Constructor
 	 *
-	 * Builds a SimpleUI object
+	 * Builds a SimpleSmfUI object
 	 *
 	 * @param string title
 	 * @param bool db_needed
