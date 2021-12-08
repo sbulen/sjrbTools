@@ -43,7 +43,7 @@ These tools are inquiry only & are used to perform diagnostics.
 
 **WARNING:** These tools update your forum database.  Use at your own risk.  ALWAYS back up your database before use.  ALWAYS run them in your test environment first to learn how they work & to confirm desired outcomes.
 
-* ***mergeSMF.php*** - Merges two forums.  SMF2.0.
+* ***mergeSMF.php*** - Merges two forums.  SMF2.0 & 2.1.
 * ***SMF_Topic_Link_Fixer_Merge.php*** - Post-merge quote link fixer. Fixes quote links for a specific range of posts, incrementing the message #s by a value you provide. Intended to fix the old secondary forum posts.  SMF2.0.
 * ***smf_mark_all_read_merge.php*** - Can be used to mark new forum boards read by the existing board users.  In my instance, the merged forum was a predecessor to the main forum, and the content was dated.  SMF2.0.
 
