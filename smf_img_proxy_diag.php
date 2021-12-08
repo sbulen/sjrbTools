@@ -1,31 +1,29 @@
 <?php
 /**
  *
- * A utility to convert all tables that match your smf db prefix to InnoDB
- *   *** SMF 2.0 & 2.1 ***
- *   *** MySQL v5.5+ only ***
+ * An SMF utility to dump web file retrieval info to help diagnose image proxy issues.
+ *
+ * ***** SMF 2.0 $ 2.1 *****
  *
  * Usage guidelines:
- * (1) Use at your own risk.
- * (2) ALWAYS run in your test environment first.
- * (3) ALWAYS backup your system first - expect the unexpected.
- * (4) Copy this file to your base SMF directory - (the one with Settings.php in it).
- * (5) Execute it from your browser.
- * (6) Delete it when you're done.
+ * (1) If you want to look at a different image, update the value in the config section below.
+ * (2) Copy this file to your base SMF directory - (the one with Settings.php in it).
+ * (3) Execute it from your browser.
+ * (4) Delete it when you're done.
  *     by sbulen
  *
  */
 
-$site_title = 'SMF UTF8 Diagnostic';
+$site_title = 'SMF Image Proxy Diagnostic';
 $db_needed = true;
 $ui = new simpleUI($site_title, $db_needed);
 
 $ui->addChunk('Settings', function() use ($ui)
 {
-	global $smcFunc, $db_connection;   // Must remain globals
+	global $smcFunc, $db_connection, $cachedir, $imagedir;   // Must remain globals
 
 	// First some settings file stuff...
-	$dumpvars = array('mbname', 'boardurl', 'db_server', 'db_name', 'db_prefix', 'language', 'db_type', 'db_character_set', 'db_mb4');
+	$dumpvars = array('mbname', 'db_server', 'db_name', 'boardurl', 'image_proxy_enabled', 'image_proxy_secret', 'image_proxy_maxsize', 'cachedir', 'sourcedir');
 
 	$settings = array();
 	$settings[0] = array('Variable','Value');
@@ -51,157 +49,139 @@ $ui->addChunk('Settings', function() use ($ui)
 	}
 	$ui->dumpTable($settings);
 
-	// Now some smcFunc stuff....
-	$db_type = empty($ui->getSettingsFile()['$db_type']) ? 'mysql' : $ui->getSettingsFile()['$db_type'];
-
-	// Where the params at...
-	require_once($ui->getSettingsFile()['sourcedir'] . '/DbExtra-' . $db_type . '.php');
-	db_extra_init();
 
 	$settings = array();
-	$settings[0] = array('smcFunc','Value');
+	$settings[0] = array('Directory checks...');
+	
+	// Check image proxy cache folder...
 
-	$settings[] = array('db_title', $smcFunc['db_title']);
-	$settings[] = array('db_get_version', is_callable($smcFunc['db_get_version']) ? $smcFunc['db_get_version']() : '<strong>NOT SET</strong>');
-	$settings[] = array('db_get_engine', (isset($smcFunc['db_get_engine']) && is_callable($smcFunc['db_get_engine'])) ? $smcFunc['db_get_engine']() : '<strong>NOT SET</strong>');
+	$exists = is_dir($imagedir);
+	
+	$settings[] = array("Image Directory:", $imagedir);
+	$settings[] = array("Image Directory Exists:", $exists ? 'true' : 'false');
+	$settings[] = array("Image Directory Writable?", is_writable($imagedir) ? 'true' : 'false');
+
+	if ($exists) {
+		$settings[] = array("Image Directory Permissions:", substr(decoct(fileperms($imagedir)), -3));
+		$settings[] = array("Image Directory Permissions full:", decoct(fileperms($imagedir)));
+	}
 
 	$ui->dumpTable($settings);
+});
 
-	// Finally some settings table stuff...
+$ui->addChunk('Specify Image', function() use ($ui)
+{
+	
+	$ui->image = 'http://www.gitare.info/datas/users/8418-nopickupslespaul.jpg';
+
+	if (isset($_POST['image']) && is_string($_POST['image']))
+		$ui->image = $ui->cleanseText($_POST['image']);
+
+	echo '<form>';
+	echo '<label for="image">Image URL: </label>';
+	echo '<input type="text" name="image" value="' . $ui->image . '"><br>';
+	echo '<input type="submit" class="button" class="button" formmethod="post" value="Ok">';
+	echo '</form>';
+
+});
+
+$ui->addChunk('get_headers', function() use ($ui)
+{
+	$parsed = parse_url($ui->image);
 	$settings = array();
-	$settings_lookup = array();
-	$settings[0] = array('Variable','Value');
-	$result = $smcFunc['db_query']('', '
-		SELECT variable, value FROM {db_prefix}settings
-		WHERE variable IN ("smfVersion", "global_character_set", "langList");',
-		array(
-		)
-	);
+	$settings[] = array('Name', 'Value');
+	$settings[] = array('Host: ', (!empty($parsed['host']) ? $parsed['host'] : ''));
 
-	while ($row = $smcFunc['db_fetch_assoc']($result))
-	{
-		if (is_null($row['value']))
-			$row['value'] = '<em>null</em>';
-		elseif ($row['value'] === false)
-			$row['value'] = '<em>false</em>';
-		elseif ($row['value'] === true)
-			$row['value'] = '<em>true</em>';
+	$hostheaders = @get_headers($parsed['scheme'] . '://' . $parsed['host']);
+	$settings[] = array('Host headers returned: ', $hostheaders === false ? 'false' : 'true');
 
-		$settings[] = $row;
-		$settings_lookup[$row['variable']] = $row['value'];
-	}
+	if ($hostheaders !== false)
+		$settings[] = array('Host headers: ', implode("<br>", $hostheaders));
 
-	// Ensure they were all set, by checking first column of $settings...
-	foreach (array('smfVersion', 'global_character_set', 'langList') AS $var)
-	{
-		if (!array_key_exists($var, $settings_lookup))
-			$settings[] = array($var, '<strong>NOT SET</strong>');
-	}
-
-	// Ensure proper global_character set
-	if (empty($settings_lookup['global_character_set']) || ($settings_lookup['global_character_set'] != 'UTF-8'))
-		$ui->addError('Settings: global_character_set is not UTF-8!');
+	$imgheaders = @get_headers($ui->image);
+	if ($imgheaders !== false)
+		$settings[] = array('Image Headers: ', implode("<br>", $imgheaders));
 
 	$ui->dumpTable($settings);
 
 });
 
-$ui->addChunk('Database Info', function() use ($ui)
+$ui->addChunk('CURL Feedback', function() use ($ui)
 {
-	global $smcFunc, $db_type, $db_connection, $db_prefix, $db_name;
+	global $sourcedir;
 
-	if ($db_type != 'mysql')
-	{
-		$ui->addError('This utility is only needed for MySQL databases.');
-		return;
-	}
+	require_once($sourcedir . '/Class-CurlFetchWeb.php');
 
-	// Dump schema-level info...
-	$schema_columns = 'SCHEMA_NAME, DEFAULT_CHARACTER_SET_NAME, DEFAULT_COLLATION_NAME';
-	$schema_header = array('SCHEMA_NAME', 'DEFAULT_CHARACTER_SET_NAME', 'DEFAULT_COLLATION_NAME');
-
+	$installed = function_exists('curl_version');
+	
 	$settings = array();
-	$settings[0] = $schema_header;
+	$settings[0] = array('Name', 'Value');
+	$settings[] = array('Curl Installed:', $installed ? 'true' : 'false');
 
-	$result = $smcFunc['db_query']('', '
-		SELECT ' . $schema_columns . '
-		  FROM INFORMATION_SCHEMA.SCHEMATA
-		 WHERE SCHEMA_NAME = "' . $db_name . '";'
-	);
-	while ($row = $smcFunc['db_fetch_assoc']($result))
-	{
-		$settings[] = $row;
-		if ($row['DEFAULT_CHARACTER_SET_NAME'] != 'utf8')
-			$ui->addError('Recommendation: Set schema default character set to UTF-8');
-		if ($row['DEFAULT_COLLATION_NAME'] != 'utf8_general_ci')
-			$ui->addError('Recommendation: Set schema default collation to utf8_general_ci');
+	if ($installed) {
+		$curl = new curl_fetch_web_data(array(CURLINFO_HEADER_OUT => 1, CURLOPT_VERBOSE => 1));
+		$request = $curl->get_url_data($ui->image);
+		$response = $request->result();
+		$settings[] = array('Response url:', $response['url']);
+		$settings[] = array('Return code:', $response['code']);
+		$settings[] = array('Error:', $response['error']);
+		$settings[] = array('Response size:', $response['size']);
+
+   		$respstr = '';
+        if (!empty($response['headers'])) {
+    		foreach ($response['headers'] AS $ix=>$header)
+    			$respstr .= $ix . ': ' . $header . '<br>';
+        }
+
+		$settings[] = array('Headers:', $respstr);
 	}
-	$smcFunc['db_free_result']($result);
-
-	$ui->dumpTable($settings);
-
-	// Dump table info...
-	$tbl_columns = 'TABLE_SCHEMA, TABLE_NAME, ENGINE, TABLE_COLLATION';
-	$tbl_header = array('TABLE_SCHEMA', 'TABLE_NAME', 'ENGINE', 'TABLE_COLLATION');
-
-	$settings = array();
-	$settings[0] = $tbl_header;
-
-	$result = $smcFunc['db_query']('', '
-		SELECT ' . $tbl_columns . '
-		  FROM INFORMATION_SCHEMA.TABLES
-		 WHERE TABLE_SCHEMA = "' . $db_name . '";'
-	);
-	while ($row = $smcFunc['db_fetch_assoc']($result))
-	{
-		$settings[] = $row;
-		if ($row['TABLE_COLLATION'] != 'utf8_general_ci')
-			$ui->addError('Table: ' . $row['TABLE_NAME'] . ' - collation is not utf8_general_ci');
-	}
-	$smcFunc['db_free_result']($result);
 
 	$ui->dumpTable($settings);
 
 });
 
-$ui->addChunk('Column Info', function() use ($ui)
+$ui->addChunk('Sockets Feedback', function() use ($ui)
 {
-	global $smcFunc, $db_type, $db_connection, $db_prefix, $db_name;
-
-	if ($db_type != 'mysql')
-	{
-		$ui->addError('This utility is only needed for MySQL databases.');
-		return;
-	}
-
-	// Dump column info...
-	$col_columns = 'TABLE_SCHEMA, TABLE_NAME, COLUMN_NAME, DATA_TYPE, CHARACTER_SET_NAME, COLLATION_NAME';
-	$col_header = array('TABLE_SCHEMA', 'TABLE_NAME', 'COLUMN_NAME', 'DATA_TYPE', 'CHARACTER_SET_NAME', 'COLLATION_NAME');
+	$parsed = parse_url($ui->image);
 
 	$settings = array();
-	$settings[0] = $col_header;
+	$settings[0] = array('Name', 'Value');
 
-	$result = $smcFunc['db_query']('', '
-		SELECT ' . $col_columns . '
-		  FROM INFORMATION_SCHEMA.COLUMNS
-		 WHERE TABLE_SCHEMA = "' . $db_name . '";'
-	);
-	while ($row = $smcFunc['db_fetch_assoc']($result))
+	$fp = @fsockopen($parsed['host'], 80, $errno, $errstr, 15);
+	$settings[] = array('Host: ', (!empty($parsed['host']) ? $parsed['host'] : ''));
+	$settings[] = array('Connect Result:', (string) $fp);
+	$settings[] = array('Connect Error:', $errno);
+	$settings[] = array('Connect Error String:', $errstr);	
+
+    if ($fp === false)
 	{
-		if (strpos($row['DATA_TYPE'], 'text') !== false || strpos($row['DATA_TYPE'], 'char') !== false)
-		{
-			$settings[] = $row;
-			if ($row['CHARACTER_SET_NAME'] != 'utf8')
-				$ui->addError('Column: ' . $row['TABLE_NAME'] . ', ' . $row['COLUMN_NAME'] . ' - character set is not UTF-8');
-			if ($row['COLLATION_NAME'] != 'utf8_general_ci')
-				$ui->addError('Column: ' . $row['TABLE_NAME'] . ', ' . $row['COLUMN_NAME'] . ' - collation is not utf8_general_ci');
-		}
-	}
-	$smcFunc['db_free_result']($result);
+    	$ui->dumpTable($settings);
+        return;
+    }
+
+	fwrite($fp, 'GET ' . $parsed['path'] . ' HTTP/1.1' . "\r\n");
+	fwrite($fp, 'Host: ' . $parsed['host'] . "\r\n");
+	fwrite($fp, 'User-Agent: PHP/SMF' . "\r\n");
+	fwrite($fp, 'Connection: close' . "\r\n\r\n");	
+	
+	// get the headers
+	$headers = '';
+	while (!feof($fp) && trim($header = fgets($fp, 4096)) != '')
+		$headers .= $header;
+	$settings[] = array('Headers:', nl2br($headers));
+	
+	// get the content
+	$pic = '';
+	while (!feof($fp))
+		$pic .= fread($fp, 4096);
+	fclose($fp);
+
+	$resource = finfo_open(FILEINFO_MIME_TYPE);
+	$type = finfo_buffer($resource, $pic);
+	$settings[] = array('content-type (from finfo):', $type);
+	$settings[] = array('Size (string length):', strlen($pic));
 
 	$ui->dumpTable($settings);
-
-	return;
 
 });
 

@@ -192,11 +192,16 @@ class SimpleUI
 
 		// DB...
 		define('SMF', 1);
+		define('SMF_VERSION', '2.x');
+		define('SMF_FULL_VERSION', 'SMF ' . SMF_VERSION);
+		define('SMF_SOFTWARE_YEAR', '2021');
+
 		define('POSTGRE_TITLE', 'PostgreSQL');
 		define('MYSQL_TITLE', 'MySQL');
+		define('SMF_USER_AGENT', 'Mozilla/5.0 (' . php_uname('s') . ' ' . php_uname('m') . ') AppleWebKit/605.1.15 (KHTML, like Gecko)  SMF/' . strtr(SMF_VERSION, ' ', '.'));
 
 		// These must remain globals when calling SMF funcs...
-		global $smcFunc, $db_connection, $db_prefix, $db_name, $db_type;
+		global $smcFunc, $db_connection, $db_prefix, $db_name, $db_type, $sourcedir;
 		$smcFunc = array();
 		$this->settings_file = array();
 
@@ -396,7 +401,7 @@ class SimpleUI
 
 			input[type=text], select
 			{
-				width: 200px;
+				width: 85%;
 				height: 25px;
 				margin: 4px 0px;
 				display: inline-block;
@@ -511,7 +516,12 @@ class SimpleUI
 				if (in_array($cell, $special_cells))
 					$row[$ix] = $cell;
 				else
+				{
 					$row[$ix] = htmlspecialchars($cell);
+					// Undo any line breaks you just broke...
+					$row[$ix] = str_replace('&lt;br&gt;', '<br>', $row[$ix]); 
+					$row[$ix] = str_replace('&lt;br /&gt;', '<br>', $row[$ix]); 
+				}
 			}
 			if ($header)
 				echo '<div class="sui_row_header">';
