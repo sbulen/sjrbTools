@@ -38,7 +38,7 @@ These tools are inquiry only & are used to perform diagnostics.
 
 * ***github_dump.php*** - Dumps Issue & PR info for a specified repository into a comma-delimited file. 
 
-## mergeSMF and Related Utilities
+## mergeSMF
 
 **WARNING:** These tools update your forum database.  Use at your own risk.  ALWAYS back up your database before use.  ALWAYS run them in your test environment first to learn how they work & to confirm desired outcomes.
 
