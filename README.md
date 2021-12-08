@@ -16,7 +16,7 @@ These tools are inquiry only & are used to perform diagnostics.
 
 ## SMF Cron Jobs
 
-* ***proxy-maint-cron.php*** - This is a very simple cron to prune back your image proxy cache every night.  SMF 2.0 & 2.1.  
+* ***proxy_maint_cron.php*** - This is a very simple cron to prune back your image proxy cache every night.  SMF 2.0 & 2.1.  
 
 ## SMF DB Update Utilities
 
