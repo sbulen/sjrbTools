@@ -1,55 +1,40 @@
-<?php 
-// 
-// A utility to dump github open issue & pr information.
-//
-// Usage guidelines:
-// (1) Update User Configuration section below with info on your repo & user credentials.
-// (2) Run it.
-// (3) github_dump.csv will be in the directory where it was launched.
-//     by sbulen
-// 
+<?php
+/**
+ *
+ * A utility to dump github open issue & pr information.
+ *
+ * Usage guidelines:
+ * (1) Update User Configuration section below with info on your repo & user credentials.
+ * (2) Run it.
+ * (3) github_dump.csv will be in the directory where it was launched.
+ *     by sbulen
+ *
+ */
 
-//*** User Configuration
-$owner = 'SimpleMachines';
-$repo = 'SMF2.1';
-$user = 'xxx';
-$pwd = 'xxx';
-//*** End User Configuration
+$site_title = 'GitHub Export Utility';
+$db_needed = false;
+$max_width = 1100;
+$ui = new simpleUI($site_title, $db_needed, $max_width);
 
-//*** Main program
-doStartup();
-getInfo();
-cleanUnusedColumns();
-mapIssues();
-exportInfo();
-doWrapUp();
-return;
+$ui->addChunk('Repo', function() use ($ui)
+{
+	$owner = 'SimpleMachines';
+	$repo = 'SMF2.1';
 
-//*** Startup 
-function doStartup() {
+	if (isset($_POST['owner']) && is_string($_POST['owner']))
+		$owner = $ui->cleanseText($_POST['owner']);
+	if (isset($_POST['repo']) && is_string($_POST['repo']))
+		$repo = $ui->cleanseText($_POST['repo']);
 
-	global $owner, $repo;
+	echo '<form>';
+	echo 'Specify owner/repo:<br>';
+	echo '<label for="owner">Owner: </label><input type="text" name="owner" value="' . $owner . '"><br>
+	<label for="repo">Repo: </label><input type="text" name="repo" value="' . $repo . '"><br>';
 
-	// Without this header, flushes don't work...
-	header( 'Content-type: text/html; charset=utf-8' );
-	echo("<br>***********************************<br>");
-	echo("******** Github export utility **********<br>");
-	echo("***********************************<br><br>");
+	echo '<input type="submit" class="button" class="button" formmethod="post" value="Ok">';
+	echo '</form>';
 
-	echo("Owner: " . $owner . "<br>");
-	echo("Repository: " . $repo . "<br>");
-
-	// Yes, both flushes necessary
-	@ob_flush();
-	@flush();
-	
-	return;
-}
-
-//*** Get the full set of info from Github 
-function getInfo() {
-
-	global $githubAll, $user, $pwd, $owner, $repo, $gh_calls_remaining, $gh_calls_reset;
+	$ui->githubAll = array();
 
 	// startup curl
 	$ch = curl_init();
@@ -59,8 +44,8 @@ function getInfo() {
 		CURLOPT_SSL_VERIFYPEER => false,
 		CURLOPT_SSL_VERIFYHOST => false,
 		CURLOPT_VERBOSE => true,
-		CURLOPT_USERAGENT => $user,
-		CURLOPT_USERPWD => $pwd,
+		CURLOPT_USERAGENT => 'xxx',	// Oddly, these are required and cannot be blank...
+		CURLOPT_USERPWD => 'xxx',	// Oddly, these are required and cannot be blank...
 		CURLOPT_HEADERFUNCTION =>
 			function($curl, $header) use (&$gha_header)
 				{
@@ -91,7 +76,7 @@ function getInfo() {
 	));
 
 	// Loop thru all the pages - 100 rows at a time
-	$githubAll = array();
+	$ui->githubAll = array();
 	$more = true;
 	$page = 0;
 	while ($more) {
@@ -102,7 +87,7 @@ function getInfo() {
 		$gha_header = array();
 		curl_setopt($ch, CURLOPT_URL, 'https://api.github.com/repos/' . $owner . '/' . $repo . '/issues?per_page=100&page=' . $page);
 		$githubAll_json = curl_exec($ch);
-		curlErr($ch);
+		curlErr($ch, $ui);
 
 		// Save rate limit info
 		if (isset($gha_header['X-RateLimit-Remaining']))
@@ -116,7 +101,22 @@ function getInfo() {
 				echo '<br>X-RateLimit-Remaining: ' . $gh_calls_remaining . '<br>';
 			if (isset($gh_calls_reset))
 				echo 'X-RateLimit-Reset: ' . $gh_calls_reset . '<br>';
-			die('<br>Error accessing Github repository: ' . $gha_header['Status'] . '<br>');
+			//Got some info on the failure???
+			if (!empty($gha_header['Status']))
+				$gh_error = $gha_header['Status'];
+			elseif ($githubAll_json !== false)
+			{
+				// Sometimes helpful info in there...
+				$gh_feedback = json_decode($githubAll_json, true);
+				if (!empty($gh_feedback['message']))
+					$gh_error = $gh_feedback['message'];
+				else
+					$gh_error = 'Unknown...';
+			}
+			else
+				$gh_error = 'Unknown...';
+			$ui->addError('<br>Error accessing Github repository: ' . $gh_error . '<br>');
+			return;
 		}
 
 		// if next page link exists, there is more data to get & you have calls available to do so...
@@ -125,16 +125,9 @@ function getInfo() {
 
 		// If successful response, dump it into an array
 		if ($githubAll_json !== false)
-			$githubAll = array_merge($githubAll, json_decode($githubAll_json, true));
+			$ui->githubAll = array_merge($ui->githubAll, json_decode($githubAll_json, true));
 	}
 	curl_close($ch);
-	return;
-}
-
-//*** Way too much stuff, strip most of it...
-function cleanUnusedColumns() {
-
-	global $githubAll;
 
 	// Put the header row in there...
 	$githubTemp[0] = array(
@@ -152,7 +145,7 @@ function cleanUnusedColumns() {
 				'created_at',
 	);
 
-	foreach($githubAll as $row) {
+	foreach($ui->githubAll as $row) {
 		$githubTemp[$row['number']] = array(
 			empty($row['pull_request']) ? 'Issue' : 'PR',
 			$row['number'],
@@ -168,7 +161,73 @@ function cleanUnusedColumns() {
 			substr($row['created_at'],0,10),
 		);
 	}
-	$githubAll = $githubTemp;
+	$ui->githubAll = $githubTemp;
+
+	//*** Find issues and issue milestones associated with PRs
+	$pattern = '/(\/|#)(\d{1,8})/';
+
+	// check whole table
+	foreach($ui->githubAll as $ix => $row) {	
+		//Look at each PR...
+		if ($row[0] == 'PR') {
+			// allow for multiple matches of #9999 or /9999 (when folks use links) in body of issue (10th field)
+			preg_match_all($pattern, $row[10], $matches);
+			foreach ($matches[2] AS $match) {
+				// finally look for active issue entries
+				if (array_key_exists($match, $ui->githubAll) && $ui->githubAll[$match][0] == 'Issue') {
+					// add issue number
+					if (empty($ui->githubAll[$ix][8]))
+						$ui->githubAll[$ix][8] = $ui->githubAll[$match][1];
+					else
+						$ui->githubAll[$ix][8] .= ', ' . $ui->githubAll[$match][1];
+					// add milestone info
+					if (!empty($ui->githubAll[$match][6])) {
+						if (empty($ui->githubAll[$ix][9]))
+							$ui->githubAll[$ix][9] = $ui->githubAll[$match][6];
+						else
+							$ui->githubAll[$ix][9] .= ', ' . $ui->githubAll[$match][6];
+					}
+				}
+			}
+		}
+	}
+
+	// Done with the message body - delete it
+	foreach($ui->githubAll AS $ix => $row)
+		unset($ui->githubAll[$ix][10]);
+
+	// Write output to .csv file
+	$fp = @fopen('github_dump.csv', 'w');
+	if ($fp === false)
+		$ui->addError('Cannot open github_dump.csv');
+	else
+	{
+		foreach($ui->githubAll AS $row)
+			fputcsv($fp, $row);
+		fclose($fp);
+	}
+
+});
+
+$ui->addChunk('Issues & PRs (.csv export also provided)', function() use ($ui)
+{
+	if (count($ui->githubAll) == 1)
+		echo 'No issues or PRs!<br>';
+	else
+		$ui->dumpTable($ui->githubAll);
+
+});
+
+$ui->go();
+
+//*** Check for curl error
+function curlErr($ch, $ui) {
+
+	// Check for errors and display the error message
+	if($errno = curl_errno($ch)) {
+		$error_message = curl_strerror($errno);
+		$ui->addError("cURL error ({$errno}):\n {$error_message}");
+	}
 	return;
 }
 
@@ -179,104 +238,509 @@ function col2csv($labels, $col) {
 	$lstring = implode(', ', $values);
 	return $lstring;
 }
+/**
+ * SimpleUI
+ *
+ * A simple basic abstracted UI for utilities.
+ *
+ * Copyright 2021 Shawn Bulen
+ *
+ * This file is part of the sjrbTools library.
+ *
+ * SimpleUI is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * SimpleUI is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with SimpleUI.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ */
 
-//*** Find issues and issue milestones associated with PRs
-function mapIssues() {
+class SimpleUI
+{
+	/*
+	 * Properties
+	 */
+	protected $site_title = 'Simple UI';
+	protected $max_width = 1200;
+	protected $db_needed;
+	protected $txt = array(
+		'err_no_title' => 'Site title is required and must be a string!',
+		'err_width' => 'Funky width specified!',
+		'err_no_settings' => 'Could not find Settings.php!  Place this file in the same folder as Settings.php.',
+		'err_no_db' => 'Could not establish connection with the database!',
+		'err_no_chunk_title' => 'Invalid chunk title!',
+		'err_no_chunk_func' => 'Invalid chunk function!',
+		'errors' => 'Errors',
+	);
+	protected $chunks = array();
+	protected $errors = array();
 
-	global $githubAll;
-	$pattern = '/(\/|#)(\d{1,8})/';
+	/*
+	 * SMF Properties
+	 */
+	protected $settings_file;
 
-	// check whole table
-	foreach($githubAll as $ix => $row) {	
-		//Look at each PR...
-		if ($row[0] == 'PR') {
-			// allow for multiple matches of #9999 or /9999 (when folks use links) in body of issue (10th field)
-			preg_match_all($pattern, $row[10], $matches);
-			foreach ($matches[2] AS $match) {
-				// finally look for active issue entries
-				if (array_key_exists($match, $githubAll) && $githubAll[$match][0] == 'Issue') {
-					// add issue number
-					if (empty($githubAll[$ix][8]))
-						$githubAll[$ix][8] = $githubAll[$match][1];
-					else
-						$githubAll[$ix][8] .= ', ' . $githubAll[$match][1];
-					// add milestone info
-					if (!empty($githubAll[$match][6])) {
-						if (empty($githubAll[$ix][9]))
-							$githubAll[$ix][9] = $githubAll[$match][6];
-						else
-							$githubAll[$ix][9] .= ', ' . $githubAll[$match][6];
-					}
-				}
+	/**
+	 * Constructor
+	 *
+	 * Builds a SimpleUI object
+	 *
+	 * @param string title
+	 * @param bool db_needed
+	 * @return void
+	 */
+	function __construct($title, $db_needed = null, $max_width = 800)
+	{
+		// Might as well try...
+		@set_time_limit(6000);
+		@ini_set('memory_limit', '512M');
+
+		// Title...
+		if (is_string($title))
+			$this->site_title = $title;
+		else
+			$this->addError('err_no_title');
+
+		// db_needed...
+		if (empty($db_needed))
+			$this->db_needed = false;
+		else
+			$this->db_needed = true;
+
+		// Width...
+		if (is_numeric($max_width))
+			$this->max_width = $max_width;
+		else
+			$this->addError('err_width');
+
+		// DB...
+		define('SMF', 1);
+		define('POSTGRE_TITLE', 'PostgreSQL');
+		define('MYSQL_TITLE', 'MySQL');
+
+		// These must remain globals when calling SMF funcs...
+		global $smcFunc, $db_connection, $db_prefix, $db_name, $db_type;
+		$smcFunc = array();
+		$this->settings_file = array();
+
+		if ($this->db_needed)
+		{
+			// Load & save off settings file contents
+			if (file_exists('Settings.php'))
+			{
+				include_once('Settings.php');
+				$dumpvars = array('mbname', 'db_server', 'db_name', 'db_prefix', 'db_type', 'db_character_set', 'db_mb4', 'language',
+					'boardurl', 'boarddir', 'sourcedir', 'packagesdir', 'tasksdir', 'cachedir',
+					'maintenance', 'mtitle', 'mmessage',
+					'cookiename', 'db_persist', 'db_error_send',
+					'cache_accelerator', 'cache_enable', 'cache_memcached',
+					'image_proxy_enabled', 'image_proxy_secret', 'image_proxy_maxsize');
+
+				foreach($dumpvars as $setting)
+					$this->settings_file[$setting] = (isset(${$setting}) ? ${$setting} : '<strong>NOT SET</strong>');
+			}
+			else
+				$this->addError('err_no_settings');
+
+			if (!empty($sourcedir))
+			{
+				// Get the database going!
+				if (empty($db_type) || $db_type == 'mysqli')
+					$db_type = 'mysql';
+
+				// Make the connection...
+				require_once($sourcedir . '/Subs-Db-' . $db_type . '.php');
+				$db_connection = smf_db_initiate($db_server, $db_name, $db_user, $db_passwd, $db_prefix);
+
+				if (empty($db_connection))
+					$this->addError('err_no_db');
 			}
 		}
 	}
 
-	// Done with the message body - delete it
-	foreach($githubAll AS $ix => $row)
-		unset($githubAll[$ix][10]);
+	/**
+	 * Render chunk
+	 *
+	 * Display one portion of the form
+	 *
+	 * @return void
+	 */
+	protected function doChunk($ix, $chunk)
+	{
+		echo '<section>';	// sections needed to narrow scope of expand/collapse action
+		echo '<input type="checkbox" name="collapse" checked id="chunk' . $ix . '">
+			<div class="chunkhdr">
+				<label for="chunk' . $ix . '">' . $chunk['title'] . '</label>
+			</div>
+			<div class="content_nopad">
+			<div class="content">';
 
-	return;
-}
+		$chunk['function']();
 
-// Dump to screen and to .csv
-function exportInfo() {
-
-	global $githubAll;
-
-	dumpTable($githubAll);
-
-	$fp = fopen('github_dump.csv', 'w');
-	if ($fp === false)
-		die ("Cannot open github_dump.csv");
-
-	foreach($githubAll AS $row)
-		fputcsv($fp, $row);
-	fclose($fp);
-
-	return;
-}
-
-//*** Check for curl error
-function curlErr($ch) {
-
-	// Check for errors and display the error message
-	if($errno = curl_errno($ch)) {
-		$error_message = curl_strerror($errno);
-		die("cURL error ({$errno}):\n {$error_message}");
+		echo '</div></div>';
+		echo '</section>';
 	}
-	return;
-}
 
-//*** Wrap Up 
-function doWrapUp() {
+	/**
+	 * Display errors
+	 *
+	 * Display errors in current display area
+	 *
+	 * @return void
+	 */
+	protected function renderErrors()
+	{
+		echo '<div id="errhdr">' . $this->txt['errors'] . '</div>
+			<div class="content_nopad">
+			<div class="content">';
 
-	global $gh_calls_remaining, $gh_calls_reset;
-	
-	echo "<br>Completed!<br><br>";
-	if (isset($gh_calls_remaining))
-		echo 'X-RateLimit-Remaining: ' . $gh_calls_remaining . '<br>';
-	if (isset($gh_calls_reset))
-		echo 'X-RateLimit-Reset: ' . $gh_calls_reset . '<br><br>';
-	
-	// Yes, both flushes necessary
-	@ob_flush();
-	@flush();	
-	return;
-}
+		foreach ($this->errors AS $error)
+			echo $error . '<br>';
 
-//*** Dump Table
-// Takes a simple 2 dimensional array & dumps it in table format
-function dumpTable($passedArray) {
-	echo '<br><table border="1" cellpadding="3" frame="border" rules="all">';
-	foreach($passedArray as $row) {
-		echo '<tr><td>';
-		echo implode('</td><td>', $row);
-		echo '</td></tr>';
+		echo '</div></div>';
 	}
-	echo '</table><br>';
-	@ob_flush();
-	@flush();	
-	return;
-}
 
+	/**
+	 * Render header
+	 *
+	 * Spits out the head, title, style & starts the body
+	 *
+	 * @return void
+	 */
+	protected function renderHeader()
+	{
+		echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+		<html>
+		<head>
+		<meta charset="utf-8">
+		<title>' . $this->site_title . '</title>
+		<style type="text/css">
+			body
+			{
+				padding: 12px 0px 0px 0px;
+				font-family: "Roboto", sans-serif;
+				background-color: rgb(242,242,242);
+				max-width: ' . $this->max_width . 'px;
+				margin: 0 auto;
+				box-shadow: 2px 2px 2px 2px rgb(220,220,220);
+				border-bottom: 1px solid rgb(170,170,170);
+			}
+
+			#header
+			{
+				padding: 4px 4% 4px 4%;
+				background-color: rgb(54,126,189);
+				font-family: "Roboto", sans-serif;
+				font-size: x-large;
+				height: 30px;
+				vertical-align: middle;
+				text-align:center;
+				border-bottom: 1px solid rgb(58,123,155);
+			}
+
+			.content_nopad
+			{
+				background: linear-gradient(180deg, rgb(190,190,190) 0%, rgb(252,252,252) 5px);
+			}
+
+			.content
+			{
+				padding: 10px 10px 10px 10px;
+				font-size: small;
+			}
+
+			#nametag
+			{
+				font-family: "Roboto", sans-serif;
+				font-size: smaller;
+				color: rgb(122,132,134);
+				background-color: rgb(252,252,252);
+				text-align: right;
+			}
+
+			.chunkhdr
+			{
+				padding: 4px 4% 4px 4%;
+				background-color: rgb(0,153,204);
+				font-family: "Roboto", sans-serif;
+				font-size: large;
+				height: 25px;
+				vertical-align: middle;
+				text-align:center;
+				border-bottom: 1px solid rgb(89,154,187);
+			}
+
+			.chunkhdr label
+			{
+				display: inline-block;
+				width: 100%;
+			}
+
+			.chunkhdr:hover,
+			.chunkhdr:focus
+			{
+				background: rgb(76,175,208);
+			}
+
+			input[name="collapse"]:not(:checked) ~ .content_nopad
+			{
+				display: none;
+			}
+
+			input[name="collapse"]
+			{
+				display: none;
+			}
+
+			.chunkhdr label:before {
+				content: "▲";
+				display: inline-block;
+				float: left;
+				vertical-align: middle;
+				color: rgb(54,126,189);
+			}
+
+			input[name="collapse"]:not(:checked) ~ .chunkhdr label:before
+			{
+				transform: rotate(180deg);
+				transform-origin: center;
+			}
+
+			#errhdr
+			{
+				padding: 4px 4% 4px 4%;
+				background-color: rgb(230,130,130);
+				font-family: "Roboto", sans-serif;
+				font-size: large;
+				height: 25px;
+				vertical-align: middle;
+				text-align:center;
+			}
+
+			input[type=text], select
+			{
+				width: 200px;
+				height: 25px;
+				margin: 4px 0px;
+				display: inline-block;
+				border: 1px solid #ccc;
+				border-radius: 4px;
+				box-sizing: border-box;
+			}
+
+			.button
+			{
+				padding: 1px 1px;
+				text-align: center;
+				width: 100px;
+				box-shadow: 1px 1px 1px 1px rgb(210,210,210);
+			}
+
+			.sui_table
+			{
+				display: table;
+				table-layout:fixed;
+				border-collapse: collapse;
+				border-spacing: 0;
+				padding: 0px;
+				border: 1px solid #ccc;
+				text-align: left;
+				vertical-align: top;
+				white-space: normal;
+				word-break: break-word;
+				font-weight: normal;
+				font-variant: normal;
+				color: inherit;
+			}
+
+			.sui_row
+			{
+				display: table-row;
+			}
+
+			.sui_row_header
+			{
+				display: table-header-group;
+				font-weight: bold;
+				color: rgb(46,96,140);
+			}
+
+			.sui_cell
+			{
+				border: 1px solid #ccc;
+				display: table-cell;
+				padding: 2px;
+				min-width: 70px;
+				max-width: 750px;
+			}
+		</style>
+		</head>
+		<body>
+		<div id="header">' . $this->site_title . '
+		</div>';
+	}
+
+	/**
+	 * Render header
+	 *
+	 * Closes out the body & html tags
+	 *
+	 * @return void
+	 */
+	protected function renderFooter()
+	{
+		// Close out body & html tags
+		echo '<div id="nametag">sbulen/sjrbTools</div>';
+		echo '</body>
+		</html>';
+	}
+
+	/**
+	 * Cleanse text
+	 *
+	 * Some basic hygiene for user-entered input
+	 *
+	 * @param string input
+	 * @return string cleansed
+	 */
+	public function cleanseText($input)
+	{
+		$input = trim($input);
+		$input = stripslashes($input);
+		$input = htmlspecialchars($input);
+		return $input;
+	}
+
+	/**
+	 * Dump table
+	 *
+	 * Render a simple 2-d array in table form
+	 *
+	 * @param array passed_array
+	 * @return void
+	 */
+	public function dumpTable($passed_array)
+	{
+		static $special_cells = array('<strong>NOT SET</strong>', '<em>null</em>', '<em>true</em>', '<em>false</em>');
+
+		$header = true;
+		echo '<br><div class="sui_table">';
+		foreach($passed_array as $row)
+		{
+			// Some cleansing...
+			foreach ($row AS $ix => $cell)
+			{
+				// Treat NOT SET, null, true, & false special...
+				if (in_array($cell, $special_cells))
+					$row[$ix] = $cell;
+				else
+					$row[$ix] = htmlspecialchars($cell);
+			}
+			if ($header)
+				echo '<div class="sui_row_header">';
+			else
+				echo '<div class="sui_row">';
+			echo '<div class="sui_cell">';
+			echo implode('</div><div class="sui_cell">', $row);
+			echo '</div></div>';
+			$header = false;
+		}
+		echo '</div><br>';
+	}
+
+	/**
+	 * Add Chunk
+	 *
+	 * Adds an entry to the internal chunk array.
+	 * Each chunk will display a header, do some logic, & display some content.
+	 * If errors are encountered, ideally they should be added to the errors display and displayed at the end.
+	 *
+	 * @param string title - title to display above this chunk
+	 * @param function logic - what to execute, passed as an anonymous function
+	 * @return void
+	 */
+	public function addChunk($title, $func)
+	{
+		if (!is_string($title))
+		{
+			$title = '';
+			$this->addError('err_no_chunk_title');
+		}
+
+		if (!is_callable($func))
+		{
+			$func = function() {};
+			$this->addError('err_no_chunk_func');
+		}
+
+		$this->chunks[] = array('title' => $title, 'function' => $func);
+	}
+
+	/**
+	 * Get Settings File contents
+	 *
+	 * @return array
+	 */
+	public function getSettingsFile()
+	{
+		return $this->settings_file;
+	}
+
+	/**
+	 * Add Error
+	 *
+	 * Add error to internal log
+	 *
+	 * @param string key - is key to $txt array
+	 * @param string more - is additional info to be added to output string if needed
+	 * @return void
+	 */
+	public function addError($key, $more = '')
+	{
+		if (!is_string($key))
+			$key = '';
+
+		if (!is_string($more))
+			$more = '';
+
+		if (!empty($this->txt[$key]))
+			$key = $this->txt[$key];
+
+		$this->errors[] = $key . ' ' . $more;
+	}
+
+	/**
+	 * Go
+	 *
+	 * Got everything, now do it...
+	 *
+	 * @return void
+	 */
+	public function go()
+	{
+		global $db_connection;
+
+		$this->renderHeader();
+
+		// Execute the chunks...
+		// Note if db_needed & no connection, do not process chunks, just display the errors
+		if (!$this->db_needed || ($this->db_needed && !empty($db_connection)))
+		{
+			foreach($this->chunks AS $ix => $chunk)
+				$this->doChunk($ix, $chunk);
+		}
+
+		// Display any errors...
+		if (!empty($this->errors))
+			$this->renderErrors();
+
+		$this->renderFooter();
+	}
+}
