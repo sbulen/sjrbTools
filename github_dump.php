@@ -77,7 +77,6 @@ $ui->addChunk('Repo', function() use ($ui)
 	));
 
 	// Loop thru all the pages - 100 rows at a time
-	$ui->githubAll = array();
 	$more = true;
 	$page = 0;
 	while ($more) {
@@ -321,6 +320,15 @@ class SimpleSmfUI
 			$this->max_width = $max_width;
 		else
 			$this->addError('err_width');
+
+		// Error handler
+		set_error_handler(
+			function($errno, $errstr, $errfile, $errline)
+			{
+				$this->addError($errstr . ' (' . $errno . ')');
+				return true;
+			}
+		);
 
 		// DB...
 		define('SMF', 1);
@@ -615,13 +623,19 @@ class SimpleSmfUI
 	 * Some basic hygiene for user-entered input
 	 *
 	 * @param string input
+	 * @param bool gtlt - whether to leave > and < alone (e.g., for queries)
 	 * @return string cleansed
 	 */
-	public function cleanseText($input)
+	public function cleanseText($input, $gtlt = false)
 	{
 		$input = trim($input);
 		$input = stripslashes($input);
 		$input = htmlspecialchars($input);
+		if ($gtlt)
+		{
+			$input = str_replace('&gt;', '>', $input);
+			$input = str_replace('&lt', '<', $input);
+		}
 		return $input;
 	}
 

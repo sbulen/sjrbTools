@@ -271,6 +271,15 @@ class SimpleSmfUI
 		else
 			$this->addError('err_width');
 
+		// Error handler
+		set_error_handler(
+			function($errno, $errstr, $errfile, $errline)
+			{
+				$this->addError($errstr . ' (' . $errno . ')');
+				return true;
+			}
+		);
+
 		// DB...
 		define('SMF', 1);
 		define('SMF_VERSION', '2.x');
@@ -564,13 +573,19 @@ class SimpleSmfUI
 	 * Some basic hygiene for user-entered input
 	 *
 	 * @param string input
+	 * @param bool gtlt - whether to leave > and < alone (e.g., for queries)
 	 * @return string cleansed
 	 */
-	public function cleanseText($input)
+	public function cleanseText($input, $gtlt = false)
 	{
 		$input = trim($input);
 		$input = stripslashes($input);
 		$input = htmlspecialchars($input);
+		if ($gtlt)
+		{
+			$input = str_replace('&gt;', '>', $input);
+			$input = str_replace('&lt', '<', $input);
+		}
 		return $input;
 	}
 
