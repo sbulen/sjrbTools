@@ -530,6 +530,18 @@ class SimpleSmfUI
 				display: table-row;
 			}
 
+			.sui_row_red
+			{
+				display: table-row;
+				background-color: rgb(230,130,130);
+			}
+
+			.sui_row_green
+			{
+				display: table-row;
+				background-color: #42ddcf;
+			}
+
 			.sui_row_header
 			{
 				display: table-header-group;
@@ -542,8 +554,18 @@ class SimpleSmfUI
 				border: 1px solid #ccc;
 				display: table-cell;
 				padding: 2px;
-				min-width: 70px;
+				min-width: 80px;
 				max-width: 750px;
+			}
+
+			.sui_cell_yellow
+			{
+				border: 1px solid #ccc;
+				display: table-cell;
+				padding: 2px;
+				min-width: 80px;
+				max-width: 750px;
+				background-color: #f7f793;
 			}
 		</style>
 		</head>
