@@ -27791,8 +27791,8 @@ $ui->addChunk('Settings Table', function() use ($ui)
 $ui->addChunk('Select SMF Version for Comparison', function() use ($ui)
 {
 	// Value selected?
-	if (isset($_POST['ver']) && in_array($_POST['ver'], array('Yabbse', '1.0', '1.1', '2.0', '2.1')))
-		$ui->smf_ver = $_POST['ver'];
+	if (isset($_SESSION['ver']) && in_array($_SESSION['ver'], array('Yabbse', '1.0', '1.1', '2.0', '2.1')))
+		$ui->smf_ver = $_SESSION['ver'];
 
 	// Provide a default if none somehow found yet...
 	if (empty($ui->smf_ver))
@@ -28477,12 +28477,13 @@ class SimpleSmfUI
 	public function cleanseText($input, $gtlt = false)
 	{
 		$input = trim($input);
-		$input = stripslashes($input);
 		$input = htmlspecialchars($input);
 		if ($gtlt)
 		{
 			$input = str_replace('&gt;', '>', $input);
-			$input = str_replace('&lt', '<', $input);
+			$input = str_replace('&amp;gt;', '>', $input);
+			$input = str_replace('&lt;', '<', $input);
+			$input = str_replace('&amp;lt;', '<', $input);
 		}
 		return $input;
 	}
@@ -28601,6 +28602,20 @@ class SimpleSmfUI
 	{
 		global $db_connection;
 
+		// Responding to a POST? Cleanse info, put in session and redirect
+		session_start();
+		if ($_POST)
+		{
+			$_SESSION = array();
+			foreach($_POST as $var => $val)
+				$_SESSION[$this->cleanseText($var)] = $this->cleanseText($val);
+			
+		   // Redirect to this page
+		   header("Location: {$_SERVER['REQUEST_URI']}", true, 302);
+		   exit();
+		}
+
+		// OK, display stuff...
 		$this->renderHeader();
 
 		// Execute the chunks...

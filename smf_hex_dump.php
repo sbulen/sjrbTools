@@ -18,7 +18,7 @@
 
 $site_title = 'SMF Hex Dump';
 $db_needed = true;
-$min_width = 1125;
+$min_width = 1250;
 $ui = new SimpleSmfUI($site_title, $db_needed, $min_width);
 
 $ui->addChunk('Settings', function() use ($ui)
@@ -58,12 +58,12 @@ $ui->addChunk('Specify Query Parameters', function() use ($ui)
 	$ui->field = 'body';
 	$ui->where_clause = 'WHERE id_msg = 1';
 
-	if (isset($_POST['record']) && is_string($_POST['record']))
-		$ui->record = $ui->cleanseText($_POST['record']);
-	if (isset($_POST['field']) && is_string($_POST['field']))
-		$ui->field = $ui->cleanseText($_POST['field']);
-	if (isset($_POST['where_clause']) && is_string($_POST['where_clause']))
-		$ui->where_clause = $ui->cleanseText($_POST['where_clause'], true);
+	if (isset($_SESSION['record']) && is_string($_SESSION['record']))
+		$ui->record = $ui->cleanseText($_SESSION['record']);
+	if (isset($_SESSION['field']) && is_string($_SESSION['field']))
+		$ui->field = $ui->cleanseText($_SESSION['field']);
+	if (isset($_SESSION['where_clause']) && is_string($_SESSION['where_clause']))
+		$ui->where_clause = $ui->cleanseText($_SESSION['where_clause'], true);
 
 	echo '<form>';
 	echo '<label for="record">Record: </label>';
@@ -545,12 +545,13 @@ class SimpleSmfUI
 	public function cleanseText($input, $gtlt = false)
 	{
 		$input = trim($input);
-		$input = stripslashes($input);
 		$input = htmlspecialchars($input);
 		if ($gtlt)
 		{
 			$input = str_replace('&gt;', '>', $input);
-			$input = str_replace('&lt', '<', $input);
+			$input = str_replace('&amp;gt;', '>', $input);
+			$input = str_replace('&lt;', '<', $input);
+			$input = str_replace('&amp;lt;', '<', $input);
 		}
 		return $input;
 	}
@@ -669,6 +670,20 @@ class SimpleSmfUI
 	{
 		global $db_connection;
 
+		// Responding to a POST? Cleanse info, put in session and redirect
+		session_start();
+		if ($_POST)
+		{
+			$_SESSION = array();
+			foreach($_POST as $var => $val)
+				$_SESSION[$this->cleanseText($var)] = $this->cleanseText($val);
+			
+		   // Redirect to this page
+		   header("Location: {$_SERVER['REQUEST_URI']}", true, 302);
+		   exit();
+		}
+
+		// OK, display stuff...
 		$this->renderHeader();
 
 		// Execute the chunks...

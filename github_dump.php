@@ -22,17 +22,17 @@ $ui->addChunk('Repo', function() use ($ui)
 	$owner = 'SimpleMachines';
 	$repo = 'SMF2.1';
 
-	if (isset($_POST['owner']) && is_string($_POST['owner']))
-		$owner = $ui->cleanseText($_POST['owner']);
-	if (isset($_POST['repo']) && is_string($_POST['repo']))
-		$repo = $ui->cleanseText($_POST['repo']);
+	if (isset($_SESSION['owner']) && is_string($_SESSION['owner']))
+		$owner = $ui->cleanseText($_SESSION['owner']);
+	if (isset($_SESSION['repo']) && is_string($_SESSION['repo']))
+		$repo = $ui->cleanseText($_SESSION['repo']);
 
 	echo '<form>';
 	echo 'Specify owner/repo:<br>';
 	echo '<label for="owner">Owner: </label><input type="text" name="owner" value="' . $owner . '"><br>
 	<label for="repo">Repo: </label><input type="text" name="repo" value="' . $repo . '"><br>';
 
-	echo '<input type="submit" class="button" class="button" formmethod="post" value="Ok">';
+	echo '<input type="submit" class="button" class="button" formmethod="post" name="proceed" value="Ok">';
 	echo '</form>';
 
 	$ui->githubAll = array();
@@ -651,12 +651,13 @@ class SimpleSmfUI
 	public function cleanseText($input, $gtlt = false)
 	{
 		$input = trim($input);
-		$input = stripslashes($input);
 		$input = htmlspecialchars($input);
 		if ($gtlt)
 		{
 			$input = str_replace('&gt;', '>', $input);
-			$input = str_replace('&lt', '<', $input);
+			$input = str_replace('&amp;gt;', '>', $input);
+			$input = str_replace('&lt;', '<', $input);
+			$input = str_replace('&amp;lt;', '<', $input);
 		}
 		return $input;
 	}
@@ -775,6 +776,20 @@ class SimpleSmfUI
 	{
 		global $db_connection;
 
+		// Responding to a POST? Cleanse info, put in session and redirect
+		session_start();
+		if ($_POST)
+		{
+			$_SESSION = array();
+			foreach($_POST as $var => $val)
+				$_SESSION[$this->cleanseText($var)] = $this->cleanseText($val);
+			
+		   // Redirect to this page
+		   header("Location: {$_SERVER['REQUEST_URI']}", true, 302);
+		   exit();
+		}
+
+		// OK, display stuff...
 		$this->renderHeader();
 
 		// Execute the chunks...
