@@ -579,7 +579,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'admin_info_files parameters' => Array
@@ -612,7 +612,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'approval_queue id_event' => Array
@@ -623,7 +623,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'approval_queue id_msg' => Array
@@ -634,7 +634,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'attachments approved' => Array
@@ -645,7 +645,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'attachments attachment_type' => Array
@@ -656,7 +656,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'attachments downloads' => Array
@@ -667,7 +667,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'attachments file_hash' => Array
@@ -711,7 +711,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'attachments id_attach' => Array
@@ -722,7 +722,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'attachments id_folder' => Array
@@ -733,7 +733,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'attachments id_member' => Array
@@ -744,7 +744,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'attachments id_msg' => Array
@@ -755,7 +755,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'attachments id_thumb' => Array
@@ -766,7 +766,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'attachments mime_type' => Array
@@ -788,7 +788,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'attachments width' => Array
@@ -799,7 +799,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'background_tasks claimed_time' => Array
@@ -810,7 +810,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'background_tasks id_task' => Array
@@ -821,7 +821,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'background_tasks task_class' => Array
@@ -865,7 +865,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_groups cannot_access' => Array
@@ -876,7 +876,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_groups cannot_login' => Array
@@ -887,7 +887,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_groups cannot_post' => Array
@@ -898,7 +898,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_groups cannot_register' => Array
@@ -909,7 +909,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_groups expire_time' => Array
@@ -920,7 +920,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'YES',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_groups id_ban_group' => Array
@@ -931,7 +931,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_groups name' => Array
@@ -986,7 +986,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_items hostname' => Array
@@ -1008,7 +1008,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_items id_ban_group' => Array
@@ -1019,7 +1019,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_items id_member' => Array
@@ -1030,7 +1030,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_items ip_high' => Array
@@ -1041,7 +1041,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'YES',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_items ip_low' => Array
@@ -1052,7 +1052,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'YES',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'board_permissions add_deny' => Array
@@ -1063,7 +1063,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'board_permissions id_group' => Array
@@ -1074,7 +1074,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'board_permissions id_profile' => Array
@@ -1085,7 +1085,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'board_permissions permission' => Array
@@ -1107,7 +1107,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'board_permissions_view id_board' => Array
@@ -1118,7 +1118,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'board_permissions_view id_group' => Array
@@ -1129,7 +1129,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards board_order' => Array
@@ -1140,7 +1140,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards child_level' => Array
@@ -1151,7 +1151,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards count_posts' => Array
@@ -1162,7 +1162,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards deny_member_groups' => Array
@@ -1195,7 +1195,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards id_cat' => Array
@@ -1206,7 +1206,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards id_last_msg' => Array
@@ -1217,7 +1217,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards id_msg_updated' => Array
@@ -1228,7 +1228,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards id_parent' => Array
@@ -1239,7 +1239,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards id_profile' => Array
@@ -1250,7 +1250,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards id_theme' => Array
@@ -1261,7 +1261,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards member_groups' => Array
@@ -1294,7 +1294,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards num_topics' => Array
@@ -1305,7 +1305,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards override_theme' => Array
@@ -1316,7 +1316,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards redirect' => Array
@@ -1338,7 +1338,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards unapproved_topics' => Array
@@ -1349,7 +1349,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar end_date' => Array
@@ -1360,7 +1360,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1004-01-01',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar end_time' => Array
@@ -1371,7 +1371,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'YES',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar id_board' => Array
@@ -1382,7 +1382,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar id_event' => Array
@@ -1393,7 +1393,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar id_member' => Array
@@ -1404,7 +1404,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar id_topic' => Array
@@ -1415,7 +1415,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar location' => Array
@@ -1437,7 +1437,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1004-01-01',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar start_time' => Array
@@ -1448,7 +1448,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'YES',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar timezone' => Array
@@ -1481,7 +1481,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1004-01-01',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar_holidays id_holiday' => Array
@@ -1492,7 +1492,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar_holidays title' => Array
@@ -1514,7 +1514,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'categories cat_order' => Array
@@ -1525,7 +1525,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'categories description' => Array
@@ -1547,7 +1547,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'categories name' => Array
@@ -1569,7 +1569,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'custom_fields bbc' => Array
@@ -1580,7 +1580,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'custom_fields can_search' => Array
@@ -1591,7 +1591,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'custom_fields col_name' => Array
@@ -1646,7 +1646,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '255',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'custom_fields field_name' => Array
@@ -1679,7 +1679,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'custom_fields field_type' => Array
@@ -1701,7 +1701,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'custom_fields mask' => Array
@@ -1723,7 +1723,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'custom_fields private' => Array
@@ -1734,7 +1734,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'custom_fields show_display' => Array
@@ -1745,7 +1745,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'custom_fields show_mlist' => Array
@@ -1756,7 +1756,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'custom_fields show_profile' => Array
@@ -1778,7 +1778,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'group_moderators id_group' => Array
@@ -1789,7 +1789,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'group_moderators id_member' => Array
@@ -1800,7 +1800,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_actions action' => Array
@@ -1833,7 +1833,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_actions id_board' => Array
@@ -1844,7 +1844,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_actions id_log' => Array
@@ -1855,7 +1855,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_actions id_member' => Array
@@ -1866,7 +1866,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_actions id_msg' => Array
@@ -1877,7 +1877,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_actions id_topic' => Array
@@ -1888,7 +1888,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_actions ip' => Array
@@ -1899,7 +1899,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'YES',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_actions log_time' => Array
@@ -1910,7 +1910,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_activity date' => Array
@@ -1921,7 +1921,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_activity hits' => Array
@@ -1932,7 +1932,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_activity most_on' => Array
@@ -1943,7 +1943,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_activity posts' => Array
@@ -1954,7 +1954,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_activity registers' => Array
@@ -1965,7 +1965,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_activity topics' => Array
@@ -1976,7 +1976,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_banned email' => Array
@@ -1998,7 +1998,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_banned id_member' => Array
@@ -2009,7 +2009,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_banned ip' => Array
@@ -2020,7 +2020,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'YES',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_banned log_time' => Array
@@ -2031,7 +2031,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_boards id_board' => Array
@@ -2042,7 +2042,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_boards id_member' => Array
@@ -2053,7 +2053,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_boards id_msg' => Array
@@ -2064,7 +2064,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_comments body' => Array
@@ -2097,7 +2097,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_comments id_comment' => Array
@@ -2108,7 +2108,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_comments id_member' => Array
@@ -2119,7 +2119,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_comments id_notice' => Array
@@ -2130,7 +2130,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_comments id_recipient' => Array
@@ -2141,7 +2141,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_comments log_time' => Array
@@ -2152,7 +2152,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_comments member_name' => Array
@@ -2185,7 +2185,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_digest exclude' => Array
@@ -2196,7 +2196,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_digest id_msg' => Array
@@ -2207,7 +2207,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_digest id_topic' => Array
@@ -2218,7 +2218,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_digest note_type' => Array
@@ -2273,7 +2273,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_errors id_member' => Array
@@ -2284,7 +2284,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_errors ip' => Array
@@ -2295,7 +2295,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'YES',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_errors line' => Array
@@ -2306,7 +2306,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_errors log_time' => Array
@@ -2317,7 +2317,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_errors message' => Array
@@ -2361,7 +2361,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_floodcontrol log_time' => Array
@@ -2372,7 +2372,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_floodcontrol log_type' => Array
@@ -2405,7 +2405,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_group_requests id_member' => Array
@@ -2416,7 +2416,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_group_requests id_member_acted' => Array
@@ -2427,7 +2427,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_group_requests id_request' => Array
@@ -2438,7 +2438,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_group_requests member_name_acted' => Array
@@ -2471,7 +2471,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_group_requests time_acted' => Array
@@ -2482,7 +2482,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_group_requests time_applied' => Array
@@ -2493,7 +2493,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_mark_read id_board' => Array
@@ -2504,7 +2504,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_mark_read id_member' => Array
@@ -2515,7 +2515,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_mark_read id_msg' => Array
@@ -2526,7 +2526,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_member_notices body' => Array
@@ -2548,7 +2548,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_member_notices subject' => Array
@@ -2570,7 +2570,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_notify id_member' => Array
@@ -2581,7 +2581,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_notify id_topic' => Array
@@ -2592,7 +2592,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_notify sent' => Array
@@ -2603,7 +2603,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_online id_member' => Array
@@ -2614,7 +2614,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_online id_spider' => Array
@@ -2625,7 +2625,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_online ip' => Array
@@ -2636,7 +2636,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'YES',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_online log_time' => Array
@@ -2647,7 +2647,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_online session' => Array
@@ -2724,7 +2724,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_packages id_member_installed' => Array
@@ -2735,7 +2735,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_packages id_member_removed' => Array
@@ -2746,7 +2746,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_packages install_state' => Array
@@ -2757,7 +2757,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_packages member_installed' => Array
@@ -2834,7 +2834,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_packages time_removed' => Array
@@ -2845,7 +2845,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_packages version' => Array
@@ -2867,7 +2867,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_polls id_member' => Array
@@ -2878,7 +2878,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_polls id_poll' => Array
@@ -2889,7 +2889,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_reported body' => Array
@@ -2911,7 +2911,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_reported id_board' => Array
@@ -2922,7 +2922,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_reported id_member' => Array
@@ -2933,7 +2933,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_reported id_msg' => Array
@@ -2944,7 +2944,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_reported id_report' => Array
@@ -2955,7 +2955,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_reported id_topic' => Array
@@ -2966,7 +2966,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_reported ignore_all' => Array
@@ -2977,7 +2977,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_reported membername' => Array
@@ -2999,7 +2999,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_reported subject' => Array
@@ -3021,7 +3021,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_reported time_updated' => Array
@@ -3032,7 +3032,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_reported_comments comment' => Array
@@ -3054,7 +3054,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_reported_comments id_member' => Array
@@ -3065,7 +3065,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_reported_comments id_report' => Array
@@ -3076,7 +3076,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_reported_comments member_ip' => Array
@@ -3087,7 +3087,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'YES',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_reported_comments membername' => Array
@@ -3109,7 +3109,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_scheduled_tasks id_log' => Array
@@ -3120,7 +3120,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_scheduled_tasks id_task' => Array
@@ -3131,7 +3131,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_scheduled_tasks time_run' => Array
@@ -3142,7 +3142,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_scheduled_tasks time_taken' => Array
@@ -3153,7 +3153,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_search_messages id_msg' => Array
@@ -3164,7 +3164,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_search_messages id_search' => Array
@@ -3175,7 +3175,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_search_results id_msg' => Array
@@ -3186,7 +3186,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_search_results id_search' => Array
@@ -3197,7 +3197,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_search_results id_topic' => Array
@@ -3208,7 +3208,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_search_results num_matches' => Array
@@ -3219,7 +3219,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_search_results relevance' => Array
@@ -3230,7 +3230,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_search_subjects id_topic' => Array
@@ -3241,7 +3241,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_search_subjects word' => Array
@@ -3263,7 +3263,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_search_topics id_topic' => Array
@@ -3274,7 +3274,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_spider_hits id_hit' => Array
@@ -3285,7 +3285,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_spider_hits id_spider' => Array
@@ -3296,7 +3296,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_spider_hits log_time' => Array
@@ -3307,7 +3307,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_spider_hits processed' => Array
@@ -3318,7 +3318,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_spider_hits url' => Array
@@ -3340,7 +3340,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_spider_stats last_seen' => Array
@@ -3351,7 +3351,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_spider_stats page_hits' => Array
@@ -3362,7 +3362,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_spider_stats stat_date' => Array
@@ -3373,7 +3373,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1004-01-01',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_subscribed end_time' => Array
@@ -3384,7 +3384,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_subscribed id_member' => Array
@@ -3395,7 +3395,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_subscribed id_sublog' => Array
@@ -3406,7 +3406,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_subscribed id_subscribe' => Array
@@ -3417,7 +3417,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_subscribed old_id_group' => Array
@@ -3428,7 +3428,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_subscribed payments_pending' => Array
@@ -3439,7 +3439,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_subscribed pending_details' => Array
@@ -3461,7 +3461,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_subscribed start_time' => Array
@@ -3472,7 +3472,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_subscribed status' => Array
@@ -3483,7 +3483,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_subscribed vendor_ref' => Array
@@ -3505,7 +3505,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_topics id_msg' => Array
@@ -3516,7 +3516,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_topics id_topic' => Array
@@ -3527,7 +3527,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_topics unwatched' => Array
@@ -3538,7 +3538,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'mail_queue body' => Array
@@ -3571,7 +3571,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'mail_queue priority' => Array
@@ -3582,7 +3582,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'mail_queue private' => Array
@@ -3593,7 +3593,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'mail_queue recipient' => Array
@@ -3615,7 +3615,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'mail_queue subject' => Array
@@ -3637,7 +3637,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'member_logins id_login' => Array
@@ -3648,7 +3648,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'member_logins id_member' => Array
@@ -3659,7 +3659,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'member_logins ip' => Array
@@ -3670,7 +3670,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'YES',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'member_logins ip2' => Array
@@ -3681,7 +3681,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'YES',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'member_logins time' => Array
@@ -3692,7 +3692,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'membergroups description' => Array
@@ -3725,7 +3725,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'membergroups hidden' => Array
@@ -3736,7 +3736,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'membergroups icons' => Array
@@ -3758,7 +3758,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'membergroups id_parent' => Array
@@ -3769,7 +3769,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '-2',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'membergroups max_messages' => Array
@@ -3780,7 +3780,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'membergroups min_posts' => Array
@@ -3791,7 +3791,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '-1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'membergroups online_color' => Array
@@ -3813,7 +3813,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members additional_groups' => Array
@@ -3835,7 +3835,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members avatar' => Array
@@ -3857,7 +3857,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1004-01-01',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members buddy_list' => Array
@@ -3879,7 +3879,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members email_address' => Array
@@ -3901,7 +3901,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members id_member' => Array
@@ -3912,7 +3912,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members id_msg_last_visit' => Array
@@ -3923,7 +3923,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members id_post_group' => Array
@@ -3934,7 +3934,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members id_theme' => Array
@@ -3945,7 +3945,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members ignore_boards' => Array
@@ -3967,7 +3967,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members is_activated' => Array
@@ -3978,7 +3978,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members last_login' => Array
@@ -3989,7 +3989,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members lngfile' => Array
@@ -4011,7 +4011,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'YES',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members member_ip2' => Array
@@ -4022,7 +4022,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'YES',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members member_name' => Array
@@ -4055,7 +4055,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members passwd' => Array
@@ -4121,7 +4121,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members pm_receive_from' => Array
@@ -4132,7 +4132,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members posts' => Array
@@ -4143,7 +4143,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members real_name' => Array
@@ -4187,7 +4187,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members signature' => Array
@@ -4253,7 +4253,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members timezone' => Array
@@ -4275,7 +4275,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members unread_messages' => Array
@@ -4286,7 +4286,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members usertitle' => Array
@@ -4319,7 +4319,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members website_title' => Array
@@ -4352,7 +4352,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'mentions content_type' => Array
@@ -4374,7 +4374,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'mentions id_mentioned' => Array
@@ -4385,7 +4385,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'mentions time' => Array
@@ -4396,7 +4396,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'message_icons filename' => Array
@@ -4418,7 +4418,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'message_icons id_board' => Array
@@ -4429,7 +4429,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'message_icons id_icon' => Array
@@ -4440,7 +4440,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'message_icons title' => Array
@@ -4462,7 +4462,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'messages body' => Array
@@ -4495,7 +4495,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'messages id_member' => Array
@@ -4506,7 +4506,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'messages id_msg' => Array
@@ -4517,7 +4517,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'messages id_msg_modified' => Array
@@ -4528,7 +4528,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'messages id_topic' => Array
@@ -4539,7 +4539,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'messages likes' => Array
@@ -4550,7 +4550,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'messages modified_name' => Array
@@ -4583,7 +4583,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'messages poster_email' => Array
@@ -4605,7 +4605,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'YES',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'messages poster_name' => Array
@@ -4627,7 +4627,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'messages smileys_enabled' => Array
@@ -4638,7 +4638,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'messages subject' => Array
@@ -4660,7 +4660,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'moderator_groups id_group' => Array
@@ -4671,7 +4671,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'moderators id_board' => Array
@@ -4682,7 +4682,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'moderators id_member' => Array
@@ -4693,7 +4693,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'package_servers extra' => Array
@@ -4715,7 +4715,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'package_servers name' => Array
@@ -4759,7 +4759,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'permission_profiles profile_name' => Array
@@ -4781,7 +4781,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'permissions id_group' => Array
@@ -4792,7 +4792,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'permissions permission' => Array
@@ -4825,7 +4825,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'personal_messages from_name' => Array
@@ -4847,7 +4847,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'personal_messages id_pm' => Array
@@ -4858,7 +4858,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'personal_messages id_pm_head' => Array
@@ -4869,7 +4869,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'personal_messages msgtime' => Array
@@ -4880,7 +4880,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'personal_messages subject' => Array
@@ -4902,7 +4902,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'pm_labeled_messages id_pm' => Array
@@ -4913,7 +4913,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'pm_labels id_label' => Array
@@ -4924,7 +4924,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'pm_labels id_member' => Array
@@ -4935,7 +4935,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'pm_labels name' => Array
@@ -4957,7 +4957,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'pm_recipients deleted' => Array
@@ -4968,7 +4968,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'pm_recipients id_member' => Array
@@ -4979,7 +4979,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'pm_recipients id_pm' => Array
@@ -4990,7 +4990,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'pm_recipients in_inbox' => Array
@@ -5001,7 +5001,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'pm_recipients is_new' => Array
@@ -5012,7 +5012,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'pm_recipients is_read' => Array
@@ -5023,7 +5023,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'pm_rules actions' => Array
@@ -5056,7 +5056,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'pm_rules id_member' => Array
@@ -5067,7 +5067,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'pm_rules id_rule' => Array
@@ -5078,7 +5078,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'pm_rules is_or' => Array
@@ -5089,7 +5089,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'pm_rules rule_name' => Array
@@ -5111,7 +5111,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'poll_choices id_poll' => Array
@@ -5122,7 +5122,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'poll_choices label' => Array
@@ -5144,7 +5144,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'polls change_vote' => Array
@@ -5155,7 +5155,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'polls expire_time' => Array
@@ -5166,7 +5166,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'polls guest_vote' => Array
@@ -5177,7 +5177,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'polls hide_results' => Array
@@ -5188,7 +5188,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'polls id_member' => Array
@@ -5199,7 +5199,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'polls id_poll' => Array
@@ -5210,7 +5210,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'polls max_votes' => Array
@@ -5221,7 +5221,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'polls num_guest_voters' => Array
@@ -5232,7 +5232,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'polls poster_name' => Array
@@ -5265,7 +5265,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'polls voting_locked' => Array
@@ -5276,7 +5276,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'qanda answers' => Array
@@ -5298,7 +5298,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'qanda lngfile' => Array
@@ -5342,7 +5342,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'scheduled_tasks id_task' => Array
@@ -5353,7 +5353,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'scheduled_tasks next_time' => Array
@@ -5364,7 +5364,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'scheduled_tasks task' => Array
@@ -5386,7 +5386,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'scheduled_tasks time_regularity' => Array
@@ -5397,7 +5397,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'scheduled_tasks time_unit' => Array
@@ -5430,7 +5430,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'sessions session_id' => Array
@@ -5485,7 +5485,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'smiley_files smiley_set' => Array
@@ -5529,7 +5529,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'smileys id_smiley' => Array
@@ -5540,7 +5540,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'smileys smiley_order' => Array
@@ -5551,7 +5551,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'smileys smiley_row' => Array
@@ -5562,7 +5562,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'spiders id_spider' => Array
@@ -5573,7 +5573,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'spiders ip_info' => Array
@@ -5617,7 +5617,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'subscriptions add_groups' => Array
@@ -5639,7 +5639,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'subscriptions cost' => Array
@@ -5683,7 +5683,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'subscriptions id_subscribe' => Array
@@ -5694,7 +5694,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'subscriptions length' => Array
@@ -5727,7 +5727,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'subscriptions repeatable' => Array
@@ -5738,7 +5738,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'themes id_member' => Array
@@ -5749,7 +5749,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'themes id_theme' => Array
@@ -5760,7 +5760,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'themes value' => Array
@@ -5793,7 +5793,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics id_board' => Array
@@ -5804,7 +5804,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics id_first_msg' => Array
@@ -5815,7 +5815,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics id_last_msg' => Array
@@ -5826,7 +5826,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics id_member_started' => Array
@@ -5837,7 +5837,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics id_member_updated' => Array
@@ -5848,7 +5848,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics id_poll' => Array
@@ -5859,7 +5859,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics id_previous_board' => Array
@@ -5870,7 +5870,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics id_previous_topic' => Array
@@ -5881,7 +5881,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics id_redirect_topic' => Array
@@ -5892,7 +5892,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics id_topic' => Array
@@ -5903,7 +5903,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics is_sticky' => Array
@@ -5914,7 +5914,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics locked' => Array
@@ -5925,7 +5925,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics num_replies' => Array
@@ -5936,7 +5936,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics num_views' => Array
@@ -5947,7 +5947,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics redirect_expires' => Array
@@ -5958,7 +5958,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics unapproved_posts' => Array
@@ -5969,7 +5969,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'user_alerts alert_time' => Array
@@ -5980,7 +5980,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'user_alerts content_action' => Array
@@ -6002,7 +6002,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'user_alerts content_type' => Array
@@ -6035,7 +6035,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'user_alerts id_member' => Array
@@ -6046,7 +6046,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'user_alerts id_member_started' => Array
@@ -6057,7 +6057,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'user_alerts is_read' => Array
@@ -6068,7 +6068,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'user_alerts member_name' => Array
@@ -6101,7 +6101,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'user_alerts_prefs id_member' => Array
@@ -6112,7 +6112,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'user_drafts body' => Array
@@ -6145,7 +6145,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'user_drafts id_draft' => Array
@@ -6156,7 +6156,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'user_drafts id_member' => Array
@@ -6167,7 +6167,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'user_drafts id_reply' => Array
@@ -6178,7 +6178,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'user_drafts id_topic' => Array
@@ -6189,7 +6189,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'user_drafts is_sticky' => Array
@@ -6200,7 +6200,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'user_drafts locked' => Array
@@ -6211,7 +6211,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'user_drafts poster_time' => Array
@@ -6222,7 +6222,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'user_drafts smileys_enabled' => Array
@@ -6233,7 +6233,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'user_drafts subject' => Array
@@ -6266,7 +6266,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'user_likes content_id' => Array
@@ -6277,7 +6277,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'user_likes content_type' => Array
@@ -6299,7 +6299,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'user_likes like_time' => Array
@@ -6310,7 +6310,7 @@ $smf_columns['2.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 );
 
@@ -9274,7 +9274,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'admin_info_files parameters' => Array
@@ -9307,7 +9307,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'approval_queue id_event' => Array
@@ -9318,7 +9318,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'approval_queue id_msg' => Array
@@ -9329,7 +9329,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'attachments approved' => Array
@@ -9340,7 +9340,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'attachments attachment_type' => Array
@@ -9351,7 +9351,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'attachments downloads' => Array
@@ -9362,7 +9362,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'attachments file_hash' => Array
@@ -9406,7 +9406,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'attachments id_attach' => Array
@@ -9417,7 +9417,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'attachments id_folder' => Array
@@ -9428,7 +9428,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'attachments id_member' => Array
@@ -9439,7 +9439,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'attachments id_msg' => Array
@@ -9450,7 +9450,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'attachments id_thumb' => Array
@@ -9461,7 +9461,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'attachments mime_type' => Array
@@ -9483,7 +9483,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'attachments width' => Array
@@ -9494,7 +9494,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_groups ban_time' => Array
@@ -9505,7 +9505,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_groups cannot_access' => Array
@@ -9516,7 +9516,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_groups cannot_login' => Array
@@ -9527,7 +9527,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_groups cannot_post' => Array
@@ -9538,7 +9538,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_groups cannot_register' => Array
@@ -9549,7 +9549,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_groups expire_time' => Array
@@ -9560,7 +9560,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'YES',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_groups id_ban_group' => Array
@@ -9571,7 +9571,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_groups name' => Array
@@ -9626,7 +9626,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_items hostname' => Array
@@ -9648,7 +9648,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_items id_ban_group' => Array
@@ -9659,7 +9659,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_items id_member' => Array
@@ -9670,7 +9670,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_items ip_high1' => Array
@@ -9681,7 +9681,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_items ip_high2' => Array
@@ -9692,7 +9692,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_items ip_high3' => Array
@@ -9703,7 +9703,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_items ip_high4' => Array
@@ -9714,7 +9714,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_items ip_low1' => Array
@@ -9725,7 +9725,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_items ip_low2' => Array
@@ -9736,7 +9736,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_items ip_low3' => Array
@@ -9747,7 +9747,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_items ip_low4' => Array
@@ -9758,7 +9758,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'board_permissions add_deny' => Array
@@ -9769,7 +9769,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'board_permissions id_group' => Array
@@ -9780,7 +9780,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'board_permissions id_profile' => Array
@@ -9791,7 +9791,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'board_permissions permission' => Array
@@ -9813,7 +9813,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards child_level' => Array
@@ -9824,7 +9824,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards count_posts' => Array
@@ -9835,7 +9835,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards description' => Array
@@ -9857,7 +9857,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards id_cat' => Array
@@ -9868,7 +9868,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards id_last_msg' => Array
@@ -9879,7 +9879,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards id_msg_updated' => Array
@@ -9890,7 +9890,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards id_parent' => Array
@@ -9901,7 +9901,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards id_profile' => Array
@@ -9912,7 +9912,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards id_theme' => Array
@@ -9923,7 +9923,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards member_groups' => Array
@@ -9956,7 +9956,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards num_topics' => Array
@@ -9967,7 +9967,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards override_theme' => Array
@@ -9978,7 +9978,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards redirect' => Array
@@ -10000,7 +10000,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards unapproved_topics' => Array
@@ -10011,7 +10011,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar end_date' => Array
@@ -10022,7 +10022,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0001-01-01',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar id_board' => Array
@@ -10033,7 +10033,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar id_event' => Array
@@ -10044,7 +10044,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar id_member' => Array
@@ -10055,7 +10055,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar id_topic' => Array
@@ -10066,7 +10066,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar start_date' => Array
@@ -10077,7 +10077,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0001-01-01',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar title' => Array
@@ -10099,7 +10099,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0001-01-01',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar_holidays id_holiday' => Array
@@ -10110,7 +10110,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar_holidays title' => Array
@@ -10132,7 +10132,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'categories cat_order' => Array
@@ -10143,7 +10143,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'categories id_cat' => Array
@@ -10154,7 +10154,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'categories name' => Array
@@ -10176,7 +10176,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'collapsed_categories id_member' => Array
@@ -10187,7 +10187,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'custom_fields active' => Array
@@ -10198,7 +10198,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'custom_fields bbc' => Array
@@ -10209,7 +10209,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'custom_fields can_search' => Array
@@ -10220,7 +10220,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'custom_fields col_name' => Array
@@ -10275,7 +10275,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '255',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'custom_fields field_name' => Array
@@ -10319,7 +10319,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'custom_fields mask' => Array
@@ -10341,7 +10341,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'custom_fields private' => Array
@@ -10352,7 +10352,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'custom_fields show_display' => Array
@@ -10363,7 +10363,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'custom_fields show_profile' => Array
@@ -10385,7 +10385,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'group_moderators id_group' => Array
@@ -10396,7 +10396,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'group_moderators id_member' => Array
@@ -10407,7 +10407,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_actions action' => Array
@@ -10440,7 +10440,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_actions id_board' => Array
@@ -10451,7 +10451,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_actions id_log' => Array
@@ -10462,7 +10462,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_actions id_member' => Array
@@ -10473,7 +10473,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_actions id_msg' => Array
@@ -10484,7 +10484,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_actions id_topic' => Array
@@ -10495,7 +10495,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_actions ip' => Array
@@ -10517,7 +10517,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_activity date' => Array
@@ -10528,7 +10528,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0001-01-01',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_activity hits' => Array
@@ -10539,7 +10539,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_activity most_on' => Array
@@ -10550,7 +10550,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_activity posts' => Array
@@ -10561,7 +10561,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_activity registers' => Array
@@ -10572,7 +10572,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_activity topics' => Array
@@ -10583,7 +10583,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_banned email' => Array
@@ -10605,7 +10605,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_banned id_member' => Array
@@ -10616,7 +10616,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_banned ip' => Array
@@ -10638,7 +10638,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_boards id_board' => Array
@@ -10649,7 +10649,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_boards id_member' => Array
@@ -10660,7 +10660,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_boards id_msg' => Array
@@ -10671,7 +10671,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_comments body' => Array
@@ -10704,7 +10704,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_comments id_comment' => Array
@@ -10715,7 +10715,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_comments id_member' => Array
@@ -10726,7 +10726,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_comments id_notice' => Array
@@ -10737,7 +10737,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_comments id_recipient' => Array
@@ -10748,7 +10748,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_comments log_time' => Array
@@ -10759,7 +10759,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_comments member_name' => Array
@@ -10792,7 +10792,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_digest exclude' => Array
@@ -10803,7 +10803,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_digest id_msg' => Array
@@ -10814,7 +10814,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_digest id_topic' => Array
@@ -10825,7 +10825,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_digest note_type' => Array
@@ -10869,7 +10869,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_errors id_member' => Array
@@ -10880,7 +10880,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_errors ip' => Array
@@ -10902,7 +10902,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_errors log_time' => Array
@@ -10913,7 +10913,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_errors message' => Array
@@ -10968,7 +10968,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_floodcontrol log_type' => Array
@@ -10990,7 +10990,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_group_requests id_member' => Array
@@ -11001,7 +11001,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_group_requests id_request' => Array
@@ -11012,7 +11012,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_group_requests reason' => Array
@@ -11034,7 +11034,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_karma action' => Array
@@ -11045,7 +11045,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_karma id_executor' => Array
@@ -11056,7 +11056,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_karma id_target' => Array
@@ -11067,7 +11067,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_karma log_time' => Array
@@ -11078,7 +11078,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_mark_read id_board' => Array
@@ -11089,7 +11089,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_mark_read id_member' => Array
@@ -11100,7 +11100,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_mark_read id_msg' => Array
@@ -11111,7 +11111,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_member_notices body' => Array
@@ -11133,7 +11133,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_member_notices subject' => Array
@@ -11155,7 +11155,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_notify id_member' => Array
@@ -11166,7 +11166,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_notify id_topic' => Array
@@ -11177,7 +11177,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_notify sent' => Array
@@ -11188,7 +11188,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_online id_member' => Array
@@ -11199,7 +11199,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_online id_spider' => Array
@@ -11210,7 +11210,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_online ip' => Array
@@ -11221,7 +11221,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_online log_time' => Array
@@ -11232,7 +11232,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_online session' => Array
@@ -11298,7 +11298,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_packages id_member_installed' => Array
@@ -11309,7 +11309,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_packages id_member_removed' => Array
@@ -11320,7 +11320,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_packages install_state' => Array
@@ -11331,7 +11331,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_packages member_installed' => Array
@@ -11397,7 +11397,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_packages time_removed' => Array
@@ -11408,7 +11408,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_packages version' => Array
@@ -11430,7 +11430,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_polls id_member' => Array
@@ -11441,7 +11441,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_polls id_poll' => Array
@@ -11452,7 +11452,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_reported body' => Array
@@ -11474,7 +11474,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_reported id_board' => Array
@@ -11485,7 +11485,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_reported id_member' => Array
@@ -11496,7 +11496,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_reported id_msg' => Array
@@ -11507,7 +11507,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_reported id_report' => Array
@@ -11518,7 +11518,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_reported id_topic' => Array
@@ -11529,7 +11529,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_reported ignore_all' => Array
@@ -11540,7 +11540,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_reported membername' => Array
@@ -11562,7 +11562,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_reported subject' => Array
@@ -11584,7 +11584,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_reported time_updated' => Array
@@ -11595,7 +11595,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_reported_comments comment' => Array
@@ -11628,7 +11628,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_reported_comments id_member' => Array
@@ -11639,7 +11639,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_reported_comments id_report' => Array
@@ -11650,7 +11650,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_reported_comments member_ip' => Array
@@ -11683,7 +11683,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_scheduled_tasks id_log' => Array
@@ -11694,7 +11694,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_scheduled_tasks id_task' => Array
@@ -11705,7 +11705,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_scheduled_tasks time_run' => Array
@@ -11716,7 +11716,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_scheduled_tasks time_taken' => Array
@@ -11727,7 +11727,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_search_messages id_msg' => Array
@@ -11738,7 +11738,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_search_messages id_search' => Array
@@ -11749,7 +11749,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_search_results id_msg' => Array
@@ -11760,7 +11760,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_search_results id_search' => Array
@@ -11771,7 +11771,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_search_results id_topic' => Array
@@ -11782,7 +11782,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_search_results num_matches' => Array
@@ -11793,7 +11793,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_search_results relevance' => Array
@@ -11804,7 +11804,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_search_subjects id_topic' => Array
@@ -11815,7 +11815,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_search_subjects word' => Array
@@ -11837,7 +11837,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_search_topics id_topic' => Array
@@ -11848,7 +11848,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_spider_hits id_hit' => Array
@@ -11859,7 +11859,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_spider_hits id_spider' => Array
@@ -11870,7 +11870,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_spider_hits log_time' => Array
@@ -11881,7 +11881,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_spider_hits processed' => Array
@@ -11892,7 +11892,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_spider_hits url' => Array
@@ -11914,7 +11914,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_spider_stats last_seen' => Array
@@ -11925,7 +11925,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_spider_stats page_hits' => Array
@@ -11936,7 +11936,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_spider_stats stat_date' => Array
@@ -11947,7 +11947,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0001-01-01',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_subscribed end_time' => Array
@@ -11958,7 +11958,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_subscribed id_member' => Array
@@ -11969,7 +11969,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_subscribed id_sublog' => Array
@@ -11980,7 +11980,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_subscribed id_subscribe' => Array
@@ -11991,7 +11991,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_subscribed old_id_group' => Array
@@ -12002,7 +12002,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_subscribed payments_pending' => Array
@@ -12013,7 +12013,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_subscribed pending_details' => Array
@@ -12035,7 +12035,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_subscribed start_time' => Array
@@ -12046,7 +12046,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_subscribed status' => Array
@@ -12057,7 +12057,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_subscribed vendor_ref' => Array
@@ -12079,7 +12079,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_topics id_msg' => Array
@@ -12090,7 +12090,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_topics id_topic' => Array
@@ -12101,7 +12101,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'mail_queue body' => Array
@@ -12134,7 +12134,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'mail_queue priority' => Array
@@ -12145,7 +12145,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'mail_queue private' => Array
@@ -12156,7 +12156,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'mail_queue recipient' => Array
@@ -12178,7 +12178,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'mail_queue subject' => Array
@@ -12200,7 +12200,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'membergroups description' => Array
@@ -12233,7 +12233,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'membergroups hidden' => Array
@@ -12244,7 +12244,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'membergroups id_group' => Array
@@ -12255,7 +12255,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'membergroups id_parent' => Array
@@ -12266,7 +12266,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '-2',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'membergroups max_messages' => Array
@@ -12277,7 +12277,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'membergroups min_posts' => Array
@@ -12288,7 +12288,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '-1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'membergroups online_color' => Array
@@ -12354,7 +12354,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0001-01-01',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members buddy_list' => Array
@@ -12376,7 +12376,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members email_address' => Array
@@ -12398,7 +12398,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members hide_email' => Array
@@ -12409,7 +12409,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members icq' => Array
@@ -12431,7 +12431,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members id_member' => Array
@@ -12442,7 +12442,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members id_msg_last_visit' => Array
@@ -12453,7 +12453,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members id_post_group' => Array
@@ -12464,7 +12464,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members id_theme' => Array
@@ -12475,7 +12475,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members ignore_boards' => Array
@@ -12497,7 +12497,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members is_activated' => Array
@@ -12508,7 +12508,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members karma_bad' => Array
@@ -12519,7 +12519,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members karma_good' => Array
@@ -12530,7 +12530,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members last_login' => Array
@@ -12541,7 +12541,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members lngfile' => Array
@@ -12640,7 +12640,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members notify_announcements' => Array
@@ -12651,7 +12651,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members notify_regularity' => Array
@@ -12662,7 +12662,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members notify_send_body' => Array
@@ -12673,7 +12673,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members notify_types' => Array
@@ -12684,7 +12684,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '2',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members openid_uri' => Array
@@ -12750,7 +12750,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members pm_ignore_list' => Array
@@ -12772,7 +12772,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members pm_receive_from' => Array
@@ -12783,7 +12783,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members posts' => Array
@@ -12794,7 +12794,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members real_name' => Array
@@ -12838,7 +12838,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members signature' => Array
@@ -12882,7 +12882,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members total_time_logged_in' => Array
@@ -12893,7 +12893,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members unread_messages' => Array
@@ -12904,7 +12904,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members usertitle' => Array
@@ -12937,7 +12937,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members website_title' => Array
@@ -12992,7 +12992,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'message_icons id_board' => Array
@@ -13003,7 +13003,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'message_icons id_icon' => Array
@@ -13014,7 +13014,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'message_icons title' => Array
@@ -13036,7 +13036,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'messages body' => Array
@@ -13069,7 +13069,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'messages id_member' => Array
@@ -13080,7 +13080,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'messages id_msg' => Array
@@ -13091,7 +13091,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'messages id_msg_modified' => Array
@@ -13102,7 +13102,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'messages id_topic' => Array
@@ -13113,7 +13113,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'messages modified_name' => Array
@@ -13135,7 +13135,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'messages poster_email' => Array
@@ -13179,7 +13179,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'messages smileys_enabled' => Array
@@ -13190,7 +13190,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'messages subject' => Array
@@ -13212,7 +13212,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'moderators id_member' => Array
@@ -13223,7 +13223,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'openid_assoc assoc_type' => Array
@@ -13245,7 +13245,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'openid_assoc handle' => Array
@@ -13267,7 +13267,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'openid_assoc secret' => Array
@@ -13300,7 +13300,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'package_servers name' => Array
@@ -13333,7 +13333,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'permission_profiles profile_name' => Array
@@ -13355,7 +13355,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'permissions id_group' => Array
@@ -13366,7 +13366,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'permissions permission' => Array
@@ -13399,7 +13399,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'personal_messages from_name' => Array
@@ -13421,7 +13421,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'personal_messages id_pm' => Array
@@ -13432,7 +13432,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'personal_messages id_pm_head' => Array
@@ -13443,7 +13443,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'personal_messages msgtime' => Array
@@ -13454,7 +13454,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'personal_messages subject' => Array
@@ -13476,7 +13476,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'pm_recipients deleted' => Array
@@ -13487,7 +13487,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'pm_recipients id_member' => Array
@@ -13498,7 +13498,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'pm_recipients id_pm' => Array
@@ -13509,7 +13509,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'pm_recipients is_new' => Array
@@ -13520,7 +13520,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'pm_recipients is_read' => Array
@@ -13531,7 +13531,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'pm_recipients labels' => Array
@@ -13575,7 +13575,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'pm_rules id_member' => Array
@@ -13586,7 +13586,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'pm_rules id_rule' => Array
@@ -13597,7 +13597,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'pm_rules is_or' => Array
@@ -13608,7 +13608,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'pm_rules rule_name' => Array
@@ -13630,7 +13630,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'poll_choices id_poll' => Array
@@ -13641,7 +13641,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'poll_choices label' => Array
@@ -13663,7 +13663,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'polls change_vote' => Array
@@ -13674,7 +13674,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'polls expire_time' => Array
@@ -13685,7 +13685,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'polls guest_vote' => Array
@@ -13696,7 +13696,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'polls hide_results' => Array
@@ -13707,7 +13707,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'polls id_member' => Array
@@ -13718,7 +13718,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'polls id_poll' => Array
@@ -13729,7 +13729,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'polls max_votes' => Array
@@ -13740,7 +13740,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'polls num_guest_voters' => Array
@@ -13751,7 +13751,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'polls poster_name' => Array
@@ -13784,7 +13784,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'polls voting_locked' => Array
@@ -13795,7 +13795,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'scheduled_tasks disabled' => Array
@@ -13806,7 +13806,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'scheduled_tasks id_task' => Array
@@ -13817,7 +13817,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'scheduled_tasks next_time' => Array
@@ -13828,7 +13828,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'scheduled_tasks task' => Array
@@ -13850,7 +13850,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'scheduled_tasks time_regularity' => Array
@@ -13861,7 +13861,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'scheduled_tasks time_unit' => Array
@@ -13894,7 +13894,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'sessions session_id' => Array
@@ -13971,7 +13971,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'smileys id_smiley' => Array
@@ -13982,7 +13982,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'smileys smiley_order' => Array
@@ -13993,7 +13993,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'smileys smiley_row' => Array
@@ -14004,7 +14004,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'spiders id_spider' => Array
@@ -14015,7 +14015,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'spiders ip_info' => Array
@@ -14059,7 +14059,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'subscriptions add_groups' => Array
@@ -14081,7 +14081,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'subscriptions cost' => Array
@@ -14125,7 +14125,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'subscriptions id_subscribe' => Array
@@ -14136,7 +14136,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'subscriptions length' => Array
@@ -14169,7 +14169,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'subscriptions repeatable' => Array
@@ -14180,7 +14180,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'themes id_member' => Array
@@ -14191,7 +14191,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'themes id_theme' => Array
@@ -14202,7 +14202,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'themes value' => Array
@@ -14235,7 +14235,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics id_board' => Array
@@ -14246,7 +14246,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics id_first_msg' => Array
@@ -14257,7 +14257,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics id_last_msg' => Array
@@ -14268,7 +14268,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics id_member_started' => Array
@@ -14279,7 +14279,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics id_member_updated' => Array
@@ -14290,7 +14290,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics id_poll' => Array
@@ -14301,7 +14301,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics id_previous_board' => Array
@@ -14312,7 +14312,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics id_previous_topic' => Array
@@ -14323,7 +14323,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics id_topic' => Array
@@ -14334,7 +14334,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics is_sticky' => Array
@@ -14345,7 +14345,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics locked' => Array
@@ -14356,7 +14356,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics num_replies' => Array
@@ -14367,7 +14367,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics num_views' => Array
@@ -14378,7 +14378,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics unapproved_posts' => Array
@@ -14389,7 +14389,7 @@ $smf_columns['2.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 );
 
@@ -16857,7 +16857,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'attachments ID_MEMBER' => Array
@@ -16868,7 +16868,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'attachments ID_MSG' => Array
@@ -16879,7 +16879,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'attachments ID_THUMB' => Array
@@ -16890,7 +16890,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'attachments attachmentType' => Array
@@ -16901,7 +16901,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'attachments downloads' => Array
@@ -16912,7 +16912,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'attachments file_hash' => Array
@@ -16945,7 +16945,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'attachments size' => Array
@@ -16956,7 +16956,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'attachments width' => Array
@@ -16967,7 +16967,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_groups ID_BAN_GROUP' => Array
@@ -16978,7 +16978,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_groups ban_time' => Array
@@ -16989,7 +16989,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_groups cannot_access' => Array
@@ -17000,7 +17000,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_groups cannot_login' => Array
@@ -17011,7 +17011,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_groups cannot_post' => Array
@@ -17022,7 +17022,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_groups cannot_register' => Array
@@ -17033,7 +17033,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_groups expire_time' => Array
@@ -17044,7 +17044,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'YES',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_groups name' => Array
@@ -17088,7 +17088,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_items ID_BAN_GROUP' => Array
@@ -17099,7 +17099,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_items ID_MEMBER' => Array
@@ -17110,7 +17110,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_items email_address' => Array
@@ -17132,7 +17132,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_items hostname' => Array
@@ -17154,7 +17154,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_items ip_high2' => Array
@@ -17165,7 +17165,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_items ip_high3' => Array
@@ -17176,7 +17176,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_items ip_high4' => Array
@@ -17187,7 +17187,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_items ip_low1' => Array
@@ -17198,7 +17198,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_items ip_low2' => Array
@@ -17209,7 +17209,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_items ip_low3' => Array
@@ -17220,7 +17220,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'ban_items ip_low4' => Array
@@ -17231,7 +17231,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'board_permissions ID_BOARD' => Array
@@ -17242,7 +17242,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'board_permissions ID_GROUP' => Array
@@ -17253,7 +17253,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'board_permissions addDeny' => Array
@@ -17264,7 +17264,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'board_permissions permission' => Array
@@ -17286,7 +17286,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards ID_CAT' => Array
@@ -17297,7 +17297,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards ID_LAST_MSG' => Array
@@ -17308,7 +17308,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards ID_MSG_UPDATED' => Array
@@ -17319,7 +17319,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards ID_PARENT' => Array
@@ -17330,7 +17330,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards ID_THEME' => Array
@@ -17341,7 +17341,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards boardOrder' => Array
@@ -17352,7 +17352,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards childLevel' => Array
@@ -17363,7 +17363,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards countPosts' => Array
@@ -17374,7 +17374,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards description' => Array
@@ -17418,7 +17418,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards numTopics' => Array
@@ -17429,7 +17429,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards override_theme' => Array
@@ -17440,7 +17440,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards permission_mode' => Array
@@ -17451,7 +17451,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar ID_BOARD' => Array
@@ -17462,7 +17462,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar ID_EVENT' => Array
@@ -17473,7 +17473,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar ID_MEMBER' => Array
@@ -17484,7 +17484,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar ID_TOPIC' => Array
@@ -17495,7 +17495,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar endDate' => Array
@@ -17506,7 +17506,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0001-01-01',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar startDate' => Array
@@ -17517,7 +17517,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0001-01-01',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar title' => Array
@@ -17539,7 +17539,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar_holidays eventDate' => Array
@@ -17550,7 +17550,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0001-01-01',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar_holidays title' => Array
@@ -17572,7 +17572,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'categories canCollapse' => Array
@@ -17583,7 +17583,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'categories catOrder' => Array
@@ -17594,7 +17594,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'categories name' => Array
@@ -17616,7 +17616,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'collapsed_categories ID_MEMBER' => Array
@@ -17627,7 +17627,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_actions ID_ACTION' => Array
@@ -17638,7 +17638,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_actions ID_MEMBER' => Array
@@ -17649,7 +17649,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_actions action' => Array
@@ -17693,7 +17693,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_activity date' => Array
@@ -17704,7 +17704,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0001-01-01',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_activity hits' => Array
@@ -17715,7 +17715,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_activity mostOn' => Array
@@ -17726,7 +17726,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_activity posts' => Array
@@ -17737,7 +17737,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_activity registers' => Array
@@ -17748,7 +17748,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_activity topics' => Array
@@ -17759,7 +17759,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_banned ID_BAN_LOG' => Array
@@ -17770,7 +17770,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_banned ID_MEMBER' => Array
@@ -17781,7 +17781,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_banned email' => Array
@@ -17814,7 +17814,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_boards ID_BOARD' => Array
@@ -17825,7 +17825,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_boards ID_MEMBER' => Array
@@ -17836,7 +17836,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_boards ID_MSG' => Array
@@ -17847,7 +17847,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_errors ID_ERROR' => Array
@@ -17858,7 +17858,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_errors ID_MEMBER' => Array
@@ -17869,7 +17869,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_errors ip' => Array
@@ -17891,7 +17891,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_errors message' => Array
@@ -17946,7 +17946,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_karma ID_EXECUTOR' => Array
@@ -17957,7 +17957,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_karma ID_TARGET' => Array
@@ -17968,7 +17968,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_karma action' => Array
@@ -17979,7 +17979,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_karma logTime' => Array
@@ -17990,7 +17990,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_mark_read ID_BOARD' => Array
@@ -18001,7 +18001,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_mark_read ID_MEMBER' => Array
@@ -18012,7 +18012,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_mark_read ID_MSG' => Array
@@ -18023,7 +18023,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_notify ID_BOARD' => Array
@@ -18034,7 +18034,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_notify ID_MEMBER' => Array
@@ -18045,7 +18045,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_notify ID_TOPIC' => Array
@@ -18056,7 +18056,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_notify sent' => Array
@@ -18067,7 +18067,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_online ID_MEMBER' => Array
@@ -18078,7 +18078,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_online ip' => Array
@@ -18089,7 +18089,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_online logTime' => Array
@@ -18100,7 +18100,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => 'CURRENT_TIMESTAMP',
 			'EXTRA' => 'DEFAULT_GENERATED on update CURRENT_TIMESTAMP',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_online session' => Array
@@ -18133,7 +18133,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_polls ID_MEMBER' => Array
@@ -18144,7 +18144,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_polls ID_POLL' => Array
@@ -18155,7 +18155,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_search_messages ID_MSG' => Array
@@ -18166,7 +18166,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_search_messages ID_SEARCH' => Array
@@ -18177,7 +18177,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_search_results ID_MSG' => Array
@@ -18188,7 +18188,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_search_results ID_SEARCH' => Array
@@ -18199,7 +18199,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_search_results ID_TOPIC' => Array
@@ -18210,7 +18210,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_search_results num_matches' => Array
@@ -18221,7 +18221,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_search_results relevance' => Array
@@ -18232,7 +18232,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_search_subjects ID_TOPIC' => Array
@@ -18243,7 +18243,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_search_subjects word' => Array
@@ -18265,7 +18265,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_search_topics ID_TOPIC' => Array
@@ -18276,7 +18276,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_topics ID_MEMBER' => Array
@@ -18287,7 +18287,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_topics ID_MSG' => Array
@@ -18298,7 +18298,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_topics ID_TOPIC' => Array
@@ -18309,7 +18309,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'membergroups ID_GROUP' => Array
@@ -18320,7 +18320,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'membergroups groupName' => Array
@@ -18342,7 +18342,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'membergroups minPosts' => Array
@@ -18353,7 +18353,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '-1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'membergroups onlineColor' => Array
@@ -18408,7 +18408,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members ID_MEMBER' => Array
@@ -18419,7 +18419,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members ID_MSG_LAST_VISIT' => Array
@@ -18430,7 +18430,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members ID_POST_GROUP' => Array
@@ -18441,7 +18441,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members ID_THEME' => Array
@@ -18452,7 +18452,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members MSN' => Array
@@ -18507,7 +18507,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0001-01-01',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members buddy_list' => Array
@@ -18529,7 +18529,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members emailAddress' => Array
@@ -18551,7 +18551,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members hideEmail' => Array
@@ -18562,7 +18562,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members instantMessages' => Array
@@ -18573,7 +18573,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members is_activated' => Array
@@ -18584,7 +18584,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members karmaBad' => Array
@@ -18595,7 +18595,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members karmaGood' => Array
@@ -18606,7 +18606,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members lastLogin' => Array
@@ -18617,7 +18617,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members lngfile' => Array
@@ -18694,7 +18694,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members notifyOnce' => Array
@@ -18705,7 +18705,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members notifySendBody' => Array
@@ -18716,7 +18716,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members notifyTypes' => Array
@@ -18727,7 +18727,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '2',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members passwd' => Array
@@ -18771,7 +18771,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members pm_ignore_list' => Array
@@ -18793,7 +18793,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members realName' => Array
@@ -18837,7 +18837,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members signature' => Array
@@ -18881,7 +18881,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members totalTimeLoggedIn' => Array
@@ -18892,7 +18892,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members unreadMessages' => Array
@@ -18903,7 +18903,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members usertitle' => Array
@@ -18958,7 +18958,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'message_icons ID_ICON' => Array
@@ -18969,7 +18969,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'message_icons filename' => Array
@@ -18991,7 +18991,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'message_icons title' => Array
@@ -19013,7 +19013,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'messages ID_MEMBER' => Array
@@ -19024,7 +19024,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'messages ID_MSG' => Array
@@ -19035,7 +19035,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'messages ID_MSG_MODIFIED' => Array
@@ -19046,7 +19046,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'messages ID_TOPIC' => Array
@@ -19057,7 +19057,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'messages body' => Array
@@ -19101,7 +19101,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'messages posterEmail' => Array
@@ -19145,7 +19145,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'messages smileysEnabled' => Array
@@ -19156,7 +19156,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'messages subject' => Array
@@ -19178,7 +19178,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'moderators ID_MEMBER' => Array
@@ -19189,7 +19189,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'package_servers ID_SERVER' => Array
@@ -19200,7 +19200,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'package_servers name' => Array
@@ -19233,7 +19233,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'permissions addDeny' => Array
@@ -19244,7 +19244,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'permissions permission' => Array
@@ -19266,7 +19266,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'personal_messages ID_PM' => Array
@@ -19277,7 +19277,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'personal_messages body' => Array
@@ -19299,7 +19299,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'personal_messages fromName' => Array
@@ -19321,7 +19321,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'personal_messages subject' => Array
@@ -19343,7 +19343,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'pm_recipients ID_PM' => Array
@@ -19354,7 +19354,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'pm_recipients bcc' => Array
@@ -19365,7 +19365,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'pm_recipients deleted' => Array
@@ -19376,7 +19376,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'pm_recipients is_read' => Array
@@ -19387,7 +19387,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'pm_recipients labels' => Array
@@ -19409,7 +19409,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'poll_choices ID_POLL' => Array
@@ -19420,7 +19420,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'poll_choices label' => Array
@@ -19442,7 +19442,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'polls ID_MEMBER' => Array
@@ -19453,7 +19453,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'polls ID_POLL' => Array
@@ -19464,7 +19464,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'polls changeVote' => Array
@@ -19475,7 +19475,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'polls expireTime' => Array
@@ -19486,7 +19486,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'polls hideResults' => Array
@@ -19497,7 +19497,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'polls maxVotes' => Array
@@ -19508,7 +19508,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'polls posterName' => Array
@@ -19541,7 +19541,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'sessions data' => Array
@@ -19563,7 +19563,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'sessions session_id' => Array
@@ -19607,7 +19607,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'smileys code' => Array
@@ -19651,7 +19651,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'smileys smileyOrder' => Array
@@ -19662,7 +19662,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'smileys smileyRow' => Array
@@ -19673,7 +19673,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'themes ID_MEMBER' => Array
@@ -19684,7 +19684,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'themes ID_THEME' => Array
@@ -19695,7 +19695,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'themes value' => Array
@@ -19728,7 +19728,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics ID_FIRST_MSG' => Array
@@ -19739,7 +19739,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics ID_LAST_MSG' => Array
@@ -19750,7 +19750,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics ID_MEMBER_STARTED' => Array
@@ -19761,7 +19761,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics ID_MEMBER_UPDATED' => Array
@@ -19772,7 +19772,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics ID_POLL' => Array
@@ -19783,7 +19783,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics ID_TOPIC' => Array
@@ -19794,7 +19794,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics isSticky' => Array
@@ -19805,7 +19805,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics locked' => Array
@@ -19816,7 +19816,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics numReplies' => Array
@@ -19827,7 +19827,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics numViews' => Array
@@ -19838,7 +19838,7 @@ $smf_columns['1.1'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 );
 
@@ -21373,7 +21373,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'attachments ID_MEMBER' => Array
@@ -21384,7 +21384,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'attachments ID_MSG' => Array
@@ -21395,7 +21395,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'attachments downloads' => Array
@@ -21406,7 +21406,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'attachments file_hash' => Array
@@ -21439,7 +21439,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'banned ID_BAN' => Array
@@ -21450,7 +21450,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'banned ID_MEMBER' => Array
@@ -21461,7 +21461,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'banned ban_time' => Array
@@ -21472,7 +21472,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'banned ban_type' => Array
@@ -21505,7 +21505,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'YES',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'banned hostname' => Array
@@ -21527,7 +21527,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'banned ip_high2' => Array
@@ -21538,7 +21538,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'banned ip_high3' => Array
@@ -21549,7 +21549,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'banned ip_high4' => Array
@@ -21560,7 +21560,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'banned ip_low1' => Array
@@ -21571,7 +21571,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'banned ip_low2' => Array
@@ -21582,7 +21582,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'banned ip_low3' => Array
@@ -21593,7 +21593,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'banned ip_low4' => Array
@@ -21604,7 +21604,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'banned notes' => Array
@@ -21648,7 +21648,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'board_permissions ID_GROUP' => Array
@@ -21659,7 +21659,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'board_permissions addDeny' => Array
@@ -21670,7 +21670,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'board_permissions permission' => Array
@@ -21692,7 +21692,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards ID_CAT' => Array
@@ -21703,7 +21703,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards ID_LAST_MSG' => Array
@@ -21714,7 +21714,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards ID_PARENT' => Array
@@ -21725,7 +21725,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards ID_THEME' => Array
@@ -21736,7 +21736,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards boardOrder' => Array
@@ -21747,7 +21747,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards childLevel' => Array
@@ -21758,7 +21758,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards countPosts' => Array
@@ -21769,7 +21769,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards description' => Array
@@ -21791,7 +21791,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards memberGroups' => Array
@@ -21824,7 +21824,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards numTopics' => Array
@@ -21835,7 +21835,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards override_theme' => Array
@@ -21846,7 +21846,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards use_local_permissions' => Array
@@ -21857,7 +21857,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar ID_BOARD' => Array
@@ -21868,7 +21868,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar ID_EVENT' => Array
@@ -21879,7 +21879,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar ID_MEMBER' => Array
@@ -21890,7 +21890,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar ID_TOPIC' => Array
@@ -21901,7 +21901,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar eventDate' => Array
@@ -21912,7 +21912,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0000-00-00',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar title' => Array
@@ -21934,7 +21934,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar_holidays eventDate' => Array
@@ -21945,7 +21945,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0000-00-00',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar_holidays title' => Array
@@ -21967,7 +21967,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'categories canCollapse' => Array
@@ -21978,7 +21978,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'categories catOrder' => Array
@@ -21989,7 +21989,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'categories name' => Array
@@ -22011,7 +22011,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'collapsed_categories ID_MEMBER' => Array
@@ -22022,7 +22022,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'im_recipients ID_MEMBER' => Array
@@ -22033,7 +22033,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'im_recipients ID_PM' => Array
@@ -22044,7 +22044,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'im_recipients bcc' => Array
@@ -22055,7 +22055,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'im_recipients deleted' => Array
@@ -22066,7 +22066,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'im_recipients is_read' => Array
@@ -22077,7 +22077,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'instant_messages ID_MEMBER_FROM' => Array
@@ -22088,7 +22088,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'instant_messages ID_PM' => Array
@@ -22099,7 +22099,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'instant_messages body' => Array
@@ -22121,7 +22121,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'instant_messages fromName' => Array
@@ -22143,7 +22143,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'instant_messages subject' => Array
@@ -22165,7 +22165,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_actions ID_MEMBER' => Array
@@ -22176,7 +22176,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_actions IP' => Array
@@ -22220,7 +22220,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_activity date' => Array
@@ -22231,7 +22231,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0000-00-00',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_activity hits' => Array
@@ -22242,7 +22242,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_activity mostOn' => Array
@@ -22253,7 +22253,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_activity posts' => Array
@@ -22264,7 +22264,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_activity registers' => Array
@@ -22275,7 +22275,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_activity topics' => Array
@@ -22286,7 +22286,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_banned ID_BAN_LOG' => Array
@@ -22297,7 +22297,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_banned ID_MEMBER' => Array
@@ -22308,7 +22308,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_banned email' => Array
@@ -22341,7 +22341,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_boards ID_BOARD' => Array
@@ -22352,7 +22352,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_boards ID_MEMBER' => Array
@@ -22363,7 +22363,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_boards logTime' => Array
@@ -22374,7 +22374,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_errors ID_ERROR' => Array
@@ -22385,7 +22385,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_errors ID_MEMBER' => Array
@@ -22396,7 +22396,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_errors IP' => Array
@@ -22418,7 +22418,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_errors message' => Array
@@ -22473,7 +22473,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_karma ID_EXECUTOR' => Array
@@ -22484,7 +22484,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_karma ID_TARGET' => Array
@@ -22495,7 +22495,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_karma action' => Array
@@ -22506,7 +22506,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_karma logTime' => Array
@@ -22517,7 +22517,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_mark_read ID_BOARD' => Array
@@ -22528,7 +22528,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_mark_read ID_MEMBER' => Array
@@ -22539,7 +22539,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_mark_read logTime' => Array
@@ -22550,7 +22550,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_notify ID_BOARD' => Array
@@ -22561,7 +22561,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_notify ID_MEMBER' => Array
@@ -22572,7 +22572,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_notify ID_TOPIC' => Array
@@ -22583,7 +22583,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_notify sent' => Array
@@ -22594,7 +22594,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_online ID_MEMBER' => Array
@@ -22605,7 +22605,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_online ip' => Array
@@ -22616,7 +22616,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_online logTime' => Array
@@ -22627,7 +22627,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => 'CURRENT_TIMESTAMP',
 			'EXTRA' => 'DEFAULT_GENERATED on update CURRENT_TIMESTAMP',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_online session' => Array
@@ -22660,7 +22660,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_polls ID_MEMBER' => Array
@@ -22671,7 +22671,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_polls ID_POLL' => Array
@@ -22682,7 +22682,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_search ID_MSG' => Array
@@ -22693,7 +22693,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_search ID_SEARCH' => Array
@@ -22704,7 +22704,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_search ID_TOPIC' => Array
@@ -22715,7 +22715,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_search num_matches' => Array
@@ -22726,7 +22726,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_search relevance' => Array
@@ -22737,7 +22737,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_topics ID_MEMBER' => Array
@@ -22748,7 +22748,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_topics ID_TOPIC' => Array
@@ -22759,7 +22759,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_topics logTime' => Array
@@ -22770,7 +22770,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'membergroups ID_GROUP' => Array
@@ -22781,7 +22781,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'membergroups groupName' => Array
@@ -22803,7 +22803,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'membergroups minPosts' => Array
@@ -22814,7 +22814,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '-1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'membergroups onlineColor' => Array
@@ -22869,7 +22869,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members ID_MEMBER' => Array
@@ -22880,7 +22880,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members ID_MSG_LAST_VISIT' => Array
@@ -22891,7 +22891,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members ID_POST_GROUP' => Array
@@ -22902,7 +22902,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members ID_THEME' => Array
@@ -22913,7 +22913,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members MSN' => Array
@@ -22968,7 +22968,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0000-00-00',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members dateRegistered' => Array
@@ -22979,7 +22979,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members emailAddress' => Array
@@ -23001,7 +23001,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members hideEmail' => Array
@@ -23012,7 +23012,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members im_email_notify' => Array
@@ -23023,7 +23023,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members im_ignore_list' => Array
@@ -23045,7 +23045,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members is_activated' => Array
@@ -23056,7 +23056,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members karmaBad' => Array
@@ -23067,7 +23067,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members karmaGood' => Array
@@ -23078,7 +23078,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members lastLogin' => Array
@@ -23089,7 +23089,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members lngfile' => Array
@@ -23144,7 +23144,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members notifyOnce' => Array
@@ -23155,7 +23155,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members passwd' => Array
@@ -23199,7 +23199,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members realName' => Array
@@ -23243,7 +23243,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members signature' => Array
@@ -23287,7 +23287,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members totalTimeLoggedIn' => Array
@@ -23298,7 +23298,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members unreadMessages' => Array
@@ -23309,7 +23309,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members usertitle' => Array
@@ -23364,7 +23364,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'messages ID_MEMBER' => Array
@@ -23375,7 +23375,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'messages ID_MSG' => Array
@@ -23386,7 +23386,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'messages ID_TOPIC' => Array
@@ -23397,7 +23397,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'messages body' => Array
@@ -23441,7 +23441,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'messages posterEmail' => Array
@@ -23485,7 +23485,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'messages smileysEnabled' => Array
@@ -23496,7 +23496,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'messages subject' => Array
@@ -23518,7 +23518,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'moderators ID_MEMBER' => Array
@@ -23529,7 +23529,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'permissions ID_GROUP' => Array
@@ -23540,7 +23540,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'permissions addDeny' => Array
@@ -23551,7 +23551,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'permissions permission' => Array
@@ -23573,7 +23573,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'poll_choices ID_POLL' => Array
@@ -23584,7 +23584,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'poll_choices label' => Array
@@ -23606,7 +23606,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'polls ID_MEMBER' => Array
@@ -23617,7 +23617,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'polls ID_POLL' => Array
@@ -23628,7 +23628,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'polls changeVote' => Array
@@ -23639,7 +23639,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'polls expireTime' => Array
@@ -23650,7 +23650,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'polls hideResults' => Array
@@ -23661,7 +23661,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'polls maxVotes' => Array
@@ -23672,7 +23672,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'polls posterName' => Array
@@ -23705,7 +23705,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'sessions data' => Array
@@ -23727,7 +23727,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'sessions session_id' => Array
@@ -23771,7 +23771,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'smileys code' => Array
@@ -23815,7 +23815,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'smileys smileyOrder' => Array
@@ -23826,7 +23826,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'smileys smileyRow' => Array
@@ -23837,7 +23837,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'themes ID_MEMBER' => Array
@@ -23848,7 +23848,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'themes ID_THEME' => Array
@@ -23859,7 +23859,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'themes value' => Array
@@ -23892,7 +23892,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics ID_FIRST_MSG' => Array
@@ -23903,7 +23903,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics ID_LAST_MSG' => Array
@@ -23914,7 +23914,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics ID_MEMBER_STARTED' => Array
@@ -23925,7 +23925,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics ID_MEMBER_UPDATED' => Array
@@ -23936,7 +23936,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics ID_POLL' => Array
@@ -23947,7 +23947,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics ID_TOPIC' => Array
@@ -23958,7 +23958,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics isSticky' => Array
@@ -23969,7 +23969,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics locked' => Array
@@ -23980,7 +23980,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics numReplies' => Array
@@ -23991,7 +23991,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics numViews' => Array
@@ -24002,7 +24002,7 @@ $smf_columns['1.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 );
 
@@ -25332,7 +25332,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards ID_CAT' => Array
@@ -25343,7 +25343,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards ID_LAST_TOPIC' => Array
@@ -25354,7 +25354,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'YES',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards boardOrder' => Array
@@ -25365,7 +25365,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards count' => Array
@@ -25376,7 +25376,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards description' => Array
@@ -25398,7 +25398,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards moderators' => Array
@@ -25431,7 +25431,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards numPosts' => Array
@@ -25442,7 +25442,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'boards numTopics' => Array
@@ -25453,7 +25453,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar day' => Array
@@ -25464,7 +25464,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar id' => Array
@@ -25475,7 +25475,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar id_board' => Array
@@ -25486,7 +25486,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar id_member' => Array
@@ -25497,7 +25497,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar id_topic' => Array
@@ -25508,7 +25508,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar month' => Array
@@ -25519,7 +25519,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar title' => Array
@@ -25541,7 +25541,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar_holiday day' => Array
@@ -25552,7 +25552,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar_holiday id' => Array
@@ -25563,7 +25563,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar_holiday month' => Array
@@ -25574,7 +25574,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'calendar_holiday title' => Array
@@ -25596,7 +25596,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'YES',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'categories ID_CAT' => Array
@@ -25607,7 +25607,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'categories catOrder' => Array
@@ -25618,7 +25618,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'categories memberGroups' => Array
@@ -25673,7 +25673,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'instant_messages ID_MEMBER_FROM' => Array
@@ -25684,7 +25684,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'instant_messages ID_MEMBER_TO' => Array
@@ -25695,7 +25695,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'instant_messages body' => Array
@@ -25717,7 +25717,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '-1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'instant_messages fromName' => Array
@@ -25739,7 +25739,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'YES',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'instant_messages readBy' => Array
@@ -25750,7 +25750,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'instant_messages subject' => Array
@@ -25783,7 +25783,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_activity hits' => Array
@@ -25794,7 +25794,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_activity month' => Array
@@ -25805,7 +25805,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_activity mostOn' => Array
@@ -25816,7 +25816,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_activity posts' => Array
@@ -25827,7 +25827,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_activity registers' => Array
@@ -25838,7 +25838,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_activity topics' => Array
@@ -25849,7 +25849,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_activity year' => Array
@@ -25860,7 +25860,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_banned email' => Array
@@ -25893,7 +25893,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'YES',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_boards ID_BOARD' => Array
@@ -25904,7 +25904,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_boards ID_MEMBER' => Array
@@ -25915,7 +25915,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_boards logTime' => Array
@@ -25926,7 +25926,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_clicks agent' => Array
@@ -25970,7 +25970,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_clicks toUrl' => Array
@@ -25992,7 +25992,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_errors ID_MEMBER' => Array
@@ -26003,7 +26003,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_errors IP' => Array
@@ -26025,7 +26025,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_errors message' => Array
@@ -26069,7 +26069,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'YES',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_karma ID_EXECUTOR' => Array
@@ -26080,7 +26080,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_karma ID_TARGET' => Array
@@ -26091,7 +26091,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_karma action' => Array
@@ -26113,7 +26113,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_mark_read ID_BOARD' => Array
@@ -26124,7 +26124,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_mark_read ID_MEMBER' => Array
@@ -26135,7 +26135,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_mark_read logTime' => Array
@@ -26146,7 +26146,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_online identity' => Array
@@ -26157,7 +26157,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_online logTime' => Array
@@ -26168,7 +26168,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'YES',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_topics ID_MEMBER' => Array
@@ -26179,7 +26179,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_topics ID_TOPIC' => Array
@@ -26190,7 +26190,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_topics logTime' => Array
@@ -26201,7 +26201,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'log_topics notificationSent' => Array
@@ -26212,7 +26212,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'membergroups ID_GROUP' => Array
@@ -26223,7 +26223,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'membergroups grouptype' => Array
@@ -26234,7 +26234,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'membergroups membergroup' => Array
@@ -26278,7 +26278,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members MSN' => Array
@@ -26322,7 +26322,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0000-00-00',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members dateRegistered' => Array
@@ -26333,7 +26333,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'YES',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members emailAddress' => Array
@@ -26366,7 +26366,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'YES',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members im_email_notify' => Array
@@ -26377,7 +26377,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members im_ignore_list' => Array
@@ -26399,7 +26399,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members karmaGood' => Array
@@ -26410,7 +26410,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members lastLogin' => Array
@@ -26421,7 +26421,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'YES',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members lngfile' => Array
@@ -26487,7 +26487,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members notifyOnce' => Array
@@ -26498,7 +26498,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members passwd' => Array
@@ -26531,7 +26531,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'YES',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members realName' => Array
@@ -26597,7 +26597,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'YES',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'members usertitle' => Array
@@ -26641,7 +26641,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'messages ID_MSG' => Array
@@ -26652,7 +26652,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'messages ID_TOPIC' => Array
@@ -26663,7 +26663,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'messages attachmentFilename' => Array
@@ -26685,7 +26685,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'messages body' => Array
@@ -26729,7 +26729,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'YES',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'messages posterEmail' => Array
@@ -26773,7 +26773,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'YES',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'messages smiliesEnabled' => Array
@@ -26784,7 +26784,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'messages subject' => Array
@@ -26806,7 +26806,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'polls option1' => Array
@@ -26927,7 +26927,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'polls votes2' => Array
@@ -26938,7 +26938,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'polls votes3' => Array
@@ -26949,7 +26949,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'polls votes4' => Array
@@ -26960,7 +26960,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'polls votes5' => Array
@@ -26971,7 +26971,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'polls votes6' => Array
@@ -26982,7 +26982,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'polls votes7' => Array
@@ -26993,7 +26993,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'polls votes8' => Array
@@ -27004,7 +27004,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'polls votingLocked' => Array
@@ -27015,7 +27015,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'reserved_names setting' => Array
@@ -27070,7 +27070,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics ID_FIRST_MSG' => Array
@@ -27081,7 +27081,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics ID_LAST_MSG' => Array
@@ -27092,7 +27092,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics ID_MEMBER_STARTED' => Array
@@ -27103,7 +27103,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics ID_MEMBER_UPDATED' => Array
@@ -27114,7 +27114,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics ID_POLL' => Array
@@ -27125,7 +27125,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '-1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics ID_TOPIC' => Array
@@ -27136,7 +27136,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics isSticky' => Array
@@ -27147,7 +27147,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics locked' => Array
@@ -27158,7 +27158,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics notifies' => Array
@@ -27180,7 +27180,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'topics numViews' => Array
@@ -27191,7 +27191,7 @@ $smf_columns['Yabbse'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 );
 
@@ -27861,7 +27861,7 @@ $ui->addChunk('Compare Columns - Current DB on Left, Vanilla SMF on Right', func
 			)
 		);
 		while ($row = $smcFunc['db_fetch_assoc']($result))
-			$columns[substr($row['TABLE_NAME'], strlen($db_prefix)) . ' ' . $row['COLUMN_NAME']] = array('TABLE_NAME' => $row['TABLE_NAME'], 'COLUMN_NAME' => $row['COLUMN_NAME'], 'COLUMN_TYPE' => $row['COLUMN_TYPE'], 'IS_NULLABLE' => $row['IS_NULLABLE'], 'COLUMN_DEFAULT' => (is_null($row['COLUMN_DEFAULT']) ? '<em>null</em>' : $row['COLUMN_DEFAULT']), 'EXTRA' => $row['EXTRA'], 'COLLATION_NAME' => $row['COLLATION_NAME']);
+			$columns[substr($row['TABLE_NAME'], strlen($db_prefix)) . ' ' . $row['COLUMN_NAME']] = array('TABLE_NAME' => $row['TABLE_NAME'], 'COLUMN_NAME' => $row['COLUMN_NAME'], 'COLUMN_TYPE' => $row['COLUMN_TYPE'], 'IS_NULLABLE' => $row['IS_NULLABLE'], 'COLUMN_DEFAULT' => (is_null($row['COLUMN_DEFAULT']) ? '<em>null</em>' : $row['COLUMN_DEFAULT']), 'EXTRA' => $row['EXTRA'], 'COLLATION_NAME' => (is_null($row['COLLATION_NAME']) ? '<em>null</em>' : $row['COLLATION_NAME']));
 	}
 	compareArrays($columns, $smf_columns[$ui->smf_ver], $ui);
 });
