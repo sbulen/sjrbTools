@@ -50,5 +50,5 @@ For more information about the mergeSMF.php script, check the thread in the foru
 
 **WARNING:** These tools update your forum database.  Use at your own risk.  ALWAYS back up your database before use.  ALWAYS run them in your test environment first to learn how they work & to confirm desired outcomes.
 
-* ***PGConverter.php*** - Reads output from a mysqldump, then updates it to make it suitable for an import into postgresql.
-* ***PGConvertSeqs.php*** - To be run after conversion from mysql to postgresql.  Updates sequences to ensure they are in sync with the current data.
+* ***pg_converter.php*** - Reads output from a mysqldump, then updates it to make it suitable for an import into postgresql.
+* ***pg_convert_seqs.php*** - To be run after conversion from mysql to postgresql.  Updates sequences to ensure they are in sync with the current data.

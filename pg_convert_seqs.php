@@ -1,26 +1,26 @@
 <?php
 /**
  *
- * A utility to dump all utf8 configuration and database information for an SMF forum.
+ * A utility to fix all sequences after a mysql => postgresql conversion.
  *
- * **** SMF 2.0 & 2.1 ***
- * ***** MySQL only *****
- *
+ * ***** SMF 2.1 ONLY *****
+ * ***** Postgresql ONLY *****
+ * 
  * Usage guidelines:
  * (1) Copy this file to your base SMF directory - (the one with Settings.php in it).
- * (2) Execute it from your browser.
+ * (2) Run this file from your browser.
  * (3) Delete this file when you're done.
  *     by sbulen
  *
  */
 
-$site_title = 'SMF UTF8 Diagnostic';
+$site_title = 'SMF Pg Sequence Fixer';
 $db_needed = true;
 $ui = new SimpleSmfUI($site_title, $db_needed);
 
 $ui->addChunk('Settings', function() use ($ui)
 {
-	global $smcFunc, $db_connection, $db_type, $sourcedir;   // Must remain globals
+	global $db_type;
 
 	// First some settings file stuff...
 	$dumpvars = array('mbname', 'boardurl', 'db_server', 'db_name', 'db_prefix', 'language', 'db_type', 'db_character_set', 'db_mb4');
@@ -41,165 +41,76 @@ $ui->addChunk('Settings', function() use ($ui)
 		else
 			$value = $ui->getSettingsFile()[$var];
 
-		// Ensure proper db_character set
-		if (($var == 'db_character_set') && ($value != 'utf8'))
-			$ui->addError('Settings: db_character_set is not utf8!');
-
 		$settings[] = array($var, $value);
 	}
 	$ui->dumpTable($settings);
 
-	// Now some smcFunc stuff....
-	$db_type = empty($db_type) ? 'mysql' : $db_type;
-
-	// Where the params at...
-	require_once($sourcedir . '/DbExtra-' . $db_type . '.php');
-	db_extra_init();
-
-	$settings = array();
-	$settings[0] = array('smcFunc','Value');
-
-	$settings[] = array('db_title', $smcFunc['db_title']);
-	$settings[] = array('db_get_version', is_callable($smcFunc['db_get_version']) ? $smcFunc['db_get_version']() : '<strong>NOT SET</strong>');
-	$settings[] = array('db_get_engine', (isset($smcFunc['db_get_engine']) && is_callable($smcFunc['db_get_engine'])) ? $smcFunc['db_get_engine']() : '<strong>NOT SET</strong>');
-
-	$ui->dumpTable($settings);
-
-	// Finally some settings table stuff...
-	$settings = array();
-	$settings_lookup = array();
-	$settings[0] = array('Variable','Value');
-	$result = $smcFunc['db_query']('', '
-		SELECT variable, value FROM {db_prefix}settings
-		WHERE variable IN (\'smfVersion\', \'global_character_set\', \'langList\');',
-		array(
-		)
-	);
-
-	while ($row = $smcFunc['db_fetch_assoc']($result))
-	{
-		if (is_null($row['value']))
-			$row['value'] = '<em>null</em>';
-		elseif ($row['value'] === false)
-			$row['value'] = '<em>false</em>';
-		elseif ($row['value'] === true)
-			$row['value'] = '<em>true</em>';
-
-		$settings[] = $row;
-		$settings_lookup[$row['variable']] = $row['value'];
-	}
-
-	// Ensure they were all set, by checking first column of $settings...
-	foreach (array('smfVersion', 'global_character_set', 'langList') AS $var)
-	{
-		if (!array_key_exists($var, $settings_lookup))
-			$settings[] = array($var, '<strong>NOT SET</strong>');
-	}
-
-	// Ensure proper global_character set
-	if (empty($settings_lookup['global_character_set']) || ($settings_lookup['global_character_set'] != 'UTF-8'))
-		$ui->addError('Settings: global_character_set is not UTF-8!');
-
-	$ui->dumpTable($settings);
-
 });
 
-$ui->addChunk('Database Info', function() use ($ui)
+$ui->addChunk('Convert Sequences', function() use ($ui)
 {
-	global $smcFunc, $db_type, $db_connection, $db_prefix, $db_name;
+	global $db_type, $db_connection, $db_prefix, $db_name, $db_character_set;
 
-	if ($db_type != 'mysql')
+	// Ensure we are running pg...
+	if (empty($db_type) || $db_type != 'postgresql')
 	{
-		$ui->addError('This utility is only needed for MySQL databases.');
+		$ui->addError('Database is not postgresql!');
 		return;
 	}
 
-	// Dump schema-level info...
-	$schema_columns = 'SCHEMA_NAME, DEFAULT_CHARACTER_SET_NAME, DEFAULT_COLLATION_NAME';
-	$schema_header = array('SCHEMA_NAME', 'DEFAULT_CHARACTER_SET_NAME', 'DEFAULT_COLLATION_NAME');
+	// Find all the sequences...
+	$sql = "select t.relname as table, c.attname as column, pg_get_expr(d.adbin, d.adrelid) as default
+		from pg_class t, pg_attribute c, pg_attrdef d
+		WHERE pg_get_expr(d.adbin, d.adrelid) like 'nextval(''{$db_prefix}%'
+		AND d.adrelid = c.attrelid AND d.adnum = c.attnum
+		AND d.adrelid = t.oid;";
+	$result = pg_query($db_connection, $sql);
 
-	$settings = array();
-	$settings[0] = $schema_header;
+	// Move to array...
+	$sequences = array();
+	while($row = pg_fetch_assoc($result))
+		$sequences[] = $row;
 
-	$result = $smcFunc['db_query']('', '
-		SELECT ' . $schema_columns . '
-		  FROM INFORMATION_SCHEMA.SCHEMATA
-		 WHERE SCHEMA_NAME = "' . $db_name . '";'
-	);
-	while ($row = $smcFunc['db_fetch_assoc']($result))
+	$getseq_regex = '/^nextval\(\'(.*)\'::regclass\)$/';
+	$matches = array();
+
+	foreach($sequences AS $sequence)
 	{
-		$settings[] = $row;
-		if ($row['DEFAULT_CHARACTER_SET_NAME'] != 'utf8')
-			$ui->addError('Recommendation: Set schema default character set to UTF-8');
-		if ($row['DEFAULT_COLLATION_NAME'] != 'utf8_general_ci')
-			$ui->addError('Recommendation: Set schema default collation to utf8_general_ci');
-	}
-	$smcFunc['db_free_result']($result);
+		// Pluck the sequence name from the default & display what you found...
+		preg_match($getseq_regex, $sequence['default'], $matches);
+		$seqname = $matches[1];
+		echo "Table: {$sequence['table']}, Column: {$sequence['column']}, Sequence: {$seqname}<br>";
 
-	$ui->dumpTable($settings);
+		// Show the last value from seq...
+		$sql = "SELECT last_value FROM {$seqname};";
+		$result = pg_query($db_connection, $sql);
+		list ($lastval) = pg_fetch_row($result);
+		echo "Last value from sequence before operation: {$lastval}<br>";
 
-	// Dump table info...
-	$tbl_columns = 'TABLE_SCHEMA, TABLE_NAME, ENGINE, TABLE_COLLATION';
-	$tbl_header = array('TABLE_SCHEMA', 'TABLE_NAME', 'ENGINE', 'TABLE_COLLATION');
-
-	$settings = array();
-	$settings[0] = $tbl_header;
-
-	$result = $smcFunc['db_query']('', '
-		SELECT ' . $tbl_columns . '
-		  FROM INFORMATION_SCHEMA.TABLES
-		 WHERE TABLE_SCHEMA = "' . $db_name . '";'
-	);
-	while ($row = $smcFunc['db_fetch_assoc']($result))
-	{
-		$settings[] = $row;
-		if ($row['TABLE_COLLATION'] != 'utf8_general_ci')
-			$ui->addError('Table: ' . $row['TABLE_NAME'] . ' - collation is not utf8_general_ci');
-	}
-	$smcFunc['db_free_result']($result);
-
-	$ui->dumpTable($settings);
-
-});
-
-$ui->addChunk('Column Info', function() use ($ui)
-{
-	global $smcFunc, $db_type, $db_connection, $db_prefix, $db_name;
-
-	if ($db_type != 'mysql')
-	{
-		$ui->addError('This utility is only needed for MySQL databases.');
-		return;
-	}
-
-	// Dump column info...
-	$col_columns = 'TABLE_SCHEMA, TABLE_NAME, COLUMN_NAME, DATA_TYPE, CHARACTER_SET_NAME, COLLATION_NAME';
-	$col_header = array('TABLE_SCHEMA', 'TABLE_NAME', 'COLUMN_NAME', 'DATA_TYPE', 'CHARACTER_SET_NAME', 'COLLATION_NAME');
-
-	$settings = array();
-	$settings[0] = $col_header;
-
-	$result = $smcFunc['db_query']('', '
-		SELECT ' . $col_columns . '
-		  FROM INFORMATION_SCHEMA.COLUMNS
-		 WHERE TABLE_SCHEMA = "' . $db_name . '";'
-	);
-	while ($row = $smcFunc['db_fetch_assoc']($result))
-	{
-		if (strpos($row['DATA_TYPE'], 'text') !== false || strpos($row['DATA_TYPE'], 'char') !== false)
+		// If empty, bypass...
+		$sql = "SELECT count(*) FROM {$sequence['table']}";
+		$result = pg_query($db_connection, $sql);
+		list ($count) = pg_fetch_row($result);
+		if (empty($count))
 		{
-			$settings[] = $row;
-			if ($row['CHARACTER_SET_NAME'] != 'utf8')
-				$ui->addError('Column: ' . $row['TABLE_NAME'] . ', ' . $row['COLUMN_NAME'] . ' - character set is not UTF-8');
-			if ($row['COLLATION_NAME'] != 'utf8_general_ci')
-				$ui->addError('Column: ' . $row['TABLE_NAME'] . ', ' . $row['COLUMN_NAME'] . ' - collation is not utf8_general_ci');
+			echo "Table empty, bypassing...<br><br>";
+			continue;
 		}
+
+		// Show highest key used...
+		$sql = "SELECT MAX({$sequence['column']}) FROM {$sequence['table']}";
+		$result = pg_query($db_connection, $sql);
+		list ($highkey) = pg_fetch_row($result);
+		echo "Highest key used before operation: {$highkey}<br>";
+
+		// Now set the proper sequence value, choose greater of existing lastval or max of column ID...
+		$sql = "SELECT setval('{$seqname}', (SELECT GREATEST(MAX({$sequence['column']}), {$lastval}) FROM {$sequence['table']}))";
+		$result = pg_query($db_connection, $sql);
+		list ($lastval) = pg_fetch_row($result);
+		echo "Last value from sequence after operation: {$lastval}<br><br>";
 	}
-	$smcFunc['db_free_result']($result);
 
-	$ui->dumpTable($settings);
-
-	return;
+	echo '<br>Fixing postgresql sequences completed!<br>';
 
 });
 

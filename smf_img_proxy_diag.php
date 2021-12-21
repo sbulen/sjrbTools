@@ -755,5 +755,8 @@ class SimpleSmfUI
 			$this->renderErrors();
 
 		$this->renderFooter();
+
+		// Ensure refreshes actually refresh!
+		$_SESSION = array();
 	}
 }

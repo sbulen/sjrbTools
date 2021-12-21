@@ -72,7 +72,7 @@ $ui->addChunk('Specify Query Parameters', function() use ($ui)
 	echo '<input type="text" name="field" value="' . $ui->field . '"><br>';
 	echo '<label for="where_clause">WHERE Clause: </label>';
 	echo '<input type="text" name="where_clause" value="' . $ui->where_clause . '"><br>';
-	echo '<input type="submit" class="button" class="button" formmethod="post" value="Ok">';
+	echo '<input type="submit" class="button" class="button" formmethod="post" name="proceed" value="Ok">';
 	echo '</form>';
 
 });
@@ -82,6 +82,10 @@ $ui->addChunk('Hex Dump', function() use ($ui)
 	global $smcFunc, $db_prefix;
 
 	$data = array();
+
+	// Only proceed if user hit that button
+	if (empty($_SESSION['proceed']))
+		return;
 
 	mb_regex_encoding('UTF-8');
 	mb_internal_encoding('UTF-8');
@@ -699,5 +703,8 @@ class SimpleSmfUI
 			$this->renderErrors();
 
 		$this->renderFooter();
+
+		// Ensure refreshes actually refresh!
+		$_SESSION = array();
 	}
 }

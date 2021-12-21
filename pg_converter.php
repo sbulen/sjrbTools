@@ -1,20 +1,46 @@
 <?php
 /**
  *
- * A utility to dump all utf8 configuration and database information for an SMF forum.
+ * This utility reads a mysql export & preps it for pg load.
+ * It does three things:
+ *  - Maps single & double-quotes from mysql format to pg accepted format
+ *  - Maps varbinary16 values, used in SMF for IP addresses, to pg inet format
+ *  - Maps newlines back to newlines... mysqldump exports all newlines as the two characters: \n
  *
- * **** SMF 2.0 & 2.1 ***
- * ***** MySQL only *****
+ * Prepwork: 
+ *  - Install a vanilla version of SMF, same version as your source & get it fully working.  Truncate all tables.
+ *  - Your source mysql SMF DB must be UTF8.
+ *  - Your source mysql and target SMF DBs must have the exact same tables & columns.
+ *  - If needed, create a copy of your source forum & delete all extraneous rows & columns and do the mysqldump from there.
  *
+ * Overall Process - for use on Windows:
+ * (1) Use the following command to do the export:
+ *    mysqldump -u{user} -p{pass} --no-create-db --no-create-info --hex-blob --skip-add-locks --skip-comments --skip-set-charset --compact --skip-quote-names --complete-insert {dbname} > {myfile.sql}
+ * (2) Run this utility, reading the mysqldump just created & creating a new .sql file
+ * (3) Specify the $infile, $outfile & $path when prompted
+ * (4) Open a command window
+ * (5) Issue the following in the Windows command window (otherwise it assumes import is in Windows 1252, not utf8...):
+ *    SET PGCLIENTENCODING=utf-8
+ * (6) Log on to psql, connect to your new empty vanilla pg DB
+ * (7) Load file with: \i mynewfile.sql
+ * (8) After load, you must fix all the SEQUENCE #s...
+ * (9) Run repair_settings.php to correct paths
+ * (10) Copy over your attachments, avatars, custom avatars & smileys
+ * (11) Clear your cache
+ *
+ * ***** SMF 2.1 ONLY *****
+ * ***** Postgresql ONLY *****
+ * 
  * Usage guidelines:
  * (1) Copy this file to your base SMF directory - (the one with Settings.php in it).
- * (2) Execute it from your browser.
- * (3) Delete this file when you're done.
+ * (2) Run this file from your browser.
+ * (3) Change query prompts as needed.
+ * (4) Delete this file when you're done.
  *     by sbulen
  *
  */
 
-$site_title = 'SMF UTF8 Diagnostic';
+$site_title = 'SMF Pg Converter';
 $db_needed = true;
 $ui = new SimpleSmfUI($site_title, $db_needed);
 
@@ -29,7 +55,6 @@ $ui->addChunk('Settings', function() use ($ui)
 	$settings[0] = array('Variable','Value');
 	foreach($dumpvars AS $var)
 	{
-
 		if (!isset($ui->getSettingsFile()[$var]))
 			$value = '<strong>NOT SET</strong>';
 		elseif (is_null($ui->getSettingsFile()[$var]))
@@ -41,165 +66,210 @@ $ui->addChunk('Settings', function() use ($ui)
 		else
 			$value = $ui->getSettingsFile()[$var];
 
-		// Ensure proper db_character set
-		if (($var == 'db_character_set') && ($value != 'utf8'))
-			$ui->addError('Settings: db_character_set is not utf8!');
-
 		$settings[] = array($var, $value);
 	}
-	$ui->dumpTable($settings);
-
-	// Now some smcFunc stuff....
-	$db_type = empty($db_type) ? 'mysql' : $db_type;
-
-	// Where the params at...
-	require_once($sourcedir . '/DbExtra-' . $db_type . '.php');
-	db_extra_init();
-
-	$settings = array();
-	$settings[0] = array('smcFunc','Value');
-
-	$settings[] = array('db_title', $smcFunc['db_title']);
-	$settings[] = array('db_get_version', is_callable($smcFunc['db_get_version']) ? $smcFunc['db_get_version']() : '<strong>NOT SET</strong>');
-	$settings[] = array('db_get_engine', (isset($smcFunc['db_get_engine']) && is_callable($smcFunc['db_get_engine'])) ? $smcFunc['db_get_engine']() : '<strong>NOT SET</strong>');
-
-	$ui->dumpTable($settings);
-
-	// Finally some settings table stuff...
-	$settings = array();
-	$settings_lookup = array();
-	$settings[0] = array('Variable','Value');
-	$result = $smcFunc['db_query']('', '
-		SELECT variable, value FROM {db_prefix}settings
-		WHERE variable IN (\'smfVersion\', \'global_character_set\', \'langList\');',
-		array(
-		)
-	);
-
-	while ($row = $smcFunc['db_fetch_assoc']($result))
-	{
-		if (is_null($row['value']))
-			$row['value'] = '<em>null</em>';
-		elseif ($row['value'] === false)
-			$row['value'] = '<em>false</em>';
-		elseif ($row['value'] === true)
-			$row['value'] = '<em>true</em>';
-
-		$settings[] = $row;
-		$settings_lookup[$row['variable']] = $row['value'];
-	}
-
-	// Ensure they were all set, by checking first column of $settings...
-	foreach (array('smfVersion', 'global_character_set', 'langList') AS $var)
-	{
-		if (!array_key_exists($var, $settings_lookup))
-			$settings[] = array($var, '<strong>NOT SET</strong>');
-	}
-
-	// Ensure proper global_character set
-	if (empty($settings_lookup['global_character_set']) || ($settings_lookup['global_character_set'] != 'UTF-8'))
-		$ui->addError('Settings: global_character_set is not UTF-8!');
 
 	$ui->dumpTable($settings);
 
 });
 
-$ui->addChunk('Database Info', function() use ($ui)
+$ui->addChunk('Input and Output Files', function() use ($ui)
 {
-	global $smcFunc, $db_type, $db_connection, $db_prefix, $db_name;
+	global $db_type;
 
-	if ($db_type != 'mysql')
+	// Ensure we are running pg...
+	if (empty($db_type) || $db_type != 'postgresql')
 	{
-		$ui->addError('This utility is only needed for MySQL databases.');
+		$ui->addError('Database is not postgresql!');
 		return;
 	}
 
-	// Dump schema-level info...
-	$schema_columns = 'SCHEMA_NAME, DEFAULT_CHARACTER_SET_NAME, DEFAULT_COLLATION_NAME';
-	$schema_header = array('SCHEMA_NAME', 'DEFAULT_CHARACTER_SET_NAME', 'DEFAULT_COLLATION_NAME');
+	$ui->infile = 'mysqldump.sql';
+	$ui->outfile = 'pgdump.sql';
+	$ui->path = __DIR__;
 
-	$settings = array();
-	$settings[0] = $schema_header;
+	if (isset($_SESSION['infile']) && is_string($_SESSION['infile']))
+		$ui->infile = $ui->cleanseText($_SESSION['infile']);
+	if (isset($_SESSION['outfile']) && is_string($_SESSION['outfile']))
+		$ui->outfile = $ui->cleanseText($_SESSION['outfile']);
+	if (isset($_SESSION['path']) && is_string($_SESSION['path']))
+		$ui->path = $ui->cleanseText($_SESSION['path'], true);
 
-	$result = $smcFunc['db_query']('', '
-		SELECT ' . $schema_columns . '
-		  FROM INFORMATION_SCHEMA.SCHEMATA
-		 WHERE SCHEMA_NAME = "' . $db_name . '";'
-	);
-	while ($row = $smcFunc['db_fetch_assoc']($result))
-	{
-		$settings[] = $row;
-		if ($row['DEFAULT_CHARACTER_SET_NAME'] != 'utf8')
-			$ui->addError('Recommendation: Set schema default character set to UTF-8');
-		if ($row['DEFAULT_COLLATION_NAME'] != 'utf8_general_ci')
-			$ui->addError('Recommendation: Set schema default collation to utf8_general_ci');
-	}
-	$smcFunc['db_free_result']($result);
-
-	$ui->dumpTable($settings);
-
-	// Dump table info...
-	$tbl_columns = 'TABLE_SCHEMA, TABLE_NAME, ENGINE, TABLE_COLLATION';
-	$tbl_header = array('TABLE_SCHEMA', 'TABLE_NAME', 'ENGINE', 'TABLE_COLLATION');
-
-	$settings = array();
-	$settings[0] = $tbl_header;
-
-	$result = $smcFunc['db_query']('', '
-		SELECT ' . $tbl_columns . '
-		  FROM INFORMATION_SCHEMA.TABLES
-		 WHERE TABLE_SCHEMA = "' . $db_name . '";'
-	);
-	while ($row = $smcFunc['db_fetch_assoc']($result))
-	{
-		$settings[] = $row;
-		if ($row['TABLE_COLLATION'] != 'utf8_general_ci')
-			$ui->addError('Table: ' . $row['TABLE_NAME'] . ' - collation is not utf8_general_ci');
-	}
-	$smcFunc['db_free_result']($result);
-
-	$ui->dumpTable($settings);
+	echo '<form>';
+	echo '<label for="infile">Input file name: </label>';
+	echo '<input type="text" name="infile" value="' . $ui->infile . '"><br>';
+	echo '<label for="outfile">Output File name: </label>';
+	echo '<input type="text" name="outfile" value="' . $ui->outfile . '"><br>';
+	echo '<label for="path">Path: </label>';
+	echo '<input type="text" name="path" value="' . $ui->path . '"><br>';
+	echo '<input type="submit" class="button" class="button" formmethod="post" name="proceed" value="Ok">';
+	echo '</form>';
 
 });
 
-$ui->addChunk('Column Info', function() use ($ui)
+$ui->addChunk('Convert Quotes & IPs', function() use ($ui)
 {
-	global $smcFunc, $db_type, $db_connection, $db_prefix, $db_name;
+	global $db_type, $db_connection;
 
-	if ($db_type != 'mysql')
-	{
-		$ui->addError('This utility is only needed for MySQL databases.');
+	// Ensure we are running pg...
+	if (empty($db_type) || $db_type != 'postgresql')
 		return;
-	}
 
-	// Dump column info...
-	$col_columns = 'TABLE_SCHEMA, TABLE_NAME, COLUMN_NAME, DATA_TYPE, CHARACTER_SET_NAME, COLLATION_NAME';
-	$col_header = array('TABLE_SCHEMA', 'TABLE_NAME', 'COLUMN_NAME', 'DATA_TYPE', 'CHARACTER_SET_NAME', 'COLLATION_NAME');
+	// Only proceed if user hit that button
+	if (empty($_SESSION['proceed']))
+		return;
 
-	$settings = array();
-	$settings[0] = $col_header;
+	$lines = 0;
+	$bytes = 0;
 
-	$result = $smcFunc['db_query']('', '
-		SELECT ' . $col_columns . '
-		  FROM INFORMATION_SCHEMA.COLUMNS
-		 WHERE TABLE_SCHEMA = "' . $db_name . '";'
-	);
-	while ($row = $smcFunc['db_fetch_assoc']($result))
-	{
-		if (strpos($row['DATA_TYPE'], 'text') !== false || strpos($row['DATA_TYPE'], 'char') !== false)
-		{
-			$settings[] = $row;
-			if ($row['CHARACTER_SET_NAME'] != 'utf8')
-				$ui->addError('Column: ' . $row['TABLE_NAME'] . ', ' . $row['COLUMN_NAME'] . ' - character set is not UTF-8');
-			if ($row['COLLATION_NAME'] != 'utf8_general_ci')
-				$ui->addError('Column: ' . $row['TABLE_NAME'] . ', ' . $row['COLUMN_NAME'] . ' - collation is not utf8_general_ci');
-		}
-	}
-	$smcFunc['db_free_result']($result);
+	//open files 
+	$file_in_handle = @fopen($ui->path . '/' . $ui->infile, 'r'); 
+		if (!$file_in_handle) {
+			$ui->addError('FATAL ERROR on opening input file...');
+			return;
+		};
+	$file_out_handle = @fopen($ui->path . '/' . $ui->outfile, 'w'); 
+		if (!$file_out_handle) {
+			$ui->addError('FATAL ERROR on opening output file...');
+			return;
+		};
+	echo("Files opened.<br><br>");
 
-	$ui->dumpTable($settings);
+	// This "escape single quote" regex looks for a \' that is NOT itself preceded by a \ so the \ itself isn't being escaped...  
+	// Note in php, \\\\ is required to represent a single real \...
+	// Lots of strings ending in smileys end in \ thus \\' is valid & should be left alone...
+	$esc_sq_regex = '~(?<!' . '\\\\' . ')(?>' . '\\\\' . '\')~';
+	// OTOH... Sometimes \\\' is used to escape a single quote...  We need to xlate 1 & 3, but not 2...
+	$esc3_sq_regex = '~(?>' . '\\\\' . '\\\\' . '\\\\' . '\')~';
+	// Same two, but for double-quotes
+	$esc_dq_regex = '~(?<!' . '\\\\' . ')(?>' . '\\\\' . '")~';
+	$esc3_dq_regex = '~(?>' . '\\\\' . '\\\\' . '\\\\' . '")~';
+	// This regex looks for a varbinary hex value...  e.g., 0x8B74E210, as used for IPs in SMF
+	$bin_regex = '~(?<=\,|\()0x([0-9A-F]{2})([0-9A-F]{2})([0-9A-F]{2})([0-9A-F]{2})(?=\,|\))~';
 
-	return;
+	// crlf fixer...  Look for a \r\n...
+	$esc_crlf_regex = '~(?>' . '\\\\' . 'r' . '\\\\' . 'n)~';
+	// Newline fixer...  Look for a \n, but not a \\n...
+	$esc_nl_regex = '~(?<!' . '\\\\' . ')(?>' . '\\\\' . 'n)~';
+	// Newline fixer...  Look for a \r, but not a \\r...
+	$esc_cr_regex = '~(?<!' . '\\\\' . ')(?>' . '\\\\' . 'r)~';
+	// Fix broken slashes - mysqldump will escape them, pg doesn't do that...
+	// Find pairs of slashes with no preceeding slash...
+	$esc_slash_regex = '~(?<!' . '\\\\' . ')(?>' . '\\\\' . '\\\\' . ')~';
+
+	$matches = array();
+
+	$sql = 'SHOW standard_conforming_strings';
+	$result = pg_query($db_connection, $sql);
+	list ($quote_option) = pg_fetch_row($result);
+	echo "Postgresql standard_conforming_string setting: {$quote_option}<br><br>";
+
+	if ($quote_option != 'on')
+		$ui->addError('standard_conforming_strings should be on.');
+
+	echo("Processing...");
+
+	$options = pg_options($db_connection);
+	print_r($options);
+
+	$buffer = fgets($file_in_handle);
+	while (!feof($file_in_handle))
+		{ 
+			$bytes = $bytes + strlen($buffer);
+			$lines++;
+
+			// Fix single quotes - \\\' to ''
+			$buffer = preg_replace_callback(
+				$esc3_sq_regex,
+				function($matches) {
+					return "''";
+				},
+				$buffer
+			);
+
+			// Fix single quotes - \' to '', but only if no preceding \
+			$buffer = preg_replace_callback(
+				$esc_sq_regex,
+				function($matches) {
+					return "''";
+				},
+				$buffer
+			);
+
+			// Fix double quotes - \\\" to "
+			$buffer = preg_replace_callback(
+				$esc3_dq_regex,
+				function($matches) {
+					return '"';
+				},
+				$buffer
+			);
+
+			// Fix double quotes - \" to ", but only if no preceding \
+			$buffer = preg_replace_callback(
+				$esc_dq_regex,
+				function($matches) {
+					return '"';
+				},
+				$buffer
+			);
+
+			// Convert varbinary16 to pg inet...
+			$buffer = preg_replace_callback(
+				$bin_regex,
+				function($matches) {
+					return '\'' . hexdec($matches[1]) . '.' . hexdec($matches[2]) . '.' . hexdec($matches[3]) . '.' . hexdec($matches[4]) . '\'';
+				},
+				$buffer
+			);
+
+			// Restore CRLF broken by mysqldump- \r\n to "\r\n"
+			$buffer = preg_replace_callback(
+				$esc_crlf_regex,
+				function($matches) {
+					return "\r";
+				},
+				$buffer
+			);
+
+			// Restore newlines broken by mysqldump- \n to "\n", but only if no preceding \
+			$buffer = preg_replace_callback(
+				$esc_nl_regex,
+				function($matches) {
+					return "\n";
+				},
+				$buffer
+			);
+
+			// Restore CR broken by mysqldump- \r to "\r", but only if no preceding \
+			$buffer = preg_replace_callback(
+				$esc_cr_regex,
+				function($matches) {
+					return "\r";
+				},
+				$buffer
+			);
+
+			// Restore backslashes broken by mysqldump- \\ to \
+			$buffer = preg_replace_callback(
+				$esc_slash_regex,
+				function($matches) {
+					return '\\';
+				},
+				$buffer
+			);
+
+			fwrite($file_out_handle, $buffer);
+			$buffer = fgets($file_in_handle);
+		};
+
+	//close things out...
+	fclose($file_in_handle); 
+	fclose($file_out_handle); 
+	echo("done.<br><br>");
+	echo(" Bytes Read: " . $bytes . "<br>");
+	echo(" Lines Read: " . $lines . "<br><br>");
+	echo(" Completed!<br><br>");
 
 });
 
