@@ -24,7 +24,6 @@ These tools are inquiry only & are used to perform diagnostics.
 
 * ***smf_innodb_converter.php*** - This tool converts your SMF forum's MySQL database engine to InnoDB.  SMF 2.0 & 2.1.  
 * ***smf_read_inds_maint_2-0.php*** - This tool marks all boards read in a way that doesn't add millions of rows to your logs...  SMF 2.0.
-* ***smf_read_inds_maint_2-1.php*** - This tool marks all boards read in a way that doesn't add millions of rows to your logs...  SMF 2.1.
 * ***SMF_URLs_Paths.php*** - This tool converts all URLs and Paths throughout your SMF forum's database from one value to another.  SMF 2.0 & 2.1.  This tool updates all URLs and Paths found throughout the settings table, the themes table, the messages table, personal messages and members' signatures.  I use this to quickly clone working test environments, so they do not link to each other and I do not find myself working within the wrong environment after clicking on a link...  (Its original name was really_really_really_repair_settings.php, but I felt that was too long...)
 * ***smf_fix_log_actions.php*** - Checks & fixes all string lengths in log_actions. UTF8 conversions can break string lengths in serialized strings.  SMF2.0.
 
