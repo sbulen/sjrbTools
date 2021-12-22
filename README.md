@@ -3,6 +3,8 @@ Some helpful tools for SMF'ers
 
 This is a collection of utilities I use to perform maintenance on & testing of my SMF forum.  I am sharing them here in case others find them helpful.
 
+Most of these utilities expose forum internals, and should be removed when not in use.
+
 ## SMF Inquiry Tools & Diagnostics
 
 These tools are inquiry only & are used to perform diagnostics.
@@ -52,3 +54,6 @@ For more information about the mergeSMF.php script, check the thread in the foru
 
 * ***pg_converter.php*** - Reads output from a mysqldump, then updates it to make it suitable for an import into postgresql.
 * ***pg_convert_seqs.php*** - To be run after conversion from mysql to postgresql.  Updates sequences to ensure they are in sync with the current data.
+
+For more information about these scripts, check the thread in the forum here: 
+https://www.simplemachines.org/community/index.php?topic=575453.0
