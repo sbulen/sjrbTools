@@ -58,9 +58,9 @@ $ui->addChunk('Preview or Proceed?', function() use ($ui)
 
 	$ui->pattern = '~(?>\[member=\d{1,10}\]([^\[]*)\[/member\])~i';
 
-	// Can't really cleanse this one, as it's code...
+	// Cleanse the data...
 	if (isset($_SESSION['pattern']) && is_string($_SESSION['pattern']))
-		$ui->pattern = htmlspecialchars_decode($_SESSION['pattern']);
+		$ui->pattern = $ui->cleanseText($_SESSION['pattern'], true);
 
 	echo '<form>';
 	echo '<label for="pattern">Regex: </label>';
@@ -69,7 +69,7 @@ $ui->addChunk('Preview or Proceed?', function() use ($ui)
 	echo '<br><input type="submit" class="button" formmethod="post" name="proceed" value="Proceed?"><br>';
 	echo '</form>';
 
-	// ...but we can test whether the regex is valid.
+	// Test the regex...
 	$test = preg_match_all($ui->pattern, '', $matches);
 	if ($test === false)
 	{
