@@ -28148,10 +28148,16 @@ class SimpleSmfUI
 			$this->addError('err_width');
 
 		// Error handler
+		// Note that php error suppression - @ - still calls the error handler.  It will return 0 as it does so (pre php8).
+		// Note error handling in php8+ no longer fails silently on many errors, but error_reporting()
+		// will return 4437 (E_ERROR | E_CORE_ERROR | E_COMPILE_ERROR | E_USER_ERROR | E_RECOVERABLE_ERROR | E_PARSE)
+		// as it does so.
 		set_error_handler(
 			function($errno, $errstr, $errfile, $errline)
 			{
-				$this->addError($errstr . ' (' . $errno . ')');
+				if ((error_reporting() != 0) && (error_reporting() != (E_ERROR | E_CORE_ERROR | E_COMPILE_ERROR | E_USER_ERROR | E_RECOVERABLE_ERROR | E_PARSE)))
+					$this->addError($errstr . ' (' . $errno . ')');
+				// Always try & report errors gracefully...
 				return true;
 			}
 		);
@@ -28304,6 +28310,19 @@ class SimpleSmfUI
 				color: rgb(122,132,134);
 				background-color: rgb(252,252,252);
 				text-align: right;
+				display: inline-block;
+				width: 50%;
+			}
+
+			#warningtag
+			{
+				font-family: "Roboto", sans-serif;
+				font-size: smaller;
+				color: rgb(122,132,134);
+				background-color: rgb(252,252,252);
+				text-align: left;
+				display: inline-block;
+				width: 50%;
 			}
 
 			.chunkhdr
@@ -28460,6 +28479,7 @@ class SimpleSmfUI
 	protected function renderFooter()
 	{
 		// Close out body & html tags
+		echo '<div id="warningtag">Remove when not in use</div>';
 		echo '<div id="nametag">sbulen/sjrbTools</div>';
 		echo '</body>
 		</html>';
