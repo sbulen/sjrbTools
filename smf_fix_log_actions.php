@@ -16,7 +16,7 @@
  * (3) ALWAYS backup your system first - expect the unexpected.
  * (4) Execute it from your browser.
  * (5) Run in preview mode first.
- * (6) If things look good, run it in Do It mode.
+ * (6) If things look good, click the Proceed button.
  * (7) Delete it when you're done.
  *     by sbulen
  *
@@ -66,7 +66,7 @@ $ui->addChunk('Preview or Proceed?', function() use ($ui)
 
 $ui->addChunk('Results', function() use ($ui)
 {
-	global $smcFunc, $db_connection, $db_prefix, $doit;
+	global $smcFunc, $db_connection, $db_prefix;
 
 	if (empty($_SESSION['preview']) && empty($_SESSION['proceed']))
 		return;
@@ -126,9 +126,6 @@ $ui->addChunk('Results', function() use ($ui)
 	$settings[] = array('Fixed', $fixed);
 	$settings[] = array('Cannot fix', $cantfix);
 	$ui->dumpTable($settings);
-
-	return;
-
 });
 
 $ui->go();
