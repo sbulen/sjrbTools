@@ -26,6 +26,7 @@ These tools are inquiry only & are used to perform diagnostics.
 * ***smf_innodb_converter.php*** - This tool converts your SMF forum's MySQL database engine to InnoDB.  SMF 2.0 & 2.1.  
 * ***SMF_URLs_Paths.php*** - This tool converts all URLs and Paths throughout your SMF forum's database from one value to another.  SMF 2.0 & 2.1.  This tool updates all URLs and Paths found throughout the settings table, the themes table, the messages table, personal messages and members' signatures.  I use this to quickly clone working test environments, so they do not link to each other and I do not find myself working within the wrong environment after clicking on a link...  (Its original name was really_really_really_repair_settings.php, but I felt that was too long...)
 * ***smf_fix_log_actions.php*** - Checks & fixes all string lengths in log_actions. UTF8 conversions can break string lengths in serialized strings.  SMF2.0.
+* ***smf_remove_old_bbc.php*** - Removes old BBC.  Provided a regex, substitutes the first captured group for the entire match.  Helpful when you no longer use old mods that added BBC to posts at some point.  SMF2.0 & 2.1.
 
 ## SMF UTF8 Utilities
 
