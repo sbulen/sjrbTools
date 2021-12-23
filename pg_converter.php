@@ -842,9 +842,9 @@ class SimpleSmfUI
 			foreach($_POST as $var => $val)
 				$_SESSION[$this->cleanseText($var)] = $this->cleanseText($val);
 			
-		   // Redirect to this page
-		   header("Location: {$_SERVER['REQUEST_URI']}", true, 302);
-		   exit();
+			// Redirect to this page
+			header("Location: {$_SERVER['REQUEST_URI']}", true, 302);
+			exit();
 		}
 
 		// OK, display stuff...
