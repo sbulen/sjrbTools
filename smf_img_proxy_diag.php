@@ -63,7 +63,8 @@ $ui->addChunk('Settings', function() use ($ui)
 	$settings[] = array("Image Directory Exists:", $exists ? 'true' : 'false');
 	$settings[] = array("Image Directory Writable?", is_writable($imagedir) ? 'true' : 'false');
 
-	if ($exists) {
+	if ($exists)
+	{
 		$settings[] = array("Image Directory Permissions:", substr(decoct(fileperms($imagedir)), -3));
 		$settings[] = array("Image Directory Permissions full:", decoct(fileperms($imagedir)));
 	}
@@ -120,7 +121,8 @@ $ui->addChunk('CURL Feedback', function() use ($ui)
 	$settings[0] = array('Name', 'Value');
 	$settings[] = array('Curl Installed:', $installed ? 'true' : 'false');
 
-	if ($installed) {
+	if ($installed)
+	{
 		$curl = new curl_fetch_web_data(array(CURLINFO_HEADER_OUT => 1, CURLOPT_VERBOSE => 1));
 		$request = $curl->get_url_data($ui->image);
 		$response = $request->result();
@@ -130,7 +132,8 @@ $ui->addChunk('CURL Feedback', function() use ($ui)
 		$settings[] = array('Response size:', $response['size']);
 
    		$respstr = '';
-        if (!empty($response['headers'])) {
+        if (!empty($response['headers']))
+		{
     		foreach ($response['headers'] AS $ix=>$header)
     			$respstr .= $ix . ': ' . $header . '<br>';
         }

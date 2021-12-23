@@ -106,12 +106,14 @@ $ui->addChunk('Results', function() use ($ui)
 
 	$settings = array();
 	$settings[] = array('Message', 'Old text', 'New text');
-	while($row = $smcFunc['db_fetch_assoc']($result)) {
+	while($row = $smcFunc['db_fetch_assoc']($result))
+	{
 		$hits = preg_match_all($ui->pattern, $row['body'], $matches);
 		if (!empty($hits))
 		{
 			$newbody = $row['body'];
-			foreach ($matches[0] AS $ix => $match) {
+			foreach ($matches[0] AS $ix => $match)
+			{
 				$newbody = str_ireplace($matches[0][$ix], $matches[1][$ix], $newbody);
 				$settings[] = array($row['id_msg'], $matches[0][$ix], $matches[1][$ix]);
 

@@ -124,12 +124,14 @@ $ui->addChunk('Convert Quotes & IPs', function() use ($ui)
 
 	//open files 
 	$file_in_handle = @fopen($ui->path . '/' . $ui->infile, 'r'); 
-		if (!$file_in_handle) {
+		if (!$file_in_handle)
+		{
 			$ui->addError('FATAL ERROR on opening input file...');
 			return;
 		};
 	$file_out_handle = @fopen($ui->path . '/' . $ui->outfile, 'w'); 
-		if (!$file_out_handle) {
+		if (!$file_out_handle)
+		{
 			$ui->addError('FATAL ERROR on opening output file...');
 			return;
 		};
@@ -174,94 +176,94 @@ $ui->addChunk('Convert Quotes & IPs', function() use ($ui)
 
 	$buffer = fgets($file_in_handle);
 	while (!feof($file_in_handle))
-		{ 
-			$bytes = $bytes + strlen($buffer);
-			$lines++;
+	{ 
+		$bytes = $bytes + strlen($buffer);
+		$lines++;
 
-			// Fix single quotes - \\\' to ''
-			$buffer = preg_replace_callback(
-				$esc3_sq_regex,
-				function($matches) {
-					return "''";
-				},
-				$buffer
-			);
+		// Fix single quotes - \\\' to ''
+		$buffer = preg_replace_callback(
+			$esc3_sq_regex,
+			function($matches) {
+				return "''";
+			},
+			$buffer
+		);
 
-			// Fix single quotes - \' to '', but only if no preceding \
-			$buffer = preg_replace_callback(
-				$esc_sq_regex,
-				function($matches) {
-					return "''";
-				},
-				$buffer
-			);
+		// Fix single quotes - \' to '', but only if no preceding \
+		$buffer = preg_replace_callback(
+			$esc_sq_regex,
+			function($matches) {
+				return "''";
+			},
+			$buffer
+		);
 
-			// Fix double quotes - \\\" to "
-			$buffer = preg_replace_callback(
-				$esc3_dq_regex,
-				function($matches) {
-					return '"';
-				},
-				$buffer
-			);
+		// Fix double quotes - \\\" to "
+		$buffer = preg_replace_callback(
+			$esc3_dq_regex,
+			function($matches) {
+				return '"';
+			},
+			$buffer
+		);
 
-			// Fix double quotes - \" to ", but only if no preceding \
-			$buffer = preg_replace_callback(
-				$esc_dq_regex,
-				function($matches) {
-					return '"';
-				},
-				$buffer
-			);
+		// Fix double quotes - \" to ", but only if no preceding \
+		$buffer = preg_replace_callback(
+			$esc_dq_regex,
+			function($matches) {
+				return '"';
+			},
+			$buffer
+		);
 
-			// Convert varbinary16 to pg inet...
-			$buffer = preg_replace_callback(
-				$bin_regex,
-				function($matches) {
-					return '\'' . hexdec($matches[1]) . '.' . hexdec($matches[2]) . '.' . hexdec($matches[3]) . '.' . hexdec($matches[4]) . '\'';
-				},
-				$buffer
-			);
+		// Convert varbinary16 to pg inet...
+		$buffer = preg_replace_callback(
+			$bin_regex,
+			function($matches) {
+				return '\'' . hexdec($matches[1]) . '.' . hexdec($matches[2]) . '.' . hexdec($matches[3]) . '.' . hexdec($matches[4]) . '\'';
+			},
+			$buffer
+		);
 
-			// Restore CRLF broken by mysqldump- \r\n to "\r\n"
-			$buffer = preg_replace_callback(
-				$esc_crlf_regex,
-				function($matches) {
-					return "\r";
-				},
-				$buffer
-			);
+		// Restore CRLF broken by mysqldump- \r\n to "\r\n"
+		$buffer = preg_replace_callback(
+			$esc_crlf_regex,
+			function($matches) {
+				return "\r";
+			},
+			$buffer
+		);
 
-			// Restore newlines broken by mysqldump- \n to "\n", but only if no preceding \
-			$buffer = preg_replace_callback(
-				$esc_nl_regex,
-				function($matches) {
-					return "\n";
-				},
-				$buffer
-			);
+		// Restore newlines broken by mysqldump- \n to "\n", but only if no preceding \
+		$buffer = preg_replace_callback(
+			$esc_nl_regex,
+			function($matches) {
+				return "\n";
+			},
+			$buffer
+		);
 
-			// Restore CR broken by mysqldump- \r to "\r", but only if no preceding \
-			$buffer = preg_replace_callback(
-				$esc_cr_regex,
-				function($matches) {
-					return "\r";
-				},
-				$buffer
-			);
+		// Restore CR broken by mysqldump- \r to "\r", but only if no preceding \
+		$buffer = preg_replace_callback(
+			$esc_cr_regex,
+			function($matches) {
+				return "\r";
+			},
+			$buffer
+		);
 
-			// Restore backslashes broken by mysqldump- \\ to \
-			$buffer = preg_replace_callback(
-				$esc_slash_regex,
-				function($matches) {
-					return '\\';
-				},
-				$buffer
-			);
+		// Restore backslashes broken by mysqldump- \\ to \
+		$buffer = preg_replace_callback(
+			$esc_slash_regex,
+			function($matches) {
+				return '\\';
+			},
+			$buffer
+		);
 
-			fwrite($file_out_handle, $buffer);
-			$buffer = fgets($file_in_handle);
-		};
+		fwrite($file_out_handle, $buffer);
+		$buffer = fgets($file_in_handle);
+	};
 
 	//close things out...
 	fclose($file_in_handle); 

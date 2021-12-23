@@ -95,7 +95,8 @@ $ui->addChunk('Settings Table', function() use ($ui)
 
 	// case insensitive multi-dim sort
 	usort($allSettings, 
-		function ($a, $b) {
+		function ($a, $b)
+		{
 			return strcasecmp($a['variable'], $b['variable']);
 		}
 	);

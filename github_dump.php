@@ -79,7 +79,8 @@ $ui->addChunk('Repo', function() use ($ui)
 	// Loop thru all the pages - 100 rows at a time
 	$more = true;
 	$page = 0;
-	while ($more) {
+	while ($more)
+	{
 		$more = false;
 		$page++;
 
@@ -96,7 +97,8 @@ $ui->addChunk('Repo', function() use ($ui)
 			$gh_calls_reset = $gha_header['X-RateLimit-Reset'];
 
 		// Check status accessing repos
-		if ((isset($gha_header['status']) && ($gha_header['status'] != '200 OK')) || (!isset($gha_header['status']) && !isset($gha_header['HTTP/2 200']) && !isset($gha_header['HTTP/1.1 200 OK']))) {
+		if ((isset($gha_header['status']) && ($gha_header['status'] != '200 OK')) || (!isset($gha_header['status']) && !isset($gha_header['HTTP/2 200']) && !isset($gha_header['HTTP/1.1 200 OK'])))
+		{
 			if (isset($gh_calls_remaining))
 				echo '<br>X-RateLimit-Remaining: ' . $gh_calls_remaining . '<br>';
 			if (isset($gh_calls_reset))
@@ -145,7 +147,8 @@ $ui->addChunk('Repo', function() use ($ui)
 				'created_at',
 	);
 
-	foreach($ui->githubAll as $row) {
+	foreach($ui->githubAll as $row)
+	{
 		$githubTemp[$row['number']] = array(
 			empty($row['pull_request']) ? 'Issue' : 'PR',
 			$row['number'],
@@ -167,21 +170,26 @@ $ui->addChunk('Repo', function() use ($ui)
 	$pattern = '/(\/|#)(\d{1,8})/';
 
 	// check whole table
-	foreach($ui->githubAll as $ix => $row) {	
+	foreach($ui->githubAll as $ix => $row)
+	{	
 		//Look at each PR...
-		if ($row[0] == 'PR') {
+		if ($row[0] == 'PR')
+		{
 			// allow for multiple matches of #9999 or /9999 (when folks use links) in body of issue (10th field)
 			preg_match_all($pattern, $row[10], $matches);
-			foreach ($matches[2] AS $match) {
+			foreach ($matches[2] AS $match)
+			{
 				// finally look for active issue entries
-				if (array_key_exists($match, $ui->githubAll) && $ui->githubAll[$match][0] == 'Issue') {
+				if (array_key_exists($match, $ui->githubAll) && $ui->githubAll[$match][0] == 'Issue')
+				{
 					// add issue number
 					if (empty($ui->githubAll[$ix][8]))
 						$ui->githubAll[$ix][8] = $ui->githubAll[$match][1];
 					else
 						$ui->githubAll[$ix][8] .= ', ' . $ui->githubAll[$match][1];
 					// add milestone info
-					if (!empty($ui->githubAll[$match][6])) {
+					if (!empty($ui->githubAll[$match][6]))
+					{
 						if (empty($ui->githubAll[$ix][9]))
 							$ui->githubAll[$ix][9] = $ui->githubAll[$match][6];
 						else
@@ -224,7 +232,8 @@ $ui->go();
 function curlErr($ch, $ui) {
 
 	// Check for errors and display the error message
-	if($errno = curl_errno($ch)) {
+	if($errno = curl_errno($ch))
+	{
 		$error_message = curl_strerror($errno);
 		$ui->addError("cURL error ({$errno}):\n {$error_message}");
 	}
@@ -232,7 +241,8 @@ function curlErr($ch, $ui) {
 }
 
 //*** Pluck a column out of array into a comma delimited string
-function col2csv($labels, $col) {
+function col2csv($labels, $col)
+{
 
 	$values = array_column($labels, $col);
 	$lstring = implode(', ', $values);
