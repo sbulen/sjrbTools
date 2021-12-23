@@ -131,12 +131,12 @@ $ui->addChunk('CURL Feedback', function() use ($ui)
 		$settings[] = array('Error:', $response['error']);
 		$settings[] = array('Response size:', $response['size']);
 
-   		$respstr = '';
-        if (!empty($response['headers']))
+		$respstr = '';
+		if (!empty($response['headers']))
 		{
-    		foreach ($response['headers'] AS $ix=>$header)
-    			$respstr .= $ix . ': ' . $header . '<br>';
-        }
+			foreach ($response['headers'] AS $ix=>$header)
+				$respstr .= $ix . ': ' . $header . '<br>';
+		}
 
 		$settings[] = array('Headers:', $respstr);
 	}
@@ -158,11 +158,11 @@ $ui->addChunk('Sockets Feedback', function() use ($ui)
 	$settings[] = array('Connect Error:', $errno);
 	$settings[] = array('Connect Error String:', $errstr);	
 
-    if ($fp === false)
+	if ($fp === false)
 	{
-    	$ui->dumpTable($settings);
-        return;
-    }
+		$ui->dumpTable($settings);
+		return;
+	}
 
 	fwrite($fp, 'GET ' . $parsed['path'] . ' HTTP/1.1' . "\r\n");
 	fwrite($fp, 'Host: ' . $parsed['host'] . "\r\n");
