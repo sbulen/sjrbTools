@@ -34,7 +34,7 @@ These tools are inquiry only & are used to perform diagnostics.
 
 **WARNING:** These tools update your forum database.  Use at your own risk.  ALWAYS back up your database before use.  ALWAYS run them in your test environment first to learn how they work & to confirm desired outcomes.
 
-* ***smf_fix_dbl_enc_deep.php*** - Addresses double-encoding issues in messages.  While addressing, checks for 4-byte UTF8 characters & converts them to htmlentities if needed.  SMF2.0 & 2.1.
+* ***smf_fix_dbl_enc.php*** - Addresses double-encoding issues in messages.  While addressing, checks for 4-byte UTF8 characters & converts them to htmlentities if needed.  SMF2.0 & 2.1.
 
 ## Github utility
 
