@@ -283,7 +283,7 @@ class SimpleSmfUI
 		define('SMF_USER_AGENT', 'Mozilla/5.0 (' . php_uname('s') . ' ' . php_uname('m') . ') AppleWebKit/605.1.15 (KHTML, like Gecko)  SMF/' . strtr(SMF_VERSION, ' ', '.'));
 
 		// These must remain globals when calling SMF funcs...
-		global $smcFunc, $db_connection, $db_prefix, $db_name, $db_type, $sourcedir, $cachedir;
+		global $smcFunc, $db_connection, $db_prefix, $db_name, $db_type, $sourcedir, $cachedir, $db_character_set;
 		$smcFunc = array();
 		$this->settings_file = array();
 

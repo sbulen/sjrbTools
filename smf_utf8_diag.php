@@ -189,8 +189,6 @@ $ui->addChunk('Column Info', function() use ($ui)
 		if (strpos($row['DATA_TYPE'], 'text') !== false || strpos($row['DATA_TYPE'], 'char') !== false)
 		{
 			$settings[] = $row;
-			if ($row['CHARACTER_SET_NAME'] != 'utf8')
-				$ui->addError('Column: ' . $row['TABLE_NAME'] . ', ' . $row['COLUMN_NAME'] . ' - character set is not UTF-8');
 			if ($row['COLLATION_NAME'] != 'utf8_general_ci')
 				$ui->addError('Column: ' . $row['TABLE_NAME'] . ', ' . $row['COLUMN_NAME'] . ' - collation is not utf8_general_ci');
 		}
@@ -313,7 +311,7 @@ class SimpleSmfUI
 		define('SMF_USER_AGENT', 'Mozilla/5.0 (' . php_uname('s') . ' ' . php_uname('m') . ') AppleWebKit/605.1.15 (KHTML, like Gecko)  SMF/' . strtr(SMF_VERSION, ' ', '.'));
 
 		// These must remain globals when calling SMF funcs...
-		global $smcFunc, $db_connection, $db_prefix, $db_name, $db_type, $sourcedir, $cachedir;
+		global $smcFunc, $db_connection, $db_prefix, $db_name, $db_type, $sourcedir, $cachedir, $db_character_set;
 		$smcFunc = array();
 		$this->settings_file = array();
 
