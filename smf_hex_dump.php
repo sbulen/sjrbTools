@@ -125,7 +125,7 @@ $ui->addChunk('Hex Dump', function() use ($ui)
 		while ($offset < $length)
 		{
 			$line = mb_strcut($row[$ui->field], $offset, 40);
-			echo ' Byte: ' . sprintf('%08d', $offset + 1) . ' Hex: ' . str_pad(bin2hex($line), 80, '-') . ' Disp: ' . htmlentities($line) . '<br>';
+			echo ' Byte: ' . sprintf('%08d', $offset + 1) . ' Hex: ' . str_pad(bin2hex($line), 80, '-') . ' Disp: ' . htmlentities($line, ENT_SUBSTITUTE) . '<br>';
 			$offset += strlen($line);
 		}
 		echo '<br><br>';
