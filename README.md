@@ -30,6 +30,12 @@ These tools are inquiry only & are used to perform diagnostics.
 * ***smf_fix_log_actions.php*** - Checks & fixes all string lengths in log_actions. UTF8 conversions can break string lengths in serialized strings.  SMF2.0.
 * ***smf_remove_old_bbc.php*** - Removes old BBC.  Provided a regex, substitutes the first captured group for the entire match.  Helpful when you no longer use old mods that added BBC to posts at some point.  SMF2.0 & 2.1.
 
+## SMF UTF8 Utilities
+
+**WARNING:** These tools update your forum database.  Use at your own risk.  ALWAYS back up your database before use.  ALWAYS run them in your test environment first to learn how they work & to confirm desired outcomes.
+
+* ***smf_fix_dbl_enc.php*** - Addresses double-encoding issues in messages.  While addressing, checks for 4-byte UTF8 characters & converts them to htmlentities if needed.  SMF2.0 & 2.1.  Mysql 5.7+ only.
+
 ## Github utility
 
 * ***github_dump.php*** - Dumps Issue & PR info for a specified repository into a comma-delimited file. 
