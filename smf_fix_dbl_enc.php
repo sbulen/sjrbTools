@@ -14,7 +14,7 @@
  *      https://stackoverflow.com/questions/11436594/how-to-fix-double-encoded-utf8-characters-in-an-utf-8-table
  *
  * ***** SMF 2.0 & 2.1 *****
- * ***** MySQL ONLY *****
+ * ***** MySQL 5.7+ ONLY *****
  * 
  * Usage guidelines:
  * (1) Use at your own risk.
