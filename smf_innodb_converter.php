@@ -253,6 +253,15 @@ class SimpleSmfUI
 
 				if (empty($db_connection))
 					$this->addError('err_no_db');
+
+				// Set names...
+				if (!empty($db_character_set))
+					$smcFunc['db_query']('', '
+						SET NAMES {string:db_character_set}',
+						array(
+							'db_character_set' => $db_character_set,
+						)
+					);
 			}
 		}
 	}
