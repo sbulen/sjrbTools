@@ -254,7 +254,7 @@ function col2csv($labels, $col)
  *
  * A simple basic abstracted UI for utilities.
  *
- * Copyright 2021 Shawn Bulen
+ * Copyright 2021-2022 Shawn Bulen
  *
  * This file is part of the sjrbTools library.
  *
