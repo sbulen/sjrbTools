@@ -19,17 +19,17 @@
 //
 
 //*** Start user config - these parameters are all required
-$repo_path = 'D:/EasyPHP/Git/SMF2.0';
-$repo_master_branch = 'master';
-$repo_prior_release_commit = 'v2.0.17';
+$repo_path = 'D:/EasyPHP/Git/SMF2.1';
+$repo_master_branch = 'release-2.1';
+$repo_prior_release_commit = 'v2.1.1';
 $repo_this_release_commit = 'HEAD';
-$new_version_txt = '2.0.18';
+$new_version_txt = 'v2.1.2';
 // Only display changes; if false will also list all files looked at
 $only_display_changes = true;
 // Audit will display info on each variant of lines of context & direction (up/down) tested
 $audit = true;
 // Will do a print_r of the freshly-parsed snippets before any operations
-$dump_snippets = false;
+$dump_snippets = true;
 
 // Controlling behavior:
 
@@ -37,17 +37,7 @@ $dump_snippets = false;
 // Sometimes you want to tell it to merge a snippet with the previous snippet.
 // For example, to merge snippets 2 with 3, and 4 with 5:
 //		$merge_with_prev = array('index.php' => array(3, 5));
-$merge_with_prev = array(
-		'RepairBoards.php' => array(2, 3, 11, 15, 16, 17, 19, 21, 23, 24, 25, 
-			26, 29, 30, 37, 39, 42, 43, 44, 46, 51, 53, 61, 63, 70, 72, 77, 78, 
-			80, 81, 83, 86, 91, 97, 102, 104, 112, 113, 114, 117, 119, 122, 124, 
-			126, 128, 130, 132, 134, 136, 138, 143, 145, 148, 151, 153, 163, 
-			173, 175, 178, 180, 183, 185, 188, 190, 193, 195, 198),
-		'Subs.php' => array(3, 4, 5, 10, 11, 12),
-		'Subs-Package.php' => array(4),
-		'Load.php' => array(14),
-		'ModerationCenter.php' => array(5, 9),
-	);
+$merge_with_prev = array();
 // $override is an optional parameter...
 // Override is intended to be used if you find there are conflicts
 // due to the bug in package manager where it doesn't like using the same code as an 
@@ -70,7 +60,6 @@ function doStartup() {
 
 	global $repo_path, $repo_master_branch, $new_version_txt, $rundir;
 
-	// Without this header, flushes don't work...
 	header( 'Content-type: text/html; charset=utf-8' );
 	echo("<br>**********************************<br>");
 	echo("******* SMF gen package xml ********<br>");
@@ -96,8 +85,7 @@ function doStartup() {
 	$file = $rundir . '/package-info.xml';
 	$fp = fopen($file, "w");
 	fclose($fp);
-	
-	// Yes, both flushes necessary
+
 	@ob_flush();
 	@flush();
 	
@@ -113,7 +101,7 @@ function navFileSystem($dir) {
 		// Bypass all the "hidden" .git files, folders & also . & ..
 		// Also bypass the /other folder & the changelog.txt file
 		$path = $dir . DIRECTORY_SEPARATOR . $value;
-		if($value[0] != "."  && $value != 'other' && $value != 'changelog.txt')
+		if($value[0] != "."  && !in_array($value, array('other', 'changelog.txt', 'composer.lock', 'composer.json', 'README.md', 'LICENSE', 'favicon.ico', 'DCO.txt')))
 			if(!is_dir($path))
 				checkFile($path);
 			else
