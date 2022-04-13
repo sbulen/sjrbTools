@@ -4262,7 +4262,7 @@ $smf_columns['2.1'] = Array
 			'COLUMN_NAME' => 'timezone',
 			'COLUMN_TYPE' => 'varchar(80)',
 			'IS_NULLABLE' => 'NO',
-			'COLUMN_DEFAULT' => 'UTC',
+			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
 			'COLLATION_NAME' => 'utf8_general_ci',
 		),
@@ -7643,6 +7643,26 @@ $smf_indexes['2.1'] = Array
 			'INDEX_NAME' => 'idx_id_theme',
 			'SEQ_IN_INDEX' => '1',
 			'COLUMN_NAME' => 'id_theme',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'members is_activated,real_name 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_active_real_name',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'is_activated',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'members is_activated,real_name 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_active_real_name',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'real_name',
 			'SUB_PART' => '<em>null</em>',
 		),
 
