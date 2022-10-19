@@ -193,7 +193,10 @@ function processDiff($file, $diff) {
 	// Load up old & new versions of the file...
 	$cmd = "git show {$repo_prior_release_commit}:{$gitfile}";
 	$oldfilestr = `{$cmd}`;
-	$oldfilearr = explode("\n", $oldfilestr);
+	if (empty($oldfilestr))
+		$oldfilearr = array();
+	else
+		$oldfilearr = explode("\n", $oldfilestr);
 	$cmd = "git show {$repo_this_release_commit}:{$gitfile}";
 	$newfilestr = `{$cmd}`;
 	$newfilearr = explode("\n", $newfilestr);
@@ -588,7 +591,7 @@ function testDir($file, $up, $ix, $snippet, $context, $linemin, $linemax, &$coun
 	// Force exit if we can't go any further...
 	if ($context != 0 && ($snippet['linestart'] - $context < $linemin) && ($snippet['linestart'] + $snippet['removes'] + $context > $linemax))
 	{
-		echo $file . ' ************************************************************************* CANNOT UMAMBIGUATE snippet: ' . $ix . '<br>';
+		echo $file . ' ************************************************************************* CANNOT UNAMBIGUATE snippet: ' . $ix . '<br>';
 		$count = 1;
 		$repcount = 1;
 		return $snippet;
