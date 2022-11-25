@@ -176,6 +176,9 @@ $ui->addChunk('Repo', function() use ($ui)
 		if ($row[0] == 'PR')
 		{
 			// allow for multiple matches of #9999 or /9999 (when folks use links) in body of issue (10th field)
+			$matches = array();
+			if (!isset($row[10]))
+				$row[10] = '';
 			preg_match_all($pattern, $row[10], $matches);
 			foreach ($matches[2] AS $match)
 			{
