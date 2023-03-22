@@ -115,7 +115,7 @@ $ui->go();
  *
  * A simple basic abstracted UI for utilities.
  *
- * Copyright 2021-2022 Shawn Bulen
+ * Copyright 2021-2023 Shawn Bulen
  *
  * This file is part of the sjrbTools library.
  *
@@ -134,6 +134,8 @@ $ui->go();
  *
  */
 
+// This oughtta hold us off until php 9.0...
+#[AllowDynamicProperties]
 class SimpleSmfUI
 {
 	/*
@@ -218,7 +220,7 @@ class SimpleSmfUI
 		define('SMF_USER_AGENT', 'Mozilla/5.0 (' . php_uname('s') . ' ' . php_uname('m') . ') AppleWebKit/605.1.15 (KHTML, like Gecko)  SMF/' . strtr(SMF_VERSION, ' ', '.'));
 
 		// These must remain globals when calling SMF funcs...
-		global $smcFunc, $db_connection, $db_prefix, $db_name, $db_type, $sourcedir, $cachedir, $db_character_set;
+		global $smcFunc, $db_connection, $db_prefix, $db_name, $db_type, $sourcedir, $cachedir, $db_character_set, $db_port;
 		$smcFunc = array();
 		$this->settings_file = array();
 
@@ -247,9 +249,14 @@ class SimpleSmfUI
 				if (empty($db_type) || $db_type == 'mysqli')
 					$db_type = 'mysql';
 
+				// Add in the port if needed
+				$db_options = array();
+				if (!empty($db_port))
+					$db_options['port'] = $db_port;
+
 				// Make the connection...
 				require_once($sourcedir . '/Subs-Db-' . $db_type . '.php');
-				$db_connection = smf_db_initiate($db_server, $db_name, $db_user, $db_passwd, $db_prefix);
+				$db_connection = smf_db_initiate($db_server, $db_name, $db_user, $db_passwd, $db_prefix, $db_options);
 
 				if (empty($db_connection))
 					$this->addError('err_no_db');
