@@ -1,16 +1,17 @@
 <?php
 /*
-v2.0.17
+v2.1.3
 
-Original version for SMF 1.0.x by Oldiesmann at SimpleMachines dot org
-Many thanks for throwing it together and giving us something to work with.
-Modified version for SMF 1.1RC3 by Resourcez at resourcez dot biz (way back in 2006)
-Modified version for SMF 2.0.6 by bfeist (fall, 2013). Let's call this new version 2.0.
-Modified version for SMF 2.0.17 to add several new record types, use mysqli, enhance error reporting, address column conflicts.  shawnb61, Sept, 2020
+Modified version for SMF 2.1.3 to fold in new SMF 2.1 record types, pm_labels, pm_labeled_messages, user_alerts_prefs and user_likes.  April, 2023
 Modified version for SMF 2.0.17 to better duplicate member handling & logging of any member renames.  Thanks to GL700Wing, Dec, 2020
+Modified version for SMF 2.0.17 to add several new record types, use mysqli, enhance error reporting, address column conflicts.  shawnb61, Sept, 2020
+Modified version for SMF 2.0.6 by bfeist (fall, 2013). Let's call this new version 2.0.
+Modified version for SMF 1.1RC3 by Resourcez at resourcez dot biz (way back in 2006)
+Many thanks for throwing it together and giving us something to work with.
+Original version for SMF 1.0.x by Oldiesmann at SimpleMachines dot org
 
 Description:
-This script will merge two SMF forums. It will takes the boards, topics, members, messages, etc from a SECONDARY forum and merge them into a PRIMARY forum.
+This script will merge two SMF 2.1 forums. It will takes the boards, topics, members, messages, etc from a SECONDARY forum and merge them into a PRIMARY forum.
 You need to be comfortable with PHP, and wrapping your head around databases etc to use this script. It works, but it will take some trial and error to get everything right.
 
 Instructions:
@@ -30,12 +31,17 @@ Instructions:
 
 // *** User configs - important! ***
 define('PRIMARY_DB_PREFIX', 'smf_');
-$secondary_suffix = '-fgn';
+$secondary_suffix = '-smf2';
 // *** End of user configs ***
 
 include_once('Settings.php');
-$db_connection = @mysqli_connect($db_server, $db_user, $db_passwd, $db_name);
-@mysqli_select_db($db_name, $db_connection);
+
+if (empty($db_port))
+	$db_connection = @mysqli_connect($db_server, $db_user, $db_passwd, $db_name);
+else
+	$db_connection = @mysqli_connect($db_server, $db_user, $db_passwd, $db_name, $db_port);
+
+@mysqli_select_db($db_connection, $db_name);
 if (!empty($db_character_set))
 	mysqli_query($db_connection, "SET NAMES {$db_character_set}");
 
@@ -108,6 +114,7 @@ $tables = array(
 			'messages' => array('id_msg'),
 			'topics' => array('id_first_msg', 'id_last_msg'),
 			'log_reported' => array('id_msg'),
+			'user_likes' => array('content_id'),
 		),
 		'nzrels' => array(
 			'boards' => array('id_last_msg'),
@@ -138,6 +145,7 @@ $tables = array(
 			'log_subscribed' => array('id_member'),
 			'log_reported' => array('id_member'),
 			'log_reported_comments' => array('id_member'),
+			'pm_labels' => array('id_member'),
 		),
 		'nzrels' => array(
 			'personal_messages' => array('id_member_from'),
@@ -146,6 +154,8 @@ $tables = array(
 			'topics' => array('id_member_started', 'id_member_updated'),
 			'attachments' => array('id_member'),
 			'ban_items' => array('id_member'),
+			'user_alerts_prefs' => array('id_member'),
+			'user_likes' => array('id_member'),
 		),
 		'userfunc' => 'renamemembers',
 	),
@@ -154,6 +164,7 @@ $tables = array(
 		'rels' => array(
 			'personal_messages' => array('id_pm', 'id_pm_head'),
 			'pm_recipients' => array('id_pm'),
+			'pm_labeled_messages' => array('id_pm'),
 		),
 	),
 	'polls' => array (
@@ -250,6 +261,16 @@ $tables = array(
 			'ban_items' => array('id_ban'),
 		),
 	),
+	'pm_labels' => array (
+		'incby' => 'id_label',
+		'rels' => array(
+			'pm_labels' => array('id_label'),
+			'pm_labeled_messages' => array('id_label'),
+		),
+	),
+	'user_alerts_prefs' => array(
+		'userfunc' => 'updboardtopicwatches',
+	),
 	// These records don't drive updates to other related records.
 	// They only get copied over once updated themselves.
 	'board_permissions' => array(),
@@ -259,6 +280,8 @@ $tables = array(
 	'log_notify' => array(),
 	'log_polls' => array(),
 	'pm_recipients' => array(),
+	'pm_labeled_messages' => array(),
+	'user_likes' => array(),
 );
 
 /****************************
@@ -1161,8 +1184,107 @@ function dostep14()
 	foot();
 }
 
-// Copy everything over to the other board...
+// Bring over pm_labels and pm_labeled_messages...
 function dostep15()
+{
+	head();
+
+	echo 'Updating pm_labels...<br>';
+	dotable('pm_labels');
+
+	echo '<br>Updating pm_labeled_messages...<br>';
+	dotable('pm_labeled_messages');
+
+	echo '<br /><br /><center><a href="' . $_SERVER['PHP_SELF'] . '?step=16">Continue Step 16</a></center>';
+	foot();
+}
+
+// Bring over alerts preferences....
+function dostep16()
+{
+	head();
+
+	echo 'Updating user alerts preferences...<br>';
+	dotable('user_alerts_prefs');
+
+	echo '<br /><br /><center><a href="' . $_SERVER['PHP_SELF'] . '?step=17">Continue Step 17</a></center>';
+	foot();
+}
+
+// Increment board & topic watch IDs in alerts preferences....
+function updboardtopicwatches()
+{
+	global $db_prefix;
+
+	// Already have defaults...  Get rid of these or there will be dupes when copied over...
+	$sql = "DELETE FROM {$db_prefix}user_alerts_prefs WHERE id_member = 0";
+	$query = call_mysqli_query($sql, false);
+
+	// Board IDs need to be fixed on watches...
+	// Get the max board ID
+	$sql = 'SELECT MAX(id_board) FROM ' . PRIMARY_DB_PREFIX . 'boards';
+	$query = call_mysqli_query($sql, false);
+	$maxboard = mysqli_fetch_row($query)[0];
+	mysqli_free_result($query);
+
+	// Get all the watched board IDs
+	$sql = "SELECT DISTINCT(alert_pref) FROM {$db_prefix}user_alerts_prefs WHERE alert_pref LIKE 'board_notify_%'";
+	$query = call_mysqli_query($sql, false);
+	$board_alerts = mysqli_fetch_all($query)[0];
+	mysqli_free_result($query);
+
+	// Update 'em...
+	echo 'Updating board watches';
+	foreach ($board_alerts AS $board_alert)
+	{
+		$board = (int) substr($board_alert, 13);
+		$newboard = $board + $maxboard;
+		$sql = "UPDATE {$db_prefix}user_alerts_prefs SET alert_pref = 'board_notify_{$newboard}' WHERE alert_pref = '{$board_alert}'";
+		$query = call_mysqli_query($sql, false);
+	}
+	unset($board_alerts);
+	echo '...done<br>';
+
+	// Topic IDs need to be fixed on watches...
+	// Get the max topic ID
+	$sql = 'SELECT MAX(id_topic) FROM ' . PRIMARY_DB_PREFIX . 'topics';
+	$query = call_mysqli_query($sql, false);
+	$maxtopic = mysqli_fetch_row($query)[0];
+	mysqli_free_result($query);
+
+	// Get all the watched topic IDs
+	$sql = "SELECT DISTINCT(alert_pref) FROM {$db_prefix}user_alerts_prefs WHERE alert_pref LIKE 'topic_notify_%'";
+	$query = call_mysqli_query($sql, false);
+	$topic_alerts = mysqli_fetch_all($query)[0];
+	mysqli_free_result($query);
+
+	// Update 'em...
+	echo 'Updating topic watches';
+	foreach ($topic_alerts AS $topic_alert)
+	{
+		$topic = (int) substr($topic_alert, 13);
+		$newtopic = $topic + $maxtopic;
+		$sql = "UPDATE {$db_prefix}user_alerts_prefs SET alert_pref = 'topic_notify_{$newtopic}' WHERE alert_pref = '{$topic_alert}'";
+		$query = call_mysqli_query($sql, false);
+	}
+	unset($topic_alerts);
+	echo '...done<br>';
+}
+
+// Bring over user likes....
+function dostep17()
+{
+	head();
+
+	echo 'Updating user likes...<br>';
+	dotable('user_likes');
+
+	echo '<br /><br /><center><a href="' . $_SERVER['PHP_SELF'] . '?step=18">Continue Step 18</a></center>';
+	foot();
+}
+
+// Copy everything over to the other board...
+function dostep18()
 {
 	head();
 	global $db_prefix, $tables;
@@ -1178,6 +1300,7 @@ function dostep15()
 			echo ' FAILED...<br />';
 		else
 			echo 'done.<br />';
+		usleep(250);
 	}
 
 	echo '<br>Yippee - mission accomplished!<br><br>Now login to the primary installation, then choose "Recount all totals and statistics" from the "Forum Maintenance" section of your admin center.<br /><br />Notes:<br />(a) Your renamed attachments are now in the "secondary_site/attachments/to_move_to_primary/" directory, so you need to copy them over to your "primary_site/attachments/" directory<br />(b) Your renamed custom avatars are now in the "secondary_site/custom_avatars/to_move_to_primary/" directory, so you need to copy them over to your primary site as well<br />(c) If you\'re done with all this, DELETE the mergeSMF.php file.<br /><br />Once again, we are indebted to Oldiesmann for originating this nifty script.';
