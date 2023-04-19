@@ -41,7 +41,6 @@ if (empty($db_port))
 else
 	$db_connection = @mysqli_connect($db_server, $db_user, $db_passwd, $db_name, $db_port);
 
-@mysqli_select_db($db_connection, $db_name);
 if (!empty($db_character_set))
 	mysqli_query($db_connection, "SET NAMES {$db_character_set}");
 
