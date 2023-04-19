@@ -1232,6 +1232,10 @@ function updboardtopicwatches()
 	$board_alerts = mysqli_fetch_all($query)[0];
 	mysqli_free_result($query);
 
+	// Must be sorted desc natural sort; do biggest #s first
+	natsort($board_alerts);
+	$board_alerts = array_reverse($board_alerts, false);
+
 	// Update 'em...
 	echo 'Updating board watches';
 	foreach ($board_alerts AS $board_alert)
@@ -1256,6 +1260,10 @@ function updboardtopicwatches()
 	$query = call_mysqli_query($sql, false);
 	$topic_alerts = mysqli_fetch_all($query)[0];
 	mysqli_free_result($query);
+
+	// Must be sorted desc natural sort; do biggest #s first
+	natsort($topic_alerts);
+	$topic_alerts = array_reverse($topic_alerts, false);
 
 	// Update 'em...
 	echo 'Updating topic watches';
