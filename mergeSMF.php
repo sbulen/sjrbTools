@@ -137,8 +137,6 @@ $tables = array(
 			'members' => array('id_member'),
 			'pm_recipients' => array('id_member'),
 			'log_notify' => array('id_member'),
-			'messages' => array('id_member'),
-			'polls' => array('id_member'),
 			'group_moderators' => array('id_member'),
 			'moderators' => array('id_member'),
 			'log_subscribed' => array('id_member'),
@@ -147,6 +145,8 @@ $tables = array(
 			'pm_labels' => array('id_member'),
 		),
 		'nzrels' => array(
+			'messages' => array('id_member'),
+			'polls' => array('id_member'),
 			'personal_messages' => array('id_member_from'),
 			'log_actions' => array('id_member'),
 			'log_polls' => array('id_member'),
