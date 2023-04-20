@@ -25,8 +25,10 @@ Instructions:
 8. Copy all files in your SECONDARY custom_avatar/to_move_to_primary directory to the primary custom_avatar directory.  Be careful to confirm the name of the directory, it is different for different forums.
 9. Copy all files in your SECONDARY avatars directory to the primary avatars directory.
 10. Once you're done, if everything worked, login to your PRIMARY SMF board, go to Admin -> Forum Maintenance and click on "Recount all totals and statistics" - this will update everything for you.
-11. Check for any members in the new (merged) PRIMARY SMF installation that end with your $secondary_suffix. If desired, these members can be merged with the members of the same name using a tool like SMF Admin Toolbox (http://www.simplemachines.org/community/index.php?topic=470463.0)
-12. Carefully audit all board permissions, membergroups, and subscriptions.
+11. Go to Admin -> Forum Maintenance and click on "Find and repair any errors".  Usually just some subject cache cleanup.
+12. Go to Admin -> Forum Maintenance and click on "Empty SMF's Cache".
+13. Check for any members in the new (merged) PRIMARY SMF installation that end with your $secondary_suffix. If desired, these members can be merged with the members of the same name using a tool like SMF Admin Toolbox (http://www.simplemachines.org/community/index.php?topic=470463.0)
+14. Carefully audit all board permissions, membergroups, and subscriptions.
 */
 
 // *** User configs - important! ***
@@ -1229,24 +1231,28 @@ function updboardtopicwatches()
 	// Get all the watched board IDs
 	$sql = "SELECT DISTINCT(alert_pref) FROM {$db_prefix}user_alerts_prefs WHERE alert_pref LIKE 'board_notify_%'";
 	$query = call_mysqli_query($sql, false);
-	$board_alerts = mysqli_fetch_all($query)[0];
-	mysqli_free_result($query);
 
-	// Must be sorted desc natural sort; do biggest #s first
-	natsort($board_alerts);
-	$board_alerts = array_reverse($board_alerts, false);
-
-	// Update 'em...
-	echo 'Updating board watches';
-	foreach ($board_alerts AS $board_alert)
+	if (mysqli_num_rows($query) > 0)
 	{
-		$board = (int) substr($board_alert, 13);
-		$newboard = $board + $maxboard;
-		$sql = "UPDATE {$db_prefix}user_alerts_prefs SET alert_pref = 'board_notify_{$newboard}' WHERE alert_pref = '{$board_alert}'";
-		$query = call_mysqli_query($sql, false);
+		$board_alerts = mysqli_fetch_all($query)[0];
+		mysqli_free_result($query);
+
+		// Must be sorted desc natural sort; do biggest #s first
+		natsort($board_alerts);
+		$board_alerts = array_reverse($board_alerts, false);
+
+		// Update 'em...
+		echo 'Updating board watches';
+		foreach ($board_alerts AS $board_alert)
+		{
+			$board = (int) substr($board_alert, 13);
+			$newboard = $board + $maxboard;
+			$sql = "UPDATE {$db_prefix}user_alerts_prefs SET alert_pref = 'board_notify_{$newboard}' WHERE alert_pref = '{$board_alert}'";
+			$query = call_mysqli_query($sql, false);
+		}
+		unset($board_alerts);
+		echo '...done<br>';
 	}
-	unset($board_alerts);
-	echo '...done<br>';
 
 	// Topic IDs need to be fixed on watches...
 	// Get the max topic ID
@@ -1258,24 +1264,28 @@ function updboardtopicwatches()
 	// Get all the watched topic IDs
 	$sql = "SELECT DISTINCT(alert_pref) FROM {$db_prefix}user_alerts_prefs WHERE alert_pref LIKE 'topic_notify_%'";
 	$query = call_mysqli_query($sql, false);
-	$topic_alerts = mysqli_fetch_all($query)[0];
-	mysqli_free_result($query);
 
-	// Must be sorted desc natural sort; do biggest #s first
-	natsort($topic_alerts);
-	$topic_alerts = array_reverse($topic_alerts, false);
-
-	// Update 'em...
-	echo 'Updating topic watches';
-	foreach ($topic_alerts AS $topic_alert)
+	if (mysqli_num_rows($query) > 0)
 	{
-		$topic = (int) substr($topic_alert, 13);
-		$newtopic = $topic + $maxtopic;
-		$sql = "UPDATE {$db_prefix}user_alerts_prefs SET alert_pref = 'topic_notify_{$newtopic}' WHERE alert_pref = '{$topic_alert}'";
-		$query = call_mysqli_query($sql, false);
+		$topic_alerts = mysqli_fetch_all($query)[0];
+		mysqli_free_result($query);
+
+		// Must be sorted desc natural sort; do biggest #s first
+		natsort($topic_alerts);
+		$topic_alerts = array_reverse($topic_alerts, false);
+
+		// Update 'em...
+		echo 'Updating topic watches';
+		foreach ($topic_alerts AS $topic_alert)
+		{
+			$topic = (int) substr($topic_alert, 13);
+			$newtopic = $topic + $maxtopic;
+			$sql = "UPDATE {$db_prefix}user_alerts_prefs SET alert_pref = 'topic_notify_{$newtopic}' WHERE alert_pref = '{$topic_alert}'";
+			$query = call_mysqli_query($sql, false);
+		}
+		unset($topic_alerts);
+		echo '...done<br>';
 	}
-	unset($topic_alerts);
-	echo '...done<br>';
 }
 
 // Bring over user likes....
