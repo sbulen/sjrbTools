@@ -1234,7 +1234,8 @@ function updboardtopicwatches()
 
 	if (mysqli_num_rows($query) > 0)
 	{
-		$board_alerts = mysqli_fetch_all($query)[0];
+		$board_alerts = mysqli_fetch_all($query, MYSQLI_ASSOC);
+		$board_alerts = array_column($board_alerts, 'alert_pref');
 		mysqli_free_result($query);
 
 		// Must be sorted desc natural sort; do biggest #s first
@@ -1267,7 +1268,8 @@ function updboardtopicwatches()
 
 	if (mysqli_num_rows($query) > 0)
 	{
-		$topic_alerts = mysqli_fetch_all($query)[0];
+		$topic_alerts = mysqli_fetch_all($query, MYSQLI_ASSOC);
+		$topic_alerts = array_column($topic_alerts, 'alert_pref');
 		mysqli_free_result($query);
 
 		// Must be sorted desc natural sort; do biggest #s first
