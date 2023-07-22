@@ -2,7 +2,7 @@
 /**
  *
  * A utility to remove old BBC tags from message bodies.
- * The tag must be specified in a regex provdied by the user.
+ * The regex & replacement must be specified in a regex provdied by the user.
  * 
  * ***** SMF 2.0 & 2.1 *****
  * ***** MySQL & Postgresql *****
@@ -19,7 +19,7 @@
  *
  */
 
-$site_title = 'SMF Remove Old BBC';
+$site_title = 'SMF Replace Old BBC';
 $db_needed = true;
 $ui = new SimpleSmfUI($site_title, $db_needed);
 
@@ -56,22 +56,29 @@ $ui->addChunk('Preview or Proceed?', function() use ($ui)
 {
 	global $smcFunc, $db_type, $db_connection, $db_prefix, $db_name;
 
-	$ui->pattern = '~(?>\[member=\d{1,10}\]([^\[]*)\[/member\])~i';
+	$ui->pattern = '~(?>\[oldbbc\]([^\[]*)\[/oldbbc\])~i';
+	$ui->replace = '[newbbc]$1[/newbbc]';
 
 	// Cleanse the data...
 	if (isset($_SESSION['pattern']) && is_string($_SESSION['pattern']))
 		$ui->pattern = $ui->cleanseText($_SESSION['pattern'], true);
+	if (isset($_SESSION['replace']) && is_string($_SESSION['replace']))
+		$ui->replace = $ui->cleanseText($_SESSION['replace'], true);
+
+	echo '<br>This utility will perform a preg_replace() on all message bodies, substituting all matches of the pattern with the replacement pattern.  To be used with extreme caution...<br><br>';
 
 	echo '<form>';
 	echo '<label for="pattern">Regex: </label>';
 	echo '<input type="text" name="pattern" value="' . $ui->pattern . '"><br>';
+	echo '<label for="replace">Replacement: </label>';
+	echo '<input type="text" name="replace" value="' . $ui->replace . '"><br>';
 	echo '<br><input type="submit" class="button" formmethod="post" name="preview" value="Preview?"><br>';
 	echo '<br><input type="submit" class="button" formmethod="post" name="proceed" value="Proceed?"><br>';
 	echo '</form>';
 
 	// Test the regex...
-	$test = preg_match_all($ui->pattern, '', $matches);
-	if ($test === false)
+	$test = preg_replace($ui->pattern, $ui->replace, '');
+	if ($test === null)
 	{
 		$ui->regex_valid = false;
 		unset($_SESSION['preview']);
@@ -108,19 +115,21 @@ $ui->addChunk('Results', function() use ($ui)
 	$settings[] = array('Message', 'Old text', 'New text');
 	while($row = $smcFunc['db_fetch_assoc']($result))
 	{
-		$hits = preg_match_all($ui->pattern, $row['body'], $matches);
-		if (!empty($hits))
+		$newbody = preg_replace($ui->pattern, $ui->replace, $row['body']);
+		if ($newbody !== $row['body'])
 		{
-			$newbody = $row['body'];
-			foreach ($matches[0] AS $ix => $match)
+			// Do it piecemeal in order to display specific changes
+			$matches = array();
+			$changes = preg_match_all($ui->pattern, $row['body'], $matches);
+			foreach($matches[0] AS $ix => $match)
 			{
-				$newbody = str_ireplace($matches[0][$ix], $matches[1][$ix], $newbody);
-				$settings[] = array($row['id_msg'], $matches[0][$ix], $matches[1][$ix]);
-
+				$newval = preg_replace($ui->pattern, $ui->replace, $matches[0][$ix], 1);
+				$settings[] = array($row['id_msg'], $matches[0][$ix], $newval);
 			}
+
+			// Do it...
 			if (!empty($_SESSION['proceed']))
 			{
-				$newbody = $smcFunc['db_escape_string']($newbody);
 				$sql = "UPDATE " . $db_prefix . "messages SET body = '" . $newbody
 					. "' WHERE id_msg = '" . $row['id_msg'] . "';";
 				$smcFunc['db_query']('', $sql);

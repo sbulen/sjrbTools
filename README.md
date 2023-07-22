@@ -28,13 +28,7 @@ These tools are inquiry only & are used to perform diagnostics.
 * ***smf_innodb_converter.php*** - This tool converts your SMF forum's MySQL database engine to InnoDB.  SMF 2.0 & 2.1.  
 * ***smf_quote_link_fixer.php*** - Checks & fixes all quote links.  May be used to correct any quote link with issues, such as a deleted originating message or an incorrect topic caused by splits/merges. It works for SMF2.0 & 2.1.
 * ***smf_fix_log_actions.php*** - Checks & fixes all string lengths in log_actions. UTF8 conversions can break string lengths in serialized strings.  SMF2.0.
-* ***smf_remove_old_bbc.php*** - Removes old BBC.  Provided a regex, substitutes the first captured group for the entire match.  Helpful when you no longer use old mods that added BBC to posts at some point.  SMF2.0 & 2.1.
-
-## SMF UTF8 Utilities
-
-**WARNING:** These tools update your forum database.  Use at your own risk.  ALWAYS back up your database before use.  ALWAYS run them in your test environment first to learn how they work & to confirm desired outcomes.
-
-* ***smf_fix_dbl_enc.php*** - Addresses double-encoding issues in messages.  While addressing, checks for 4-byte UTF8 characters & converts them to htmlentities if needed.  SMF2.0 & 2.1.  Mysql 5.7+ only.
+* ***smf_replace_old_bbc.php*** - Removes/replaces old BBC.  Provided a regex, substitutes the first captured group for the entire match.  Helpful when you no longer use old mods that added BBC to posts at some point.  SMF2.0 & 2.1.
 
 ## Github utility
 
