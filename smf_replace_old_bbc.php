@@ -130,6 +130,7 @@ $ui->addChunk('Results', function() use ($ui)
 			// Do it...
 			if (!empty($_SESSION['proceed']))
 			{
+				$newbody = $smcFunc['db_escape_string']($newbody);
 				$sql = "UPDATE " . $db_prefix . "messages SET body = '" . $newbody
 					. "' WHERE id_msg = '" . $row['id_msg'] . "';";
 				$smcFunc['db_query']('', $sql);
