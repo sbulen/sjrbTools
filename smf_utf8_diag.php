@@ -129,10 +129,10 @@ $ui->addChunk('Database Info', function() use ($ui)
 	while ($row = $smcFunc['db_fetch_assoc']($result))
 	{
 		$settings[] = $row;
-		if ($row['DEFAULT_CHARACTER_SET_NAME'] != 'utf8')
-			$ui->addError('Recommendation: Set schema default character set to UTF-8');
-		if ($row['DEFAULT_COLLATION_NAME'] != 'utf8_general_ci')
-			$ui->addError('Recommendation: Set schema default collation to utf8_general_ci');
+		if ($row['DEFAULT_CHARACTER_SET_NAME'] != 'utf8mb3')
+			$ui->addError('Recommendation: Set schema default character set to utf8mb3');
+		if ($row['DEFAULT_COLLATION_NAME'] != 'utf8mb3_general_ci')
+			$ui->addError('Recommendation: Set schema default collation to utf8mb3_general_ci');
 	}
 	$smcFunc['db_free_result']($result);
 
@@ -153,8 +153,8 @@ $ui->addChunk('Database Info', function() use ($ui)
 	while ($row = $smcFunc['db_fetch_assoc']($result))
 	{
 		$settings[] = $row;
-		if ($row['TABLE_COLLATION'] != 'utf8_general_ci')
-			$ui->addError('Table: ' . $row['TABLE_NAME'] . ' - collation is not utf8_general_ci');
+		if ($row['TABLE_COLLATION'] != 'utf8mb3_general_ci')
+			$ui->addError('Table: ' . $row['TABLE_NAME'] . ' - collation is not utf8mb3_general_ci');
 	}
 	$smcFunc['db_free_result']($result);
 
@@ -189,8 +189,8 @@ $ui->addChunk('Column Info', function() use ($ui)
 		if (strpos($row['DATA_TYPE'], 'text') !== false || strpos($row['DATA_TYPE'], 'char') !== false)
 		{
 			$settings[] = $row;
-			if ($row['COLLATION_NAME'] != 'utf8_general_ci')
-				$ui->addError('Column: ' . $row['TABLE_NAME'] . ', ' . $row['COLUMN_NAME'] . ' - collation is not utf8_general_ci');
+			if ($row['COLLATION_NAME'] != 'utf8mb3_general_ci')
+				$ui->addError('Column: ' . $row['TABLE_NAME'] . ', ' . $row['COLUMN_NAME'] . ' - collation is not utf8mb3_general_ci');
 		}
 	}
 	$smcFunc['db_free_result']($result);
