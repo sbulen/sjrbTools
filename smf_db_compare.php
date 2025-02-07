@@ -27969,8 +27969,8 @@ $ui->go();
 function compareArrays($left_arr, $right_arr, $ui)
 {
 	// First, sort 'em...
-	ksort($left_arr, SORT_FLAG_CASE);
-	ksort($right_arr, SORT_FLAG_CASE);
+	ksort($left_arr, SORT_FLAG_CASE | SORT_STRING);
+	ksort($right_arr, SORT_FLAG_CASE | SORT_STRING);
 
 	$leftit = new ArrayIterator($left_arr);
 	$rightit = new ArrayIterator($right_arr);
