@@ -5,7 +5,7 @@
  * Used to help determine if changes have been made to databases that might
  * interfere with upgrades, etc.
  *
- * ***** SMF 1.x & 2.x *****
+ * ***** SMF 1.x & 2.x & 3.0 *****
  * ***** MySQL ONLY *****
  *
  * Usage guidelines:
@@ -22,6 +22,8924 @@ $width = 1500;
 $ui = new SimpleSmfUI($site_title, $db_needed, $width);
 
 // Massive internal tables holding SMF db info per version...
+$smf_tables['3.0'] = Array
+(
+	'admin_info_files' => Array
+		(
+			'Name' => 'smf_admin_info_files',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'approval_queue' => Array
+		(
+			'Name' => 'smf_approval_queue',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'attachments' => Array
+		(
+			'Name' => 'smf_attachments',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'background_tasks' => Array
+		(
+			'Name' => 'smf_background_tasks',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'ban_groups' => Array
+		(
+			'Name' => 'smf_ban_groups',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'ban_items' => Array
+		(
+			'Name' => 'smf_ban_items',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'board_permissions' => Array
+		(
+			'Name' => 'smf_board_permissions',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'board_permissions_view' => Array
+		(
+			'Name' => 'smf_board_permissions_view',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'boards' => Array
+		(
+			'Name' => 'smf_boards',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'calendar' => Array
+		(
+			'Name' => 'smf_calendar',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'categories' => Array
+		(
+			'Name' => 'smf_categories',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'custom_fields' => Array
+		(
+			'Name' => 'smf_custom_fields',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'group_moderators' => Array
+		(
+			'Name' => 'smf_group_moderators',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'log_actions' => Array
+		(
+			'Name' => 'smf_log_actions',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'log_activity' => Array
+		(
+			'Name' => 'smf_log_activity',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'log_banned' => Array
+		(
+			'Name' => 'smf_log_banned',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'log_boards' => Array
+		(
+			'Name' => 'smf_log_boards',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'log_comments' => Array
+		(
+			'Name' => 'smf_log_comments',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'log_digest' => Array
+		(
+			'Name' => 'smf_log_digest',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'log_errors' => Array
+		(
+			'Name' => 'smf_log_errors',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'log_floodcontrol' => Array
+		(
+			'Name' => 'smf_log_floodcontrol',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'log_group_requests' => Array
+		(
+			'Name' => 'smf_log_group_requests',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'log_mark_read' => Array
+		(
+			'Name' => 'smf_log_mark_read',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'log_member_notices' => Array
+		(
+			'Name' => 'smf_log_member_notices',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'log_notify' => Array
+		(
+			'Name' => 'smf_log_notify',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'log_online' => Array
+		(
+			'Name' => 'smf_log_online',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'log_packages' => Array
+		(
+			'Name' => 'smf_log_packages',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'log_polls' => Array
+		(
+			'Name' => 'smf_log_polls',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'log_reported' => Array
+		(
+			'Name' => 'smf_log_reported',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'log_reported_comments' => Array
+		(
+			'Name' => 'smf_log_reported_comments',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'log_scheduled_tasks' => Array
+		(
+			'Name' => 'smf_log_scheduled_tasks',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'log_search_messages' => Array
+		(
+			'Name' => 'smf_log_search_messages',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'log_search_results' => Array
+		(
+			'Name' => 'smf_log_search_results',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'log_search_subjects' => Array
+		(
+			'Name' => 'smf_log_search_subjects',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'log_search_topics' => Array
+		(
+			'Name' => 'smf_log_search_topics',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'log_spider_hits' => Array
+		(
+			'Name' => 'smf_log_spider_hits',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'log_spider_stats' => Array
+		(
+			'Name' => 'smf_log_spider_stats',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'log_subscribed' => Array
+		(
+			'Name' => 'smf_log_subscribed',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'log_topics' => Array
+		(
+			'Name' => 'smf_log_topics',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'mail_queue' => Array
+		(
+			'Name' => 'smf_mail_queue',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'member_logins' => Array
+		(
+			'Name' => 'smf_member_logins',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'membergroups' => Array
+		(
+			'Name' => 'smf_membergroups',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'members' => Array
+		(
+			'Name' => 'smf_members',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'mentions' => Array
+		(
+			'Name' => 'smf_mentions',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'message_icons' => Array
+		(
+			'Name' => 'smf_message_icons',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'messages' => Array
+		(
+			'Name' => 'smf_messages',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'moderator_groups' => Array
+		(
+			'Name' => 'smf_moderator_groups',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'moderators' => Array
+		(
+			'Name' => 'smf_moderators',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'package_servers' => Array
+		(
+			'Name' => 'smf_package_servers',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'permission_profiles' => Array
+		(
+			'Name' => 'smf_permission_profiles',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'permissions' => Array
+		(
+			'Name' => 'smf_permissions',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'personal_messages' => Array
+		(
+			'Name' => 'smf_personal_messages',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'pm_labeled_messages' => Array
+		(
+			'Name' => 'smf_pm_labeled_messages',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'pm_labels' => Array
+		(
+			'Name' => 'smf_pm_labels',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'pm_recipients' => Array
+		(
+			'Name' => 'smf_pm_recipients',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'pm_rules' => Array
+		(
+			'Name' => 'smf_pm_rules',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'poll_choices' => Array
+		(
+			'Name' => 'smf_poll_choices',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'polls' => Array
+		(
+			'Name' => 'smf_polls',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'qanda' => Array
+		(
+			'Name' => 'smf_qanda',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'scheduled_tasks' => Array
+		(
+			'Name' => 'smf_scheduled_tasks',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'sessions' => Array
+		(
+			'Name' => 'smf_sessions',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'settings' => Array
+		(
+			'Name' => 'smf_settings',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'smiley_files' => Array
+		(
+			'Name' => 'smf_smiley_files',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'smileys' => Array
+		(
+			'Name' => 'smf_smileys',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'spiders' => Array
+		(
+			'Name' => 'smf_spiders',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'subscriptions' => Array
+		(
+			'Name' => 'smf_subscriptions',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'themes' => Array
+		(
+			'Name' => 'smf_themes',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'topics' => Array
+		(
+			'Name' => 'smf_topics',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'user_alerts' => Array
+		(
+			'Name' => 'smf_user_alerts',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'user_alerts_prefs' => Array
+		(
+			'Name' => 'smf_user_alerts_prefs',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'user_drafts' => Array
+		(
+			'Name' => 'smf_user_drafts',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+
+	'user_likes' => Array
+		(
+			'Name' => 'smf_user_likes',
+			'Engine' => 'InnoDB',
+			'Collation' => 'utf8mb3_general_ci',
+		),
+);
+
+$smf_columns['3.0'] = Array
+(
+	'admin_info_files data' => Array
+		(
+			'TABLE_NAME' => 'smf_admin_info_files',
+			'COLUMN_NAME' => 'data',
+			'COLUMN_TYPE' => 'text',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'admin_info_files filename' => Array
+		(
+			'TABLE_NAME' => 'smf_admin_info_files',
+			'COLUMN_NAME' => 'filename',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'admin_info_files filetype' => Array
+		(
+			'TABLE_NAME' => 'smf_admin_info_files',
+			'COLUMN_NAME' => 'filetype',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'admin_info_files id_file' => Array
+		(
+			'TABLE_NAME' => 'smf_admin_info_files',
+			'COLUMN_NAME' => 'id_file',
+			'COLUMN_TYPE' => 'tinyint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => 'auto_increment',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'admin_info_files parameters' => Array
+		(
+			'TABLE_NAME' => 'smf_admin_info_files',
+			'COLUMN_NAME' => 'parameters',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'admin_info_files path' => Array
+		(
+			'TABLE_NAME' => 'smf_admin_info_files',
+			'COLUMN_NAME' => 'path',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'approval_queue id_attach' => Array
+		(
+			'TABLE_NAME' => 'smf_approval_queue',
+			'COLUMN_NAME' => 'id_attach',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'approval_queue id_event' => Array
+		(
+			'TABLE_NAME' => 'smf_approval_queue',
+			'COLUMN_NAME' => 'id_event',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'approval_queue id_msg' => Array
+		(
+			'TABLE_NAME' => 'smf_approval_queue',
+			'COLUMN_NAME' => 'id_msg',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'attachments approved' => Array
+		(
+			'TABLE_NAME' => 'smf_attachments',
+			'COLUMN_NAME' => 'approved',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '1',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'attachments attachment_type' => Array
+		(
+			'TABLE_NAME' => 'smf_attachments',
+			'COLUMN_NAME' => 'attachment_type',
+			'COLUMN_TYPE' => 'tinyint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'attachments downloads' => Array
+		(
+			'TABLE_NAME' => 'smf_attachments',
+			'COLUMN_NAME' => 'downloads',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'attachments file_hash' => Array
+		(
+			'TABLE_NAME' => 'smf_attachments',
+			'COLUMN_NAME' => 'file_hash',
+			'COLUMN_TYPE' => 'varchar(40)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'attachments fileext' => Array
+		(
+			'TABLE_NAME' => 'smf_attachments',
+			'COLUMN_NAME' => 'fileext',
+			'COLUMN_TYPE' => 'varchar(8)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'attachments filename' => Array
+		(
+			'TABLE_NAME' => 'smf_attachments',
+			'COLUMN_NAME' => 'filename',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'attachments height' => Array
+		(
+			'TABLE_NAME' => 'smf_attachments',
+			'COLUMN_NAME' => 'height',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'attachments id_attach' => Array
+		(
+			'TABLE_NAME' => 'smf_attachments',
+			'COLUMN_NAME' => 'id_attach',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => 'auto_increment',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'attachments id_folder' => Array
+		(
+			'TABLE_NAME' => 'smf_attachments',
+			'COLUMN_NAME' => 'id_folder',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '1',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'attachments id_member' => Array
+		(
+			'TABLE_NAME' => 'smf_attachments',
+			'COLUMN_NAME' => 'id_member',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'attachments id_msg' => Array
+		(
+			'TABLE_NAME' => 'smf_attachments',
+			'COLUMN_NAME' => 'id_msg',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'attachments id_thumb' => Array
+		(
+			'TABLE_NAME' => 'smf_attachments',
+			'COLUMN_NAME' => 'id_thumb',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'attachments mime_type' => Array
+		(
+			'TABLE_NAME' => 'smf_attachments',
+			'COLUMN_NAME' => 'mime_type',
+			'COLUMN_TYPE' => 'varchar(128)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'attachments size' => Array
+		(
+			'TABLE_NAME' => 'smf_attachments',
+			'COLUMN_NAME' => 'size',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'attachments width' => Array
+		(
+			'TABLE_NAME' => 'smf_attachments',
+			'COLUMN_NAME' => 'width',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'background_tasks claimed_time' => Array
+		(
+			'TABLE_NAME' => 'smf_background_tasks',
+			'COLUMN_NAME' => 'claimed_time',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'background_tasks id_task' => Array
+		(
+			'TABLE_NAME' => 'smf_background_tasks',
+			'COLUMN_NAME' => 'id_task',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => 'auto_increment',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'background_tasks task_class' => Array
+		(
+			'TABLE_NAME' => 'smf_background_tasks',
+			'COLUMN_NAME' => 'task_class',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'background_tasks task_data' => Array
+		(
+			'TABLE_NAME' => 'smf_background_tasks',
+			'COLUMN_NAME' => 'task_data',
+			'COLUMN_TYPE' => 'mediumtext',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'background_tasks task_file' => Array
+		(
+			'TABLE_NAME' => 'smf_background_tasks',
+			'COLUMN_NAME' => 'task_file',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'ban_groups ban_time' => Array
+		(
+			'TABLE_NAME' => 'smf_ban_groups',
+			'COLUMN_NAME' => 'ban_time',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'ban_groups cannot_access' => Array
+		(
+			'TABLE_NAME' => 'smf_ban_groups',
+			'COLUMN_NAME' => 'cannot_access',
+			'COLUMN_TYPE' => 'tinyint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'ban_groups cannot_login' => Array
+		(
+			'TABLE_NAME' => 'smf_ban_groups',
+			'COLUMN_NAME' => 'cannot_login',
+			'COLUMN_TYPE' => 'tinyint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'ban_groups cannot_post' => Array
+		(
+			'TABLE_NAME' => 'smf_ban_groups',
+			'COLUMN_NAME' => 'cannot_post',
+			'COLUMN_TYPE' => 'tinyint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'ban_groups cannot_register' => Array
+		(
+			'TABLE_NAME' => 'smf_ban_groups',
+			'COLUMN_NAME' => 'cannot_register',
+			'COLUMN_TYPE' => 'tinyint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'ban_groups expire_time' => Array
+		(
+			'TABLE_NAME' => 'smf_ban_groups',
+			'COLUMN_NAME' => 'expire_time',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'YES',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'ban_groups id_ban_group' => Array
+		(
+			'TABLE_NAME' => 'smf_ban_groups',
+			'COLUMN_NAME' => 'id_ban_group',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => 'auto_increment',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'ban_groups name' => Array
+		(
+			'TABLE_NAME' => 'smf_ban_groups',
+			'COLUMN_NAME' => 'name',
+			'COLUMN_TYPE' => 'varchar(20)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'ban_groups notes' => Array
+		(
+			'TABLE_NAME' => 'smf_ban_groups',
+			'COLUMN_NAME' => 'notes',
+			'COLUMN_TYPE' => 'text',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'ban_groups reason' => Array
+		(
+			'TABLE_NAME' => 'smf_ban_groups',
+			'COLUMN_NAME' => 'reason',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'ban_items email_address' => Array
+		(
+			'TABLE_NAME' => 'smf_ban_items',
+			'COLUMN_NAME' => 'email_address',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'ban_items hits' => Array
+		(
+			'TABLE_NAME' => 'smf_ban_items',
+			'COLUMN_NAME' => 'hits',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'ban_items hostname' => Array
+		(
+			'TABLE_NAME' => 'smf_ban_items',
+			'COLUMN_NAME' => 'hostname',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'ban_items id_ban' => Array
+		(
+			'TABLE_NAME' => 'smf_ban_items',
+			'COLUMN_NAME' => 'id_ban',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => 'auto_increment',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'ban_items id_ban_group' => Array
+		(
+			'TABLE_NAME' => 'smf_ban_items',
+			'COLUMN_NAME' => 'id_ban_group',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'ban_items id_member' => Array
+		(
+			'TABLE_NAME' => 'smf_ban_items',
+			'COLUMN_NAME' => 'id_member',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'ban_items ip_high' => Array
+		(
+			'TABLE_NAME' => 'smf_ban_items',
+			'COLUMN_NAME' => 'ip_high',
+			'COLUMN_TYPE' => 'varbinary(16)',
+			'IS_NULLABLE' => 'YES',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'ban_items ip_low' => Array
+		(
+			'TABLE_NAME' => 'smf_ban_items',
+			'COLUMN_NAME' => 'ip_low',
+			'COLUMN_TYPE' => 'varbinary(16)',
+			'IS_NULLABLE' => 'YES',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'board_permissions add_deny' => Array
+		(
+			'TABLE_NAME' => 'smf_board_permissions',
+			'COLUMN_NAME' => 'add_deny',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '1',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'board_permissions id_group' => Array
+		(
+			'TABLE_NAME' => 'smf_board_permissions',
+			'COLUMN_NAME' => 'id_group',
+			'COLUMN_TYPE' => 'smallint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'board_permissions id_profile' => Array
+		(
+			'TABLE_NAME' => 'smf_board_permissions',
+			'COLUMN_NAME' => 'id_profile',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'board_permissions permission' => Array
+		(
+			'TABLE_NAME' => 'smf_board_permissions',
+			'COLUMN_NAME' => 'permission',
+			'COLUMN_TYPE' => 'varchar(30)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'board_permissions_view deny' => Array
+		(
+			'TABLE_NAME' => 'smf_board_permissions_view',
+			'COLUMN_NAME' => 'deny',
+			'COLUMN_TYPE' => 'smallint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'board_permissions_view id_board' => Array
+		(
+			'TABLE_NAME' => 'smf_board_permissions_view',
+			'COLUMN_NAME' => 'id_board',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'board_permissions_view id_group' => Array
+		(
+			'TABLE_NAME' => 'smf_board_permissions_view',
+			'COLUMN_NAME' => 'id_group',
+			'COLUMN_TYPE' => 'smallint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'boards board_order' => Array
+		(
+			'TABLE_NAME' => 'smf_boards',
+			'COLUMN_NAME' => 'board_order',
+			'COLUMN_TYPE' => 'smallint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'boards child_level' => Array
+		(
+			'TABLE_NAME' => 'smf_boards',
+			'COLUMN_NAME' => 'child_level',
+			'COLUMN_TYPE' => 'tinyint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'boards count_posts' => Array
+		(
+			'TABLE_NAME' => 'smf_boards',
+			'COLUMN_NAME' => 'count_posts',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'boards deny_member_groups' => Array
+		(
+			'TABLE_NAME' => 'smf_boards',
+			'COLUMN_NAME' => 'deny_member_groups',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'boards description' => Array
+		(
+			'TABLE_NAME' => 'smf_boards',
+			'COLUMN_NAME' => 'description',
+			'COLUMN_TYPE' => 'text',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'boards id_board' => Array
+		(
+			'TABLE_NAME' => 'smf_boards',
+			'COLUMN_NAME' => 'id_board',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => 'auto_increment',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'boards id_cat' => Array
+		(
+			'TABLE_NAME' => 'smf_boards',
+			'COLUMN_NAME' => 'id_cat',
+			'COLUMN_TYPE' => 'tinyint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'boards id_last_msg' => Array
+		(
+			'TABLE_NAME' => 'smf_boards',
+			'COLUMN_NAME' => 'id_last_msg',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'boards id_msg_updated' => Array
+		(
+			'TABLE_NAME' => 'smf_boards',
+			'COLUMN_NAME' => 'id_msg_updated',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'boards id_parent' => Array
+		(
+			'TABLE_NAME' => 'smf_boards',
+			'COLUMN_NAME' => 'id_parent',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'boards id_profile' => Array
+		(
+			'TABLE_NAME' => 'smf_boards',
+			'COLUMN_NAME' => 'id_profile',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '1',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'boards id_theme' => Array
+		(
+			'TABLE_NAME' => 'smf_boards',
+			'COLUMN_NAME' => 'id_theme',
+			'COLUMN_TYPE' => 'tinyint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'boards member_groups' => Array
+		(
+			'TABLE_NAME' => 'smf_boards',
+			'COLUMN_NAME' => 'member_groups',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '-1,0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'boards name' => Array
+		(
+			'TABLE_NAME' => 'smf_boards',
+			'COLUMN_NAME' => 'name',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'boards num_posts' => Array
+		(
+			'TABLE_NAME' => 'smf_boards',
+			'COLUMN_NAME' => 'num_posts',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'boards num_topics' => Array
+		(
+			'TABLE_NAME' => 'smf_boards',
+			'COLUMN_NAME' => 'num_topics',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'boards override_theme' => Array
+		(
+			'TABLE_NAME' => 'smf_boards',
+			'COLUMN_NAME' => 'override_theme',
+			'COLUMN_TYPE' => 'tinyint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'boards redirect' => Array
+		(
+			'TABLE_NAME' => 'smf_boards',
+			'COLUMN_NAME' => 'redirect',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'boards unapproved_posts' => Array
+		(
+			'TABLE_NAME' => 'smf_boards',
+			'COLUMN_NAME' => 'unapproved_posts',
+			'COLUMN_TYPE' => 'smallint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'boards unapproved_topics' => Array
+		(
+			'TABLE_NAME' => 'smf_boards',
+			'COLUMN_NAME' => 'unapproved_topics',
+			'COLUMN_TYPE' => 'smallint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'calendar adjustments' => Array
+		(
+			'TABLE_NAME' => 'smf_calendar',
+			'COLUMN_NAME' => 'adjustments',
+			'COLUMN_TYPE' => 'json',
+			'IS_NULLABLE' => 'YES',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'calendar duration' => Array
+		(
+			'TABLE_NAME' => 'smf_calendar',
+			'COLUMN_NAME' => 'duration',
+			'COLUMN_TYPE' => 'varchar(32)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'calendar enabled' => Array
+		(
+			'TABLE_NAME' => 'smf_calendar',
+			'COLUMN_NAME' => 'enabled',
+			'COLUMN_TYPE' => 'tinyint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '1',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'calendar end_date' => Array
+		(
+			'TABLE_NAME' => 'smf_calendar',
+			'COLUMN_NAME' => 'end_date',
+			'COLUMN_TYPE' => 'date',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '1004-01-01',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'calendar end_time' => Array
+		(
+			'TABLE_NAME' => 'smf_calendar',
+			'COLUMN_NAME' => 'end_time',
+			'COLUMN_TYPE' => 'time',
+			'IS_NULLABLE' => 'YES',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'calendar exdates' => Array
+		(
+			'TABLE_NAME' => 'smf_calendar',
+			'COLUMN_NAME' => 'exdates',
+			'COLUMN_TYPE' => 'text',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'calendar id_board' => Array
+		(
+			'TABLE_NAME' => 'smf_calendar',
+			'COLUMN_NAME' => 'id_board',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'calendar id_event' => Array
+		(
+			'TABLE_NAME' => 'smf_calendar',
+			'COLUMN_NAME' => 'id_event',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => 'auto_increment',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'calendar id_member' => Array
+		(
+			'TABLE_NAME' => 'smf_calendar',
+			'COLUMN_NAME' => 'id_member',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'calendar id_topic' => Array
+		(
+			'TABLE_NAME' => 'smf_calendar',
+			'COLUMN_NAME' => 'id_topic',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'calendar location' => Array
+		(
+			'TABLE_NAME' => 'smf_calendar',
+			'COLUMN_NAME' => 'location',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'calendar rdates' => Array
+		(
+			'TABLE_NAME' => 'smf_calendar',
+			'COLUMN_NAME' => 'rdates',
+			'COLUMN_TYPE' => 'text',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'calendar rrule' => Array
+		(
+			'TABLE_NAME' => 'smf_calendar',
+			'COLUMN_NAME' => 'rrule',
+			'COLUMN_TYPE' => 'varchar(1024)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => 'FREQ=YEARLY;COUNT=1',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'calendar sequence' => Array
+		(
+			'TABLE_NAME' => 'smf_calendar',
+			'COLUMN_NAME' => 'sequence',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+		'calendar start_date' => Array
+		(
+			'TABLE_NAME' => 'smf_calendar',
+			'COLUMN_NAME' => 'start_date',
+			'COLUMN_TYPE' => 'date',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '1004-01-01',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'calendar start_time' => Array
+		(
+			'TABLE_NAME' => 'smf_calendar',
+			'COLUMN_NAME' => 'start_time',
+			'COLUMN_TYPE' => 'time',
+			'IS_NULLABLE' => 'YES',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'calendar timezone' => Array
+		(
+			'TABLE_NAME' => 'smf_calendar',
+			'COLUMN_NAME' => 'timezone',
+			'COLUMN_TYPE' => 'varchar(80)',
+			'IS_NULLABLE' => 'YES',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'calendar title' => Array
+		(
+			'TABLE_NAME' => 'smf_calendar',
+			'COLUMN_NAME' => 'title',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'calendar type' => Array
+		(
+			'TABLE_NAME' => 'smf_calendar',
+			'COLUMN_NAME' => 'type',
+			'COLUMN_TYPE' => 'tinyint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'calendar uid' => Array
+		(
+			'TABLE_NAME' => 'smf_calendar',
+			'COLUMN_NAME' => 'uid',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'categories can_collapse' => Array
+		(
+			'TABLE_NAME' => 'smf_categories',
+			'COLUMN_NAME' => 'can_collapse',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '1',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'categories cat_order' => Array
+		(
+			'TABLE_NAME' => 'smf_categories',
+			'COLUMN_NAME' => 'cat_order',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'categories description' => Array
+		(
+			'TABLE_NAME' => 'smf_categories',
+			'COLUMN_NAME' => 'description',
+			'COLUMN_TYPE' => 'text',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'categories id_cat' => Array
+		(
+			'TABLE_NAME' => 'smf_categories',
+			'COLUMN_NAME' => 'id_cat',
+			'COLUMN_TYPE' => 'tinyint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => 'auto_increment',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'categories name' => Array
+		(
+			'TABLE_NAME' => 'smf_categories',
+			'COLUMN_NAME' => 'name',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'custom_fields active' => Array
+		(
+			'TABLE_NAME' => 'smf_custom_fields',
+			'COLUMN_NAME' => 'active',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '1',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'custom_fields bbc' => Array
+		(
+			'TABLE_NAME' => 'smf_custom_fields',
+			'COLUMN_NAME' => 'bbc',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'custom_fields can_search' => Array
+		(
+			'TABLE_NAME' => 'smf_custom_fields',
+			'COLUMN_NAME' => 'can_search',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'custom_fields col_name' => Array
+		(
+			'TABLE_NAME' => 'smf_custom_fields',
+			'COLUMN_NAME' => 'col_name',
+			'COLUMN_TYPE' => 'varchar(12)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'custom_fields default_value' => Array
+		(
+			'TABLE_NAME' => 'smf_custom_fields',
+			'COLUMN_NAME' => 'default_value',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'custom_fields enclose' => Array
+		(
+			'TABLE_NAME' => 'smf_custom_fields',
+			'COLUMN_NAME' => 'enclose',
+			'COLUMN_TYPE' => 'text',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'custom_fields field_desc' => Array
+		(
+			'TABLE_NAME' => 'smf_custom_fields',
+			'COLUMN_NAME' => 'field_desc',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'custom_fields field_length' => Array
+		(
+			'TABLE_NAME' => 'smf_custom_fields',
+			'COLUMN_NAME' => 'field_length',
+			'COLUMN_TYPE' => 'smallint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '255',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'custom_fields field_name' => Array
+		(
+			'TABLE_NAME' => 'smf_custom_fields',
+			'COLUMN_NAME' => 'field_name',
+			'COLUMN_TYPE' => 'varchar(40)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'custom_fields field_options' => Array
+		(
+			'TABLE_NAME' => 'smf_custom_fields',
+			'COLUMN_NAME' => 'field_options',
+			'COLUMN_TYPE' => 'text',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'custom_fields field_order' => Array
+		(
+			'TABLE_NAME' => 'smf_custom_fields',
+			'COLUMN_NAME' => 'field_order',
+			'COLUMN_TYPE' => 'smallint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'custom_fields field_type' => Array
+		(
+			'TABLE_NAME' => 'smf_custom_fields',
+			'COLUMN_NAME' => 'field_type',
+			'COLUMN_TYPE' => 'varchar(8)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => 'text',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'custom_fields id_field' => Array
+		(
+			'TABLE_NAME' => 'smf_custom_fields',
+			'COLUMN_NAME' => 'id_field',
+			'COLUMN_TYPE' => 'smallint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => 'auto_increment',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'custom_fields mask' => Array
+		(
+			'TABLE_NAME' => 'smf_custom_fields',
+			'COLUMN_NAME' => 'mask',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'custom_fields placement' => Array
+		(
+			'TABLE_NAME' => 'smf_custom_fields',
+			'COLUMN_NAME' => 'placement',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'custom_fields private' => Array
+		(
+			'TABLE_NAME' => 'smf_custom_fields',
+			'COLUMN_NAME' => 'private',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'custom_fields show_display' => Array
+		(
+			'TABLE_NAME' => 'smf_custom_fields',
+			'COLUMN_NAME' => 'show_display',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'custom_fields show_mlist' => Array
+		(
+			'TABLE_NAME' => 'smf_custom_fields',
+			'COLUMN_NAME' => 'show_mlist',
+			'COLUMN_TYPE' => 'smallint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'custom_fields show_profile' => Array
+		(
+			'TABLE_NAME' => 'smf_custom_fields',
+			'COLUMN_NAME' => 'show_profile',
+			'COLUMN_TYPE' => 'varchar(20)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => 'forumprofile',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'custom_fields show_reg' => Array
+		(
+			'TABLE_NAME' => 'smf_custom_fields',
+			'COLUMN_NAME' => 'show_reg',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'group_moderators id_group' => Array
+		(
+			'TABLE_NAME' => 'smf_group_moderators',
+			'COLUMN_NAME' => 'id_group',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'group_moderators id_member' => Array
+		(
+			'TABLE_NAME' => 'smf_group_moderators',
+			'COLUMN_NAME' => 'id_member',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_actions action' => Array
+		(
+			'TABLE_NAME' => 'smf_log_actions',
+			'COLUMN_NAME' => 'action',
+			'COLUMN_TYPE' => 'varchar(30)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'log_actions extra' => Array
+		(
+			'TABLE_NAME' => 'smf_log_actions',
+			'COLUMN_NAME' => 'extra',
+			'COLUMN_TYPE' => 'text',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'log_actions id_action' => Array
+		(
+			'TABLE_NAME' => 'smf_log_actions',
+			'COLUMN_NAME' => 'id_action',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => 'auto_increment',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_actions id_board' => Array
+		(
+			'TABLE_NAME' => 'smf_log_actions',
+			'COLUMN_NAME' => 'id_board',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_actions id_log' => Array
+		(
+			'TABLE_NAME' => 'smf_log_actions',
+			'COLUMN_NAME' => 'id_log',
+			'COLUMN_TYPE' => 'tinyint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '1',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_actions id_member' => Array
+		(
+			'TABLE_NAME' => 'smf_log_actions',
+			'COLUMN_NAME' => 'id_member',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_actions id_msg' => Array
+		(
+			'TABLE_NAME' => 'smf_log_actions',
+			'COLUMN_NAME' => 'id_msg',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_actions id_topic' => Array
+		(
+			'TABLE_NAME' => 'smf_log_actions',
+			'COLUMN_NAME' => 'id_topic',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_actions ip' => Array
+		(
+			'TABLE_NAME' => 'smf_log_actions',
+			'COLUMN_NAME' => 'ip',
+			'COLUMN_TYPE' => 'varbinary(16)',
+			'IS_NULLABLE' => 'YES',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_actions log_time' => Array
+		(
+			'TABLE_NAME' => 'smf_log_actions',
+			'COLUMN_NAME' => 'log_time',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_activity date' => Array
+		(
+			'TABLE_NAME' => 'smf_log_activity',
+			'COLUMN_NAME' => 'date',
+			'COLUMN_TYPE' => 'date',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_activity hits' => Array
+		(
+			'TABLE_NAME' => 'smf_log_activity',
+			'COLUMN_NAME' => 'hits',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_activity most_on' => Array
+		(
+			'TABLE_NAME' => 'smf_log_activity',
+			'COLUMN_NAME' => 'most_on',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_activity posts' => Array
+		(
+			'TABLE_NAME' => 'smf_log_activity',
+			'COLUMN_NAME' => 'posts',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_activity registers' => Array
+		(
+			'TABLE_NAME' => 'smf_log_activity',
+			'COLUMN_NAME' => 'registers',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_activity topics' => Array
+		(
+			'TABLE_NAME' => 'smf_log_activity',
+			'COLUMN_NAME' => 'topics',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_banned email' => Array
+		(
+			'TABLE_NAME' => 'smf_log_banned',
+			'COLUMN_NAME' => 'email',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'log_banned id_ban_log' => Array
+		(
+			'TABLE_NAME' => 'smf_log_banned',
+			'COLUMN_NAME' => 'id_ban_log',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => 'auto_increment',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_banned id_member' => Array
+		(
+			'TABLE_NAME' => 'smf_log_banned',
+			'COLUMN_NAME' => 'id_member',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_banned ip' => Array
+		(
+			'TABLE_NAME' => 'smf_log_banned',
+			'COLUMN_NAME' => 'ip',
+			'COLUMN_TYPE' => 'varbinary(16)',
+			'IS_NULLABLE' => 'YES',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_banned log_time' => Array
+		(
+			'TABLE_NAME' => 'smf_log_banned',
+			'COLUMN_NAME' => 'log_time',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_boards id_board' => Array
+		(
+			'TABLE_NAME' => 'smf_log_boards',
+			'COLUMN_NAME' => 'id_board',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_boards id_member' => Array
+		(
+			'TABLE_NAME' => 'smf_log_boards',
+			'COLUMN_NAME' => 'id_member',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_boards id_msg' => Array
+		(
+			'TABLE_NAME' => 'smf_log_boards',
+			'COLUMN_NAME' => 'id_msg',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_comments body' => Array
+		(
+			'TABLE_NAME' => 'smf_log_comments',
+			'COLUMN_NAME' => 'body',
+			'COLUMN_TYPE' => 'text',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'log_comments comment_type' => Array
+		(
+			'TABLE_NAME' => 'smf_log_comments',
+			'COLUMN_NAME' => 'comment_type',
+			'COLUMN_TYPE' => 'varchar(8)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => 'warning',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'log_comments counter' => Array
+		(
+			'TABLE_NAME' => 'smf_log_comments',
+			'COLUMN_NAME' => 'counter',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_comments id_comment' => Array
+		(
+			'TABLE_NAME' => 'smf_log_comments',
+			'COLUMN_NAME' => 'id_comment',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => 'auto_increment',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_comments id_member' => Array
+		(
+			'TABLE_NAME' => 'smf_log_comments',
+			'COLUMN_NAME' => 'id_member',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_comments id_notice' => Array
+		(
+			'TABLE_NAME' => 'smf_log_comments',
+			'COLUMN_NAME' => 'id_notice',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_comments id_recipient' => Array
+		(
+			'TABLE_NAME' => 'smf_log_comments',
+			'COLUMN_NAME' => 'id_recipient',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_comments log_time' => Array
+		(
+			'TABLE_NAME' => 'smf_log_comments',
+			'COLUMN_NAME' => 'log_time',
+			'COLUMN_TYPE' => 'int',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_comments member_name' => Array
+		(
+			'TABLE_NAME' => 'smf_log_comments',
+			'COLUMN_NAME' => 'member_name',
+			'COLUMN_TYPE' => 'varchar(80)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'log_comments recipient_name' => Array
+		(
+			'TABLE_NAME' => 'smf_log_comments',
+			'COLUMN_NAME' => 'recipient_name',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'log_digest daily' => Array
+		(
+			'TABLE_NAME' => 'smf_log_digest',
+			'COLUMN_NAME' => 'daily',
+			'COLUMN_TYPE' => 'tinyint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_digest exclude' => Array
+		(
+			'TABLE_NAME' => 'smf_log_digest',
+			'COLUMN_NAME' => 'exclude',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_digest id_msg' => Array
+		(
+			'TABLE_NAME' => 'smf_log_digest',
+			'COLUMN_NAME' => 'id_msg',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_digest id_topic' => Array
+		(
+			'TABLE_NAME' => 'smf_log_digest',
+			'COLUMN_NAME' => 'id_topic',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_digest note_type' => Array
+		(
+			'TABLE_NAME' => 'smf_log_digest',
+			'COLUMN_NAME' => 'note_type',
+			'COLUMN_TYPE' => 'varchar(10)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => 'post',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'log_errors backtrace' => Array
+		(
+			'TABLE_NAME' => 'smf_log_errors',
+			'COLUMN_NAME' => 'backtrace',
+			'COLUMN_TYPE' => 'varchar(10000)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'log_errors error_type' => Array
+		(
+			'TABLE_NAME' => 'smf_log_errors',
+			'COLUMN_NAME' => 'error_type',
+			'COLUMN_TYPE' => 'char(15)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => 'general',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'log_errors file' => Array
+		(
+			'TABLE_NAME' => 'smf_log_errors',
+			'COLUMN_NAME' => 'file',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'log_errors id_error' => Array
+		(
+			'TABLE_NAME' => 'smf_log_errors',
+			'COLUMN_NAME' => 'id_error',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => 'auto_increment',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_errors id_member' => Array
+		(
+			'TABLE_NAME' => 'smf_log_errors',
+			'COLUMN_NAME' => 'id_member',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_errors ip' => Array
+		(
+			'TABLE_NAME' => 'smf_log_errors',
+			'COLUMN_NAME' => 'ip',
+			'COLUMN_TYPE' => 'varbinary(16)',
+			'IS_NULLABLE' => 'YES',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_errors line' => Array
+		(
+			'TABLE_NAME' => 'smf_log_errors',
+			'COLUMN_NAME' => 'line',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_errors log_time' => Array
+		(
+			'TABLE_NAME' => 'smf_log_errors',
+			'COLUMN_NAME' => 'log_time',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_errors message' => Array
+		(
+			'TABLE_NAME' => 'smf_log_errors',
+			'COLUMN_NAME' => 'message',
+			'COLUMN_TYPE' => 'text',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'log_errors session' => Array
+		(
+			'TABLE_NAME' => 'smf_log_errors',
+			'COLUMN_NAME' => 'session',
+			'COLUMN_TYPE' => 'varchar(128)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'log_errors url' => Array
+		(
+			'TABLE_NAME' => 'smf_log_errors',
+			'COLUMN_NAME' => 'url',
+			'COLUMN_TYPE' => 'text',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'log_floodcontrol ip' => Array
+		(
+			'TABLE_NAME' => 'smf_log_floodcontrol',
+			'COLUMN_NAME' => 'ip',
+			'COLUMN_TYPE' => 'varbinary(16)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_floodcontrol log_time' => Array
+		(
+			'TABLE_NAME' => 'smf_log_floodcontrol',
+			'COLUMN_NAME' => 'log_time',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_floodcontrol log_type' => Array
+		(
+			'TABLE_NAME' => 'smf_log_floodcontrol',
+			'COLUMN_NAME' => 'log_type',
+			'COLUMN_TYPE' => 'varchar(30)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => 'post',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'log_group_requests act_reason' => Array
+		(
+			'TABLE_NAME' => 'smf_log_group_requests',
+			'COLUMN_NAME' => 'act_reason',
+			'COLUMN_TYPE' => 'text',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'log_group_requests id_group' => Array
+		(
+			'TABLE_NAME' => 'smf_log_group_requests',
+			'COLUMN_NAME' => 'id_group',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_group_requests id_member' => Array
+		(
+			'TABLE_NAME' => 'smf_log_group_requests',
+			'COLUMN_NAME' => 'id_member',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_group_requests id_member_acted' => Array
+		(
+			'TABLE_NAME' => 'smf_log_group_requests',
+			'COLUMN_NAME' => 'id_member_acted',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_group_requests id_request' => Array
+		(
+			'TABLE_NAME' => 'smf_log_group_requests',
+			'COLUMN_NAME' => 'id_request',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => 'auto_increment',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_group_requests member_name_acted' => Array
+		(
+			'TABLE_NAME' => 'smf_log_group_requests',
+			'COLUMN_NAME' => 'member_name_acted',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'log_group_requests reason' => Array
+		(
+			'TABLE_NAME' => 'smf_log_group_requests',
+			'COLUMN_NAME' => 'reason',
+			'COLUMN_TYPE' => 'text',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'log_group_requests status' => Array
+		(
+			'TABLE_NAME' => 'smf_log_group_requests',
+			'COLUMN_NAME' => 'status',
+			'COLUMN_TYPE' => 'tinyint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_group_requests time_acted' => Array
+		(
+			'TABLE_NAME' => 'smf_log_group_requests',
+			'COLUMN_NAME' => 'time_acted',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_group_requests time_applied' => Array
+		(
+			'TABLE_NAME' => 'smf_log_group_requests',
+			'COLUMN_NAME' => 'time_applied',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_mark_read id_board' => Array
+		(
+			'TABLE_NAME' => 'smf_log_mark_read',
+			'COLUMN_NAME' => 'id_board',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_mark_read id_member' => Array
+		(
+			'TABLE_NAME' => 'smf_log_mark_read',
+			'COLUMN_NAME' => 'id_member',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_mark_read id_msg' => Array
+		(
+			'TABLE_NAME' => 'smf_log_mark_read',
+			'COLUMN_NAME' => 'id_msg',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_member_notices body' => Array
+		(
+			'TABLE_NAME' => 'smf_log_member_notices',
+			'COLUMN_NAME' => 'body',
+			'COLUMN_TYPE' => 'text',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'log_member_notices id_notice' => Array
+		(
+			'TABLE_NAME' => 'smf_log_member_notices',
+			'COLUMN_NAME' => 'id_notice',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => 'auto_increment',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_member_notices subject' => Array
+		(
+			'TABLE_NAME' => 'smf_log_member_notices',
+			'COLUMN_NAME' => 'subject',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'log_notify id_board' => Array
+		(
+			'TABLE_NAME' => 'smf_log_notify',
+			'COLUMN_NAME' => 'id_board',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_notify id_member' => Array
+		(
+			'TABLE_NAME' => 'smf_log_notify',
+			'COLUMN_NAME' => 'id_member',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_notify id_topic' => Array
+		(
+			'TABLE_NAME' => 'smf_log_notify',
+			'COLUMN_NAME' => 'id_topic',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_notify sent' => Array
+		(
+			'TABLE_NAME' => 'smf_log_notify',
+			'COLUMN_NAME' => 'sent',
+			'COLUMN_TYPE' => 'tinyint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_online id_member' => Array
+		(
+			'TABLE_NAME' => 'smf_log_online',
+			'COLUMN_NAME' => 'id_member',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_online id_spider' => Array
+		(
+			'TABLE_NAME' => 'smf_log_online',
+			'COLUMN_NAME' => 'id_spider',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_online ip' => Array
+		(
+			'TABLE_NAME' => 'smf_log_online',
+			'COLUMN_NAME' => 'ip',
+			'COLUMN_TYPE' => 'varbinary(16)',
+			'IS_NULLABLE' => 'YES',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_online log_time' => Array
+		(
+			'TABLE_NAME' => 'smf_log_online',
+			'COLUMN_NAME' => 'log_time',
+			'COLUMN_TYPE' => 'int',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_online session' => Array
+		(
+			'TABLE_NAME' => 'smf_log_online',
+			'COLUMN_NAME' => 'session',
+			'COLUMN_TYPE' => 'varchar(128)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'log_online url' => Array
+		(
+			'TABLE_NAME' => 'smf_log_online',
+			'COLUMN_NAME' => 'url',
+			'COLUMN_TYPE' => 'varchar(2048)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'log_packages credits' => Array
+		(
+			'TABLE_NAME' => 'smf_log_packages',
+			'COLUMN_NAME' => 'credits',
+			'COLUMN_TYPE' => 'text',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'log_packages db_changes' => Array
+		(
+			'TABLE_NAME' => 'smf_log_packages',
+			'COLUMN_NAME' => 'db_changes',
+			'COLUMN_TYPE' => 'text',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'log_packages failed_steps' => Array
+		(
+			'TABLE_NAME' => 'smf_log_packages',
+			'COLUMN_NAME' => 'failed_steps',
+			'COLUMN_TYPE' => 'text',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'log_packages filename' => Array
+		(
+			'TABLE_NAME' => 'smf_log_packages',
+			'COLUMN_NAME' => 'filename',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'log_packages id_install' => Array
+		(
+			'TABLE_NAME' => 'smf_log_packages',
+			'COLUMN_NAME' => 'id_install',
+			'COLUMN_TYPE' => 'int',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => 'auto_increment',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_packages id_member_installed' => Array
+		(
+			'TABLE_NAME' => 'smf_log_packages',
+			'COLUMN_NAME' => 'id_member_installed',
+			'COLUMN_TYPE' => 'mediumint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_packages id_member_removed' => Array
+		(
+			'TABLE_NAME' => 'smf_log_packages',
+			'COLUMN_NAME' => 'id_member_removed',
+			'COLUMN_TYPE' => 'mediumint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_packages install_state' => Array
+		(
+			'TABLE_NAME' => 'smf_log_packages',
+			'COLUMN_NAME' => 'install_state',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '1',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_packages member_installed' => Array
+		(
+			'TABLE_NAME' => 'smf_log_packages',
+			'COLUMN_NAME' => 'member_installed',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'log_packages member_removed' => Array
+		(
+			'TABLE_NAME' => 'smf_log_packages',
+			'COLUMN_NAME' => 'member_removed',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'log_packages name' => Array
+		(
+			'TABLE_NAME' => 'smf_log_packages',
+			'COLUMN_NAME' => 'name',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'log_packages package_id' => Array
+		(
+			'TABLE_NAME' => 'smf_log_packages',
+			'COLUMN_NAME' => 'package_id',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'log_packages sha256_hash' => Array
+		(
+			'TABLE_NAME' => 'smf_log_packages',
+			'COLUMN_NAME' => 'sha256_hash',
+			'COLUMN_TYPE' => 'text',
+			'IS_NULLABLE' => 'YES',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'log_packages smf_version' => Array
+		(
+			'TABLE_NAME' => 'smf_log_packages',
+			'COLUMN_NAME' => 'smf_version',
+			'COLUMN_TYPE' => 'varchar(5)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'log_packages themes_installed' => Array
+		(
+			'TABLE_NAME' => 'smf_log_packages',
+			'COLUMN_NAME' => 'themes_installed',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'log_packages time_installed' => Array
+		(
+			'TABLE_NAME' => 'smf_log_packages',
+			'COLUMN_NAME' => 'time_installed',
+			'COLUMN_TYPE' => 'int',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_packages time_removed' => Array
+		(
+			'TABLE_NAME' => 'smf_log_packages',
+			'COLUMN_NAME' => 'time_removed',
+			'COLUMN_TYPE' => 'int',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_packages version' => Array
+		(
+			'TABLE_NAME' => 'smf_log_packages',
+			'COLUMN_NAME' => 'version',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'log_polls id_choice' => Array
+		(
+			'TABLE_NAME' => 'smf_log_polls',
+			'COLUMN_NAME' => 'id_choice',
+			'COLUMN_TYPE' => 'tinyint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_polls id_member' => Array
+		(
+			'TABLE_NAME' => 'smf_log_polls',
+			'COLUMN_NAME' => 'id_member',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_polls id_poll' => Array
+		(
+			'TABLE_NAME' => 'smf_log_polls',
+			'COLUMN_NAME' => 'id_poll',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_reported body' => Array
+		(
+			'TABLE_NAME' => 'smf_log_reported',
+			'COLUMN_NAME' => 'body',
+			'COLUMN_TYPE' => 'mediumtext',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'log_reported closed' => Array
+		(
+			'TABLE_NAME' => 'smf_log_reported',
+			'COLUMN_NAME' => 'closed',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_reported id_board' => Array
+		(
+			'TABLE_NAME' => 'smf_log_reported',
+			'COLUMN_NAME' => 'id_board',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_reported id_member' => Array
+		(
+			'TABLE_NAME' => 'smf_log_reported',
+			'COLUMN_NAME' => 'id_member',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_reported id_msg' => Array
+		(
+			'TABLE_NAME' => 'smf_log_reported',
+			'COLUMN_NAME' => 'id_msg',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_reported id_report' => Array
+		(
+			'TABLE_NAME' => 'smf_log_reported',
+			'COLUMN_NAME' => 'id_report',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => 'auto_increment',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_reported id_topic' => Array
+		(
+			'TABLE_NAME' => 'smf_log_reported',
+			'COLUMN_NAME' => 'id_topic',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_reported ignore_all' => Array
+		(
+			'TABLE_NAME' => 'smf_log_reported',
+			'COLUMN_NAME' => 'ignore_all',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_reported membername' => Array
+		(
+			'TABLE_NAME' => 'smf_log_reported',
+			'COLUMN_NAME' => 'membername',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'log_reported num_reports' => Array
+		(
+			'TABLE_NAME' => 'smf_log_reported',
+			'COLUMN_NAME' => 'num_reports',
+			'COLUMN_TYPE' => 'mediumint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_reported subject' => Array
+		(
+			'TABLE_NAME' => 'smf_log_reported',
+			'COLUMN_NAME' => 'subject',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'log_reported time_started' => Array
+		(
+			'TABLE_NAME' => 'smf_log_reported',
+			'COLUMN_NAME' => 'time_started',
+			'COLUMN_TYPE' => 'int',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_reported time_updated' => Array
+		(
+			'TABLE_NAME' => 'smf_log_reported',
+			'COLUMN_NAME' => 'time_updated',
+			'COLUMN_TYPE' => 'int',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_reported_comments comment' => Array
+		(
+			'TABLE_NAME' => 'smf_log_reported_comments',
+			'COLUMN_NAME' => 'comment',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'log_reported_comments id_comment' => Array
+		(
+			'TABLE_NAME' => 'smf_log_reported_comments',
+			'COLUMN_NAME' => 'id_comment',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => 'auto_increment',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_reported_comments id_member' => Array
+		(
+			'TABLE_NAME' => 'smf_log_reported_comments',
+			'COLUMN_NAME' => 'id_member',
+			'COLUMN_TYPE' => 'mediumint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_reported_comments id_report' => Array
+		(
+			'TABLE_NAME' => 'smf_log_reported_comments',
+			'COLUMN_NAME' => 'id_report',
+			'COLUMN_TYPE' => 'mediumint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_reported_comments member_ip' => Array
+		(
+			'TABLE_NAME' => 'smf_log_reported_comments',
+			'COLUMN_NAME' => 'member_ip',
+			'COLUMN_TYPE' => 'varbinary(16)',
+			'IS_NULLABLE' => 'YES',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_reported_comments membername' => Array
+		(
+			'TABLE_NAME' => 'smf_log_reported_comments',
+			'COLUMN_NAME' => 'membername',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'log_reported_comments time_sent' => Array
+		(
+			'TABLE_NAME' => 'smf_log_reported_comments',
+			'COLUMN_NAME' => 'time_sent',
+			'COLUMN_TYPE' => 'int',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_scheduled_tasks id_log' => Array
+		(
+			'TABLE_NAME' => 'smf_log_scheduled_tasks',
+			'COLUMN_NAME' => 'id_log',
+			'COLUMN_TYPE' => 'mediumint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => 'auto_increment',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_scheduled_tasks id_task' => Array
+		(
+			'TABLE_NAME' => 'smf_log_scheduled_tasks',
+			'COLUMN_NAME' => 'id_task',
+			'COLUMN_TYPE' => 'smallint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_scheduled_tasks time_run' => Array
+		(
+			'TABLE_NAME' => 'smf_log_scheduled_tasks',
+			'COLUMN_NAME' => 'time_run',
+			'COLUMN_TYPE' => 'int',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_scheduled_tasks time_taken' => Array
+		(
+			'TABLE_NAME' => 'smf_log_scheduled_tasks',
+			'COLUMN_NAME' => 'time_taken',
+			'COLUMN_TYPE' => 'float',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_search_messages id_msg' => Array
+		(
+			'TABLE_NAME' => 'smf_log_search_messages',
+			'COLUMN_NAME' => 'id_msg',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_search_messages id_search' => Array
+		(
+			'TABLE_NAME' => 'smf_log_search_messages',
+			'COLUMN_NAME' => 'id_search',
+			'COLUMN_TYPE' => 'tinyint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_search_results id_msg' => Array
+		(
+			'TABLE_NAME' => 'smf_log_search_results',
+			'COLUMN_NAME' => 'id_msg',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_search_results id_search' => Array
+		(
+			'TABLE_NAME' => 'smf_log_search_results',
+			'COLUMN_NAME' => 'id_search',
+			'COLUMN_TYPE' => 'tinyint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_search_results id_topic' => Array
+		(
+			'TABLE_NAME' => 'smf_log_search_results',
+			'COLUMN_NAME' => 'id_topic',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_search_results num_matches' => Array
+		(
+			'TABLE_NAME' => 'smf_log_search_results',
+			'COLUMN_NAME' => 'num_matches',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_search_results relevance' => Array
+		(
+			'TABLE_NAME' => 'smf_log_search_results',
+			'COLUMN_NAME' => 'relevance',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_search_subjects id_topic' => Array
+		(
+			'TABLE_NAME' => 'smf_log_search_subjects',
+			'COLUMN_NAME' => 'id_topic',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_search_subjects word' => Array
+		(
+			'TABLE_NAME' => 'smf_log_search_subjects',
+			'COLUMN_NAME' => 'word',
+			'COLUMN_TYPE' => 'varchar(20)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'log_search_topics id_search' => Array
+		(
+			'TABLE_NAME' => 'smf_log_search_topics',
+			'COLUMN_NAME' => 'id_search',
+			'COLUMN_TYPE' => 'tinyint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_search_topics id_topic' => Array
+		(
+			'TABLE_NAME' => 'smf_log_search_topics',
+			'COLUMN_NAME' => 'id_topic',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_spider_hits id_hit' => Array
+		(
+			'TABLE_NAME' => 'smf_log_spider_hits',
+			'COLUMN_NAME' => 'id_hit',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => 'auto_increment',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_spider_hits id_spider' => Array
+		(
+			'TABLE_NAME' => 'smf_log_spider_hits',
+			'COLUMN_NAME' => 'id_spider',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_spider_hits log_time' => Array
+		(
+			'TABLE_NAME' => 'smf_log_spider_hits',
+			'COLUMN_NAME' => 'log_time',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_spider_hits processed' => Array
+		(
+			'TABLE_NAME' => 'smf_log_spider_hits',
+			'COLUMN_NAME' => 'processed',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_spider_hits url' => Array
+		(
+			'TABLE_NAME' => 'smf_log_spider_hits',
+			'COLUMN_NAME' => 'url',
+			'COLUMN_TYPE' => 'varchar(1024)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'log_spider_stats id_spider' => Array
+		(
+			'TABLE_NAME' => 'smf_log_spider_stats',
+			'COLUMN_NAME' => 'id_spider',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_spider_stats last_seen' => Array
+		(
+			'TABLE_NAME' => 'smf_log_spider_stats',
+			'COLUMN_NAME' => 'last_seen',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_spider_stats page_hits' => Array
+		(
+			'TABLE_NAME' => 'smf_log_spider_stats',
+			'COLUMN_NAME' => 'page_hits',
+			'COLUMN_TYPE' => 'int',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_spider_stats stat_date' => Array
+		(
+			'TABLE_NAME' => 'smf_log_spider_stats',
+			'COLUMN_NAME' => 'stat_date',
+			'COLUMN_TYPE' => 'date',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '1004-01-01',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_subscribed end_time' => Array
+		(
+			'TABLE_NAME' => 'smf_log_subscribed',
+			'COLUMN_NAME' => 'end_time',
+			'COLUMN_TYPE' => 'int',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_subscribed id_member' => Array
+		(
+			'TABLE_NAME' => 'smf_log_subscribed',
+			'COLUMN_NAME' => 'id_member',
+			'COLUMN_TYPE' => 'int',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_subscribed id_sublog' => Array
+		(
+			'TABLE_NAME' => 'smf_log_subscribed',
+			'COLUMN_NAME' => 'id_sublog',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => 'auto_increment',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_subscribed id_subscribe' => Array
+		(
+			'TABLE_NAME' => 'smf_log_subscribed',
+			'COLUMN_NAME' => 'id_subscribe',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_subscribed old_id_group' => Array
+		(
+			'TABLE_NAME' => 'smf_log_subscribed',
+			'COLUMN_NAME' => 'old_id_group',
+			'COLUMN_TYPE' => 'smallint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_subscribed payments_pending' => Array
+		(
+			'TABLE_NAME' => 'smf_log_subscribed',
+			'COLUMN_NAME' => 'payments_pending',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_subscribed pending_details' => Array
+		(
+			'TABLE_NAME' => 'smf_log_subscribed',
+			'COLUMN_NAME' => 'pending_details',
+			'COLUMN_TYPE' => 'text',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'log_subscribed reminder_sent' => Array
+		(
+			'TABLE_NAME' => 'smf_log_subscribed',
+			'COLUMN_NAME' => 'reminder_sent',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_subscribed start_time' => Array
+		(
+			'TABLE_NAME' => 'smf_log_subscribed',
+			'COLUMN_NAME' => 'start_time',
+			'COLUMN_TYPE' => 'int',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_subscribed status' => Array
+		(
+			'TABLE_NAME' => 'smf_log_subscribed',
+			'COLUMN_NAME' => 'status',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_subscribed vendor_ref' => Array
+		(
+			'TABLE_NAME' => 'smf_log_subscribed',
+			'COLUMN_NAME' => 'vendor_ref',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'log_topics id_member' => Array
+		(
+			'TABLE_NAME' => 'smf_log_topics',
+			'COLUMN_NAME' => 'id_member',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_topics id_msg' => Array
+		(
+			'TABLE_NAME' => 'smf_log_topics',
+			'COLUMN_NAME' => 'id_msg',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_topics id_topic' => Array
+		(
+			'TABLE_NAME' => 'smf_log_topics',
+			'COLUMN_NAME' => 'id_topic',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'log_topics unwatched' => Array
+		(
+			'TABLE_NAME' => 'smf_log_topics',
+			'COLUMN_NAME' => 'unwatched',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'mail_queue body' => Array
+		(
+			'TABLE_NAME' => 'smf_mail_queue',
+			'COLUMN_NAME' => 'body',
+			'COLUMN_TYPE' => 'mediumtext',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'mail_queue headers' => Array
+		(
+			'TABLE_NAME' => 'smf_mail_queue',
+			'COLUMN_NAME' => 'headers',
+			'COLUMN_TYPE' => 'text',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'mail_queue id_mail' => Array
+		(
+			'TABLE_NAME' => 'smf_mail_queue',
+			'COLUMN_NAME' => 'id_mail',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => 'auto_increment',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'mail_queue priority' => Array
+		(
+			'TABLE_NAME' => 'smf_mail_queue',
+			'COLUMN_NAME' => 'priority',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '1',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'mail_queue private' => Array
+		(
+			'TABLE_NAME' => 'smf_mail_queue',
+			'COLUMN_NAME' => 'private',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'mail_queue recipient' => Array
+		(
+			'TABLE_NAME' => 'smf_mail_queue',
+			'COLUMN_NAME' => 'recipient',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'mail_queue send_html' => Array
+		(
+			'TABLE_NAME' => 'smf_mail_queue',
+			'COLUMN_NAME' => 'send_html',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'mail_queue subject' => Array
+		(
+			'TABLE_NAME' => 'smf_mail_queue',
+			'COLUMN_NAME' => 'subject',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'mail_queue time_sent' => Array
+		(
+			'TABLE_NAME' => 'smf_mail_queue',
+			'COLUMN_NAME' => 'time_sent',
+			'COLUMN_TYPE' => 'int',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'member_logins id_login' => Array
+		(
+			'TABLE_NAME' => 'smf_member_logins',
+			'COLUMN_NAME' => 'id_login',
+			'COLUMN_TYPE' => 'int',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => 'auto_increment',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'member_logins id_member' => Array
+		(
+			'TABLE_NAME' => 'smf_member_logins',
+			'COLUMN_NAME' => 'id_member',
+			'COLUMN_TYPE' => 'mediumint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'member_logins ip' => Array
+		(
+			'TABLE_NAME' => 'smf_member_logins',
+			'COLUMN_NAME' => 'ip',
+			'COLUMN_TYPE' => 'varbinary(16)',
+			'IS_NULLABLE' => 'YES',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'member_logins ip2' => Array
+		(
+			'TABLE_NAME' => 'smf_member_logins',
+			'COLUMN_NAME' => 'ip2',
+			'COLUMN_TYPE' => 'varbinary(16)',
+			'IS_NULLABLE' => 'YES',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'member_logins time' => Array
+		(
+			'TABLE_NAME' => 'smf_member_logins',
+			'COLUMN_NAME' => 'time',
+			'COLUMN_TYPE' => 'int',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'membergroups description' => Array
+		(
+			'TABLE_NAME' => 'smf_membergroups',
+			'COLUMN_NAME' => 'description',
+			'COLUMN_TYPE' => 'text',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'membergroups group_name' => Array
+		(
+			'TABLE_NAME' => 'smf_membergroups',
+			'COLUMN_NAME' => 'group_name',
+			'COLUMN_TYPE' => 'varchar(80)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'membergroups group_type' => Array
+		(
+			'TABLE_NAME' => 'smf_membergroups',
+			'COLUMN_NAME' => 'group_type',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'membergroups hidden' => Array
+		(
+			'TABLE_NAME' => 'smf_membergroups',
+			'COLUMN_NAME' => 'hidden',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'membergroups icons' => Array
+		(
+			'TABLE_NAME' => 'smf_membergroups',
+			'COLUMN_NAME' => 'icons',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'membergroups id_group' => Array
+		(
+			'TABLE_NAME' => 'smf_membergroups',
+			'COLUMN_NAME' => 'id_group',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => 'auto_increment',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'membergroups id_parent' => Array
+		(
+			'TABLE_NAME' => 'smf_membergroups',
+			'COLUMN_NAME' => 'id_parent',
+			'COLUMN_TYPE' => 'smallint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '-2',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'membergroups max_messages' => Array
+		(
+			'TABLE_NAME' => 'smf_membergroups',
+			'COLUMN_NAME' => 'max_messages',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'membergroups min_posts' => Array
+		(
+			'TABLE_NAME' => 'smf_membergroups',
+			'COLUMN_NAME' => 'min_posts',
+			'COLUMN_TYPE' => 'mediumint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '-1',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'membergroups online_color' => Array
+		(
+			'TABLE_NAME' => 'smf_membergroups',
+			'COLUMN_NAME' => 'online_color',
+			'COLUMN_TYPE' => 'varchar(20)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'membergroups tfa_required' => Array
+		(
+			'TABLE_NAME' => 'smf_membergroups',
+			'COLUMN_NAME' => 'tfa_required',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'members additional_groups' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'additional_groups',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'members alerts' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'alerts',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'members avatar' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'avatar',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'members birthdate' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'birthdate',
+			'COLUMN_TYPE' => 'date',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '1004-01-01',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'members buddy_list' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'buddy_list',
+			'COLUMN_TYPE' => 'text',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'members date_registered' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'date_registered',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'members email_address' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'email_address',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'members id_group' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'id_group',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'members id_member' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'id_member',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => 'auto_increment',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'members id_msg_last_visit' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'id_msg_last_visit',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'members id_post_group' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'id_post_group',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'members id_theme' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'id_theme',
+			'COLUMN_TYPE' => 'tinyint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'members ignore_boards' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'ignore_boards',
+			'COLUMN_TYPE' => 'text',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'members instant_messages' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'instant_messages',
+			'COLUMN_TYPE' => 'smallint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'members is_activated' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'is_activated',
+			'COLUMN_TYPE' => 'tinyint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '1',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'members last_login' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'last_login',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'members lngfile' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'lngfile',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'members member_ip' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'member_ip',
+			'COLUMN_TYPE' => 'varbinary(16)',
+			'IS_NULLABLE' => 'YES',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'members member_ip2' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'member_ip2',
+			'COLUMN_TYPE' => 'varbinary(16)',
+			'IS_NULLABLE' => 'YES',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'members member_name' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'member_name',
+			'COLUMN_TYPE' => 'varchar(80)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'members mod_prefs' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'mod_prefs',
+			'COLUMN_TYPE' => 'varchar(20)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'members new_pm' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'new_pm',
+			'COLUMN_TYPE' => 'tinyint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'members passwd' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'passwd',
+			'COLUMN_TYPE' => 'varchar(64)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'members passwd_flood' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'passwd_flood',
+			'COLUMN_TYPE' => 'varchar(12)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'members password_salt' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'password_salt',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'members personal_text' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'personal_text',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'members pm_ignore_list' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'pm_ignore_list',
+			'COLUMN_TYPE' => 'text',
+			'IS_NULLABLE' => 'YES',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'members pm_prefs' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'pm_prefs',
+			'COLUMN_TYPE' => 'mediumint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'members pm_receive_from' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'pm_receive_from',
+			'COLUMN_TYPE' => 'tinyint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '1',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'members posts' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'posts',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'members real_name' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'real_name',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'members secret_answer' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'secret_answer',
+			'COLUMN_TYPE' => 'varchar(64)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'members secret_question' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'secret_question',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'members show_online' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'show_online',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '1',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'members signature' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'signature',
+			'COLUMN_TYPE' => 'text',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'members smiley_set' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'smiley_set',
+			'COLUMN_TYPE' => 'varchar(48)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'members spoofdetector_name' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'spoofdetector_name',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'members tfa_backup' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'tfa_backup',
+			'COLUMN_TYPE' => 'varchar(64)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'members tfa_secret' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'tfa_secret',
+			'COLUMN_TYPE' => 'varchar(24)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'members time_format' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'time_format',
+			'COLUMN_TYPE' => 'varchar(80)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'members time_offset' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'time_offset',
+			'COLUMN_TYPE' => 'float',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'members timezone' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'timezone',
+			'COLUMN_TYPE' => 'varchar(80)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'members total_time_logged_in' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'total_time_logged_in',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'members unread_messages' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'unread_messages',
+			'COLUMN_TYPE' => 'smallint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'members usertitle' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'usertitle',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'members validation_code' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'validation_code',
+			'COLUMN_TYPE' => 'varchar(10)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'members warning' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'warning',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'members website_title' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'website_title',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'members website_url' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'COLUMN_NAME' => 'website_url',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'mentions content_id' => Array
+		(
+			'TABLE_NAME' => 'smf_mentions',
+			'COLUMN_NAME' => 'content_id',
+			'COLUMN_TYPE' => 'int',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'mentions content_type' => Array
+		(
+			'TABLE_NAME' => 'smf_mentions',
+			'COLUMN_NAME' => 'content_type',
+			'COLUMN_TYPE' => 'varchar(10)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'mentions id_member' => Array
+		(
+			'TABLE_NAME' => 'smf_mentions',
+			'COLUMN_NAME' => 'id_member',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'mentions id_mentioned' => Array
+		(
+			'TABLE_NAME' => 'smf_mentions',
+			'COLUMN_NAME' => 'id_mentioned',
+			'COLUMN_TYPE' => 'int',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'mentions time' => Array
+		(
+			'TABLE_NAME' => 'smf_mentions',
+			'COLUMN_NAME' => 'time',
+			'COLUMN_TYPE' => 'int',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'message_icons filename' => Array
+		(
+			'TABLE_NAME' => 'smf_message_icons',
+			'COLUMN_NAME' => 'filename',
+			'COLUMN_TYPE' => 'varchar(80)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'message_icons icon_order' => Array
+		(
+			'TABLE_NAME' => 'smf_message_icons',
+			'COLUMN_NAME' => 'icon_order',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'message_icons id_board' => Array
+		(
+			'TABLE_NAME' => 'smf_message_icons',
+			'COLUMN_NAME' => 'id_board',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'message_icons id_icon' => Array
+		(
+			'TABLE_NAME' => 'smf_message_icons',
+			'COLUMN_NAME' => 'id_icon',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => 'auto_increment',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'message_icons title' => Array
+		(
+			'TABLE_NAME' => 'smf_message_icons',
+			'COLUMN_NAME' => 'title',
+			'COLUMN_TYPE' => 'varchar(80)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'messages approved' => Array
+		(
+			'TABLE_NAME' => 'smf_messages',
+			'COLUMN_NAME' => 'approved',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '1',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'messages body' => Array
+		(
+			'TABLE_NAME' => 'smf_messages',
+			'COLUMN_NAME' => 'body',
+			'COLUMN_TYPE' => 'text',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'messages icon' => Array
+		(
+			'TABLE_NAME' => 'smf_messages',
+			'COLUMN_NAME' => 'icon',
+			'COLUMN_TYPE' => 'varchar(16)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => 'xx',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'messages id_board' => Array
+		(
+			'TABLE_NAME' => 'smf_messages',
+			'COLUMN_NAME' => 'id_board',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'messages id_member' => Array
+		(
+			'TABLE_NAME' => 'smf_messages',
+			'COLUMN_NAME' => 'id_member',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'messages id_msg' => Array
+		(
+			'TABLE_NAME' => 'smf_messages',
+			'COLUMN_NAME' => 'id_msg',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => 'auto_increment',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'messages id_msg_modified' => Array
+		(
+			'TABLE_NAME' => 'smf_messages',
+			'COLUMN_NAME' => 'id_msg_modified',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'messages id_topic' => Array
+		(
+			'TABLE_NAME' => 'smf_messages',
+			'COLUMN_NAME' => 'id_topic',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'messages likes' => Array
+		(
+			'TABLE_NAME' => 'smf_messages',
+			'COLUMN_NAME' => 'likes',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'messages modified_name' => Array
+		(
+			'TABLE_NAME' => 'smf_messages',
+			'COLUMN_NAME' => 'modified_name',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'messages modified_reason' => Array
+		(
+			'TABLE_NAME' => 'smf_messages',
+			'COLUMN_NAME' => 'modified_reason',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'messages modified_time' => Array
+		(
+			'TABLE_NAME' => 'smf_messages',
+			'COLUMN_NAME' => 'modified_time',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'messages poster_email' => Array
+		(
+			'TABLE_NAME' => 'smf_messages',
+			'COLUMN_NAME' => 'poster_email',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'messages poster_ip' => Array
+		(
+			'TABLE_NAME' => 'smf_messages',
+			'COLUMN_NAME' => 'poster_ip',
+			'COLUMN_TYPE' => 'varbinary(16)',
+			'IS_NULLABLE' => 'YES',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'messages poster_name' => Array
+		(
+			'TABLE_NAME' => 'smf_messages',
+			'COLUMN_NAME' => 'poster_name',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'messages poster_time' => Array
+		(
+			'TABLE_NAME' => 'smf_messages',
+			'COLUMN_NAME' => 'poster_time',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'messages smileys_enabled' => Array
+		(
+			'TABLE_NAME' => 'smf_messages',
+			'COLUMN_NAME' => 'smileys_enabled',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '1',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'messages subject' => Array
+		(
+			'TABLE_NAME' => 'smf_messages',
+			'COLUMN_NAME' => 'subject',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'messages version' => Array
+		(
+			'TABLE_NAME' => 'smf_messages',
+			'COLUMN_NAME' => 'version',
+			'COLUMN_TYPE' => 'varchar(5)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'moderator_groups id_board' => Array
+		(
+			'TABLE_NAME' => 'smf_moderator_groups',
+			'COLUMN_NAME' => 'id_board',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'moderator_groups id_group' => Array
+		(
+			'TABLE_NAME' => 'smf_moderator_groups',
+			'COLUMN_NAME' => 'id_group',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'moderators id_board' => Array
+		(
+			'TABLE_NAME' => 'smf_moderators',
+			'COLUMN_NAME' => 'id_board',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'moderators id_member' => Array
+		(
+			'TABLE_NAME' => 'smf_moderators',
+			'COLUMN_NAME' => 'id_member',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'package_servers extra' => Array
+		(
+			'TABLE_NAME' => 'smf_package_servers',
+			'COLUMN_NAME' => 'extra',
+			'COLUMN_TYPE' => 'text',
+			'IS_NULLABLE' => 'YES',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'package_servers id_server' => Array
+		(
+			'TABLE_NAME' => 'smf_package_servers',
+			'COLUMN_NAME' => 'id_server',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => 'auto_increment',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'package_servers name' => Array
+		(
+			'TABLE_NAME' => 'smf_package_servers',
+			'COLUMN_NAME' => 'name',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'package_servers url' => Array
+		(
+			'TABLE_NAME' => 'smf_package_servers',
+			'COLUMN_NAME' => 'url',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'package_servers validation_url' => Array
+		(
+			'TABLE_NAME' => 'smf_package_servers',
+			'COLUMN_NAME' => 'validation_url',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'permission_profiles id_profile' => Array
+		(
+			'TABLE_NAME' => 'smf_permission_profiles',
+			'COLUMN_NAME' => 'id_profile',
+			'COLUMN_TYPE' => 'smallint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => 'auto_increment',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'permission_profiles profile_name' => Array
+		(
+			'TABLE_NAME' => 'smf_permission_profiles',
+			'COLUMN_NAME' => 'profile_name',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'permissions add_deny' => Array
+		(
+			'TABLE_NAME' => 'smf_permissions',
+			'COLUMN_NAME' => 'add_deny',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '1',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'permissions id_group' => Array
+		(
+			'TABLE_NAME' => 'smf_permissions',
+			'COLUMN_NAME' => 'id_group',
+			'COLUMN_TYPE' => 'smallint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'permissions permission' => Array
+		(
+			'TABLE_NAME' => 'smf_permissions',
+			'COLUMN_NAME' => 'permission',
+			'COLUMN_TYPE' => 'varchar(30)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'personal_messages body' => Array
+		(
+			'TABLE_NAME' => 'smf_personal_messages',
+			'COLUMN_NAME' => 'body',
+			'COLUMN_TYPE' => 'text',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'personal_messages deleted_by_sender' => Array
+		(
+			'TABLE_NAME' => 'smf_personal_messages',
+			'COLUMN_NAME' => 'deleted_by_sender',
+			'COLUMN_TYPE' => 'tinyint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'personal_messages from_name' => Array
+		(
+			'TABLE_NAME' => 'smf_personal_messages',
+			'COLUMN_NAME' => 'from_name',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'personal_messages id_member_from' => Array
+		(
+			'TABLE_NAME' => 'smf_personal_messages',
+			'COLUMN_NAME' => 'id_member_from',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'personal_messages id_pm' => Array
+		(
+			'TABLE_NAME' => 'smf_personal_messages',
+			'COLUMN_NAME' => 'id_pm',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => 'auto_increment',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'personal_messages id_pm_head' => Array
+		(
+			'TABLE_NAME' => 'smf_personal_messages',
+			'COLUMN_NAME' => 'id_pm_head',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'personal_messages msgtime' => Array
+		(
+			'TABLE_NAME' => 'smf_personal_messages',
+			'COLUMN_NAME' => 'msgtime',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'personal_messages subject' => Array
+		(
+			'TABLE_NAME' => 'smf_personal_messages',
+			'COLUMN_NAME' => 'subject',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'personal_messages version' => Array
+		(
+			'TABLE_NAME' => 'smf_personal_messages',
+			'COLUMN_NAME' => 'version',
+			'COLUMN_TYPE' => 'varchar(5)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'pm_labeled_messages id_label' => Array
+		(
+			'TABLE_NAME' => 'smf_pm_labeled_messages',
+			'COLUMN_NAME' => 'id_label',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'pm_labeled_messages id_pm' => Array
+		(
+			'TABLE_NAME' => 'smf_pm_labeled_messages',
+			'COLUMN_NAME' => 'id_pm',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'pm_labels id_label' => Array
+		(
+			'TABLE_NAME' => 'smf_pm_labels',
+			'COLUMN_NAME' => 'id_label',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => 'auto_increment',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'pm_labels id_member' => Array
+		(
+			'TABLE_NAME' => 'smf_pm_labels',
+			'COLUMN_NAME' => 'id_member',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'pm_labels name' => Array
+		(
+			'TABLE_NAME' => 'smf_pm_labels',
+			'COLUMN_NAME' => 'name',
+			'COLUMN_TYPE' => 'varchar(30)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'pm_recipients bcc' => Array
+		(
+			'TABLE_NAME' => 'smf_pm_recipients',
+			'COLUMN_NAME' => 'bcc',
+			'COLUMN_TYPE' => 'tinyint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'pm_recipients deleted' => Array
+		(
+			'TABLE_NAME' => 'smf_pm_recipients',
+			'COLUMN_NAME' => 'deleted',
+			'COLUMN_TYPE' => 'tinyint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'pm_recipients id_member' => Array
+		(
+			'TABLE_NAME' => 'smf_pm_recipients',
+			'COLUMN_NAME' => 'id_member',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'pm_recipients id_pm' => Array
+		(
+			'TABLE_NAME' => 'smf_pm_recipients',
+			'COLUMN_NAME' => 'id_pm',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'pm_recipients in_inbox' => Array
+		(
+			'TABLE_NAME' => 'smf_pm_recipients',
+			'COLUMN_NAME' => 'in_inbox',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '1',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'pm_recipients is_new' => Array
+		(
+			'TABLE_NAME' => 'smf_pm_recipients',
+			'COLUMN_NAME' => 'is_new',
+			'COLUMN_TYPE' => 'tinyint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'pm_recipients is_read' => Array
+		(
+			'TABLE_NAME' => 'smf_pm_recipients',
+			'COLUMN_NAME' => 'is_read',
+			'COLUMN_TYPE' => 'tinyint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'pm_rules actions' => Array
+		(
+			'TABLE_NAME' => 'smf_pm_rules',
+			'COLUMN_NAME' => 'actions',
+			'COLUMN_TYPE' => 'text',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'pm_rules criteria' => Array
+		(
+			'TABLE_NAME' => 'smf_pm_rules',
+			'COLUMN_NAME' => 'criteria',
+			'COLUMN_TYPE' => 'text',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'pm_rules delete_pm' => Array
+		(
+			'TABLE_NAME' => 'smf_pm_rules',
+			'COLUMN_NAME' => 'delete_pm',
+			'COLUMN_TYPE' => 'tinyint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'pm_rules id_member' => Array
+		(
+			'TABLE_NAME' => 'smf_pm_rules',
+			'COLUMN_NAME' => 'id_member',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'pm_rules id_rule' => Array
+		(
+			'TABLE_NAME' => 'smf_pm_rules',
+			'COLUMN_NAME' => 'id_rule',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => 'auto_increment',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'pm_rules is_or' => Array
+		(
+			'TABLE_NAME' => 'smf_pm_rules',
+			'COLUMN_NAME' => 'is_or',
+			'COLUMN_TYPE' => 'tinyint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'pm_rules rule_name' => Array
+		(
+			'TABLE_NAME' => 'smf_pm_rules',
+			'COLUMN_NAME' => 'rule_name',
+			'COLUMN_TYPE' => 'varchar(60)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'poll_choices id_choice' => Array
+		(
+			'TABLE_NAME' => 'smf_poll_choices',
+			'COLUMN_NAME' => 'id_choice',
+			'COLUMN_TYPE' => 'tinyint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'poll_choices id_poll' => Array
+		(
+			'TABLE_NAME' => 'smf_poll_choices',
+			'COLUMN_NAME' => 'id_poll',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'poll_choices label' => Array
+		(
+			'TABLE_NAME' => 'smf_poll_choices',
+			'COLUMN_NAME' => 'label',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'poll_choices votes' => Array
+		(
+			'TABLE_NAME' => 'smf_poll_choices',
+			'COLUMN_NAME' => 'votes',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'polls change_vote' => Array
+		(
+			'TABLE_NAME' => 'smf_polls',
+			'COLUMN_NAME' => 'change_vote',
+			'COLUMN_TYPE' => 'tinyint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'polls expire_time' => Array
+		(
+			'TABLE_NAME' => 'smf_polls',
+			'COLUMN_NAME' => 'expire_time',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'polls guest_vote' => Array
+		(
+			'TABLE_NAME' => 'smf_polls',
+			'COLUMN_NAME' => 'guest_vote',
+			'COLUMN_TYPE' => 'tinyint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'polls hide_results' => Array
+		(
+			'TABLE_NAME' => 'smf_polls',
+			'COLUMN_NAME' => 'hide_results',
+			'COLUMN_TYPE' => 'tinyint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'polls id_member' => Array
+		(
+			'TABLE_NAME' => 'smf_polls',
+			'COLUMN_NAME' => 'id_member',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'polls id_poll' => Array
+		(
+			'TABLE_NAME' => 'smf_polls',
+			'COLUMN_NAME' => 'id_poll',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => 'auto_increment',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'polls max_votes' => Array
+		(
+			'TABLE_NAME' => 'smf_polls',
+			'COLUMN_NAME' => 'max_votes',
+			'COLUMN_TYPE' => 'tinyint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '1',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'polls num_guest_voters' => Array
+		(
+			'TABLE_NAME' => 'smf_polls',
+			'COLUMN_NAME' => 'num_guest_voters',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'polls poster_name' => Array
+		(
+			'TABLE_NAME' => 'smf_polls',
+			'COLUMN_NAME' => 'poster_name',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'polls question' => Array
+		(
+			'TABLE_NAME' => 'smf_polls',
+			'COLUMN_NAME' => 'question',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'polls reset_poll' => Array
+		(
+			'TABLE_NAME' => 'smf_polls',
+			'COLUMN_NAME' => 'reset_poll',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'polls voting_locked' => Array
+		(
+			'TABLE_NAME' => 'smf_polls',
+			'COLUMN_NAME' => 'voting_locked',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'qanda answers' => Array
+		(
+			'TABLE_NAME' => 'smf_qanda',
+			'COLUMN_NAME' => 'answers',
+			'COLUMN_TYPE' => 'text',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'qanda id_question' => Array
+		(
+			'TABLE_NAME' => 'smf_qanda',
+			'COLUMN_NAME' => 'id_question',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => 'auto_increment',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'qanda lngfile' => Array
+		(
+			'TABLE_NAME' => 'smf_qanda',
+			'COLUMN_NAME' => 'lngfile',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'qanda question' => Array
+		(
+			'TABLE_NAME' => 'smf_qanda',
+			'COLUMN_NAME' => 'question',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'scheduled_tasks callable' => Array
+		(
+			'TABLE_NAME' => 'smf_scheduled_tasks',
+			'COLUMN_NAME' => 'callable',
+			'COLUMN_TYPE' => 'varchar(60)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'scheduled_tasks disabled' => Array
+		(
+			'TABLE_NAME' => 'smf_scheduled_tasks',
+			'COLUMN_NAME' => 'disabled',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'scheduled_tasks id_task' => Array
+		(
+			'TABLE_NAME' => 'smf_scheduled_tasks',
+			'COLUMN_NAME' => 'id_task',
+			'COLUMN_TYPE' => 'smallint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => 'auto_increment',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'scheduled_tasks next_time' => Array
+		(
+			'TABLE_NAME' => 'smf_scheduled_tasks',
+			'COLUMN_NAME' => 'next_time',
+			'COLUMN_TYPE' => 'int',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'scheduled_tasks task' => Array
+		(
+			'TABLE_NAME' => 'smf_scheduled_tasks',
+			'COLUMN_NAME' => 'task',
+			'COLUMN_TYPE' => 'varchar(24)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'scheduled_tasks time_offset' => Array
+		(
+			'TABLE_NAME' => 'smf_scheduled_tasks',
+			'COLUMN_NAME' => 'time_offset',
+			'COLUMN_TYPE' => 'int',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'scheduled_tasks time_regularity' => Array
+		(
+			'TABLE_NAME' => 'smf_scheduled_tasks',
+			'COLUMN_NAME' => 'time_regularity',
+			'COLUMN_TYPE' => 'smallint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'scheduled_tasks time_unit' => Array
+		(
+			'TABLE_NAME' => 'smf_scheduled_tasks',
+			'COLUMN_NAME' => 'time_unit',
+			'COLUMN_TYPE' => 'varchar(1)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => 'h',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'sessions data' => Array
+		(
+			'TABLE_NAME' => 'smf_sessions',
+			'COLUMN_NAME' => 'data',
+			'COLUMN_TYPE' => 'text',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'sessions last_update' => Array
+		(
+			'TABLE_NAME' => 'smf_sessions',
+			'COLUMN_NAME' => 'last_update',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'sessions session_id' => Array
+		(
+			'TABLE_NAME' => 'smf_sessions',
+			'COLUMN_NAME' => 'session_id',
+			'COLUMN_TYPE' => 'varchar(128)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'settings value' => Array
+		(
+			'TABLE_NAME' => 'smf_settings',
+			'COLUMN_NAME' => 'value',
+			'COLUMN_TYPE' => 'text',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'settings variable' => Array
+		(
+			'TABLE_NAME' => 'smf_settings',
+			'COLUMN_NAME' => 'variable',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'smiley_files filename' => Array
+		(
+			'TABLE_NAME' => 'smf_smiley_files',
+			'COLUMN_NAME' => 'filename',
+			'COLUMN_TYPE' => 'varchar(48)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'smiley_files id_smiley' => Array
+		(
+			'TABLE_NAME' => 'smf_smiley_files',
+			'COLUMN_NAME' => 'id_smiley',
+			'COLUMN_TYPE' => 'smallint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'smiley_files smiley_set' => Array
+		(
+			'TABLE_NAME' => 'smf_smiley_files',
+			'COLUMN_NAME' => 'smiley_set',
+			'COLUMN_TYPE' => 'varchar(48)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'smileys code' => Array
+		(
+			'TABLE_NAME' => 'smf_smileys',
+			'COLUMN_NAME' => 'code',
+			'COLUMN_TYPE' => 'varchar(30)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'smileys description' => Array
+		(
+			'TABLE_NAME' => 'smf_smileys',
+			'COLUMN_NAME' => 'description',
+			'COLUMN_TYPE' => 'varchar(80)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'smileys hidden' => Array
+		(
+			'TABLE_NAME' => 'smf_smileys',
+			'COLUMN_NAME' => 'hidden',
+			'COLUMN_TYPE' => 'tinyint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'smileys id_smiley' => Array
+		(
+			'TABLE_NAME' => 'smf_smileys',
+			'COLUMN_NAME' => 'id_smiley',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => 'auto_increment',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'smileys smiley_order' => Array
+		(
+			'TABLE_NAME' => 'smf_smileys',
+			'COLUMN_NAME' => 'smiley_order',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'smileys smiley_row' => Array
+		(
+			'TABLE_NAME' => 'smf_smileys',
+			'COLUMN_NAME' => 'smiley_row',
+			'COLUMN_TYPE' => 'tinyint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'spiders id_spider' => Array
+		(
+			'TABLE_NAME' => 'smf_spiders',
+			'COLUMN_NAME' => 'id_spider',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => 'auto_increment',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'spiders ip_info' => Array
+		(
+			'TABLE_NAME' => 'smf_spiders',
+			'COLUMN_NAME' => 'ip_info',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'spiders spider_name' => Array
+		(
+			'TABLE_NAME' => 'smf_spiders',
+			'COLUMN_NAME' => 'spider_name',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'spiders user_agent' => Array
+		(
+			'TABLE_NAME' => 'smf_spiders',
+			'COLUMN_NAME' => 'user_agent',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'subscriptions active' => Array
+		(
+			'TABLE_NAME' => 'smf_subscriptions',
+			'COLUMN_NAME' => 'active',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '1',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'subscriptions add_groups' => Array
+		(
+			'TABLE_NAME' => 'smf_subscriptions',
+			'COLUMN_NAME' => 'add_groups',
+			'COLUMN_TYPE' => 'varchar(40)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'subscriptions allow_partial' => Array
+		(
+			'TABLE_NAME' => 'smf_subscriptions',
+			'COLUMN_NAME' => 'allow_partial',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'subscriptions cost' => Array
+		(
+			'TABLE_NAME' => 'smf_subscriptions',
+			'COLUMN_NAME' => 'cost',
+			'COLUMN_TYPE' => 'text',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'subscriptions description' => Array
+		(
+			'TABLE_NAME' => 'smf_subscriptions',
+			'COLUMN_NAME' => 'description',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'subscriptions email_complete' => Array
+		(
+			'TABLE_NAME' => 'smf_subscriptions',
+			'COLUMN_NAME' => 'email_complete',
+			'COLUMN_TYPE' => 'text',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'subscriptions id_group' => Array
+		(
+			'TABLE_NAME' => 'smf_subscriptions',
+			'COLUMN_NAME' => 'id_group',
+			'COLUMN_TYPE' => 'smallint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'subscriptions id_subscribe' => Array
+		(
+			'TABLE_NAME' => 'smf_subscriptions',
+			'COLUMN_NAME' => 'id_subscribe',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => 'auto_increment',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'subscriptions length' => Array
+		(
+			'TABLE_NAME' => 'smf_subscriptions',
+			'COLUMN_NAME' => 'length',
+			'COLUMN_TYPE' => 'varchar(6)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'subscriptions name' => Array
+		(
+			'TABLE_NAME' => 'smf_subscriptions',
+			'COLUMN_NAME' => 'name',
+			'COLUMN_TYPE' => 'varchar(60)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'subscriptions reminder' => Array
+		(
+			'TABLE_NAME' => 'smf_subscriptions',
+			'COLUMN_NAME' => 'reminder',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'subscriptions repeatable' => Array
+		(
+			'TABLE_NAME' => 'smf_subscriptions',
+			'COLUMN_NAME' => 'repeatable',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'themes id_member' => Array
+		(
+			'TABLE_NAME' => 'smf_themes',
+			'COLUMN_NAME' => 'id_member',
+			'COLUMN_TYPE' => 'mediumint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'themes id_theme' => Array
+		(
+			'TABLE_NAME' => 'smf_themes',
+			'COLUMN_NAME' => 'id_theme',
+			'COLUMN_TYPE' => 'tinyint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '1',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'themes value' => Array
+		(
+			'TABLE_NAME' => 'smf_themes',
+			'COLUMN_NAME' => 'value',
+			'COLUMN_TYPE' => 'text',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'themes variable' => Array
+		(
+			'TABLE_NAME' => 'smf_themes',
+			'COLUMN_NAME' => 'variable',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'topics approved' => Array
+		(
+			'TABLE_NAME' => 'smf_topics',
+			'COLUMN_NAME' => 'approved',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '1',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'topics id_board' => Array
+		(
+			'TABLE_NAME' => 'smf_topics',
+			'COLUMN_NAME' => 'id_board',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'topics id_first_msg' => Array
+		(
+			'TABLE_NAME' => 'smf_topics',
+			'COLUMN_NAME' => 'id_first_msg',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'topics id_last_msg' => Array
+		(
+			'TABLE_NAME' => 'smf_topics',
+			'COLUMN_NAME' => 'id_last_msg',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'topics id_member_started' => Array
+		(
+			'TABLE_NAME' => 'smf_topics',
+			'COLUMN_NAME' => 'id_member_started',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'topics id_member_updated' => Array
+		(
+			'TABLE_NAME' => 'smf_topics',
+			'COLUMN_NAME' => 'id_member_updated',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'topics id_poll' => Array
+		(
+			'TABLE_NAME' => 'smf_topics',
+			'COLUMN_NAME' => 'id_poll',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'topics id_previous_board' => Array
+		(
+			'TABLE_NAME' => 'smf_topics',
+			'COLUMN_NAME' => 'id_previous_board',
+			'COLUMN_TYPE' => 'smallint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'topics id_previous_topic' => Array
+		(
+			'TABLE_NAME' => 'smf_topics',
+			'COLUMN_NAME' => 'id_previous_topic',
+			'COLUMN_TYPE' => 'mediumint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'topics id_redirect_topic' => Array
+		(
+			'TABLE_NAME' => 'smf_topics',
+			'COLUMN_NAME' => 'id_redirect_topic',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'topics id_topic' => Array
+		(
+			'TABLE_NAME' => 'smf_topics',
+			'COLUMN_NAME' => 'id_topic',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => 'auto_increment',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'topics is_sticky' => Array
+		(
+			'TABLE_NAME' => 'smf_topics',
+			'COLUMN_NAME' => 'is_sticky',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'topics locked' => Array
+		(
+			'TABLE_NAME' => 'smf_topics',
+			'COLUMN_NAME' => 'locked',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'topics num_replies' => Array
+		(
+			'TABLE_NAME' => 'smf_topics',
+			'COLUMN_NAME' => 'num_replies',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'topics num_views' => Array
+		(
+			'TABLE_NAME' => 'smf_topics',
+			'COLUMN_NAME' => 'num_views',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'topics redirect_expires' => Array
+		(
+			'TABLE_NAME' => 'smf_topics',
+			'COLUMN_NAME' => 'redirect_expires',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'topics unapproved_posts' => Array
+		(
+			'TABLE_NAME' => 'smf_topics',
+			'COLUMN_NAME' => 'unapproved_posts',
+			'COLUMN_TYPE' => 'smallint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'user_alerts alert_time' => Array
+		(
+			'TABLE_NAME' => 'smf_user_alerts',
+			'COLUMN_NAME' => 'alert_time',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'user_alerts content_action' => Array
+		(
+			'TABLE_NAME' => 'smf_user_alerts',
+			'COLUMN_NAME' => 'content_action',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'user_alerts content_id' => Array
+		(
+			'TABLE_NAME' => 'smf_user_alerts',
+			'COLUMN_NAME' => 'content_id',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'user_alerts content_type' => Array
+		(
+			'TABLE_NAME' => 'smf_user_alerts',
+			'COLUMN_NAME' => 'content_type',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'user_alerts extra' => Array
+		(
+			'TABLE_NAME' => 'smf_user_alerts',
+			'COLUMN_NAME' => 'extra',
+			'COLUMN_TYPE' => 'text',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'user_alerts id_alert' => Array
+		(
+			'TABLE_NAME' => 'smf_user_alerts',
+			'COLUMN_NAME' => 'id_alert',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => 'auto_increment',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'user_alerts id_member' => Array
+		(
+			'TABLE_NAME' => 'smf_user_alerts',
+			'COLUMN_NAME' => 'id_member',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'user_alerts id_member_started' => Array
+		(
+			'TABLE_NAME' => 'smf_user_alerts',
+			'COLUMN_NAME' => 'id_member_started',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'user_alerts is_read' => Array
+		(
+			'TABLE_NAME' => 'smf_user_alerts',
+			'COLUMN_NAME' => 'is_read',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'user_alerts member_name' => Array
+		(
+			'TABLE_NAME' => 'smf_user_alerts',
+			'COLUMN_NAME' => 'member_name',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'user_alerts_prefs alert_pref' => Array
+		(
+			'TABLE_NAME' => 'smf_user_alerts_prefs',
+			'COLUMN_NAME' => 'alert_pref',
+			'COLUMN_TYPE' => 'varchar(32)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'user_alerts_prefs alert_value' => Array
+		(
+			'TABLE_NAME' => 'smf_user_alerts_prefs',
+			'COLUMN_NAME' => 'alert_value',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'user_alerts_prefs id_member' => Array
+		(
+			'TABLE_NAME' => 'smf_user_alerts_prefs',
+			'COLUMN_NAME' => 'id_member',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'user_drafts body' => Array
+		(
+			'TABLE_NAME' => 'smf_user_drafts',
+			'COLUMN_NAME' => 'body',
+			'COLUMN_TYPE' => 'mediumtext',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'user_drafts icon' => Array
+		(
+			'TABLE_NAME' => 'smf_user_drafts',
+			'COLUMN_NAME' => 'icon',
+			'COLUMN_TYPE' => 'varchar(16)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => 'xx',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'user_drafts id_board' => Array
+		(
+			'TABLE_NAME' => 'smf_user_drafts',
+			'COLUMN_NAME' => 'id_board',
+			'COLUMN_TYPE' => 'smallint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'user_drafts id_draft' => Array
+		(
+			'TABLE_NAME' => 'smf_user_drafts',
+			'COLUMN_NAME' => 'id_draft',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => 'auto_increment',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'user_drafts id_member' => Array
+		(
+			'TABLE_NAME' => 'smf_user_drafts',
+			'COLUMN_NAME' => 'id_member',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'user_drafts id_reply' => Array
+		(
+			'TABLE_NAME' => 'smf_user_drafts',
+			'COLUMN_NAME' => 'id_reply',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'user_drafts id_topic' => Array
+		(
+			'TABLE_NAME' => 'smf_user_drafts',
+			'COLUMN_NAME' => 'id_topic',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'user_drafts is_sticky' => Array
+		(
+			'TABLE_NAME' => 'smf_user_drafts',
+			'COLUMN_NAME' => 'is_sticky',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'user_drafts locked' => Array
+		(
+			'TABLE_NAME' => 'smf_user_drafts',
+			'COLUMN_NAME' => 'locked',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'user_drafts poster_time' => Array
+		(
+			'TABLE_NAME' => 'smf_user_drafts',
+			'COLUMN_NAME' => 'poster_time',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'user_drafts smileys_enabled' => Array
+		(
+			'TABLE_NAME' => 'smf_user_drafts',
+			'COLUMN_NAME' => 'smileys_enabled',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '1',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'user_drafts subject' => Array
+		(
+			'TABLE_NAME' => 'smf_user_drafts',
+			'COLUMN_NAME' => 'subject',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'user_drafts to_list' => Array
+		(
+			'TABLE_NAME' => 'smf_user_drafts',
+			'COLUMN_NAME' => 'to_list',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'user_drafts type' => Array
+		(
+			'TABLE_NAME' => 'smf_user_drafts',
+			'COLUMN_NAME' => 'type',
+			'COLUMN_TYPE' => 'tinyint',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'user_likes content_id' => Array
+		(
+			'TABLE_NAME' => 'smf_user_likes',
+			'COLUMN_NAME' => 'content_id',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'user_likes content_type' => Array
+		(
+			'TABLE_NAME' => 'smf_user_likes',
+			'COLUMN_NAME' => 'content_type',
+			'COLUMN_TYPE' => 'char(6)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb3_general_ci',
+		),
+
+	'user_likes id_member' => Array
+		(
+			'TABLE_NAME' => 'smf_user_likes',
+			'COLUMN_NAME' => 'id_member',
+			'COLUMN_TYPE' => 'mediumint unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'user_likes like_time' => Array
+		(
+			'TABLE_NAME' => 'smf_user_likes',
+			'COLUMN_NAME' => 'like_time',
+			'COLUMN_TYPE' => 'int unsigned',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+);
+
+$smf_indexes['3.0'] = Array
+(
+	'admin_info_files filename 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_admin_info_files',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_filename',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'filename',
+			'SUB_PART' => '30',
+		),
+
+	'admin_info_files id_file 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_admin_info_files',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_file',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'attachments attachment_type 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_attachments',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_attachment_type',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'attachment_type',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'attachments id_attach 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_attachments',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_attach',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'attachments id_member,id_attach 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_attachments',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'idx_id_member',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_member',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'attachments id_member,id_attach 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_attachments',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'idx_id_member',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'id_attach',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'attachments id_msg 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_attachments',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_msg',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_msg',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'attachments id_thumb 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_attachments',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_thumb',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_thumb',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'background_tasks id_task 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_background_tasks',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_task',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'ban_groups id_ban_group 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_ban_groups',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_ban_group',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'ban_items id_ban 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_ban_items',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_ban',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'ban_items id_ban_group 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_ban_items',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_ban_group',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_ban_group',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'ban_items ip_low,ip_high 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_ban_items',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_ban_ip',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'ip_low',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'ban_items ip_low,ip_high 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_ban_items',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_ban_ip',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'ip_high',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'board_permissions id_group,id_profile,permission 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_board_permissions',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_group',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'board_permissions id_group,id_profile,permission 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_board_permissions',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'id_profile',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'board_permissions id_group,id_profile,permission 0003' => Array
+		(
+			'TABLE_NAME' => 'smf_board_permissions',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '3',
+			'COLUMN_NAME' => 'permission',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'board_permissions_view id_group,id_board,deny 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_board_permissions_view',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_group',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'board_permissions_view id_group,id_board,deny 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_board_permissions_view',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'id_board',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'board_permissions_view id_group,id_board,deny 0003' => Array
+		(
+			'TABLE_NAME' => 'smf_board_permissions_view',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '3',
+			'COLUMN_NAME' => 'deny',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'boards id_board 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_boards',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_board',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'boards id_cat,id_board 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_boards',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'idx_categories',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_cat',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'boards id_cat,id_board 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_boards',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'idx_categories',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'id_board',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'boards id_msg_updated 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_boards',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_msg_updated',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_msg_updated',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'boards id_parent 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_boards',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_parent',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_parent',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'boards member_groups 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_boards',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_member_groups',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'member_groups',
+			'SUB_PART' => '48',
+		),
+
+	'calendar end_date 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_calendar',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_end_date',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'end_date',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'calendar id_event 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_calendar',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_event',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'calendar id_topic,id_member 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_calendar',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_topic',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_topic',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'calendar id_topic,id_member 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_calendar',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_topic',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'id_member',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'calendar start_date 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_calendar',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_start_date',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'start_date',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'categories id_cat 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_categories',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_cat',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'custom_fields col_name 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_custom_fields',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'idx_col_name',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'col_name',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'custom_fields id_field 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_custom_fields',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_field',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'group_moderators id_group,id_member 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_group_moderators',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_group',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'group_moderators id_group,id_member 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_group_moderators',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'id_member',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_actions id_action 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_actions',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_action',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_actions id_board 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_actions',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_board',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_board',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_actions id_log 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_actions',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_log',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_log',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_actions id_member 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_actions',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_member',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_member',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_actions id_msg 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_actions',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_msg',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_msg',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_actions id_topic,id_log 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_actions',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_topic_id_log',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_topic',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_actions id_topic,id_log 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_log_actions',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_topic_id_log',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'id_log',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_actions log_time 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_actions',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_log_time',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'log_time',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_activity date 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_activity',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'date',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_banned id_ban_log 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_banned',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_ban_log',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_banned log_time 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_banned',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_log_time',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'log_time',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_boards id_member,id_board 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_boards',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_member',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_boards id_member,id_board 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_log_boards',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'id_board',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_comments comment_type 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_comments',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_comment_type',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'comment_type',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_comments id_comment 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_comments',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_comment',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_comments id_recipient 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_comments',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_recipient',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_recipient',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_comments log_time 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_comments',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_log_time',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'log_time',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_errors id_error 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_errors',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_error',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_errors id_member 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_errors',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_member',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_member',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_errors ip 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_errors',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_ip',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'ip',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_errors log_time 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_errors',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_log_time',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'log_time',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_floodcontrol ip,log_type 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_floodcontrol',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'ip',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_floodcontrol ip,log_type 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_log_floodcontrol',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'log_type',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_group_requests id_member,id_group 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_group_requests',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_member',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_member',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_group_requests id_member,id_group 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_log_group_requests',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_member',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'id_group',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_group_requests id_request 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_group_requests',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_request',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_mark_read id_member,id_board 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_mark_read',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_member',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_mark_read id_member,id_board 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_log_mark_read',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'id_board',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_member_notices id_notice 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_member_notices',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_notice',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_notify id_board 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_notify',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'id_board',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_board',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_notify id_member,id_topic,id_board 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_notify',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_member',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_notify id_member,id_topic,id_board 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_log_notify',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'id_topic',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_notify id_member,id_topic,id_board 0003' => Array
+		(
+			'TABLE_NAME' => 'smf_log_notify',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '3',
+			'COLUMN_NAME' => 'id_board',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_notify id_topic,id_member 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_notify',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_topic',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_topic',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_notify id_topic,id_member 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_log_notify',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_topic',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'id_member',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_online id_member 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_online',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_member',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_member',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_online log_time 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_online',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_log_time',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'log_time',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_online session 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_online',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'session',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_packages filename 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_packages',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_filename',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'filename',
+			'SUB_PART' => '15',
+		),
+
+	'log_packages id_install 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_packages',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_install',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_polls id_poll,id_member,id_choice 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_polls',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_poll',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_poll',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_polls id_poll,id_member,id_choice 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_log_polls',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_poll',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'id_member',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_polls id_poll,id_member,id_choice 0003' => Array
+		(
+			'TABLE_NAME' => 'smf_log_polls',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_poll',
+			'SEQ_IN_INDEX' => '3',
+			'COLUMN_NAME' => 'id_choice',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_reported closed 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_reported',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_closed',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'closed',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_reported id_member 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_reported',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_member',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_member',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_reported id_msg 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_reported',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_msg',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_msg',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_reported id_report 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_reported',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_report',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_reported id_topic 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_reported',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_topic',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_topic',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_reported time_started 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_reported',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_time_started',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'time_started',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_reported_comments id_comment 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_reported_comments',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_comment',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_reported_comments id_member 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_reported_comments',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_member',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_member',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_reported_comments id_report 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_reported_comments',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_report',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_report',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_reported_comments time_sent 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_reported_comments',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_time_sent',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'time_sent',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_scheduled_tasks id_log 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_scheduled_tasks',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_log',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_search_messages id_search,id_msg 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_search_messages',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_search',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_search_messages id_search,id_msg 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_log_search_messages',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'id_msg',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_search_results id_search,id_topic,id_msg 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_search_results',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_search',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_search_results id_search,id_topic,id_msg 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_log_search_results',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'id_topic',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_search_results id_search,id_topic,id_msg 0003' => Array
+		(
+			'TABLE_NAME' => 'smf_log_search_results',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '3',
+			'COLUMN_NAME' => 'id_msg',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_search_subjects id_topic 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_search_subjects',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_topic',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_topic',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_search_subjects word,id_topic 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_search_subjects',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'word',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_search_subjects word,id_topic 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_log_search_subjects',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'id_topic',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_search_topics id_search,id_topic 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_search_topics',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_search',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_search_topics id_search,id_topic 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_log_search_topics',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'id_topic',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_spider_hits id_hit 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_spider_hits',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_hit',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_spider_hits id_spider 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_spider_hits',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_spider',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_spider',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_spider_hits log_time 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_spider_hits',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_log_time',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'log_time',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_spider_hits processed 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_spider_hits',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_processed',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'processed',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_spider_stats stat_date,id_spider 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_spider_stats',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'stat_date',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_spider_stats stat_date,id_spider 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_log_spider_stats',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'id_spider',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_subscribed end_time 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_subscribed',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_end_time',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'end_time',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_subscribed id_member 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_subscribed',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_member',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_member',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_subscribed id_sublog 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_subscribed',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_sublog',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_subscribed id_subscribe,id_member 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_subscribed',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'id_subscribe',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_subscribe',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_subscribed id_subscribe,id_member 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_log_subscribed',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'id_subscribe',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'id_member',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_subscribed payments_pending 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_subscribed',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_payments_pending',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'payments_pending',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_subscribed reminder_sent 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_subscribed',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_reminder_sent',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'reminder_sent',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_subscribed status 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_subscribed',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_status',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'status',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_topics id_member,id_topic 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_topics',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_member',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_topics id_member,id_topic 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_log_topics',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'id_topic',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_topics id_topic 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_topics',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_topic',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_topic',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'mail_queue id_mail 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_mail_queue',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_mail',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'mail_queue priority,id_mail 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_mail_queue',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_mail_priority',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'priority',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'mail_queue priority,id_mail 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_mail_queue',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_mail_priority',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'id_mail',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'mail_queue time_sent 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_mail_queue',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_time_sent',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'time_sent',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'member_logins id_login 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_member_logins',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_login',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'member_logins id_member 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_member_logins',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_member',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_member',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'member_logins time 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_member_logins',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_time',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'time',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'membergroups id_group 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_membergroups',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_group',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'membergroups min_posts 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_membergroups',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_min_posts',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'min_posts',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'members birthdate 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_birthdate',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'birthdate',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'members date_registered 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_date_registered',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'date_registered',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'members email_address 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_email_address',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'email_address',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'members id_group 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_group',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_group',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'members id_member 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_member',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'members id_post_group 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_post_group',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_post_group',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'members id_theme 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_theme',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_theme',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'members is_activated,real_name 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_active_real_name',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'is_activated',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'members is_activated,real_name 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_active_real_name',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'real_name',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'members last_login 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_last_login',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'last_login',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'members lngfile 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_lngfile',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'lngfile',
+			'SUB_PART' => '30',
+		),
+
+	'members member_name 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_member_name',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'member_name',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'members posts 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_posts',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'posts',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'members real_name 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_real_name',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'real_name',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'members spoofdetector_name,id_member 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_spoofdetector_name_id',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'spoofdetector_name',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'members spoofdetector_name,id_member 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_spoofdetector_name_id',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'id_member',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'members spoofdetector_name 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_spoofdetector_name',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'spoofdetector_name',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'members total_time_logged_in 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_total_time_logged_in',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'total_time_logged_in',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'members warning 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_members',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_warning',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'warning',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'mentions content_id,content_type 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_mentions',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'content',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'content_id',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'mentions content_id,content_type 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_mentions',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'content',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'content_type',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'mentions content_id,content_type,id_mentioned 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_mentions',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'content_id',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'mentions content_id,content_type,id_mentioned 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_mentions',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'content_type',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'mentions content_id,content_type,id_mentioned 0003' => Array
+		(
+			'TABLE_NAME' => 'smf_mentions',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '3',
+			'COLUMN_NAME' => 'id_mentioned',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'mentions id_member 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_mentions',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'mentionee',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_member',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'message_icons id_board 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_message_icons',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_board',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_board',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'message_icons id_icon 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_message_icons',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_icon',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'messages id_board,id_msg,approved 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_messages',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'idx_id_board',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_board',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'messages id_board,id_msg,approved 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_messages',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'idx_id_board',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'id_msg',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'messages id_board,id_msg,approved 0003' => Array
+		(
+			'TABLE_NAME' => 'smf_messages',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'idx_id_board',
+			'SEQ_IN_INDEX' => '3',
+			'COLUMN_NAME' => 'approved',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'messages id_member,approved,id_msg 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_messages',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_member_msg',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_member',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'messages id_member,approved,id_msg 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_messages',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_member_msg',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'approved',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'messages id_member,approved,id_msg 0003' => Array
+		(
+			'TABLE_NAME' => 'smf_messages',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_member_msg',
+			'SEQ_IN_INDEX' => '3',
+			'COLUMN_NAME' => 'id_msg',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'messages id_member,id_board 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_messages',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_show_posts',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_member',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'messages id_member,id_board 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_messages',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_show_posts',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'id_board',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'messages id_member,id_msg 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_messages',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'idx_id_member',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_member',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'messages id_member,id_msg 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_messages',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'idx_id_member',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'id_msg',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'messages id_member,id_topic 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_messages',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_participation',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_member',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'messages id_member,id_topic 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_messages',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_participation',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'id_topic',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'messages id_member,poster_ip,id_msg 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_messages',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_related_ip',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_member',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'messages id_member,poster_ip,id_msg 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_messages',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_related_ip',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'poster_ip',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'messages id_member,poster_ip,id_msg 0003' => Array
+		(
+			'TABLE_NAME' => 'smf_messages',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_related_ip',
+			'SEQ_IN_INDEX' => '3',
+			'COLUMN_NAME' => 'id_msg',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'messages id_msg 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_messages',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_msg',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'messages id_topic,id_msg,id_member,approved 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_messages',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_current_topic',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_topic',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'messages id_topic,id_msg,id_member,approved 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_messages',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_current_topic',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'id_msg',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'messages id_topic,id_msg,id_member,approved 0003' => Array
+		(
+			'TABLE_NAME' => 'smf_messages',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_current_topic',
+			'SEQ_IN_INDEX' => '3',
+			'COLUMN_NAME' => 'id_member',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'messages id_topic,id_msg,id_member,approved 0004' => Array
+		(
+			'TABLE_NAME' => 'smf_messages',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_current_topic',
+			'SEQ_IN_INDEX' => '4',
+			'COLUMN_NAME' => 'approved',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'messages likes 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_messages',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_likes',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'likes',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'messages poster_ip,id_topic 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_messages',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_ip_index',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'poster_ip',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'messages poster_ip,id_topic 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_messages',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_ip_index',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'id_topic',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'moderator_groups id_board,id_group 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_moderator_groups',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_board',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'moderator_groups id_board,id_group 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_moderator_groups',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'id_group',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'moderators id_board,id_member 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_moderators',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_board',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'moderators id_board,id_member 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_moderators',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'id_member',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'package_servers id_server 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_package_servers',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_server',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'permission_profiles id_profile 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_permission_profiles',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_profile',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'permissions id_group,permission 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_permissions',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_group',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'permissions id_group,permission 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_permissions',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'permission',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'personal_messages id_member_from,deleted_by_sender 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_personal_messages',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_member',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_member_from',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'personal_messages id_member_from,deleted_by_sender 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_personal_messages',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_member',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'deleted_by_sender',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'personal_messages id_pm 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_personal_messages',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_pm',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'personal_messages id_pm_head 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_personal_messages',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_pm_head',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_pm_head',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'personal_messages msgtime 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_personal_messages',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_msgtime',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'msgtime',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'pm_labeled_messages id_label,id_pm 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_pm_labeled_messages',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_label',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'pm_labeled_messages id_label,id_pm 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_pm_labeled_messages',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'id_pm',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'pm_labels id_label 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_pm_labels',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_label',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'pm_recipients id_member,deleted,id_pm 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_pm_recipients',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'idx_id_member',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_member',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'pm_recipients id_member,deleted,id_pm 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_pm_recipients',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'idx_id_member',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'deleted',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'pm_recipients id_member,deleted,id_pm 0003' => Array
+		(
+			'TABLE_NAME' => 'smf_pm_recipients',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'idx_id_member',
+			'SEQ_IN_INDEX' => '3',
+			'COLUMN_NAME' => 'id_pm',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'pm_recipients id_pm,id_member 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_pm_recipients',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_pm',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'pm_recipients id_pm,id_member 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_pm_recipients',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'id_member',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'pm_rules delete_pm 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_pm_rules',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_delete_pm',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'delete_pm',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'pm_rules id_member 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_pm_rules',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_member',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_member',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'pm_rules id_rule 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_pm_rules',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_rule',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'poll_choices id_poll,id_choice 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_poll_choices',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_poll',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'poll_choices id_poll,id_choice 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_poll_choices',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'id_choice',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'polls id_poll 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_polls',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_poll',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'qanda id_question 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_qanda',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_question',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'qanda lngfile 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_qanda',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_lngfile',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'lngfile',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'scheduled_tasks disabled 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_scheduled_tasks',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_disabled',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'disabled',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'scheduled_tasks id_task 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_scheduled_tasks',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_task',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'scheduled_tasks next_time 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_scheduled_tasks',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_next_time',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'next_time',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'scheduled_tasks task 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_scheduled_tasks',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'idx_task',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'task',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'sessions session_id 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_sessions',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'session_id',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'settings variable 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_settings',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'variable',
+			'SUB_PART' => '30',
+		),
+
+	'smiley_files id_smiley,smiley_set 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_smiley_files',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_smiley',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'smiley_files id_smiley,smiley_set 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_smiley_files',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'smiley_set',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'smileys id_smiley 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_smileys',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_smiley',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'spiders id_spider 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_spiders',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_spider',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'subscriptions active 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_subscriptions',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_active',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'active',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'subscriptions id_subscribe 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_subscriptions',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_subscribe',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'themes id_member 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_themes',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_member',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_member',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'themes id_theme,id_member,variable 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_themes',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_theme',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'themes id_theme,id_member,variable 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_themes',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'id_member',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'themes id_theme,id_member,variable 0003' => Array
+		(
+			'TABLE_NAME' => 'smf_themes',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '3',
+			'COLUMN_NAME' => 'variable',
+			'SUB_PART' => '30',
+		),
+
+	'topics approved 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_topics',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_approved',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'approved',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'topics id_board,id_first_msg 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_topics',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_board_news',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_board',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'topics id_board,id_first_msg 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_topics',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_board_news',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'id_first_msg',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'topics id_board,is_sticky,id_last_msg 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_topics',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_last_message_sticky',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_board',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'topics id_board,is_sticky,id_last_msg 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_topics',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_last_message_sticky',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'is_sticky',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'topics id_board,is_sticky,id_last_msg 0003' => Array
+		(
+			'TABLE_NAME' => 'smf_topics',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_last_message_sticky',
+			'SEQ_IN_INDEX' => '3',
+			'COLUMN_NAME' => 'id_last_msg',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'topics id_first_msg,id_board 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_topics',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'idx_first_message',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_first_msg',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'topics id_first_msg,id_board 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_topics',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'idx_first_message',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'id_board',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'topics id_last_msg,id_board 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_topics',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'idx_last_message',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_last_msg',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'topics id_last_msg,id_board 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_topics',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'idx_last_message',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'id_board',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'topics id_member_started,id_board 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_topics',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_member_started',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_member_started',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'topics id_member_started,id_board 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_topics',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_member_started',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'id_board',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'topics id_poll,id_topic 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_topics',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'idx_poll',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_poll',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'topics id_poll,id_topic 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_topics',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'idx_poll',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'id_topic',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'topics id_topic 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_topics',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_topic',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'topics is_sticky 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_topics',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_is_sticky',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'is_sticky',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'user_alerts alert_time 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_user_alerts',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_alert_time',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'alert_time',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'user_alerts id_alert 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_user_alerts',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_alert',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'user_alerts id_member 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_user_alerts',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_id_member',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_member',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'user_alerts_prefs id_member,alert_pref 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_user_alerts_prefs',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_member',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'user_alerts_prefs id_member,alert_pref 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_user_alerts_prefs',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'alert_pref',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'user_drafts id_draft 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_user_drafts',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_draft',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'user_drafts id_member,id_draft,type 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_user_drafts',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'idx_id_member',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_member',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'user_drafts id_member,id_draft,type 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_user_drafts',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'idx_id_member',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'id_draft',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'user_drafts id_member,id_draft,type 0003' => Array
+		(
+			'TABLE_NAME' => 'smf_user_drafts',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'idx_id_member',
+			'SEQ_IN_INDEX' => '3',
+			'COLUMN_NAME' => 'type',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'user_likes content_id,content_type 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_user_likes',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'content',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'content_id',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'user_likes content_id,content_type 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_user_likes',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'content',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'content_type',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'user_likes content_id,content_type,id_member 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_user_likes',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'content_id',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'user_likes content_id,content_type,id_member 0002' => Array
+		(
+			'TABLE_NAME' => 'smf_user_likes',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '2',
+			'COLUMN_NAME' => 'content_type',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'user_likes content_id,content_type,id_member 0003' => Array
+		(
+			'TABLE_NAME' => 'smf_user_likes',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '3',
+			'COLUMN_NAME' => 'id_member',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'user_likes id_member 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_user_likes',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'liker',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'id_member',
+			'SUB_PART' => '<em>null</em>',
+		),
+);
+
 $smf_tables['2.1'] = Array
 (
 	'admin_info_files' => Array
@@ -27750,8 +36668,6 @@ $smf_indexes['Yabbse'] = Array
 
 $ui->addChunk('Settings File', function() use ($ui)
 {
-	global $smcFunc, $db_connection, $db_type, $sourcedir;
-
 	// First some settings file stuff...
 	$dumpvars = array('mbname', 'boardurl', 'db_server', 'db_name', 'db_prefix', 'language', 'db_type', 'db_character_set', 'db_mb4');
 
@@ -27779,20 +36695,15 @@ $ui->addChunk('Settings File', function() use ($ui)
 
 $ui->addChunk('Settings Table', function() use ($ui)
 {
-	global $smcFunc, $db_connection, $db_prefix;
-
 	$settings = array();
 	$settings[0] = array('Variable','Value');
 
-	$result = $smcFunc['db_query']('', '
+	$result = $ui->db->query('
 		SELECT variable, value FROM {db_prefix}settings
-		WHERE variable = {string:smf_ver}',
-		array(
-			'smf_ver' => 'smfVersion',
-		)
+		WHERE variable = \'smfVersion\''
 	);
 
-	while ($row = $smcFunc['db_fetch_assoc']($result))
+	while ($row = $ui->db->fetch_assoc($result))
 	{
 		if (is_null($row['value']))
 			$row['value'] = '<em>null</em>';
@@ -27813,6 +36724,8 @@ $ui->addChunk('Settings Table', function() use ($ui)
 			$ui->smf_ver = '2.0';
 		elseif (substr($row['value'], 0, 3) === '2.1')
 			$ui->smf_ver = '2.1';
+		elseif (substr($row['value'], 0, 3) === '3.0')
+			$ui->smf_ver = '3.0';
 		
 	}
 	$ui->dumpTable($settings);
@@ -27821,7 +36734,7 @@ $ui->addChunk('Settings Table', function() use ($ui)
 $ui->addChunk('Select SMF Version for Comparison', function() use ($ui)
 {
 	// Value selected?
-	if (isset($_SESSION['ver']) && in_array($_SESSION['ver'], array('Yabbse', '1.0', '1.1', '2.0', '2.1')))
+	if (isset($_SESSION['ver']) && in_array($_SESSION['ver'], array('Yabbse', '1.0', '1.1', '2.0', '2.1', '3.0')))
 		$ui->smf_ver = $_SESSION['ver'];
 
 	// Provide a default if none somehow found yet...
@@ -27832,6 +36745,7 @@ $ui->addChunk('Select SMF Version for Comparison', function() use ($ui)
 	echo '<form>';
 	echo '<label for="ver">SMF Version:</label>
 	<select name="ver">
+		<option value="3.0"' . ($ui->smf_ver == '3.0' ? 'selected' : '') . '>3.0</option>
 		<option value="2.1"' . ($ui->smf_ver == '2.1' ? 'selected' : '') . '>2.1</option>
 		<option value="2.0"' . ($ui->smf_ver == '2.0' ? 'selected' : '') . '>2.0</option>
 		<option value="1.1"' . ($ui->smf_ver == '1.1' ? 'selected' : '') . '>1.1</option>
@@ -27845,63 +36759,57 @@ $ui->addChunk('Select SMF Version for Comparison', function() use ($ui)
 
 $ui->addChunk('Compare Tables - Current DB on Left, Vanilla SMF on Right', function() use ($ui)
 {
-	global $smcFunc, $db_connection, $db_prefix, $smf_tables, $db_type;
+	global $smf_tables;
 
 	$ui->tables = array();
 
 	// Ensure we are running mysql...
-	if (!empty($db_type) && $db_type != 'mysql')
+	if (!empty($ui->db->db_type) && $ui->db->db_type != 'mysql')
 	{
 		$ui->addError('This utility works for MySQL only.');
 		return;
 	}
 
 	// Get them tables...
-	$result = $smcFunc['db_query']('', '
-		SHOW TABLE STATUS',
-		array(
-		)
+	$result = $ui->db->query('
+		SHOW TABLE STATUS'
 	);
 
-	while ($row = $smcFunc['db_fetch_assoc']($result))
-		$ui->tables[substr($row['Name'], strlen($db_prefix))] = array('Name' => $row['Name'], 'Engine' => $row['Engine'], 'Collation' => $row['Collation']);
+	while ($row = $ui->db->fetch_assoc($result))
+		$ui->tables[substr($row['Name'], strlen($ui->db->db_prefix))] = array('Name' => $row['Name'], 'Engine' => $row['Engine'], 'Collation' => $row['Collation']);
 
 	compareArrays($ui->tables, $smf_tables[$ui->smf_ver], $ui);
 });
 
 $ui->addChunk('Compare Columns - Current DB on Left, Vanilla SMF on Right', function() use ($ui)
 {
-	global $smcFunc, $db_connection, $db_prefix, $smf_columns, $db_type, $db_name;
+	global $smf_columns;
 
 	// Ensure we are running mysql...
-	if (!empty($db_type) && $db_type != 'mysql')
+	if (!empty($ui->db->db_type) && $ui->db->db_type != 'mysql')
 		return;
 
 	$columns = array();
 	foreach ($ui->tables AS $table_name => $info)
 	{
-		$result = $smcFunc['db_query']('', '
+		$result = $ui->db->query('
 			SELECT TABLE_NAME, COLUMN_NAME, COLUMN_TYPE, IS_NULLABLE, COLUMN_DEFAULT, EXTRA, COLLATION_NAME
 				FROM information_schema.COLUMNS
-				WHERE TABLE_SCHEMA = {string:schema}
-				AND TABLE_NAME = {string:table}',
-			array(
-				'schema' => $db_name,
-				'table' => $db_prefix . $table_name,
-			)
+				WHERE TABLE_SCHEMA = \'' .  $ui->db->db_name . '\'
+				AND TABLE_NAME = \'' . $ui->db->db_prefix . $table_name . '\''
 		);
-		while ($row = $smcFunc['db_fetch_assoc']($result))
-			$columns[substr($row['TABLE_NAME'], strlen($db_prefix)) . ' ' . $row['COLUMN_NAME']] = array('TABLE_NAME' => $row['TABLE_NAME'], 'COLUMN_NAME' => $row['COLUMN_NAME'], 'COLUMN_TYPE' => $row['COLUMN_TYPE'], 'IS_NULLABLE' => $row['IS_NULLABLE'], 'COLUMN_DEFAULT' => (is_null($row['COLUMN_DEFAULT']) ? '<em>null</em>' : $row['COLUMN_DEFAULT']), 'EXTRA' => $row['EXTRA'], 'COLLATION_NAME' => (is_null($row['COLLATION_NAME']) ? '<em>null</em>' : $row['COLLATION_NAME']));
+		while ($row = $ui->db->fetch_assoc($result))
+			$columns[substr($row['TABLE_NAME'], strlen($ui->db->db_prefix)) . ' ' . $row['COLUMN_NAME']] = array('TABLE_NAME' => $row['TABLE_NAME'], 'COLUMN_NAME' => $row['COLUMN_NAME'], 'COLUMN_TYPE' => $row['COLUMN_TYPE'], 'IS_NULLABLE' => $row['IS_NULLABLE'], 'COLUMN_DEFAULT' => (is_null($row['COLUMN_DEFAULT']) ? '<em>null</em>' : $row['COLUMN_DEFAULT']), 'EXTRA' => $row['EXTRA'], 'COLLATION_NAME' => (is_null($row['COLLATION_NAME']) ? '<em>null</em>' : $row['COLLATION_NAME']));
 	}
 	compareArrays($columns, $smf_columns[$ui->smf_ver], $ui);
 });
 
 $ui->addChunk('Compare Indexes - Current DB on Left, Vanilla SMF on Right', function() use ($ui)
 {
-	global $smcFunc, $db_connection, $db_prefix, $smf_indexes, $db_name, $db_type;
+	global $smf_indexes;
 
 	// Ensure we are running mysql...
-	if (!empty($db_type) && $db_type != 'mysql')
+	if (!empty($ui->db->db_type) && $ui->db->db_type != 'mysql')
 		return;
 
 	$indexes = array();
@@ -27909,17 +36817,13 @@ $ui->addChunk('Compare Indexes - Current DB on Left, Vanilla SMF on Right', func
 	{
 		// Find all indexes for that table...
 		$table_indexes = array();
-		$result = $smcFunc['db_query']('', '
+		$result = $ui->db->query('
 			SELECT DISTINCT INDEX_NAME
 				FROM information_schema.STATISTICS
-				WHERE TABLE_SCHEMA = {string:schema}
-				AND TABLE_NAME = {string:table}',
-			array(
-				'schema' => $db_name,
-				'table' => $db_prefix . $table_name,
-			)
+				WHERE TABLE_SCHEMA = \'' .  $ui->db->db_name . '\'
+				AND TABLE_NAME = \'' . $ui->db->db_prefix . $table_name . '\''
 		);
-		while ($row = $smcFunc['db_fetch_assoc']($result))
+		while ($row = $ui->db->fetch_assoc($result))
 			$table_indexes[] = $row['INDEX_NAME'];
 
 		// Loop thru each index...
@@ -27928,36 +36832,26 @@ $ui->addChunk('Compare Indexes - Current DB on Left, Vanilla SMF on Right', func
 		foreach ($table_indexes AS $index_name)
 		{
 			// Get the signature...
-			$result = $smcFunc['db_query']('', '
+			$result = $ui->db->query('
 				SELECT GROUP_CONCAT(COLUMN_NAME ORDER BY SEQ_IN_INDEX) AS signature
 					FROM information_schema.STATISTICS
-					WHERE TABLE_SCHEMA = {string:schema}
-					AND TABLE_NAME = {string:table}
-					AND INDEX_NAME = {string:index}',
-				array(
-					'schema' => $db_name,
-					'table' => $db_prefix . $table_name,
-					'index' => $index_name,
-				)
+					WHERE TABLE_SCHEMA = \'' .  $ui->db->db_name . '\'
+					AND TABLE_NAME = \'' . $ui->db->db_prefix . $table_name . '\'
+					AND INDEX_NAME = \'' . $index_name . '\''
 			);
-			$row = $smcFunc['db_fetch_assoc']($result);
+			$row = $ui->db->fetch_assoc($result);
 			$signature = $row['signature'];
 
 			// Now get the columns...
-			$result = $smcFunc['db_query']('', '
+			$result = $ui->db->query('
 				SELECT TABLE_NAME, NON_UNIQUE, INDEX_NAME, SEQ_IN_INDEX, COLUMN_NAME, SUB_PART
 					FROM information_schema.STATISTICS
-					WHERE TABLE_SCHEMA = {string:schema}
-					AND TABLE_NAME = {string:table}
-					AND INDEX_NAME = {string:index}',
-				array(
-					'schema' => $db_name,
-					'table' => $db_prefix . $table_name,
-					'index' => $index_name,
-				)
+					WHERE TABLE_SCHEMA = \'' .  $ui->db->db_name . '\'
+					AND TABLE_NAME = \'' . $ui->db->db_prefix . $table_name . '\'
+					AND INDEX_NAME = \'' . $index_name . '\''
 			);
-			while ($row = $smcFunc['db_fetch_assoc']($result))
-				$indexes[substr($row['TABLE_NAME'], strlen($db_prefix)) . ' ' . $signature . ' ' . str_pad($row['SEQ_IN_INDEX'], 4, '0', STR_PAD_LEFT)] = array('TABLE_NAME' => $row['TABLE_NAME'], 'NON_UNIQUE' => $row['NON_UNIQUE'], 'INDEX_NAME' => $row['INDEX_NAME'], 'SEQ_IN_INDEX' => $row['SEQ_IN_INDEX'], 'COLUMN_NAME' => $row['COLUMN_NAME'], 'SUB_PART' => (is_null($row['SUB_PART']) ? '<em>null</em>' : $row['SUB_PART']));
+			while ($row = $ui->db->fetch_assoc($result))
+				$indexes[substr($row['TABLE_NAME'], strlen($ui->db->db_prefix)) . ' ' . $signature . ' ' . str_pad($row['SEQ_IN_INDEX'], 4, '0', STR_PAD_LEFT)] = array('TABLE_NAME' => $row['TABLE_NAME'], 'NON_UNIQUE' => $row['NON_UNIQUE'], 'INDEX_NAME' => $row['INDEX_NAME'], 'SEQ_IN_INDEX' => $row['SEQ_IN_INDEX'], 'COLUMN_NAME' => $row['COLUMN_NAME'], 'SUB_PART' => (is_null($row['SUB_PART']) ? '<em>null</em>' : $row['SUB_PART']));
 		}
 	}
 	compareArrays($indexes, $smf_indexes[$ui->smf_ver], $ui);
@@ -28119,6 +37013,175 @@ function rightOnly($right_row)
  *
  */
 
+// Create a minimal db layer...
+class Ssui_Db
+{
+	/*
+	 * Properties
+	 */
+	protected $db_obj = null;
+	public $db_type = '';
+	public $db_prefix = '';
+	public $db_name = '';
+
+	/**
+	 * Constructor
+	 *
+	 * Builds a SimpleSmfUI object
+	 *
+	 * @param string title
+	 * @param bool db_needed
+	 * @return void
+	 */
+	function __construct($db_type, $db_prefix, $db_character_set, $db_server, $db_user, $db_passwd, $db_name, $db_port)
+	{
+		// Some quick db parameter validations...
+		$this->db_type = $db_type == 'postgresql' ? 'postgresql' : 'mysql';
+		$this->db_prefix = empty($db_prefix) ? 'smf_' : $db_prefix;
+		$this->db_name = empty($db_name) ? '' : $db_name;
+
+		// pg...
+		if ($this->db_type == 'postgresql')
+		{
+			$this->db_obj = pg_connect((empty($db_server) ? '' : 'host=' . $db_server . ' ') . 'dbname=' . $db_name . ' user=\'' . $db_user . '\' password=\'' . $db_passwd . '\'' . (empty($db_port) ? '' : ' port=\'' . $db_port . '\''));
+		}
+		// mysql...
+		else
+		{
+			mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+			$this->db_obj = new mysqli($db_server, $db_user, $db_passwd, $db_name, $db_port);
+
+			if (!$this->db_obj->connect_errno)
+			{
+				// Set names...
+				if (!empty($db_character_set))
+					$this->db_obj->set_charset($db_character_set);
+			}
+		}
+	}
+
+	/**
+	 * query
+	 *
+	 * @param string query
+	 * @return pgsql\result | mysqli_result
+	 */
+	public function query($query_string)
+	{
+		// Handle db prefix...
+		$query_string = str_ireplace('{db_prefix}', $this->db_prefix, $query_string);
+
+		// pg...
+		if ($this->db_type == 'postgresql')
+		{
+			return pg_query($this->db_obj, $query_string);
+		}
+		// mysql...
+		else
+		{
+			return $this->db_obj->query($query_string);
+		}
+	}
+
+	/**
+	 * fetch_assoc
+	 *
+	 * @param pgsql\result | mysqli_result
+	 * @return array
+	 */
+	public function fetch_assoc($db_result)
+	{
+		// pg...
+		if ($this->db_type == 'postgresql')
+		{
+			return pg_fetch_assoc($db_result);
+		}
+		// mysql...
+		else
+		{
+			return $db_result->fetch_assoc();
+		}
+	}
+
+	/**
+	 * free
+	 *
+	 * @param pgsql\result | mysqli_result
+	 * @return void
+	 */
+	public function free($db_result)
+	{
+		// pg...
+		if ($this->db_type == 'postgresql')
+		{
+			pg_free_result($db_result);
+		}
+		// mysql...
+		else
+		{
+			$db_result->free();
+		}
+	}
+
+	/**
+	 * escape_string
+	 *
+	 * @param string string
+	 * @return string
+	 */
+	public function escape_string($string)
+	{
+		// pg...
+		if ($this->db_type == 'postgresql')
+		{
+			return pg_escape_string($this->db_obj, $string);
+		}
+		// mysql...
+		else
+		{
+			return $this->db_obj->real_escape_string($string);
+		}
+	}
+
+	/**
+	 * connect_error
+	 *
+	 * @return string
+	 */
+	public function connect_error()
+	{
+		// pg...
+		if ($this->db_type == 'postgresql')
+		{
+			return pg_last_error($this->db_obj);
+		}
+		// mysql...
+		else
+		{
+			return $this->db_obj->connect_error;
+		}
+	}
+
+	/**
+	 * error
+	 *
+	 * @return string
+	 */
+	public function error()
+	{
+		// pg...
+		if ($this->db_type == 'postgresql')
+		{
+			return pg_last_error($this->db_obj);
+		}
+		// mysql...
+		else
+		{
+			return $this->db_obj->error;
+		}
+	}
+}
+
 // This oughtta hold us off until php 9.0...
 #[AllowDynamicProperties]
 class SimpleSmfUI
@@ -28140,6 +37203,8 @@ class SimpleSmfUI
 	);
 	protected $chunks = array();
 	protected $errors = array();
+
+	public $db = null;
 
 	/*
 	 * SMF Properties
@@ -28204,9 +37269,6 @@ class SimpleSmfUI
 		define('MYSQL_TITLE', 'MySQL');
 		define('SMF_USER_AGENT', 'Mozilla/5.0 (' . php_uname('s') . ' ' . php_uname('m') . ') AppleWebKit/605.1.15 (KHTML, like Gecko)  SMF/' . strtr(SMF_VERSION, ' ', '.'));
 
-		// These must remain globals when calling SMF funcs...
-		global $smcFunc, $db_connection, $db_prefix, $db_name, $db_type, $sourcedir, $cachedir, $db_character_set, $db_port;
-		$smcFunc = array();
 		$this->settings_file = array();
 
 		if ($this->db_needed)
@@ -28224,37 +37286,22 @@ class SimpleSmfUI
 
 				foreach($dumpvars as $setting)
 					$this->settings_file[$setting] = (isset(${$setting}) ? ${$setting} : '<strong>NOT SET</strong>');
+
+				// Make the connection...
+				$db_type = empty($db_type) ? 'mysql' : $db_type;
+				$db_port = empty($db_port) ? null : $db_port;
+				$db_character_set = empty($db_character_set) ? '' : $db_character_set;
+				$this->db = new Ssui_Db($db_type, $db_prefix, $db_character_set, $db_server, $db_user, $db_passwd, $db_name, $db_port);
+
+				if ($this->db->connect_error())
+				{
+					$this->addError('err_no_db', ' ' . $this->db->connect_error());
+					// So subsequent steps know the DB isn't there...
+					$this->db = null;
+				}
 			}
 			else
 				$this->addError('err_no_settings');
-
-			if (!empty($sourcedir))
-			{
-				// Get the database going!
-				if (empty($db_type) || $db_type == 'mysqli')
-					$db_type = 'mysql';
-
-				// Add in the port if needed
-				$db_options = array();
-				if (!empty($db_port))
-					$db_options['port'] = $db_port;
-
-				// Make the connection...
-				require_once($sourcedir . '/Subs-Db-' . $db_type . '.php');
-				$db_connection = smf_db_initiate($db_server, $db_name, $db_user, $db_passwd, $db_prefix, $db_options);
-
-				if (empty($db_connection))
-					$this->addError('err_no_db');
-
-				// Set names...
-				if (!empty($db_character_set))
-					$smcFunc['db_query']('', '
-						SET NAMES {string:db_character_set}',
-						array(
-							'db_character_set' => $db_character_set,
-						)
-					);
-			}
 		}
 	}
 
@@ -28666,8 +37713,6 @@ class SimpleSmfUI
 	 */
 	public function go()
 	{
-		global $db_connection;
-
 		// Responding to a POST? Cleanse info, put in session and redirect
 		session_start();
 		if ($_POST)
@@ -28686,7 +37731,7 @@ class SimpleSmfUI
 
 		// Execute the chunks...
 		// Note if db_needed & no connection, do not process chunks, just display the errors
-		if (!$this->db_needed || ($this->db_needed && !empty($db_connection)))
+		if (!$this->db_needed || ($this->db_needed && !empty($this->db)))
 		{
 			foreach($this->chunks AS $ix => $chunk)
 				$this->doChunk($ix, $chunk);
