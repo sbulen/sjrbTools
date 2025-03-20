@@ -28,504 +28,504 @@ $smf_tables['3.0'] = Array
 		(
 			'Name' => 'smf_admin_info_files',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'approval_queue' => Array
 		(
 			'Name' => 'smf_approval_queue',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'attachments' => Array
 		(
 			'Name' => 'smf_attachments',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'background_tasks' => Array
 		(
 			'Name' => 'smf_background_tasks',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'ban_groups' => Array
 		(
 			'Name' => 'smf_ban_groups',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'ban_items' => Array
 		(
 			'Name' => 'smf_ban_items',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'board_permissions' => Array
 		(
 			'Name' => 'smf_board_permissions',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'board_permissions_view' => Array
 		(
 			'Name' => 'smf_board_permissions_view',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'boards' => Array
 		(
 			'Name' => 'smf_boards',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'calendar' => Array
 		(
 			'Name' => 'smf_calendar',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'categories' => Array
 		(
 			'Name' => 'smf_categories',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'custom_fields' => Array
 		(
 			'Name' => 'smf_custom_fields',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'group_moderators' => Array
 		(
 			'Name' => 'smf_group_moderators',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_actions' => Array
 		(
 			'Name' => 'smf_log_actions',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_activity' => Array
 		(
 			'Name' => 'smf_log_activity',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_banned' => Array
 		(
 			'Name' => 'smf_log_banned',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_boards' => Array
 		(
 			'Name' => 'smf_log_boards',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_comments' => Array
 		(
 			'Name' => 'smf_log_comments',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_digest' => Array
 		(
 			'Name' => 'smf_log_digest',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_errors' => Array
 		(
 			'Name' => 'smf_log_errors',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_floodcontrol' => Array
 		(
 			'Name' => 'smf_log_floodcontrol',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_group_requests' => Array
 		(
 			'Name' => 'smf_log_group_requests',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_mark_read' => Array
 		(
 			'Name' => 'smf_log_mark_read',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_member_notices' => Array
 		(
 			'Name' => 'smf_log_member_notices',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_notify' => Array
 		(
 			'Name' => 'smf_log_notify',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_online' => Array
 		(
 			'Name' => 'smf_log_online',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_packages' => Array
 		(
 			'Name' => 'smf_log_packages',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_polls' => Array
 		(
 			'Name' => 'smf_log_polls',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_reported' => Array
 		(
 			'Name' => 'smf_log_reported',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_reported_comments' => Array
 		(
 			'Name' => 'smf_log_reported_comments',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_scheduled_tasks' => Array
 		(
 			'Name' => 'smf_log_scheduled_tasks',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_search_messages' => Array
 		(
 			'Name' => 'smf_log_search_messages',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_search_results' => Array
 		(
 			'Name' => 'smf_log_search_results',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_search_subjects' => Array
 		(
 			'Name' => 'smf_log_search_subjects',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_search_topics' => Array
 		(
 			'Name' => 'smf_log_search_topics',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_spider_hits' => Array
 		(
 			'Name' => 'smf_log_spider_hits',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_spider_stats' => Array
 		(
 			'Name' => 'smf_log_spider_stats',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_subscribed' => Array
 		(
 			'Name' => 'smf_log_subscribed',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_topics' => Array
 		(
 			'Name' => 'smf_log_topics',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'mail_queue' => Array
 		(
 			'Name' => 'smf_mail_queue',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'member_logins' => Array
 		(
 			'Name' => 'smf_member_logins',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'membergroups' => Array
 		(
 			'Name' => 'smf_membergroups',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'members' => Array
 		(
 			'Name' => 'smf_members',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'mentions' => Array
 		(
 			'Name' => 'smf_mentions',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'message_icons' => Array
 		(
 			'Name' => 'smf_message_icons',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'messages' => Array
 		(
 			'Name' => 'smf_messages',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'moderator_groups' => Array
 		(
 			'Name' => 'smf_moderator_groups',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'moderators' => Array
 		(
 			'Name' => 'smf_moderators',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'package_servers' => Array
 		(
 			'Name' => 'smf_package_servers',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'permission_profiles' => Array
 		(
 			'Name' => 'smf_permission_profiles',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'permissions' => Array
 		(
 			'Name' => 'smf_permissions',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'personal_messages' => Array
 		(
 			'Name' => 'smf_personal_messages',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'pm_labeled_messages' => Array
 		(
 			'Name' => 'smf_pm_labeled_messages',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'pm_labels' => Array
 		(
 			'Name' => 'smf_pm_labels',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'pm_recipients' => Array
 		(
 			'Name' => 'smf_pm_recipients',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'pm_rules' => Array
 		(
 			'Name' => 'smf_pm_rules',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'poll_choices' => Array
 		(
 			'Name' => 'smf_poll_choices',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'polls' => Array
 		(
 			'Name' => 'smf_polls',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'qanda' => Array
 		(
 			'Name' => 'smf_qanda',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'scheduled_tasks' => Array
 		(
 			'Name' => 'smf_scheduled_tasks',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'sessions' => Array
 		(
 			'Name' => 'smf_sessions',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'settings' => Array
 		(
 			'Name' => 'smf_settings',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'smiley_files' => Array
 		(
 			'Name' => 'smf_smiley_files',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'smileys' => Array
 		(
 			'Name' => 'smf_smileys',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'spiders' => Array
 		(
 			'Name' => 'smf_spiders',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'subscriptions' => Array
 		(
 			'Name' => 'smf_subscriptions',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'themes' => Array
 		(
 			'Name' => 'smf_themes',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'topics' => Array
 		(
 			'Name' => 'smf_topics',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'user_alerts' => Array
 		(
 			'Name' => 'smf_user_alerts',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'user_alerts_prefs' => Array
 		(
 			'Name' => 'smf_user_alerts_prefs',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'user_drafts' => Array
 		(
 			'Name' => 'smf_user_drafts',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'user_likes' => Array
 		(
 			'Name' => 'smf_user_likes',
 			'Engine' => 'InnoDB',
-			'Collation' => 'utf8mb3_general_ci',
+			'Collation' => 'utf8mb4_0900_ai_ci',
 		),
 );
 
@@ -539,7 +539,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'admin_info_files filename' => Array
@@ -550,7 +550,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'admin_info_files filetype' => Array
@@ -561,7 +561,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'admin_info_files id_file' => Array
@@ -583,7 +583,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'admin_info_files path' => Array
@@ -594,7 +594,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'approval_queue id_attach' => Array
@@ -671,7 +671,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'attachments fileext' => Array
@@ -682,7 +682,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'attachments filename' => Array
@@ -693,7 +693,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'attachments height' => Array
@@ -770,7 +770,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'attachments size' => Array
@@ -825,7 +825,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'background_tasks task_data' => Array
@@ -836,7 +836,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'background_tasks task_file' => Array
@@ -847,7 +847,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'ban_groups ban_time' => Array
@@ -935,7 +935,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'ban_groups notes' => Array
@@ -946,7 +946,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'ban_groups reason' => Array
@@ -957,7 +957,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'ban_items email_address' => Array
@@ -968,7 +968,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'ban_items hits' => Array
@@ -990,7 +990,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'ban_items id_ban' => Array
@@ -1089,7 +1089,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'board_permissions_view deny' => Array
@@ -1166,7 +1166,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'boards description' => Array
@@ -1177,7 +1177,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'boards id_board' => Array
@@ -1265,7 +1265,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '-1,0',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'boards name' => Array
@@ -1276,7 +1276,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'boards num_posts' => Array
@@ -1320,7 +1320,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'boards unapproved_posts' => Array
@@ -1364,7 +1364,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'calendar enabled' => Array
@@ -1408,7 +1408,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'calendar id_board' => Array
@@ -1463,7 +1463,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'calendar rdates' => Array
@@ -1474,7 +1474,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'calendar rrule' => Array
@@ -1485,7 +1485,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => 'FREQ=YEARLY;COUNT=1',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'calendar sequence' => Array
@@ -1529,7 +1529,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'YES',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'calendar title' => Array
@@ -1540,7 +1540,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'calendar type' => Array
@@ -1562,7 +1562,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'categories can_collapse' => Array
@@ -1595,7 +1595,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'categories id_cat' => Array
@@ -1617,7 +1617,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'custom_fields active' => Array
@@ -1661,7 +1661,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'custom_fields default_value' => Array
@@ -1672,7 +1672,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'custom_fields enclose' => Array
@@ -1683,7 +1683,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'custom_fields field_desc' => Array
@@ -1694,7 +1694,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'custom_fields field_length' => Array
@@ -1716,7 +1716,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'custom_fields field_options' => Array
@@ -1727,7 +1727,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'custom_fields field_order' => Array
@@ -1749,7 +1749,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => 'text',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'custom_fields id_field' => Array
@@ -1771,7 +1771,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'custom_fields placement' => Array
@@ -1826,7 +1826,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => 'forumprofile',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'custom_fields show_reg' => Array
@@ -1870,7 +1870,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_actions extra' => Array
@@ -1881,7 +1881,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_actions id_action' => Array
@@ -2046,7 +2046,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_banned id_ban_log' => Array
@@ -2134,7 +2134,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_comments comment_type' => Array
@@ -2145,7 +2145,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => 'warning',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_comments counter' => Array
@@ -2222,7 +2222,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_comments recipient_name' => Array
@@ -2233,7 +2233,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_digest daily' => Array
@@ -2288,7 +2288,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => 'post',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_errors backtrace' => Array
@@ -2299,7 +2299,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_errors error_type' => Array
@@ -2310,7 +2310,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => 'general',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_errors file' => Array
@@ -2321,7 +2321,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_errors id_error' => Array
@@ -2387,7 +2387,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_errors session' => Array
@@ -2398,7 +2398,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_errors url' => Array
@@ -2409,7 +2409,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_floodcontrol ip' => Array
@@ -2442,7 +2442,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => 'post',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_group_requests act_reason' => Array
@@ -2453,7 +2453,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_group_requests id_group' => Array
@@ -2508,7 +2508,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_group_requests reason' => Array
@@ -2519,7 +2519,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_group_requests status' => Array
@@ -2596,7 +2596,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_member_notices id_notice' => Array
@@ -2618,7 +2618,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_notify id_board' => Array
@@ -2717,7 +2717,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_online url' => Array
@@ -2728,7 +2728,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_packages credits' => Array
@@ -2739,7 +2739,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_packages db_changes' => Array
@@ -2750,7 +2750,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_packages failed_steps' => Array
@@ -2761,7 +2761,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_packages filename' => Array
@@ -2772,7 +2772,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_packages id_install' => Array
@@ -2827,7 +2827,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_packages member_removed' => Array
@@ -2838,7 +2838,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_packages name' => Array
@@ -2849,7 +2849,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_packages package_id' => Array
@@ -2860,7 +2860,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_packages sha256_hash' => Array
@@ -2871,7 +2871,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'YES',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_packages smf_version' => Array
@@ -2882,7 +2882,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_packages themes_installed' => Array
@@ -2893,7 +2893,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_packages time_installed' => Array
@@ -2926,7 +2926,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_polls id_choice' => Array
@@ -2970,7 +2970,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_reported closed' => Array
@@ -3058,7 +3058,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_reported num_reports' => Array
@@ -3080,7 +3080,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_reported time_started' => Array
@@ -3113,7 +3113,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_reported_comments id_comment' => Array
@@ -3168,7 +3168,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_reported_comments time_sent' => Array
@@ -3322,7 +3322,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_search_topics id_search' => Array
@@ -3399,7 +3399,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_spider_stats id_spider' => Array
@@ -3520,7 +3520,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_subscribed reminder_sent' => Array
@@ -3564,7 +3564,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'log_topics id_member' => Array
@@ -3619,7 +3619,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'mail_queue headers' => Array
@@ -3630,7 +3630,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'mail_queue id_mail' => Array
@@ -3674,7 +3674,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'mail_queue send_html' => Array
@@ -3696,7 +3696,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'mail_queue time_sent' => Array
@@ -3773,7 +3773,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'membergroups group_name' => Array
@@ -3784,7 +3784,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'membergroups group_type' => Array
@@ -3817,7 +3817,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'membergroups id_group' => Array
@@ -3872,7 +3872,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'membergroups tfa_required' => Array
@@ -3894,7 +3894,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'members alerts' => Array
@@ -3916,7 +3916,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'members birthdate' => Array
@@ -3938,7 +3938,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'members date_registered' => Array
@@ -3960,7 +3960,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'members id_group' => Array
@@ -4026,7 +4026,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'members instant_messages' => Array
@@ -4070,7 +4070,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'members member_ip' => Array
@@ -4103,7 +4103,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'members mod_prefs' => Array
@@ -4114,7 +4114,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'members new_pm' => Array
@@ -4136,7 +4136,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'members passwd_flood' => Array
@@ -4147,7 +4147,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'members password_salt' => Array
@@ -4158,7 +4158,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'members personal_text' => Array
@@ -4169,7 +4169,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'members pm_ignore_list' => Array
@@ -4180,7 +4180,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'YES',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'members pm_prefs' => Array
@@ -4224,7 +4224,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'members secret_answer' => Array
@@ -4235,7 +4235,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'members secret_question' => Array
@@ -4246,7 +4246,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'members show_online' => Array
@@ -4268,7 +4268,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'members smiley_set' => Array
@@ -4279,7 +4279,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'members spoofdetector_name' => Array
@@ -4290,7 +4290,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'members tfa_backup' => Array
@@ -4301,7 +4301,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'members tfa_secret' => Array
@@ -4312,7 +4312,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'members time_format' => Array
@@ -4323,7 +4323,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'members time_offset' => Array
@@ -4345,7 +4345,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'members total_time_logged_in' => Array
@@ -4378,7 +4378,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'members validation_code' => Array
@@ -4389,7 +4389,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'members warning' => Array
@@ -4411,7 +4411,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'members website_url' => Array
@@ -4422,7 +4422,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'mentions content_id' => Array
@@ -4444,7 +4444,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'mentions id_member' => Array
@@ -4488,7 +4488,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'message_icons icon_order' => Array
@@ -4532,7 +4532,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'messages approved' => Array
@@ -4554,7 +4554,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'messages icon' => Array
@@ -4565,7 +4565,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => 'xx',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'messages id_board' => Array
@@ -4642,7 +4642,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'messages modified_reason' => Array
@@ -4653,7 +4653,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'messages modified_time' => Array
@@ -4675,7 +4675,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'messages poster_ip' => Array
@@ -4697,7 +4697,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'messages poster_time' => Array
@@ -4730,7 +4730,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'messages version' => Array
@@ -4741,7 +4741,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'moderator_groups id_board' => Array
@@ -4796,7 +4796,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'YES',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'package_servers id_server' => Array
@@ -4818,7 +4818,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'package_servers url' => Array
@@ -4829,7 +4829,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'package_servers validation_url' => Array
@@ -4840,7 +4840,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'permission_profiles id_profile' => Array
@@ -4862,7 +4862,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'permissions add_deny' => Array
@@ -4895,7 +4895,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'personal_messages body' => Array
@@ -4906,7 +4906,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'personal_messages deleted_by_sender' => Array
@@ -4928,7 +4928,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'personal_messages id_member_from' => Array
@@ -4983,7 +4983,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'personal_messages version' => Array
@@ -4994,7 +4994,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'pm_labeled_messages id_label' => Array
@@ -5049,7 +5049,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'pm_recipients bcc' => Array
@@ -5137,7 +5137,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'pm_rules criteria' => Array
@@ -5148,7 +5148,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'pm_rules delete_pm' => Array
@@ -5203,7 +5203,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'poll_choices id_choice' => Array
@@ -5236,7 +5236,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'poll_choices votes' => Array
@@ -5346,7 +5346,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'polls question' => Array
@@ -5357,7 +5357,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'polls reset_poll' => Array
@@ -5390,7 +5390,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'qanda id_question' => Array
@@ -5412,7 +5412,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'qanda question' => Array
@@ -5423,7 +5423,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'scheduled_tasks callable' => Array
@@ -5434,7 +5434,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'scheduled_tasks disabled' => Array
@@ -5478,7 +5478,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'scheduled_tasks time_offset' => Array
@@ -5511,7 +5511,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => 'h',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'sessions data' => Array
@@ -5522,7 +5522,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'sessions last_update' => Array
@@ -5544,7 +5544,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'settings value' => Array
@@ -5555,7 +5555,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'settings variable' => Array
@@ -5566,7 +5566,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'smiley_files filename' => Array
@@ -5577,7 +5577,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'smiley_files id_smiley' => Array
@@ -5599,7 +5599,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'smileys code' => Array
@@ -5610,7 +5610,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'smileys description' => Array
@@ -5621,7 +5621,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'smileys hidden' => Array
@@ -5687,7 +5687,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'spiders spider_name' => Array
@@ -5698,7 +5698,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'spiders user_agent' => Array
@@ -5709,7 +5709,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'subscriptions active' => Array
@@ -5731,7 +5731,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'subscriptions allow_partial' => Array
@@ -5753,7 +5753,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'subscriptions description' => Array
@@ -5764,7 +5764,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'subscriptions email_complete' => Array
@@ -5775,7 +5775,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'subscriptions id_group' => Array
@@ -5808,7 +5808,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'subscriptions name' => Array
@@ -5819,7 +5819,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'subscriptions reminder' => Array
@@ -5874,7 +5874,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'themes variable' => Array
@@ -5885,7 +5885,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'topics approved' => Array
@@ -6094,7 +6094,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'user_alerts content_id' => Array
@@ -6116,7 +6116,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'user_alerts extra' => Array
@@ -6127,7 +6127,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'user_alerts id_alert' => Array
@@ -6182,7 +6182,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'user_alerts_prefs alert_pref' => Array
@@ -6193,7 +6193,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'user_alerts_prefs alert_value' => Array
@@ -6226,7 +6226,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'user_drafts icon' => Array
@@ -6237,7 +6237,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => 'xx',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'user_drafts id_board' => Array
@@ -6347,7 +6347,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'user_drafts to_list' => Array
@@ -6358,7 +6358,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'user_drafts type' => Array
@@ -6391,7 +6391,7 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
-			'COLLATION_NAME' => 'utf8mb3_general_ci',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
 	'user_likes id_member' => Array
@@ -37056,6 +37056,8 @@ class Ssui_Db
 				// Set names...
 				if (!empty($db_character_set))
 					$this->db_obj->set_charset($db_character_set);
+
+				$this->db_obj->query('SET SESSION sql_mode = \'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,PIPES_AS_CONCAT\'');
 			}
 		}
 	}
