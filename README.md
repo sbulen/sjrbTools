@@ -10,7 +10,6 @@ Most of these utilities expose forum internals, and should be removed when not i
 These tools are inquiry only & are used to perform diagnostics.
 
 * ***smf_db_compare.php*** - This tool compares your database information to a vanilla SMF database, highlighting any changes. It works for all SMF1.x & 2.x forums.
-* ***smf_img_proxy_diag.php*** - This tool dumps key info about the environment & a particular user-specified image.  Used to understand Image Proxy issues.  It works for SMF2.0 & 2.1. 
 * ***smf_settings_diag.php*** - This tool dumps key settings.php entries and dumps the entire SMF settings table.  It works for SMF2.0 & 2.1.  ***NOTE -*** Some mods place sensitive information like passwords & hashes in the SMF settings table.  You may not want to share the output of this diagnostic publicly.
 * ***smf_utf8_diag.php*** - This tool dumps a bunch of helpful information on the state of the character set & collation of your SMF database.  It works for SMF2.0 & 2.1.
 * ***smf_hex_dump.php*** - This tool dumps occurances of a specific column in a specific record in hex.  Useful for debugging UTF8 data issues.  It is UTF8 safe - it will not chop a multi-byte character in half.  It works for SMF2.0 & 2.1. 
