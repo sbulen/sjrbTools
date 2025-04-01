@@ -100,9 +100,9 @@ $ui->addChunk('Convert Sequences', function() use ($ui)
 		echo "Highest key used before operation: {$highkey}<br>";
 
 		// Now set the proper sequence value, choose greater of existing lastval or max of column ID...
-		$sql = "SELECT setval('{$seqname}', (SELECT GREATEST(MAX({$sequence['column']}), {$lastval}) as new_max FROM {$sequence['table']}))";
+		$sql = "SELECT setval('{$seqname}', (SELECT GREATEST(MAX({$sequence['column']}), {$lastval}) FROM {$sequence['table']}))";
 		$result = $ui->db->query($sql);
-		$lastval = $ui->db->fetch_assoc($result)['new_max'];
+		$lastval = $ui->db->fetch_assoc($result)['setval'];
 		echo "Last value from sequence after operation: {$lastval}<br><br>";
 	}
 
