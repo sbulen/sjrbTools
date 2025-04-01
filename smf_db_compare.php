@@ -18,8 +18,8 @@
 
 $site_title = 'SMF DB Compare Tool';
 $db_needed = true;
-$width = 1500;
-$ui = new SimpleSmfUI($site_title, $db_needed, $width);
+$max_width = 1500;
+$ui = new SimpleSmfUI($site_title, $db_needed, $max_width);
 
 // Massive internal tables holding SMF db info per version...
 $smf_tables['3.0'] = Array
@@ -36699,7 +36699,7 @@ $ui->addChunk('Settings Table', function() use ($ui)
 	$settings[0] = array('Variable','Value');
 
 	$result = $ui->db->query('
-		SELECT variable, value FROM {db_prefix}settings
+		SELECT variable, value FROM ' . $ui->db->db_prefix . 'settings
 		WHERE variable = \'smfVersion\''
 	);
 
@@ -36994,7 +36994,7 @@ function rightOnly($right_row)
  *
  * A simple basic abstracted UI for utilities.
  *
- * Copyright 2021-2023 Shawn Bulen
+ * Copyright 2021-2025 Shawn Bulen
  *
  * This file is part of the sjrbTools library.
  *
@@ -37019,7 +37019,9 @@ class Ssui_Db
 	/*
 	 * Properties
 	 */
-	protected $db_obj = null;
+	public $db_obj = null;
+	// Helps handle pg_connect errors...
+	public $pg_connect_error = '';
 	public $db_type = '';
 	public $db_prefix = '';
 	public $db_name = '';
@@ -37043,7 +37045,24 @@ class Ssui_Db
 		// pg...
 		if ($this->db_type == 'postgresql')
 		{
-			$this->db_obj = pg_connect((empty($db_server) ? '' : 'host=' . $db_server . ' ') . 'dbname=' . $db_name . ' user=\'' . $db_user . '\' password=\'' . $db_passwd . '\'' . (empty($db_port) ? '' : ' port=\'' . $db_port . '\''));
+			// Since pg_connect doesn't feed error info to pg_last_error, we have to catch issues with a try/catch.
+			set_error_handler(
+				function($errno, $errstr)
+				{
+					throw new ErrorException($errstr, $errno);
+				}
+			);
+			try
+			{
+				$this->db_obj = @pg_connect((empty($db_server) ? '' : 'host=' . $db_server . ' ') . 'dbname=' . $db_name . ' user=\'' . $db_user . '\' password=\'' . $db_passwd . '\'' . (empty($db_port) ? '' : ' port=\'' . $db_port . '\''));
+			}
+			catch (Exception $e)
+			{
+				// Make error info available to calling processes
+				$this->pg_connect_error = $e->getMessage();
+				$this->db_obj = null;
+			}
+			restore_error_handler();
 		}
 		// mysql...
 		else
@@ -37070,9 +37089,6 @@ class Ssui_Db
 	 */
 	public function query($query_string)
 	{
-		// Handle db prefix...
-		$query_string = str_ireplace('{db_prefix}', $this->db_prefix, $query_string);
-
 		// pg...
 		if ($this->db_type == 'postgresql')
 		{
@@ -37155,7 +37171,7 @@ class Ssui_Db
 		// pg...
 		if ($this->db_type == 'postgresql')
 		{
-			return pg_last_error($this->db_obj);
+			return $this->pg_connect_error;
 		}
 		// mysql...
 		else
@@ -37185,7 +37201,7 @@ class Ssui_Db
 }
 
 // This oughtta hold us off until php 9.0...
-#[AllowDynamicProperties]
+#[\AllowDynamicProperties]
 class SimpleSmfUI
 {
 	/*
@@ -37211,7 +37227,7 @@ class SimpleSmfUI
 	/*
 	 * SMF Properties
 	 */
-	protected $settings_file;
+	public $settings_file;
 
 	/**
 	 * Constructor

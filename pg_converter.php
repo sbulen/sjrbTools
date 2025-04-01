@@ -7,10 +7,13 @@
  *  - Maps varbinary16 values, used in SMF for IP addresses, to pg inet format
  *  - Maps newlines back to newlines... mysqldump exports all newlines as the two characters: \n
  *
+ * Warning: This utility ends up breaking JSON structures.  Those will need to be rebuilt by hand in the new environment.
+ *
  * Prepwork: 
- *  - Install a vanilla version of SMF, same version as your source & get it fully working.  Truncate all tables.
- *  - Your source mysql SMF DB must be UTF8.
- *  - Your source mysql and target SMF DBs must have the exact same tables & columns.
+ *  - Install a vanilla Postgresql version of SMF, same version as your source & get it fully working.
+ *  - Truncate all tables.
+ *  - Your source MySQL SMF DB must be UTF8.
+ *  - Your source MySQL and target Postgresql DBs must have the exact same tables & columns.
  *  - If needed, create a copy of your source forum & delete all extraneous rows & columns and do the mysqldump from there.
  *
  * Overall Process - for use on Windows:
@@ -27,8 +30,9 @@
  * (9) Run repair_settings.php to correct paths
  * (10) Copy over your attachments, avatars, custom avatars & smileys
  * (11) Clear your cache
+ * (12) Review any settings stored as JSON.  This utility BREAKS THEM.  Things like attachment folders, profile fields, etc., need to be rebuilt.
  *
- * ***** SMF 2.1 ONLY *****
+ * ***** SMF 2.1 & 3.0 ONLY *****
  * ***** Postgresql ONLY *****
  * 
  * Usage guidelines:
@@ -46,8 +50,6 @@ $ui = new SimpleSmfUI($site_title, $db_needed);
 
 $ui->addChunk('Settings', function() use ($ui)
 {
-	global $smcFunc, $db_connection, $db_type, $sourcedir;   // Must remain globals
-
 	// First some settings file stuff...
 	$dumpvars = array('mbname', 'boardurl', 'db_server', 'db_name', 'db_prefix', 'language', 'db_type', 'db_character_set', 'db_mb4');
 
@@ -75,10 +77,8 @@ $ui->addChunk('Settings', function() use ($ui)
 
 $ui->addChunk('Input and Output Files', function() use ($ui)
 {
-	global $db_type;
-
 	// Ensure we are running pg...
-	if (empty($db_type) || $db_type != 'postgresql')
+	if (empty($ui->db->db_type) || $ui->db->db_type != 'postgresql')
 	{
 		$ui->addError('Database is not postgresql!');
 		return;
@@ -109,10 +109,8 @@ $ui->addChunk('Input and Output Files', function() use ($ui)
 
 $ui->addChunk('Convert Quotes & IPs', function() use ($ui)
 {
-	global $db_type, $db_connection;
-
 	// Ensure we are running pg...
-	if (empty($db_type) || $db_type != 'postgresql')
+	if (empty($ui->db->db_type) || $ui->db->db_type != 'postgresql')
 		return;
 
 	// Only proceed if user hit that button
@@ -162,8 +160,8 @@ $ui->addChunk('Convert Quotes & IPs', function() use ($ui)
 	$matches = array();
 
 	$sql = 'SHOW standard_conforming_strings';
-	$result = pg_query($db_connection, $sql);
-	list ($quote_option) = pg_fetch_row($result);
+	$result = $ui->db->query($sql);
+	$quote_option = $ui->db->fetch_assoc($result)['standard_conforming_strings'];
 	echo "Postgresql standard_conforming_string setting: {$quote_option}<br><br>";
 
 	if ($quote_option != 'on')
@@ -171,7 +169,7 @@ $ui->addChunk('Convert Quotes & IPs', function() use ($ui)
 
 	echo("Processing...");
 
-	$options = pg_options($db_connection);
+	$options = pg_options($ui->db->db_obj);
 	print_r($options);
 
 	$buffer = fgets($file_in_handle);
@@ -282,7 +280,7 @@ $ui->go();
  *
  * A simple basic abstracted UI for utilities.
  *
- * Copyright 2021-2023 Shawn Bulen
+ * Copyright 2021-2025 Shawn Bulen
  *
  * This file is part of the sjrbTools library.
  *
@@ -301,8 +299,195 @@ $ui->go();
  *
  */
 
+// Create a minimal db layer...
+class Ssui_Db
+{
+	/*
+	 * Properties
+	 */
+	public $db_obj = null;
+	// Helps handle pg_connect errors...
+	public $pg_connect_error = '';
+	public $db_type = '';
+	public $db_prefix = '';
+	public $db_name = '';
+
+	/**
+	 * Constructor
+	 *
+	 * Builds a SimpleSmfUI object
+	 *
+	 * @param string title
+	 * @param bool db_needed
+	 * @return void
+	 */
+	function __construct($db_type, $db_prefix, $db_character_set, $db_server, $db_user, $db_passwd, $db_name, $db_port)
+	{
+		// Some quick db parameter validations...
+		$this->db_type = $db_type == 'postgresql' ? 'postgresql' : 'mysql';
+		$this->db_prefix = empty($db_prefix) ? 'smf_' : $db_prefix;
+		$this->db_name = empty($db_name) ? '' : $db_name;
+
+		// pg...
+		if ($this->db_type == 'postgresql')
+		{
+			// Since pg_connect doesn't feed error info to pg_last_error, we have to catch issues with a try/catch.
+			set_error_handler(
+				function($errno, $errstr)
+				{
+					throw new ErrorException($errstr, $errno);
+				}
+			);
+			try
+			{
+				$this->db_obj = @pg_connect((empty($db_server) ? '' : 'host=' . $db_server . ' ') . 'dbname=' . $db_name . ' user=\'' . $db_user . '\' password=\'' . $db_passwd . '\'' . (empty($db_port) ? '' : ' port=\'' . $db_port . '\''));
+			}
+			catch (Exception $e)
+			{
+				// Make error info available to calling processes
+				$this->pg_connect_error = $e->getMessage();
+				$this->db_obj = null;
+			}
+			restore_error_handler();
+		}
+		// mysql...
+		else
+		{
+			mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+			$this->db_obj = new mysqli($db_server, $db_user, $db_passwd, $db_name, $db_port);
+
+			if (!$this->db_obj->connect_errno)
+			{
+				// Set names...
+				if (!empty($db_character_set))
+					$this->db_obj->set_charset($db_character_set);
+
+				$this->db_obj->query('SET SESSION sql_mode = \'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,PIPES_AS_CONCAT\'');
+			}
+		}
+	}
+
+	/**
+	 * query
+	 *
+	 * @param string query
+	 * @return pgsql\result | mysqli_result
+	 */
+	public function query($query_string)
+	{
+		// pg...
+		if ($this->db_type == 'postgresql')
+		{
+			return pg_query($this->db_obj, $query_string);
+		}
+		// mysql...
+		else
+		{
+			return $this->db_obj->query($query_string);
+		}
+	}
+
+	/**
+	 * fetch_assoc
+	 *
+	 * @param pgsql\result | mysqli_result
+	 * @return array
+	 */
+	public function fetch_assoc($db_result)
+	{
+		// pg...
+		if ($this->db_type == 'postgresql')
+		{
+			return pg_fetch_assoc($db_result);
+		}
+		// mysql...
+		else
+		{
+			return $db_result->fetch_assoc();
+		}
+	}
+
+	/**
+	 * free
+	 *
+	 * @param pgsql\result | mysqli_result
+	 * @return void
+	 */
+	public function free($db_result)
+	{
+		// pg...
+		if ($this->db_type == 'postgresql')
+		{
+			pg_free_result($db_result);
+		}
+		// mysql...
+		else
+		{
+			$db_result->free();
+		}
+	}
+
+	/**
+	 * escape_string
+	 *
+	 * @param string string
+	 * @return string
+	 */
+	public function escape_string($string)
+	{
+		// pg...
+		if ($this->db_type == 'postgresql')
+		{
+			return pg_escape_string($this->db_obj, $string);
+		}
+		// mysql...
+		else
+		{
+			return $this->db_obj->real_escape_string($string);
+		}
+	}
+
+	/**
+	 * connect_error
+	 *
+	 * @return string
+	 */
+	public function connect_error()
+	{
+		// pg...
+		if ($this->db_type == 'postgresql')
+		{
+			return $this->pg_connect_error;
+		}
+		// mysql...
+		else
+		{
+			return $this->db_obj->connect_error;
+		}
+	}
+
+	/**
+	 * error
+	 *
+	 * @return string
+	 */
+	public function error()
+	{
+		// pg...
+		if ($this->db_type == 'postgresql')
+		{
+			return pg_last_error($this->db_obj);
+		}
+		// mysql...
+		else
+		{
+			return $this->db_obj->error;
+		}
+	}
+}
+
 // This oughtta hold us off until php 9.0...
-#[AllowDynamicProperties]
+#[\AllowDynamicProperties]
 class SimpleSmfUI
 {
 	/*
@@ -323,10 +508,12 @@ class SimpleSmfUI
 	protected $chunks = array();
 	protected $errors = array();
 
+	public $db = null;
+
 	/*
 	 * SMF Properties
 	 */
-	protected $settings_file;
+	public $settings_file;
 
 	/**
 	 * Constructor
@@ -386,9 +573,6 @@ class SimpleSmfUI
 		define('MYSQL_TITLE', 'MySQL');
 		define('SMF_USER_AGENT', 'Mozilla/5.0 (' . php_uname('s') . ' ' . php_uname('m') . ') AppleWebKit/605.1.15 (KHTML, like Gecko)  SMF/' . strtr(SMF_VERSION, ' ', '.'));
 
-		// These must remain globals when calling SMF funcs...
-		global $smcFunc, $db_connection, $db_prefix, $db_name, $db_type, $sourcedir, $cachedir, $db_character_set, $db_port;
-		$smcFunc = array();
 		$this->settings_file = array();
 
 		if ($this->db_needed)
@@ -406,37 +590,22 @@ class SimpleSmfUI
 
 				foreach($dumpvars as $setting)
 					$this->settings_file[$setting] = (isset(${$setting}) ? ${$setting} : '<strong>NOT SET</strong>');
+
+				// Make the connection...
+				$db_type = empty($db_type) ? 'mysql' : $db_type;
+				$db_port = empty($db_port) ? null : $db_port;
+				$db_character_set = empty($db_character_set) ? '' : $db_character_set;
+				$this->db = new Ssui_Db($db_type, $db_prefix, $db_character_set, $db_server, $db_user, $db_passwd, $db_name, $db_port);
+
+				if ($this->db->connect_error())
+				{
+					$this->addError('err_no_db', ' ' . $this->db->connect_error());
+					// So subsequent steps know the DB isn't there...
+					$this->db = null;
+				}
 			}
 			else
 				$this->addError('err_no_settings');
-
-			if (!empty($sourcedir))
-			{
-				// Get the database going!
-				if (empty($db_type) || $db_type == 'mysqli')
-					$db_type = 'mysql';
-
-				// Add in the port if needed
-				$db_options = array();
-				if (!empty($db_port))
-					$db_options['port'] = $db_port;
-
-				// Make the connection...
-				require_once($sourcedir . '/Subs-Db-' . $db_type . '.php');
-				$db_connection = smf_db_initiate($db_server, $db_name, $db_user, $db_passwd, $db_prefix, $db_options);
-
-				if (empty($db_connection))
-					$this->addError('err_no_db');
-
-				// Set names...
-				if (!empty($db_character_set))
-					$smcFunc['db_query']('', '
-						SET NAMES {string:db_character_set}',
-						array(
-							'db_character_set' => $db_character_set,
-						)
-					);
-			}
 		}
 	}
 
@@ -848,8 +1017,6 @@ class SimpleSmfUI
 	 */
 	public function go()
 	{
-		global $db_connection;
-
 		// Responding to a POST? Cleanse info, put in session and redirect
 		session_start();
 		if ($_POST)
@@ -868,7 +1035,7 @@ class SimpleSmfUI
 
 		// Execute the chunks...
 		// Note if db_needed & no connection, do not process chunks, just display the errors
-		if (!$this->db_needed || ($this->db_needed && !empty($db_connection)))
+		if (!$this->db_needed || ($this->db_needed && !empty($this->db)))
 		{
 			foreach($this->chunks AS $ix => $chunk)
 				$this->doChunk($ix, $chunk);
