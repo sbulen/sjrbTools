@@ -22,15 +22,15 @@
  * (2) Run this utility, reading the mysqldump just created & creating a new .sql file
  * (3) Specify the $infile, $outfile & $path when prompted
  * (4) Open a command window
- * (5) Issue the following in the Windows command window (otherwise it assumes import is in Windows 1252, not utf8...):
- *    SET PGCLIENTENCODING=utf-8
- * (6) Log on to psql, connect to your new empty vanilla pg DB
- * (7) Load file with: \i mynewfile.sql
+ * (5) Log on to psql, connect to your new empty vanilla pg DB
+ * (6) Set the encoding with \encoding UTF8
+ * (7) Load file with: \i 'd:\\yada\\yada\\yada0\\mypgsql.sql'
+ * (7a) If there are errors, you may need to edit your .sql file & reattempt...
  * (8) After load, you must fix all the SEQUENCE #s...
  * (9) Run repair_settings.php to correct paths
  * (10) Copy over your attachments, avatars, custom avatars & smileys
  * (11) Clear your cache
- * (12) Review any settings stored as JSON.  This utility BREAKS THEM.  Things like attachment folders, profile fields, etc., need to be rebuilt.
+ * (12) Review any settings stored as JSON.  This utility BREAKS THEM.  Things like attachment folders, profile fields, etc., need to be rebuilt.  It's easiest to copy them over from your source by hand.
  *
  * ***** SMF 2.1 & 3.0 ONLY *****
  * ***** Postgresql ONLY *****
