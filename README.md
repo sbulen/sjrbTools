@@ -13,6 +13,7 @@ These tools are inquiry only & are used to perform diagnostics.
 * ***smf_settings_diag.php*** - This tool dumps key settings.php entries and dumps the entire SMF settings table.  It works for SMF2.0 & 2.1 & 3.0.  ***NOTE -*** Some mods place sensitive information like passwords & hashes in the SMF settings table.  You may not want to share the output of this diagnostic publicly.
 * ***smf_utf8_diag.php*** - This tool dumps a bunch of helpful information on the state of the character set & collation of your SMF database.  It works for SMF2.0 & 2.1 & 3.0.
 * ***smf_hex_dump.php*** - This tool dumps occurances of a specific column in a specific record in hex.  Useful for debugging UTF8 data issues.  It is UTF8 safe - it will not chop a multi-byte character in half.  It works for SMF2.0 & 2.1 & 3.0. 
+* ***smf_attachment_dirs.php*** - This tool dumps info about SMF attachment settings and directories, and will highlight several types of errors found: missing .dat extensions; invalid folder assignments; various attachmentUploadDir errors such as dir not found; files missing attachment records; attachment records missing files, etc.  It works for SMF2.1 & 3.0. 
 
 ## SMF Cron Jobs
 
