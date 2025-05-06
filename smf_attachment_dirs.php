@@ -239,6 +239,9 @@ $ui->addChunk('Comparing DB to File System', function() use ($ui)
 			// Ensure folder ID'd by id_folder matches what we see in the file system...
 			if ($fs_atts[$id_attach]['fs_folder'] != $db_atts[$id_attach]['lookup'])
 				$err = 'Incorrect folder';
+			// Filename check...  With or without .dat is OK for this check.
+			if (!preg_match('~\d{1,15}_[0-9a-z]{40}(?:|.dat)~i', $fs_atts[$id_attach]['fs_filename']))
+				$err .= (empty($err) ? '' : '; ') . 'Invalid filename';
 			// Ensure we got our .dat...
 			if (substr($fs_atts[$id_attach]['fs_filename'], -4) != '.dat')
 				$err .= (empty($err) ? '' : '; ') . 'Missing .dat';
