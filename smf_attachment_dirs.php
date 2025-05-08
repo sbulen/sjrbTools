@@ -156,15 +156,13 @@ $ui->addChunk('Comparing DB to File System', function() use ($ui)
 
 	// Step 1: Get att info from db...  Exclude avatars...
 	$result = $ui->db->query('
-		SELECT id_attach, id_msg, filename, file_hash, fileext, id_folder, \'\' as lookup FROM ' . $ui->db->db_prefix . 'attachments
+		SELECT id_attach, id_msg, filename, file_hash, fileext, id_folder, \'\' AS lookup FROM ' . $ui->db->db_prefix . 'attachments
 		WHERE attachment_type != 1'
 	);
 	$db_atts = array();
 	while ($row = $ui->db->fetch_assoc($result))
 	{
 		$db_atts[$row['id_attach']] = $row;
-		// Store folder lookup...
-		$db_atts[$row['id_attach']]['lookup'] = isset($ui->att_dirs[$db_atts[$row['id_attach']]['id_folder']]) ? $ui->att_dirs[$db_atts[$row['id_attach']]['id_folder']] : 'Invalid folder reference';
 	}
 
 	$ui->db->free($result);
@@ -179,7 +177,6 @@ $ui->addChunk('Comparing DB to File System', function() use ($ui)
 				inspect_files($entry, $fs_atts);
 			else
 			{
-				$folder = strtr(dirname($entry), '\\', '/');
 				$filename = basename($entry);
 				if ($filename == 'index.php')
 					continue;
@@ -188,16 +185,10 @@ $ui->addChunk('Comparing DB to File System', function() use ($ui)
 				if ($pos = strpos($filename, '_'))
 					$id = (int) substr($filename, 0, $pos);
 				else
-					$id = $filename;
-				// Deal with potential dupes in the fs - having same attach prefix, e.g., in different folders, or different suffixes
-				$suffix = 1;
-				$unique_id = $id;
-				while (key_exists($unique_id, $fs_atts))
-				{
-					$unique_id = $id . '_' . $suffix;
-					$suffix++;
-				}
-				$fs_atts[$unique_id] = array('fs_folder' => $folder, 'fs_filename' => $filename);
+					// Use whole fs entry, including dir, to ensure unique, even across folders, when attach id not found
+					$id = $entry;
+				// The key must include the entry to handle dupes w/same attach id; the index is the fs data
+				$fs_atts[$id][$entry] = '';
 			}
 		}
 	}
@@ -211,43 +202,56 @@ $ui->addChunk('Comparing DB to File System', function() use ($ui)
 	$all_keys = array_unique($all_keys, SORT_NATURAL);
 	asort($all_keys, SORT_NATURAL);
 	$all_atts = array();
-	$all_atts[0] = array('ID', 'id_attach', 'id_msg', 'filename', 'file_hash', 'fileext', 'id_folder', 'folder lookup', 'fs_folder', 'fs_filename', 'Error');
+	$all_atts[0] = array('id_attach', 'id_msg', 'filename', 'file_hash', 'fileext', 'id_folder', 'folder lookup', 'fs_folder', 'fs_filename', 'Error');
+
+	// Step thru keys now, might be fs &/or db
 	foreach ($all_keys as $id_attach)
 	{
-		$err = '';
-		if (key_exists($id_attach, $db_atts))
-		{
-			$left = $db_atts[$id_attach];
-		}
-		else
-		{
-			$left = array_fill(0, 7, ' - ');
-			$err = 'No attachment record';
-		}
 		if (key_exists($id_attach, $fs_atts))
 		{
-			$right = $fs_atts[$id_attach];
+			// Possibly multiple files per attach, gotta loop
+			foreach ($fs_atts[$id_attach] as $file => $dummy)
+			{
+				$fs_folder = strtr(dirname($file), '\\', '/');
+				$fs_file = basename($file);
+				$right = array($fs_folder, $fs_file);
+
+				if (!key_exists($id_attach, $db_atts))
+				{
+					// No attach, orphan file (we know it's only one because use used full fs entry, including dir, as key)
+					$left = array_fill(0, 7, ' - ');
+					$err = 'No attachment record';
+					$all_atts[] = array_merge($left, $right, array($err));
+					// Bail, because the remaining edits compare to DB vals...
+					continue;
+				}
+
+				// Ensure folder ID'd by id_folder matches what we see in the file system...
+				$err = '';
+				$left = $db_atts[$id_attach];
+				$left['lookup'] = isset($ui->att_dirs[$left['id_folder']]) ? $ui->att_dirs[$left['id_folder']] : 'Invalid folder reference';
+
+				if ($fs_folder != $left['lookup'])
+					$err .= 'Incorrect folder';
+				// Filename check...
+				if ($fs_file != $id_attach . '_' . $db_atts[$id_attach]['file_hash'] . '.dat')
+					$err .= (empty($err) ? '' : '; ') . 'Invalid filename';
+
+				// Allow for adding 'dispall' to the URL to display all, including OK entries
+				if (!empty($err) || isset($_REQUEST['dispall']))
+					$all_atts[] = array_merge($left, $right, array($err));
+			}
 		}
 		else
 		{
+			// DB key only - missing file (we know it's only one because attach ids are unique)
+			$left = $db_atts[$id_attach];
+			$left['lookup'] = isset($ui->att_dirs[$left['id_folder']]) ? $ui->att_dirs[$left['id_folder']] : 'Invalid folder reference';
 			$right = array_fill(0, 2, ' - ');
 			$err = 'Missing file';
+			$all_atts[] = array_merge($left, $right, array($err));
 		}
-		// If no error, we have an attach record & a file in the file system, so do some logical checks...
-		if (empty($err))
-		{
-			// Ensure folder ID'd by id_folder matches what we see in the file system...
-			if ($fs_atts[$id_attach]['fs_folder'] != $db_atts[$id_attach]['lookup'])
-				$err = 'Incorrect folder';
-			// Filename check...  With or without .dat is OK for this check.
-			if (!preg_match('~\d{1,15}_[0-9a-z]{40}(?:|.dat)~i', $fs_atts[$id_attach]['fs_filename']))
-				$err .= (empty($err) ? '' : '; ') . 'Invalid filename';
-			// Ensure we got our .dat...
-			if (substr($fs_atts[$id_attach]['fs_filename'], -4) != '.dat')
-				$err .= (empty($err) ? '' : '; ') . 'Missing .dat';
-		}
-		if (!empty($err))
-			$all_atts[] = array_merge(array($id_attach), $left, $right, array($err));
+
 	}
 
 	// Step 4: Display results...
