@@ -104,7 +104,7 @@ $ui->addChunk('Attachment Directories - attachmentUploadDir Decoded', function()
 		$att_dirs = array();
 
 	$folders = array();
-	$folders[-1] = array('Number', 'Folder', 'Valid Folder?');
+	$folders[-1] = array('Folder ID', 'Folder', 'Valid Folder?');
 	foreach ($att_dirs as $num => $dir)
 	{
 		$valid = file_exists($dir) && is_dir($dir);
@@ -119,6 +119,25 @@ $ui->addChunk('Attachment Directories - attachmentUploadDir Decoded', function()
 	foreach ($folders as $folder)
 		$ui->att_dirs[$folder[0]] = strtr($folder[1], '\\', '/');
 
+	// Show count of attachments by folder
+	$counts = array();
+	$counts[] = array('Folder ID', 'Attachment Count in DB');
+	$result = $ui->db->query('
+		SELECT id_folder, count(*) as att_count FROM ' . $ui->db->db_prefix . 'attachments
+		WHERE attachment_type != 1
+		GROUP BY id_folder
+		ORDER BY id_folder'
+	);
+	while ($row = $ui->db->fetch_assoc($result))
+	{
+		$row['att_count'] = number_format($row['att_count']);
+		$counts[] = $row;
+	}
+	$ui->db->free($result);
+
+	$ui->dumpTable($counts);
+	echo 'Avatars excluded.<br>';
+
 });
 
 $ui->addChunk('Attachment Directories - File System', function() use ($ui)
@@ -128,23 +147,39 @@ $ui->addChunk('Attachment Directories - File System', function() use ($ui)
 		return;
 
 	// Recursively return all directories under boarddir that have 'att' somewhere in dir name...
-	function inspect_dirs($dir, &$result)
+	function inspect_dir($dir, &$result)
 	{
-		foreach (glob($dir . '/*', GLOB_ONLYDIR) as $entry)
+		$files = 0;
+		$bytes = 0;
+		foreach (glob($dir . '/*') as $entry)
 		{
-			$result[] = array($entry);
-			inspect_dirs($entry, $result);
+			if (is_dir($entry))
+			{
+				$result[] = inspect_dir($entry, $result);
+			}
+			else
+			{
+				$filename = basename($entry);
+				if ($filename == 'index.php')
+					continue;
+				if (substr($filename, 0, 1) == '.')
+					continue;
+				$files++;
+				$bytes += filesize($entry);
+			}
 		}
+		$files = number_format($files);
+		$bytes = number_format($bytes);
+		return array($dir, $files, $bytes);
 	}
 
-	$result = array();
-	$result[0] = array('Folders Found');
+	$folders = array();
+	$folders[0] = array('Folders Found', 'Files', 'Size');
 	foreach (glob($ui->getSettingsFile()['boarddir'] . '/*att*', GLOB_ONLYDIR) as $dir)
-	{
-		$result[] = array($dir);
-		inspect_dirs($dir, $result);
-	}
-	$ui->dumpTable($result);
+		$folders[] = inspect_dir($dir, $folders);
+
+	$ui->dumpTable($folders);
+	echo 'index.php & files starting with a \'.\' are excluded.<br>';
 
 });
 
@@ -156,12 +191,13 @@ $ui->addChunk('Comparing DB to File System', function() use ($ui)
 
 	// Step 1: Get att info from db...  Exclude avatars...
 	$result = $ui->db->query('
-		SELECT id_attach, id_msg, filename, file_hash, fileext, id_folder, \'\' AS lookup FROM ' . $ui->db->db_prefix . 'attachments
+		SELECT id_attach, id_msg, filename, file_hash, size, id_folder, \'\' AS lookup FROM ' . $ui->db->db_prefix . 'attachments
 		WHERE attachment_type != 1'
 	);
 	$db_atts = array();
 	while ($row = $ui->db->fetch_assoc($result))
 	{
+		$row['size'] = number_format($row['size']);
 		$db_atts[$row['id_attach']] = $row;
 	}
 
@@ -202,7 +238,7 @@ $ui->addChunk('Comparing DB to File System', function() use ($ui)
 	$all_keys = array_unique($all_keys, SORT_NATURAL);
 	asort($all_keys, SORT_NATURAL);
 	$all_atts = array();
-	$all_atts[0] = array('id_attach', 'id_msg', 'filename', 'file_hash', 'fileext', 'id_folder', 'folder lookup', 'fs_folder', 'fs_filename', 'Error');
+	$all_atts[0] = array('id_attach', 'id_msg', 'filename', 'file_hash', 'size (db)', 'id_folder', 'folder lookup', 'fs_folder', 'fs_filename', 'Error');
 
 	// Step thru keys now, might be fs &/or db
 	foreach ($all_keys as $id_attach)
@@ -230,9 +266,9 @@ $ui->addChunk('Comparing DB to File System', function() use ($ui)
 				$err = '';
 				$left = $db_atts[$id_attach];
 				$left['lookup'] = isset($ui->att_dirs[$left['id_folder']]) ? $ui->att_dirs[$left['id_folder']] : 'Invalid folder reference';
-
 				if ($fs_folder != $left['lookup'])
 					$err .= 'Incorrect folder';
+
 				// Filename check...
 				if ($fs_file != $id_attach . '_' . $db_atts[$id_attach]['file_hash'] . '.dat')
 					$err .= (empty($err) ? '' : '; ') . 'Invalid filename';
