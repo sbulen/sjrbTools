@@ -175,7 +175,7 @@ $ui->addChunk('Attachment Directories - File System', function() use ($ui)
 
 	$folders = array();
 	$folders[0] = array('Folders Found', 'Files', 'Size');
-	foreach (glob($ui->getSettingsFile()['boarddir'] . '/*att*', GLOB_ONLYDIR) as $dir)
+	foreach (glob($ui->getSettingsFile()['boarddir'] . '/att*', GLOB_ONLYDIR) as $dir)
 		$folders[] = inspect_dir($dir, $folders);
 
 	$ui->dumpTable($folders);
@@ -230,7 +230,7 @@ $ui->addChunk('Comparing DB to File System', function() use ($ui)
 	}
 
 	$fs_atts = array();
-	foreach (glob($ui->getSettingsFile()['boarddir'] . '/*att*', GLOB_ONLYDIR) as $dir)
+	foreach (glob($ui->getSettingsFile()['boarddir'] . '/att*', GLOB_ONLYDIR) as $dir)
 		inspect_files($dir, $fs_atts);
 
 	// Step 3: Merge these two arrays
