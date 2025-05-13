@@ -290,12 +290,28 @@ $ui->addChunk('Comparing DB to File System', function() use ($ui)
 
 	}
 
-	// Step 4: Display results...
-	$ui->dumpTable($all_atts);
+	// Step 4: Display results...  Or dump to .csv...
+	if ((count($all_atts) == 1) && !isset($_REQUEST['dispall']))
+		echo '<br>No errors found!<br>';
+	else
+	{
+		if (isset($_REQUEST['csv']))
+		{
+			// Give it a unique timestamp...
+			$ts = date('YmdHis');
+			$csv_file = $ui->getSettingsFile()['boarddir'] . '/smf_attdir_' . $ts. '.csv';
+			$csv_url = $ui->getSettingsFile()['boardurl'] . '/smf_attdir_' . $ts. '.csv';
 
-	if (count($all_atts) == 1)
-		echo 'No errors found!';
+			$fp = fopen($csv_file, 'w');
+			foreach ($all_atts as $row)
+				fputcsv($fp, $row, ",", '"', '');
+			fclose($fp);
 
+			echo '<br>CSV file created for download: <a href="' . $csv_url . '">' . $csv_url . '</a><br>';
+		}
+		else
+			$ui->dumpTable($all_atts);
+	}
 });
 
 $ui->go();
