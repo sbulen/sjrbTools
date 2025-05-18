@@ -29,6 +29,7 @@ These tools are inquiry only & are used to perform diagnostics.
 * ***smf_quote_link_fixer.php*** - Checks & fixes all quote links.  May be used to correct any quote link with issues, such as a deleted originating message or an incorrect topic caused by splits/merges. It works for SMF2.0 & 2.1 & 3.0.
 * ***smf_fix_log_actions.php*** - Checks & fixes all string lengths in log_actions. UTF8 conversions can break string lengths in serialized strings.  SMF2.0.
 * ***smf_replace_old_bbc.php*** - Removes/replaces old BBC.  Provided a regex, substitutes the first captured group for the entire match.  Helpful when you no longer use old mods that added BBC to posts at some point.  SMF2.0 & 2.1 & 3.0.
+* ***smf_attachment_fix.php*** - Reruns the SMF2.1 upgrader attachment process logic standalone.  Helpful when time has passed & you cannot rerun the upgrader, but need to fix your attachments and custom avatars.  SMF2.1 & 3.0.
 
 ## Github utility
 

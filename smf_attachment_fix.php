@@ -1,7 +1,19 @@
 <?php
 /**
  *
- * A utility to dump all attachment directory configuration information for an SMF forum, to help diagnose folder issues.
+ * A utility to fix attachments & avatars after SMF 2.1 upgrader issues.
+ * This utility mimics the attachment processing used by the SMF 2.1 upgrader.
+ * It is assumed that attachments & avatars are the ONLY issues, e.g., 
+ * the UTF8 & JSON conversions were OK.  
+ *
+ * If the attachment & avatar settings referenced old, invalid locations when the upgrader was run,
+ * they don't get processed properly.  
+ *
+ * The *ideal* solution is to rerun the upgrader with the 'Rerun attachment conversion' box checked
+ * after correcting the attachment & avatar folder settings.
+ *
+ * If this is impossible, e.g., the errors were caught too late & you cannot rerun the upgrader,
+ * this utility can be run instead.
  *
  * **** SMF 2.1 & 3.0 ***
  *
@@ -13,7 +25,7 @@
  *
  */
 
-$site_title = 'SMF Attachment Directories';
+$site_title = 'SMF Attachment Fix';
 $db_needed = true;
 $max_width = 1300;
 $ui = new SimpleSmfUI($site_title, $db_needed, $max_width);
@@ -67,11 +79,16 @@ $ui->addChunk('Attachment Directories - attachmentUploadDir Decoded', function()
 
 	$folders = array();
 	$folders[-1] = array('Folder ID', 'Folder', 'Valid Folder?');
+	$folder_err = false;
 	foreach ($att_dirs as $num => $dir)
 	{
 		$valid = file_exists($dir) && is_dir($dir);
 		$folders[] = array($num, $dir, $valid ? 'True' : 'False');
+		if (!$valid)
+			$folder_err = true;
 	}
+	if ($folder_err)
+		$ui->addError('One or more folders in attachmentUploadDir is invalid.');
 
 	$ui->dumpTable($folders);
 
@@ -142,138 +159,190 @@ $ui->addChunk('Attachment Directories - File System', function() use ($ui)
 
 	$ui->dumpTable($folders);
 	echo 'index.php & files starting with a \'.\' are excluded.<br>';
-
 });
 
-$ui->addChunk('Comparing DB to File System', function() use ($ui)
+$ui->addChunk('Rerunning 2.1 Upgrader Attachment Process', function() use ($ui)
 {
-	// Only for 2.1 & 3.0
-	if (!isset($ui->smfVersion) || !in_array($ui->smfVersion, array('2.1', '3.0')))
+	// Only for 2.1 & 3.0; also skip if any errors found above
+	if (!isset($ui->smfVersion) || !in_array($ui->smfVersion, array('2.1', '3.0')) || !empty($ui->errors))
 		return;
 
-	// Step 1: Get att info from db...  Exclude avatars...
-	$result = $ui->db->query('
-		SELECT id_attach, id_msg, filename, file_hash, size, id_folder, \'\' AS lookup FROM ' . $ui->db->db_prefix . 'attachments
-		WHERE attachment_type != 1'
-	);
-	$db_atts = array();
-	while ($row = $ui->db->fetch_assoc($result))
+	// Some stats to report out on completion...
+	$avatars_renamed = 0;
+	$atts_renamed = 0;
+
+	// The below logic is adapted from /other/upgrade_2-1_MySQL.sql
+
+	// Converting legacy attachments.
+	// Need to know a few things first.
+	$custom_av_dir = !empty($ui->getSetting('custom_avatar_dir')) ? $ui->getSetting('custom_avatar_dir') : $ui->getSettingsFileVal('boarddir') .'/custom_avatar';
+
+	// This little fellow has to cooperate...
+	if (!is_writable($custom_av_dir))
 	{
-		$row['size'] = number_format($row['size']);
-		$db_atts[$row['id_attach']] = $row;
+		// Try 755 and 775 first since 777 doesn't always work and could be a risk...
+		$chmod_values = array(0755, 0775, 0777);
+
+		foreach($chmod_values as $val)
+		{
+			// If it's writable, break out of the loop
+			if (is_writable($custom_av_dir))
+				break;
+			else
+				@chmod($custom_av_dir, $val);
+		}
 	}
 
-	$ui->db->free($result);
-
-	// Step 2: Get att info from file system...
-	// Recursively return all files under all directories under boarddir that have 'att' somewhere in dir name...
-	function inspect_files($dir, &$fs_atts)
+	// If we already are using a custom dir, delete the predefined one.
+	if (realpath($custom_av_dir) != realpath($ui->getSettingsFileVal('boarddir') . '/custom_avatar'))
 	{
-		foreach (glob($dir . '/*') as $entry)
+		// Borrow custom_avatars index.php file.
+		if (!file_exists($custom_av_dir . '/index.php'))
+			@rename($ui->getSettingsFileVal('boarddir') . '/custom_avatar/index.php', $custom_av_dir .'/index.php');
+		else
+			@unlink($ui->getSettingsFileVal('boarddir') . '/custom_avatar/index.php');
+
+		// Borrow blank.png as well
+		if (!file_exists($custom_av_dir . '/blank.png'))
+			@rename($ui->getSettingsFileVal('boarddir') . '/custom_avatar/blank.png', $custom_av_dir . '/blank.png');
+		else
+			@unlink($ui->getSettingsFileVal('boarddir') . '/custom_avatar/blank.png');
+
+		// Attempt to delete the directory.
+		@rmdir($ui->getSettingsFileVal('boarddir') . '/custom_avatar');
+	}
+
+	// We may be using multiple attachment directories.
+	// It's gotta be json at this point...
+	$attachmentUploadDir = @json_decode($ui->getSetting('attachmentUploadDir'), true);
+
+	$request = $ui->db->query('
+		SELECT id_attach, id_member, id_folder, filename, file_hash, mime_type
+		FROM ' . $ui->db->db_prefix . 'attachments
+		WHERE attachment_type != 1
+		ORDER BY id_attach');
+
+	while ($row = $ui->db->fetch_assoc($request))
+	{
+		if (is_array($attachmentUploadDir))
 		{
-			if (is_dir($entry))
-				inspect_files($entry, $fs_atts);
+			if (array_key_exists($row['id_folder'], $attachmentUploadDir) && is_dir($attachmentUploadDir[$row['id_folder']]))
+				$currentFolder = $attachmentUploadDir[$row['id_folder']];
 			else
 			{
-				$filename = basename($entry);
-				if ($filename == 'index.php')
-					continue;
-				if (substr($filename, 0, 1) == '.')
-					continue;
-				if ($pos = strpos($filename, '_'))
-					$id = (int) substr($filename, 0, $pos);
-				else
-					// Use whole fs entry, including dir, to ensure unique, even across folders, when attach id not found
-					$id = $entry;
-				// The key must include the entry to handle dupes w/same attach id; the index is the fs data
-				$fs_atts[$id][$entry] = '';
+				$ui->addError('Invalid folder number for attach: ' . $row['id_attach'] . ' folder id: ' . $row['id_folder']);
+				// Can't do this one...
+				continue;
 			}
 		}
-	}
-
-	$fs_atts = array();
-	foreach (glob($ui->getSettingsFileVal('boarddir') . '/att*', GLOB_ONLYDIR) as $dir)
-		inspect_files($dir, $fs_atts);
-
-	// Step 3: Merge these two arrays
-	$all_keys = array_merge(array_keys($db_atts), array_keys($fs_atts));
-	$all_keys = array_unique($all_keys, SORT_NATURAL);
-	asort($all_keys, SORT_NATURAL);
-	$all_atts = array();
-	$all_atts[0] = array('id_attach', 'id_msg', 'filename', 'file_hash', 'size (db)', 'id_folder', 'folder lookup', 'fs_folder', 'fs_filename', 'Error');
-
-	// Step thru keys now, might be fs &/or db
-	foreach ($all_keys as $id_attach)
-	{
-		if (key_exists($id_attach, $fs_atts))
+		else
 		{
-			// Possibly multiple files per attach, gotta loop
-			foreach ($fs_atts[$id_attach] as $file => $dummy)
+			if (is_string($attachmentUploadDir) && is_dir($attachmentUploadDir))
+				$currentFolder = $attachmentUploadDir;
+			else
 			{
-				$fs_folder = strtr(dirname($file), '\\', '/');
-				$fs_file = basename($file);
-				$right = array($fs_folder, $fs_file);
-
-				if (!key_exists($id_attach, $db_atts))
-				{
-					// No attach, orphan file (we know it's only one because use used full fs entry, including dir, as key)
-					$left = array_fill(0, 7, ' - ');
-					$err = 'No attachment record';
-					$all_atts[] = array_merge($left, $right, array($err));
-					// Bail, because the remaining edits compare to DB vals...
-					continue;
-				}
-
-				// Ensure folder ID'd by id_folder matches what we see in the file system...
-				$err = '';
-				$left = $db_atts[$id_attach];
-				$left['lookup'] = isset($ui->att_dirs[$left['id_folder']]) ? $ui->att_dirs[$left['id_folder']] : 'Invalid folder reference';
-				if ($fs_folder != $left['lookup'])
-					$err .= 'Incorrect folder';
-
-				// Filename check...
-				if ($fs_file != $id_attach . '_' . $db_atts[$id_attach]['file_hash'] . '.dat')
-					$err .= (empty($err) ? '' : '; ') . 'Invalid filename';
-
-				// Allow for adding 'dispall' to the URL to display all, including OK entries
-				if (!empty($err) || isset($_REQUEST['dispall']))
-					$all_atts[] = array_merge($left, $right, array($err));
+				$ui->addError('Invalid attachment folder: ' . $attachmentUploadDir);
+				// No sense in going any further...
+				break;
 			}
 		}
-		else
+
+		$fileHash = '';
+
+		// Old School?
+		if (empty($row['file_hash']))
 		{
-			// DB key only - missing file (we know it's only one because attach ids are unique)
-			$left = $db_atts[$id_attach];
-			$left['lookup'] = isset($ui->att_dirs[$left['id_folder']]) ? $ui->att_dirs[$left['id_folder']] : 'Invalid folder reference';
-			$right = array_fill(0, 2, ' - ');
-			$err = 'Missing file';
-			$all_atts[] = array_merge($left, $right, array($err));
+			// Remove special accented characters (logic like 1.x)
+			$row['filename'] = strtr($row['filename'],	"\x8a\x8e\x9a\x9e\x9f\xc0\xc1\xc2\xc3\xc4\xc5\xc7\xc8\xc9\xca\xcb\xcc\xcd\xce\xcf\xd1\xd2\xd3\xd4\xd5\xd6\xd8\xd9\xda\xdb\xdc\xdd\xe0\xe1\xe2\xe3\xe4\xe5\xe7\xe8\xe9\xea\xeb\xec\xed\xee\xef\xf1\xf2\xf3\xf4\xf5\xf6\xf8\xf9\xfa\xfb\xfc\xfd\xff", 'SZszYAAAAAACEEEEIIIINOOOOOOUUUUYaaaaaaceeeeiiiinoooooouuuuyy');
+			$row['filename'] = strtr($row['filename'], array("\xde" => 'TH', "\xfe" =>
+				'th', "\xd0" => 'DH', "\xf0" => 'dh', "\xdf" => 'ss', "\x8c" => 'OE',
+				"\x9c" => 'oe', "\xc6" => 'AE', "\xe6" => 'ae', "\xb5" => 'u'));
+
+			// Sorry, no spaces, dots, or anything else but letters allowed.
+			$row['filename'] = preg_replace(array('/\s/', '/[^\w_\.\-]/'), array('_', ''), $row['filename']);
+
+			// Create a nice hash.
+			$fileHash = hash_hmac('sha1', $row['filename'] . time(), $ui->getSettingsFileVal('image_proxy_secret'));
+
+			// Iterate through the possible attachment names until we find the one that exists
+			$oldFile = $currentFolder . '/' . $row['id_attach']. '_' . strtr($row['filename'], '.', '_') . md5($row['filename']);
+			if (!file_exists($oldFile))
+			{
+				$oldFile = $currentFolder . '/' . $row['filename'];
+				if (!file_exists($oldFile)) $oldFile = false;
+			}
+
+			// Build the new file.
+			$newFile = $currentFolder . '/' . $row['id_attach'] . '_' . $fileHash .'.dat';
 		}
 
-	}
-
-	// Step 4: Display results...  Or dump to .csv...
-	if ((count($all_atts) == 1) && !isset($_REQUEST['dispall']))
-		echo '<br>No errors found!<br>';
-	else
-	{
-		if (isset($_REQUEST['csv']))
-		{
-			// Give it a unique timestamp...
-			$ts = date('YmdHis');
-			$csv_file = $ui->getSettingsFileVal('boarddir') . '/smf_attdir_' . $ts. '.csv';
-			$csv_url = $ui->getSettingsFileVal('boardurl') . '/smf_attdir_' . $ts. '.csv';
-
-			$fp = fopen($csv_file, 'w');
-			foreach ($all_atts as $row)
-				fputcsv($fp, $row, ",", '"', '');
-			fclose($fp);
-
-			echo '<br>CSV file created for download: <a href="' . $csv_url . '">' . $csv_url . '</a><br>';
-		}
+		// Just rename the file.
 		else
-			$ui->dumpTable($all_atts);
+		{
+			$oldFile = $currentFolder . '/' . $row['id_attach'] . '_' . $row['file_hash'];
+			$newFile = $currentFolder . '/' . $row['id_attach'] . '_' . $row['file_hash'] .'.dat';
+
+			// Make sure it exists...
+			if (!file_exists($oldFile))
+				$oldFile = false;
+		}
+
+		if (!$oldFile)
+		{
+			// Existing attachment could not be found. Just skip it...
+			continue;
+		}
+
+		// Check if the av is an attachment
+		if ($row['id_member'] != 0)
+		{
+			if (rename($oldFile, $custom_av_dir . '/' . $row['filename']))
+			{
+				$ui->db->query('
+					UPDATE ' . $ui->db->db_prefix . 'attachments
+					SET file_hash = \'\', attachment_type = 1
+					WHERE id_attach = ' . $row['id_attach']);
+				$avatars_renamed++;
+			}
+		}
+		// Just a regular attachment.
+		else
+		{
+			rename($oldFile, $newFile);
+			$atts_renamed++;
+		}
+
+		// Only update this if it was successful and the file was using the old system.
+		if (empty($row['file_hash']) && !empty($fileHash) && file_exists($newFile) && !file_exists($oldFile))
+			$ui->db->query('
+				UPDATE ' . $ui->db->db_prefix . 'attachments
+				SET file_hash = \'' . $fileHash . '\'
+				WHERE id_attach = ' . $row['id_attach']);
+
+		// While we're here, do we need to update the mime_type?
+		if (empty($row['mime_type']) && file_exists($newFile))
+		{
+			$size = @getimagesize($newFile);
+			if (!empty($size['mime']))
+				$ui->db->query('
+					UPDATE ' . $ui->db->db_prefix . 'attachments
+					SET mime_type = \'' . substr($size['mime'], 0, 20) . '\'
+					WHERE id_attach = ' . $row['id_attach']);
+		}
 	}
+	$ui->db->free($request);
+
+	// Note attachment conversion complete
+	// Don't have an upsert yet, so just delete & add...
+	$ui->db->query('DELETE FROM ' . $ui->db->db_prefix . 'settings WHERE variable = \'attachments_21_done\'');
+	$ui->db->query('INSERT INTO ' . $ui->db->db_prefix . 'settings (variable, value) VALUES (\'attachments_21_done\', \'1\')');
+
+	// Display some basic stats...
+	$stats = array();
+	$stats[] = array('Stat', '#');
+	$stats[] = array('Avatars renamed', $avatars_renamed);
+	$stats[] = array('Attachments renamed', $atts_renamed);
+	$ui->dumpTable($stats);
 });
 
 $ui->go();
