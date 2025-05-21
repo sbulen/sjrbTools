@@ -83,12 +83,16 @@ $ui->addChunk('Attachment Directories - attachmentUploadDir Decoded', function()
 
 	// Show count of attachments by folder
 	$counts = array();
-	$counts[] = array('Folder ID', 'Attachment Count in DB');
+	$counts[] = array('Folder ID', 'Attachment Subtype', 'Count in DB');
 	$result = $ui->db->query('
-		SELECT id_folder, count(*) as att_count FROM ' . $ui->db->db_prefix . 'attachments
+		SELECT id_folder, 
+			CASE WHEN id_member = 0 THEN \'Attachment\'
+				ELSE \'Avatar Attachment\' END AS att_subtype,
+			count(*) as att_count
+		FROM ' . $ui->db->db_prefix . 'attachments
 		WHERE attachment_type != 1
-		GROUP BY id_folder
-		ORDER BY id_folder'
+		GROUP BY id_folder, att_subtype
+		ORDER BY id_folder, att_subtype'
 	);
 	while ($row = $ui->db->fetch_assoc($result))
 	{

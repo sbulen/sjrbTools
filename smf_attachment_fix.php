@@ -100,12 +100,16 @@ $ui->addChunk('Attachment Directories - attachmentUploadDir Decoded', function()
 
 	// Show count of attachments by folder
 	$counts = array();
-	$counts[] = array('Folder ID', 'Attachment Count in DB');
+	$counts[] = array('Folder ID', 'Attachment Subtype', 'Count in DB');
 	$result = $ui->db->query('
-		SELECT id_folder, count(*) as att_count FROM ' . $ui->db->db_prefix . 'attachments
+		SELECT id_folder, 
+			CASE WHEN id_member = 0 THEN \'Attachment\'
+				ELSE \'Avatar Attachment\' END AS att_subtype,
+			count(*) as att_count
+		FROM ' . $ui->db->db_prefix . 'attachments
 		WHERE attachment_type != 1
-		GROUP BY id_folder
-		ORDER BY id_folder'
+		GROUP BY id_folder, att_subtype
+		ORDER BY id_folder, att_subtype'
 	);
 	while ($row = $ui->db->fetch_assoc($result))
 	{
@@ -252,17 +256,30 @@ $ui->addChunk('Rerunning 2.1 Upgrader Attachment Process', function() use ($ui)
 		// Old School?
 		if (empty($row['file_hash']))
 		{
-			// Remove special accented characters (logic like 1.x)
-			$row['filename'] = strtr($row['filename'],	"\x8a\x8e\x9a\x9e\x9f\xc0\xc1\xc2\xc3\xc4\xc5\xc7\xc8\xc9\xca\xcb\xcc\xcd\xce\xcf\xd1\xd2\xd3\xd4\xd5\xd6\xd8\xd9\xda\xdb\xdc\xdd\xe0\xe1\xe2\xe3\xe4\xe5\xe7\xe8\xe9\xea\xeb\xec\xed\xee\xef\xf1\xf2\xf3\xf4\xf5\xf6\xf8\xf9\xfa\xfb\xfc\xfd\xff", 'SZszYAAAAAACEEEEIIIINOOOOOOUUUUYaaaaaaceeeeiiiinoooooouuuuyy');
-			$row['filename'] = strtr($row['filename'], array("\xde" => 'TH', "\xfe" =>
-				'th', "\xd0" => 'DH', "\xf0" => 'dh', "\xdf" => 'ss', "\x8c" => 'OE',
-				"\x9c" => 'oe', "\xc6" => 'AE', "\xe6" => 'ae', "\xb5" => 'u'));
+			// The old logic removed diacritics before naming the file in the attachments folder.
+			// Single byte Windows-1252 characters were assumed, basically all of xC?, xD?, xE? and 
+			// xF?, plus a few other alphabetic characters with diacritics.
+			// ***DB should now be utf8, so a slightly different technique must be used.***
+			// strtr breaks things because it is single-byte, our source is now multibyte.
+			$from_chars = array('Š','Ž','š','ž','Ÿ',
+				'À','Á','Â','Ã','Ä','Å','Ç','È','É','Ê','Ë','Ì','Í','Î','Ï',
+				'Ñ','Ò','Ó','Ô','Õ','Ö','Ø','Ù','Ú','Û','Ü','Ý',
+				'à','á','â','ã','ä','å','ç','è','é','ê','ë','ì','í','î','ï',
+				'ñ','ò','ó','ô','õ','ö','ø','ù','ú','û','ü','ý','ÿ',
+				'Þ', 'þ', 'Ð', 'ð', 'ß', 'Œ', 'œ', 'Æ', 'æ', 'µ');
+			$to_chars = array('S','Z','s','z','Y',
+				'A','A','A','A','A','A','C','E','E','E','E','I','I','I','I',
+				'N','O','O','O','O','O','O','U','U','U','U','Y',
+				'a','a','a','a','a','a','c','e','e','e','e','i','i','i','i',
+				'n','o','o','o','o','o','o','u','u','u','u','y','y',
+				'TH', 'th', 'DH', 'dh', 'ss', 'OE', 'oe', 'AE', 'ae', 'u');
+			$row['filename'] = str_replace($from_chars, $to_chars, $row['filename']);
 
 			// Sorry, no spaces, dots, or anything else but letters allowed.
 			$row['filename'] = preg_replace(array('/\s/', '/[^\w_\.\-]/'), array('_', ''), $row['filename']);
 
 			// Create a nice hash.
-			$fileHash = hash_hmac('sha1', $row['filename'] . time(), $ui->getSettingsFileVal('image_proxy_secret'));
+			$fileHash = sha1(md5($row['filename'] . time()) . mt_rand());
 
 			// Iterate through the possible attachment names until we find the one that exists
 			$oldFile = $currentFolder . '/' . $row['id_attach']. '_' . strtr($row['filename'], '.', '_') . md5($row['filename']);
@@ -333,7 +350,7 @@ $ui->addChunk('Rerunning 2.1 Upgrader Attachment Process', function() use ($ui)
 	$ui->db->free($request);
 
 	// Note attachment conversion complete
-	// Don't have an upsert yet, so just delete & add...
+	// Don't have an upsert, so just delete & add...
 	$ui->db->query('DELETE FROM ' . $ui->db->db_prefix . 'settings WHERE variable = \'attachments_21_done\'');
 	$ui->db->query('INSERT INTO ' . $ui->db->db_prefix . 'settings (variable, value) VALUES (\'attachments_21_done\', \'1\')');
 
