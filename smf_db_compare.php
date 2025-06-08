@@ -16163,7 +16163,7 @@ $smf_indexes['2.1'] = Array
 			'SUB_PART' => '<em>null</em>',
 		),
 
-	'log_search_results id_search,id_topic 0001' => Array
+	'log_search_results id_search,id_topic,id_msg 0001' => Array
 		(
 			'TABLE_NAME' => 'smf_log_search_results',
 			'NON_UNIQUE' => '0',
@@ -16173,13 +16173,23 @@ $smf_indexes['2.1'] = Array
 			'SUB_PART' => '<em>null</em>',
 		),
 
-	'log_search_results id_search,id_topic 0002' => Array
+	'log_search_results id_search,id_topic,id_msg 0002' => Array
 		(
 			'TABLE_NAME' => 'smf_log_search_results',
 			'NON_UNIQUE' => '0',
 			'INDEX_NAME' => 'PRIMARY',
 			'SEQ_IN_INDEX' => '2',
 			'COLUMN_NAME' => 'id_topic',
+			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_search_results id_search,id_topic,id_msg 0003' => Array
+		(
+			'TABLE_NAME' => 'smf_log_search_results',
+			'NON_UNIQUE' => '0',
+			'INDEX_NAME' => 'PRIMARY',
+			'SEQ_IN_INDEX' => '3',
+			'COLUMN_NAME' => 'id_msg',
 			'SUB_PART' => '<em>null</em>',
 		),
 
