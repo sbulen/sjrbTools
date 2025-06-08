@@ -1,6 +1,6 @@
 <?php 
-// 
-// An utility to scan a local git repo & build xml package files.
+//
+// A utility to scan a local git repo & build xml package files.
 //
 // ***** Windows assumed *****
 //
