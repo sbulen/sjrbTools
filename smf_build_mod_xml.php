@@ -101,7 +101,7 @@ function navFileSystem($dir) {
 		// Bypass all the "hidden" .git files, folders & also . & ..
 		// Also bypass the /other folder & the changelog.txt file
 		$path = $dir . DIRECTORY_SEPARATOR . $value;
-		if($value[0] != "."  && !in_array($value, array('other', 'changelog.txt', 'composer.lock', 'composer.json', 'README.md', 'LICENSE', 'favicon.ico', 'DCO.txt')))
+		if($value[0] != "."  && !in_array($value, array('other', 'vendor', 'changelog.txt', 'composer.lock', 'composer.json', 'README.md', 'LICENSE', 'favicon.ico', 'DCO.txt')))
 			if(!is_dir($path))
 				checkFile($path);
 			else
