@@ -84,7 +84,7 @@ $ui->addChunk('Check Tables', function() use ($ui)
 		foreach ($table_engines AS $table_info)
 		{
 			echo "Converting table {$table_info['Name']}...";
-			$sql = "ALTER TABLE {$table_info['Name']} ENGINE=InnoDB;";
+			$sql = "ALTER TABLE {$table_info['Name']} ENGINE=InnoDB, ROW_FORMAT=DYNAMIC;";
 			$ui->db->query($sql);
 			echo 'done<br>';
 		}
