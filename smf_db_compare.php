@@ -1389,6 +1389,17 @@ $smf_columns['3.0'] = Array
 			'COLLATION_NAME' => '<em>null</em>',
 		),
 
+	'calendar end_time' => Array
+		(
+			'TABLE_NAME' => 'smf_calendar',
+			'COLUMN_NAME' => 'end_time',
+			'COLUMN_TYPE' => 'time',
+			'IS_NULLABLE' => 'YES',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
 	'calendar exdates' => Array
 		(
 			'TABLE_NAME' => 'smf_calendar',
@@ -2441,6 +2452,17 @@ $smf_columns['3.0'] = Array
 			'COLUMN_TYPE' => 'text',
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
+		),
+
+	'log_group_requests comment_type' => Array
+		(
+			'TABLE_NAME' => 'smf_log_group_requests',
+			'COLUMN_NAME' => 'comment_type',
+			'COLUMN_TYPE' => 'varchar(8)',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => 'warning',
 			'EXTRA' => '',
 			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
@@ -3611,6 +3633,17 @@ $smf_columns['3.0'] = Array
 			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
 		),
 
+	'mail_queue extra' => Array
+		(
+			'TABLE_NAME' => 'smf_mail_queue',
+			'COLUMN_NAME' => 'extra',
+			'COLUMN_TYPE' => 'varchar(255)',
+			'IS_NULLABLE' => 'YES',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
+		),
+
 	'mail_queue headers' => Array
 		(
 			'TABLE_NAME' => 'smf_mail_queue',
@@ -3630,6 +3663,17 @@ $smf_columns['3.0'] = Array
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => 'auto_increment',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'mail_queue next_try' => Array
+		(
+			'TABLE_NAME' => 'smf_mail_queue',
+			'COLUMN_NAME' => 'next_try',
+			'COLUMN_TYPE' => 'int',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
 			'COLLATION_NAME' => '<em>null</em>',
 		),
 
@@ -3693,6 +3737,17 @@ $smf_columns['3.0'] = Array
 			'TABLE_NAME' => 'smf_mail_queue',
 			'COLUMN_NAME' => 'time_sent',
 			'COLUMN_TYPE' => 'int',
+			'IS_NULLABLE' => 'NO',
+			'COLUMN_DEFAULT' => '0',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
+		),
+
+	'mail_queue tries' => Array
+		(
+			'TABLE_NAME' => 'smf_mail_queue',
+			'COLUMN_NAME' => 'tries',
+			'COLUMN_TYPE' => 'tinyint',
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '0',
 			'EXTRA' => '',
@@ -4544,6 +4599,17 @@ $smf_columns['3.0'] = Array
 			'COLUMN_DEFAULT' => '<em>null</em>',
 			'EXTRA' => '',
 			'COLLATION_NAME' => 'utf8mb4_0900_ai_ci',
+		),
+
+	'messages edit_history' => Array
+		(
+			'TABLE_NAME' => 'smf_messages',
+			'COLUMN_NAME' => 'edit_history',
+			'COLUMN_TYPE' => 'json',
+			'IS_NULLABLE' => 'YES',
+			'COLUMN_DEFAULT' => '<em>null</em>',
+			'EXTRA' => '',
+			'COLLATION_NAME' => '<em>null</em>',
 		),
 
 	'messages icon' => Array
@@ -7166,6 +7232,16 @@ $smf_indexes['3.0'] = Array
 			'SEQ_IN_INDEX' => '1',
 			'COLUMN_NAME' => 'id_install',
 			'SUB_PART' => '<em>null</em>',
+		),
+
+	'log_packages sha256_hash 0001' => Array
+		(
+			'TABLE_NAME' => 'smf_log_packages',
+			'NON_UNIQUE' => '1',
+			'INDEX_NAME' => 'idx_hash',
+			'SEQ_IN_INDEX' => '1',
+			'COLUMN_NAME' => 'sha256_hash',
+			'SUB_PART' => '191',
 		),
 
 	'log_polls id_poll,id_member,id_choice 0001' => Array
