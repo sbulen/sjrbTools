@@ -37069,7 +37069,7 @@ function rightOnly($right_row)
  *
  * A simple basic abstracted UI for utilities.
  *
- * Copyright 2021-2025 Shawn Bulen
+ * Copyright 2021-2026 Shawn Bulen
  *
  * This file is part of the sjrbTools library.
  *
@@ -37151,7 +37151,8 @@ class Ssui_Db
 				if (!empty($db_character_set))
 					$this->db_obj->set_charset($db_character_set);
 
-				$this->db_obj->query('SET SESSION sql_mode = \'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,PIPES_AS_CONCAT\'');
+				// Need this to be as least strict as possible, in order to be able to fix funky old issues, often on forums running old versions of php, mysql
+				$this->db_obj->query('SET SESSION sql_mode = \'\'');
 			}
 		}
 	}

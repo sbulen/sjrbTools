@@ -133,7 +133,7 @@ $ui->go();
  *
  * A simple basic abstracted UI for utilities.
  *
- * Copyright 2021-2025 Shawn Bulen
+ * Copyright 2021-2026 Shawn Bulen
  *
  * This file is part of the sjrbTools library.
  *
@@ -215,7 +215,8 @@ class Ssui_Db
 				if (!empty($db_character_set))
 					$this->db_obj->set_charset($db_character_set);
 
-				$this->db_obj->query('SET SESSION sql_mode = \'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,PIPES_AS_CONCAT\'');
+				// Need this to be as least strict as possible, in order to be able to fix funky old issues, often on forums running old versions of php, mysql
+				$this->db_obj->query('SET SESSION sql_mode = \'\'');
 			}
 		}
 	}
@@ -366,7 +367,14 @@ class SimpleSmfUI
 	/*
 	 * SMF Properties
 	 */
+	// From SMF Settings.php
 	public $settings_file;
+
+	// From smf_settings table
+	public $settings;
+
+	// Three byte version (2.1, 3.0) is handy...
+	public $smfVersion;
 
 	/**
 	 * Constructor
@@ -410,7 +418,7 @@ class SimpleSmfUI
 			function($errno, $errstr, $errfile, $errline)
 			{
 				if ((error_reporting() != 0) && (error_reporting() != (E_ERROR | E_CORE_ERROR | E_COMPILE_ERROR | E_USER_ERROR | E_RECOVERABLE_ERROR | E_PARSE)))
-					$this->addError($errstr . ' (' . $errno . ')');
+					$this->addError($errstr . ' (' . $errno . ')' . (empty($errfile) ? '' : ' ' . $errfile) . (empty ($errline) ? '' : ':' . $errline));
 				// Always try & report errors gracefully...
 				return true;
 			}
@@ -427,6 +435,7 @@ class SimpleSmfUI
 		define('SMF_USER_AGENT', 'Mozilla/5.0 (' . php_uname('s') . ' ' . php_uname('m') . ') AppleWebKit/605.1.15 (KHTML, like Gecko)  SMF/' . strtr(SMF_VERSION, ' ', '.'));
 
 		$this->settings_file = array();
+		$this->settings = array();
 
 		if ($this->db_needed)
 		{
@@ -455,6 +464,17 @@ class SimpleSmfUI
 					$this->addError('err_no_db', ' ' . $this->db->connect_error());
 					// So subsequent steps know the DB isn't there...
 					$this->db = null;
+				}
+				else
+				{
+					// Save off settings table contents...
+					$result = $this->db->query('SELECT * FROM ' . $db_prefix . 'settings');
+					while ($row = $this->db->fetch_assoc($result))
+						$this->settings[$row['variable']] = $row['value'];
+
+					// Save the 3-char version off, it's handy...
+					if (isset($this->settings['smfVersion']))
+						$this->smfVersion = substr($this->settings['smfVersion'], 0, 3);
 				}
 			}
 			else
@@ -829,13 +849,45 @@ class SimpleSmfUI
 	}
 
 	/**
-	 * Get Settings File contents
+	 * Get Settings File contents as array
 	 *
 	 * @return array
 	 */
 	public function getSettingsFile()
 	{
 		return $this->settings_file;
+	}
+
+	/**
+	 * Get Settings File specific value
+	 *
+	 * @param string setting
+	 * @return string
+	 */
+	public function getSettingsFileVal($setting)
+	{
+		if (isset($this->settings_file[$setting]))
+			$value = $this->settings_file[$setting];
+		else
+			$value = null;
+
+		return $value;
+	}
+
+	/**
+	 * Get Settings table value
+	 *
+	 * @param string setting
+	 * @return string
+	 */
+	public function getSetting($setting)
+	{
+		if (isset($this->settings[$setting]))
+			$value = $this->settings[$setting];
+		else
+			$value = null;
+
+		return $value;
 	}
 
 	/**
