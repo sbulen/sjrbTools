@@ -19,7 +19,7 @@
 // User config section...
 $write_max = 10000;
 $tables = array(
-	'smf_categories' => array('add' => 10, 'key' => 'id_cat'),
+	'smf_categories' => array('add' => 1, 'key' => 'id_cat'),
 	'smf_boards' => array('add' => 216, 'key' => 'id_board'),
 	'smf_members' => array('add' => 10000, 'key' => 'id_member'),
 	'smf_log_actions' => array('add' => 40000, 'key' => 'id_action'),
@@ -347,7 +347,7 @@ function make_name($caps = true)
 	return $str;
 }
 
-//*** Apparently emails don't like these...  Need a function to remove 'em...
+//*** Apparently SMF 2.0 emails don't like these...  Need a function to remove 'em...
 function remove_accents($string_w_accents)
 {
 	// latin1 chars, map to remove accents...
@@ -378,6 +378,7 @@ function make_ip()
  */
 
 //*** add rows...
+//*** Only the first new category is used...
 function add_smf_categories($count)
 {
 	global $smcFunc, $write_max, $tables;
@@ -412,6 +413,7 @@ function add_smf_categories($count)
 //*** 
 //*** add board rows...
 //*** Build a 3-tier hierarchy to support all the requested boards...
+//*** Use the first new category for all of 'em...
 //*** 
 function add_smf_boards($count)
 {
@@ -430,7 +432,7 @@ function add_smf_boards($count)
 	while ($inserts_tot < $cube_root)
 	{
 		$inserts[] = array(
-			rand($tables['smf_categories']['max'] + 1, $tables['smf_categories']['max'] + $tables['smf_categories']['add']),
+			$tables['smf_categories']['max'] + 1,
 			0,
 			0,
 			$tables['smf_boards']['max'] + 1 + $inserts_tot,
@@ -473,7 +475,7 @@ function add_smf_boards($count)
 	while ($inserts_tot < $cube_root**2)
 	{
 		$inserts[] = array(
-			rand($tables['smf_categories']['max'] + 1, $tables['smf_categories']['max'] + $tables['smf_categories']['add']),
+			$tables['smf_categories']['max'] + 1,
 			1,
 			$tables['smf_boards']['max'] + 1 + floor($inserts_tot/$cube_root),
 			$tables['smf_boards']['max'] + 1 + $cube_root + $inserts_tot,
@@ -515,7 +517,7 @@ function add_smf_boards($count)
 	while ($inserts_tot < $count)
 	{
 		$inserts[] = array(
-			rand($tables['smf_categories']['max'] + 1, $tables['smf_categories']['max'] + $tables['smf_categories']['add']),
+			$tables['smf_categories']['max'] + 1,
 			2,
 			$tables['smf_boards']['max'] + 1 + $cube_root + floor($inserts_tot/$cube_root),
 			$tables['smf_boards']['max'] + 1 + $cube_root + $cube_root**2 + $inserts_tot,
