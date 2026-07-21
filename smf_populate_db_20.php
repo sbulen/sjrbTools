@@ -368,7 +368,7 @@ function remove_accents($string_w_accents)
 //*** Dummy up a dummy IP dummy...
 function make_ip()
 {
-	return rand(4, 220) . '.' . rand(0, 255) . '.' . rand(0, 255) . '.' . rand(0, 255);
+	return rand(4, 220) . '.' . rand(0, 10) . '.' . rand(0, 10) . '.' . rand(0, 10);
 }
 
 /*****
