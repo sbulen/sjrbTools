@@ -39,7 +39,7 @@ These tools are inquiry only & are used to perform diagnostics.
 
 **WARNING:** These tools update your forum database.  Use at your own risk.  ALWAYS back up your database before use.  ALWAYS run them in your test environment first to learn how they work & to confirm desired outcomes.
 
-* ***mergeSMF.php*** - Merges two forums.  SMF2.0 & 2.1.
+* ***mergeSMF.php*** - Merges two forums.  SMF2.1 only.
 
 For more information about the mergeSMF.php script, check the thread in the forum here:
 https://www.simplemachines.org/community/index.php?topic=575102.0
