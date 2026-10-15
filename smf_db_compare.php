@@ -4429,7 +4429,7 @@ $smf_columns['3.0'] = Array
 		(
 			'TABLE_NAME' => 'smf_members',
 			'COLUMN_NAME' => 'validation_code',
-			'COLUMN_TYPE' => 'varchar(10)',
+			'COLUMN_TYPE' => 'varchar(32)',
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
@@ -13287,7 +13287,7 @@ $smf_columns['2.1'] = Array
 		(
 			'TABLE_NAME' => 'smf_members',
 			'COLUMN_NAME' => 'validation_code',
-			'COLUMN_TYPE' => 'varchar(10)',
+			'COLUMN_TYPE' => 'varchar(32)',
 			'IS_NULLABLE' => 'NO',
 			'COLUMN_DEFAULT' => '',
 			'EXTRA' => '',
